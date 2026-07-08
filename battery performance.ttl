@@ -1,0 +1,82 @@
+@prefix batperf: <https://w3id.org/eudpp/battery-performance#> .
+@prefix bat: <https://w3id.org/eudpp/battery#> .
+@prefix dpp: <https://w3id.org/eudpp#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+#################################################
+# Ontology
+#################################################
+# Skeleton (v0.1): 2 classes, 1 object property, 1 datatype property.
+# Full scope: BatteryPass-Ready category "Performance and durability"
+# (attributes 59-100), to be organised under BatteryPerformance,
+# BatteryDurability and TemperatureExposure.
+# No cardinalities in OWL (SHACL shapes, separate artifact).
+
+<https://w3id.org/eudpp/battery-performance>
+    a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.1.0> ;
+    rdfs:label "EU DPP Battery Performance Ontology"@en ;
+    dcterms:title "EU DPP Battery Performance Ontology"@en ;
+    dcterms:description "Module for the electrochemical performance, durability and in-use state of batteries in EU Digital Product Passports (capacity, voltage, power capability, round trip efficiency, self-discharge, internal resistance, lifetime, temperature exposure), covering the 'Performance and durability' category of the BatteryPass-Ready Data Attribute Long List (attributes 59-100) required by Regulation (EU) 2023/1542, Annex XIII."@en ;
+    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.1.0."@en ;
+    dcterms:creator "Nader Jelassi"@en ;
+    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:created "2026-07-07"^^xsd:date ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-performance#" ;
+    vann:preferredNamespacePrefix "batperf" .
+
+#################################################
+# Classes
+#################################################
+
+batperf:BatteryPerformance
+    a owl:Class ;
+    rdfs:label "Battery Performance"@en ;
+    rdfs:comment "Container for the electrochemical performance and in-use state parameters of a battery: capacity (rated, remaining, fade), voltage (minimum, maximum, nominal), power capability, round trip energy efficiency, self-discharge rates, internal resistance, and in-use event counters. Battery-specific class with no CORE anchor (new entity defined from scratch)."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, category 'Performance and durability'"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+batperf:BatteryDurability
+    a owl:Class ;
+    rdfs:subClassOf dpp:Durability ;
+    rdfs:label "Battery Durability"@en ;
+    rdfs:comment "Battery-specific durability data: expected lifetime in calendar years and in charge-discharge cycles, number of full cycles, energy and capacity throughput, capacity threshold for exhaustion. Specialises the cross-sectoral Durability quality indicator (ESPR Art. 2 (22))."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attributes 83-90"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+#################################################
+# Object Properties
+#################################################
+
+batperf:hasBatteryPerformance
+    a owl:ObjectProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range batperf:BatteryPerformance ;
+    rdfs:label "has battery performance"@en ;
+    rdfs:comment "Links a battery to its electrochemical performance and in-use state data."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+#################################################
+# Datatype Properties
+#################################################
+
+batperf:ratedCapacity
+    a owl:DatatypeProperty ;
+    rdfs:domain batperf:BatteryPerformance ;
+    rdfs:range xsd:integer ;
+    rdfs:label "rated capacity"@en ;
+    rdfs:comment "The total number of ampere-hours that can be withdrawn from a fully charged battery under reference conditions. Unit: ampere-hour (Ah)."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 59"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
