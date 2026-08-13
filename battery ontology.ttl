@@ -20,12 +20,13 @@
 #     (same approach as the Textile sector modules).
 #   - No cardinality restrictions in OWL: mandatory/optional constraints
 #     of Regulation (EU) 2023/1542 belong to separate SHACL shapes.
-#   - Alignments to BatteryPass-Ready / Spherity Battery Pass are kept
-#     in a dedicated SSSOM mappings file, not in this ontology.
 
 <https://w3id.org/eudpp/battery>
     a owl:Ontology ;
     owl:versionIRI <https://w3id.org/eudpp/battery/0.1.0> ;
+    rdfs:seeAlso <https://w3id.org/eudpp/battery-performance> ,
+                 <https://w3id.org/eudpp/battery-materials> ,
+                 <https://w3id.org/eudpp/battery-labeling> ;
     rdfs:label "EU DPP Battery Ontology"@en ;
     dcterms:title "EU DPP Battery Ontology"@en ;
     dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in three companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location) and battery-labeling (labels and symbols). It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
@@ -36,6 +37,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:modified "2026-08-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.0 DRAFT"@en ;

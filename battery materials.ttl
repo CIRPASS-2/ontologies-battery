@@ -1,4 +1,5 @@
 @prefix batmat: <https://w3id.org/eudpp/battery-materials#> .
+@prefix bat: <https://w3id.org/eudpp/battery#> .
 @prefix dpp: <https://w3id.org/eudpp#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -11,19 +12,14 @@
 #################################################
 # Ontology
 #################################################
-# Skeleton (v0.1): 2 classes, 1 object property, 1 datatype property.
-# Full scope: battery chemistry and internal material location
-# (Gap Analysis, battery-materials module).
-# Alignments to Spherity Battery Pass entities (BatteryChemistryEntity,
-# BatteryLocationEntity) are recorded in the separate SSSOM mappings
-# file, not here.
+# v0.2: full coverage of the battery-materials scope of the Gap Analysis: 2 classes, 2 object properties, 2 datatype properties.
 
 <https://w3id.org/eudpp/battery-materials>
     a owl:Ontology ;
     owl:versionIRI <https://w3id.org/eudpp/battery-materials/0.1.0> ;
     rdfs:label "EU DPP Battery Materials Ontology"@en ;
     dcterms:title "EU DPP Battery Materials Ontology"@en ;
-    dcterms:description "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry and the internal location of materials within the battery. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."@en ;
+    dcterms:description "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry (with short and clear chemistry names) and the internal location of materials within the battery. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (MAT v1.0.2; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Materials Ontology. Draft version 0.1.0."@en ;
@@ -31,6 +27,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:modified "2026-08-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.0 DRAFT"@en ;
@@ -45,26 +42,37 @@ batmat:BatteryChemistry
     a owl:Class ;
     rdfs:subClassOf dpp:MaterialOfComposition ;
     rdfs:label "Battery Chemistry"@en ;
-    rdfs:comment "The electrochemical composition of the battery, reflecting the active materials used in cathode, anode and electrolyte. Specialises the cross-sectoral MaterialOfComposition class."@en ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
+    rdfs:comment "The electrochemical composition of the battery, reflecting the active materials used in cathode and anode and, voluntarily, electrolyte. Specialises the cross-sectoral MaterialOfComposition class."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, BatteryChemistryEntity"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
 
 batmat:BatteryLocation
     a owl:Class ;
     rdfs:label "Battery Location"@en ;
     rdfs:comment "An internal location within the battery where a material or sub-component resides (e.g. cathode, anode, electrolyte, casing). Battery-specific class with no CORE anchor."@en ;
+    dcterms:references "Spherity Battery Pass ontology v0.1, BatteryLocationEntity"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
 
 #################################################
 # Object Properties
 #################################################
 
+batmat:hasBatteryChemistry
+    a owl:ObjectProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range batmat:BatteryChemistry ;
+    rdfs:label "has battery chemistry"@en ;
+    rdfs:comment "Links a battery to its electrochemical chemistry. Specialises, for the battery chemistry, the CORE product-to-material link (connector/MAT modules)."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, batteryChemistry"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
+
 batmat:hasBatteryLocation
     a owl:ObjectProperty ;
-    rdfs:domain dpp:MaterialOfComposition ;
+    rdfs:domain batmat:BatteryChemistry ;
     rdfs:range batmat:BatteryLocation ;
     rdfs:label "has battery location"@en ;
-    rdfs:comment "Links a material of composition of the battery to its internal location within the battery."@en ;
+    rdfs:comment "Links a battery material of composition to its internal location within the battery. The domain is restricted to BatteryChemistry rather than the cross-sectoral MaterialOfComposition, so that this battery-specific property is not asserted on materials of other sectors."@en ;
+    dcterms:references "Spherity Battery Pass ontology v0.1, batteryMaterialLocation"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
 
 #################################################
@@ -77,4 +85,14 @@ batmat:chemistryShortName
     rdfs:range xsd:string ;
     rdfs:label "chemistry short name"@en ;
     rdfs:comment "Short name of the battery chemistry (e.g. NMC, LFP, NCA)."@en ;
+    dcterms:references "Spherity Battery Pass ontology v0.1, shortName"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
+
+batmat:chemistryClearName
+    a owl:DatatypeProperty ;
+    rdfs:domain batmat:BatteryChemistry ;
+    rdfs:range xsd:string ;
+    rdfs:label "chemistry clear name"@en ;
+    rdfs:comment "Full name of the battery chemistry (e.g. lithium nickel manganese cobalt oxide for NMC)."@en ;
+    dcterms:references "Spherity Battery Pass ontology v0.1, clearName"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
