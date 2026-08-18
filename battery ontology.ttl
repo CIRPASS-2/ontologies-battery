@@ -61,3 +61,30 @@ bat:Battery
     dcterms:references "Regulation (EU) 2023/1542, Art. 3(1)(1)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+#################################################
+# Datatype Properties — documentation links
+#################################################
+# Battery-specific documentation links. xsd:anyURI rather than the CORE
+# Source pattern: Source is declared in the LCA module, which is not yet
+# integrated into the CORE.
+
+bat:dueDiligenceReport
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "due diligence report"@en ;
+    rdfs:comment "Link to the battery due diligence policy and report on the supply chain, covering the raw materials listed in Annex X (cobalt, natural graphite, lithium, nickel) and the chemical compounds based on them."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 52 and Annex X; Annex XIII Part C"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:dueDiligenceAudit
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "due diligence audit"@en ;
+    rdfs:comment "Link to the third-party verification of the battery due diligence policy, carried out by a notified body."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 52 and Annex X; Annex XIII Part C"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .

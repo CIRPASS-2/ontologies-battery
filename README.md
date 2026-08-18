@@ -59,6 +59,7 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * `eudpp:ClassificationCode` reused as-is; the fallback `bat:batteryCategory` is **not** created.
 * Corrected the legal reference: the definitions are in **Art. 3(1)**, not Art. 2. `bat:Battery` updated accordingly.
 * Umbrella: `battery-categories` added to `rdfs:seeAlso` and to the description.
+* Added `bat:dueDiligenceReport` and `bat:dueDiligenceAudit` (`xsd:anyURI` on `bat:Battery`), Art. 52 / Annex X. Closes [#4](https://github.com/CIRPASS-2/ontologies-battery/issues/4). Kept in the battery namespace, as the issue proposes; `xsd:anyURI` rather than the CORE `Source` pattern, which lives in the not-yet-integrated LCA module.
 
 ## Reference sources
 
