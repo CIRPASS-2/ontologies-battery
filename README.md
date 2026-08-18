@@ -9,13 +9,14 @@ This repository includes development resources contributing to ontology developm
 
 ## Overview
 
-This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus four thematic modules:
+This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus five thematic modules:
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
 | `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product` | `bat` | `https://w3id.org/eudpp/battery#` |
 | `battery performance.ttl` | **Performance** — electrochemical performance, durability and in-use state (BatteryPass-Ready category "Performance and durability", attributes 59–100) | `batperf` | `https://w3id.org/eudpp/battery-performance#` |
 | `battery materials.ttl` | **Materials** — battery chemistry and internal material location, extending the CORE MAT module | `batmat` | `https://w3id.org/eudpp/battery-materials#` |
+| `battery-chemistries.ttl` | **Chemistries** — the ten chemistry terms of the draft labelling Implementing Act, as individuals of the CORE class `dpp:MaterialType` | `batchem` | `https://w3id.org/eudpp/battery-chemistries#` |
 | `battery labeling.ttl` | **Labeling** — labels and symbols (BatteryPass-Ready category "Symbols, labels and documentation of conformity", attributes 21–24) | `batlab` | `https://w3id.org/eudpp/battery-labeling#` |
 | `battery-categories.ttl` | **Categories** — controlled vocabulary of the five battery categories of Art. 3(1), as individuals of the CORE class `dpp:ClassificationCode` | `batcat` | `https://w3id.org/eudpp/battery-categories#` |
 
@@ -63,6 +64,15 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * Five documentation links added on `bat:Battery`, all `xsd:anyURI`: `dueDiligenceReport` and `dueDiligenceAudit` (Art. 52 / Annex X — closes [#4](https://github.com/CIRPASS-2/ontologies-battery/issues/4)); `dismantlingInformation`, `safetyMeasures` and `testReportResults` (Annex XIII 2(c), 2(d), 3 — closes [#5](https://github.com/CIRPASS-2/ontologies-battery/issues/5)).
 * `xsd:anyURI` rather than the CORE `Source` pattern: no `Source` class was found in any CORE module.
 * Access-tier decision recorded: the ontology stays tier-free (see Modelling conventions).
+
+### battery-materials 0.2.0 — 18 August 2026
+
+Closes [#9](https://github.com/CIRPASS-2/ontologies-battery/issues/9) points (1) and (2); point (3) waits for MAT v2.
+
+* `batmat:hasBatteryChemistry rdfs:subPropertyOf dpp:hasMaterial` — was prose only.
+* New module `battery-chemistries.ttl`: the ten chemistry terms of the draft labelling Implementing Act (BatteryPass-Ready long list, attribute 39), as individuals of `dpp:MaterialType`, reached through the inherited `dpp:hasMaterialType`. No new property in `batmat:`. `skos:notation` carries the term to print on the label.
+* Removed `chemistryShortName` and `chemistryClearName`: the short code is `skos:notation`, the full name `skos:prefLabel`.
+* Point (3) — MAT two-level refactoring — deferred: mapping `BatteryLocation` to the part level before MAT v2 exists would have to be redone.
 
 ## Reference sources
 
