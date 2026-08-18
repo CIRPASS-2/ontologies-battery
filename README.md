@@ -47,6 +47,7 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * CORE concepts are referenced directly by IRI — no `owl:imports`, no copied axioms (same approach as the Textile sector modules). To obtain a connected graph, load these modules together with the EU DPP CO modules.
 * The modules are developed against CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0, MAT v1.0.2; update of 30 April 2026); external references are pinned to these versions.
 * No cardinality restrictions in OWL: the mandatory/optional constraints of Regulation (EU) 2023/1542 are to be expressed in separate SHACL shapes.
+* **Tier-free ontology**: access tiers (public / legitimate interest / authorities) are carried by the SHACL shapes, not by the ontology — no annotation property, no per-class flags.
 * Alignments to BatteryPass-Ready and to the Spherity Battery Pass ontology are to be maintained in a dedicated SSSOM mappings file, not in the ontology itself.
 * Controlled vocabularies are declared in their own module rather than inside the T-Box modules, so that they can be versioned independently.
 * CORE reuse before local declaration: where the CORE already provides a class or property, it is reused rather than mirrored in the battery namespace.
@@ -59,7 +60,9 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * `eudpp:ClassificationCode` reused as-is; the fallback `bat:batteryCategory` is **not** created.
 * Corrected the legal reference: the definitions are in **Art. 3(1)**, not Art. 2. `bat:Battery` updated accordingly.
 * Umbrella: `battery-categories` added to `rdfs:seeAlso` and to the description.
-* Added `bat:dueDiligenceReport` and `bat:dueDiligenceAudit` (`xsd:anyURI` on `bat:Battery`), Art. 52 / Annex X. Closes [#4](https://github.com/CIRPASS-2/ontologies-battery/issues/4). Kept in the battery namespace, as the issue proposes; `xsd:anyURI` rather than the CORE `Source` pattern, which lives in the not-yet-integrated LCA module.
+* Five documentation links added on `bat:Battery`, all `xsd:anyURI`: `dueDiligenceReport` and `dueDiligenceAudit` (Art. 52 / Annex X — closes [#4](https://github.com/CIRPASS-2/ontologies-battery/issues/4)); `dismantlingInformation`, `safetyMeasures` and `testReportResults` (Annex XIII 2(c), 2(d), 3 — closes [#5](https://github.com/CIRPASS-2/ontologies-battery/issues/5)).
+* `xsd:anyURI` rather than the CORE `Source` pattern: no `Source` class was found in any CORE module.
+* Access-tier decision recorded: the ontology stays tier-free (see Modelling conventions).
 
 ## Reference sources
 

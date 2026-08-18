@@ -88,3 +88,33 @@ bat:dueDiligenceAudit
     dcterms:references "Regulation (EU) 2023/1542, Art. 52 and Annex X; Annex XIII Part C"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:dismantlingInformation
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "dismantling information"@en ;
+    rdfs:comment "Link to the dismantling documentation: exploded diagrams, disassembly sequences, fastening techniques, required tools, safety warnings, and the number and layout of cells."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(c)"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:safetyMeasures
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "safety measures"@en ;
+    rdfs:comment "Link to the safety measures applicable to the battery."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(d)"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:testReportResults
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "test report results"@en ;
+    rdfs:comment "Link to the test report results. Access is restricted to notified bodies, market surveillance authorities and the Commission; the restriction is expressed in the SHACL layer, not here."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 3"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
