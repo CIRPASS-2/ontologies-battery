@@ -12,33 +12,47 @@
 #################################################
 # Ontology
 #################################################
-# v0.2: full coverage of the BatteryPass-Ready category "Performance
-# and durability" (attributes 59-100): 4 classes, 3 object properties, 42 datatype properties.
+# Full coverage of the BatteryPass-Ready category "Performance and
+# durability" (attributes 59-100): 4 classes, 3 object properties,
+# 42 datatype properties.
+#
+# v0.2.0 (issue #7): 14 measured quantities retyped from xsd:integer
+# to xsd:decimal; the 4 remaining integers are counts, not measurements
+# (numberOfDeepDischargeEvents, numberOfOverchargeEvents,
+# numberOfFullCycles, expectedLifetimeCycles). The 3 object properties
+# are declared rdfs:subPropertyOf dpp:hasProperty; BatteryPerformance
+# and TemperatureExposure are anchored under dpp:Property; AccidentEvent
+# is re-anchored under dpp:ProductEvent.
+#
+# OPEN POINT (issue #7 (1)): units are carried in rdfs:comment only.
+# P_DPP anchors units on the SI Digital Framework (hasMeasurementUnit ->
+# si:MeasurementUnit), not on OM-2. The reference to align on is to be
+# settled at CORE level before the 42 properties are converted.
 # Organisation:
 #   - BatteryPerformance: electrochemical performance and in-use state
 #     (capacity, voltage, power, round trip efficiency, self-discharge,
 #     internal resistance, cycle-life test parameters, event counters);
 #   - BatteryDurability: longevity metrics, specialises dpp:Durability;
 #   - TemperatureExposure: thermal exposure in use;
-#   - AccidentEvent: specialises dpp:MaintenanceEvent (CORE event module).
+#   - AccidentEvent: specialises dpp:ProductEvent (CORE event module).
 
 <https://w3id.org/eudpp/battery-performance>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.1.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.2.0> ;
     rdfs:label "EU DPP Battery Performance Ontology"@en ;
     dcterms:title "EU DPP Battery Performance Ontology"@en ;
     dcterms:description "Module for the electrochemical performance, durability and in-use state of batteries in EU Digital Product Passports (capacity, voltage, power capability, round trip efficiency, self-discharge, internal resistance, lifetime, temperature exposure, accidents), covering the 'Performance and durability' category of the BatteryPass-Ready Data Attribute Long List (attributes 59-100) required by Regulation (EU) 2023/1542, Annex XIII."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.1.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.2.0."@en ;
     dcterms:creator "Nader Jelassi"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-06"^^xsd:date ;
+    dcterms:modified "2026-08-19"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-performance#" ;
     vann:preferredNamespacePrefix "batperf" .
 
@@ -48,8 +62,9 @@
 
 batperf:BatteryPerformance
     a owl:Class ;
+    rdfs:subClassOf dpp:Property ;
     rdfs:label "Battery Performance"@en ;
-    rdfs:comment "Container for the electrochemical performance and in-use state parameters of a battery: capacity (rated, remaining, fade), voltage (minimum, maximum, nominal), power capability, round trip energy efficiency, self-discharge rates, internal resistance, cycle-life test parameters, and in-use event counters. Battery-specific class with no CORE anchor (new entity defined from scratch)."@en ;
+    rdfs:comment "Container for the electrochemical performance and in-use state parameters of a battery: capacity (rated, remaining, fade), voltage (minimum, maximum, nominal), power capability, round trip energy efficiency, self-discharge rates, internal resistance, cycle-life test parameters, and in-use event counters. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself, and would otherwise inherit hasMeasurementUnit, which has no meaning on a container."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, category 'Performance and durability'"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
@@ -63,16 +78,17 @@ batperf:BatteryDurability
 
 batperf:TemperatureExposure
     a owl:Class ;
+    rdfs:subClassOf dpp:Property ;
     rdfs:label "Temperature Exposure"@en ;
-    rdfs:comment "Container for the thermal exposure of the battery in use: operating temperature information, idle-state temperature range boundaries, and aggregated time spent (and spent charging) in extreme temperatures outside those boundaries. Battery-specific class with no CORE anchor (new entity defined from scratch)."@en ;
+    rdfs:comment "Container for the thermal exposure of the battery in use: operating temperature information, idle-state temperature range boundaries, and aggregated time spent (and spent charging) in extreme temperatures outside those boundaries. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attributes 91-97"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 batperf:AccidentEvent
     a owl:Class ;
-    rdfs:subClassOf dpp:MaintenanceEvent ;
+    rdfs:subClassOf dpp:ProductEvent ;
     rdfs:label "Accident Event"@en ;
-    rdfs:comment "An accident affecting the battery, including when incorporated in the equipment it is powering. Specialises the cross-sectoral MaintenanceEvent class of the CORE event module; the link to the battery is provided by the CORE event mechanism (no dedicated object property in this module)."@en ;
+    rdfs:comment "An accident affecting the battery, including when incorporated in the equipment it is powering. Specialises the generic ProductEvent class of the CORE event module, of which MaintenanceEvent is a sibling: an accident is not a maintenance operation. The link to the battery is provided by the CORE event mechanism (no dedicated object property in this module)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 100"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
@@ -82,6 +98,7 @@ batperf:AccidentEvent
 
 batperf:hasBatteryPerformance
     a owl:ObjectProperty ;
+    rdfs:subPropertyOf dpp:hasProperty ;
     rdfs:domain bat:Battery ;
     rdfs:range batperf:BatteryPerformance ;
     rdfs:label "has battery performance"@en ;
@@ -90,14 +107,16 @@ batperf:hasBatteryPerformance
 
 batperf:hasBatteryDurability
     a owl:ObjectProperty ;
+    rdfs:subPropertyOf dpp:hasProperty ;
     rdfs:domain bat:Battery ;
     rdfs:range batperf:BatteryDurability ;
     rdfs:label "has battery durability"@en ;
-    rdfs:comment "Links a battery to its durability data. NOTE: if the CORE P_DPP module provides a generic product-to-durability property, this property will be declared as its specialisation."@en ;
+    rdfs:comment "Links a battery to its durability data. Specialises the cross-sectoral dpp:hasProperty (Product -> Property); the chain BatteryDurability = dpp:Durability = QualityIndicator = QuantitativeProperty = Property was verified in P_DPP v2.0.0."@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 batperf:hasTemperatureExposure
     a owl:ObjectProperty ;
+    rdfs:subPropertyOf dpp:hasProperty ;
     rdfs:domain bat:Battery ;
     rdfs:range batperf:TemperatureExposure ;
     rdfs:label "has temperature exposure"@en ;
@@ -111,7 +130,7 @@ batperf:hasTemperatureExposure
 batperf:ratedCapacity
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "rated capacity"@en ;
     rdfs:comment "The total number of ampere-hours that can be withdrawn from a fully charged battery under reference conditions. Unit: ampere-hour (Ah), or milliampere-hour (mAh) for LMT batteries."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 59"@en ;
@@ -120,7 +139,7 @@ batperf:ratedCapacity
 batperf:remainingCapacity
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "remaining capacity"@en ;
     rdfs:comment "The corresponding in-use data attribute to rated capacity. Unit: ampere-hour (Ah)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 60"@en ;
@@ -138,7 +157,7 @@ batperf:capacityFade
 batperf:certifiedUsableBatteryEnergy
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "certified usable battery energy"@en ;
     rdfs:comment "The usable battery energy according to the procedure in the UN GTR No 22 as determined during the certification of the vehicle. Unit: kilowatt-hour (kWh)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 62"@en ;
@@ -147,7 +166,7 @@ batperf:certifiedUsableBatteryEnergy
 batperf:remainingUsableBatteryEnergy
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "remaining usable battery energy"@en ;
     rdfs:comment "The usable battery energy at the present point in the lifetime of a battery as determined according to the procedure in the UN GTR No 22. Unit: kilowatt-hour (kWh)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 63"@en ;
@@ -201,7 +220,7 @@ batperf:nominalVoltage
 batperf:originalPowerCapability
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "original power capability"@en ;
     rdfs:comment "The amount of energy that a battery is capable to provide over a given period of time under reference conditions. Unit: watt (W)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 69"@en ;
@@ -210,7 +229,7 @@ batperf:originalPowerCapability
 batperf:remainingPowerCapability
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "remaining power capability"@en ;
     rdfs:comment "The amount of energy that a battery is capable to provide over a given period of time under reference conditions at a distinct point in time during its usage. Unit: watt (W)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 70"@en ;
@@ -309,7 +328,7 @@ batperf:selfDischargeRateEvolution
 batperf:initialInternalResistance
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "initial internal resistance of battery cell and pack"@en ;
     rdfs:comment "'Quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions' (IEV 482 03 36), at begin of life, for battery cell and pack (module recommended). Unit: ohm."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 81"@en ;
@@ -425,7 +444,7 @@ batperf:capacityThresholdForExhaustion
 batperf:temperatureInformation
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "temperature information"@en ;
     rdfs:comment "Temperature information regarding operating environmental conditions. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 91"@en ;
@@ -434,7 +453,7 @@ batperf:temperatureInformation
 batperf:temperatureRangeIdleStateLowerBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "temperature range idle state, lower boundary"@en ;
     rdfs:comment "The lower boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 92"@en ;
@@ -443,7 +462,7 @@ batperf:temperatureRangeIdleStateLowerBoundary
 batperf:temperatureRangeIdleStateUpperBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "temperature range idle state, upper boundary"@en ;
     rdfs:comment "The upper boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 93"@en ;
@@ -452,7 +471,7 @@ batperf:temperatureRangeIdleStateUpperBoundary
 batperf:timeSpentInExtremeTemperaturesAboveBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "time spent in extreme temperatures above boundary"@en ;
     rdfs:comment "The aggregated time, in which temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 94"@en ;
@@ -461,7 +480,7 @@ batperf:timeSpentInExtremeTemperaturesAboveBoundary
 batperf:timeSpentInExtremeTemperaturesBelowBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "time spent in extreme temperatures below boundary"@en ;
     rdfs:comment "The aggregated time, in which temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 95"@en ;
@@ -470,7 +489,7 @@ batperf:timeSpentInExtremeTemperaturesBelowBoundary
 batperf:timeSpentChargingInExtremeTemperaturesAboveBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "time spent charging during extreme temperatures above boundary"@en ;
     rdfs:comment "The aggregated time, in which the battery is charged, while temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 96"@en ;
@@ -479,7 +498,7 @@ batperf:timeSpentChargingInExtremeTemperaturesAboveBoundary
 batperf:timeSpentChargingInExtremeTemperaturesBelowBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
-    rdfs:range xsd:integer ;
+    rdfs:range xsd:decimal ;
     rdfs:label "time spent charging during extreme temperatures below boundary"@en ;
     rdfs:comment "The aggregated time, in which the battery is charged, while temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 97"@en ;

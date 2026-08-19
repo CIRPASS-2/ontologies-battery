@@ -56,6 +56,17 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
 ## Changelog
 
+### battery-performance 0.2.0 — 19 August 2026
+
+Closes [#7](https://github.com/CIRPASS-2/ontologies-battery/issues/7) points (2) to (4); point (1) — unit alignment — waits on a CORE-level decision.
+
+* **18 properties were `xsd:integer`; the 14 measured quantities are now `xsd:decimal`**: rated and remaining capacity, certified and remaining usable battery energy, original and remaining power capability, initial internal resistance, temperature information, the two idle-state temperature boundaries, and the four aggregated times spent in extreme temperatures. Whole ohms could not express the mΩ range, whole kWh could not express usable energy, whole °C could not express a boundary.
+* Four properties stay `xsd:integer` because they are counts, not measurements: `numberOfDeepDischargeEvents`, `numberOfOverchargeEvents`, `numberOfFullCycles`, `expectedLifetimeCycles`.
+* The three object properties of the module — `hasBatteryPerformance`, `hasBatteryDurability`, `hasTemperatureExposure` — are declared `rdfs:subPropertyOf dpp:hasProperty`. The chain requested for verification holds in P_DPP v2.0.0: `Durability ⊑ QualityIndicator ⊑ QuantitativeProperty ⊑ Property`, and `dpp:hasProperty` is `Product → Property`.
+* `BatteryPerformance` and `TemperatureExposure` had no parent; both are now `⊑ dpp:Property`. Deliberately **not** `dpp:QuantitativeProperty`: they are containers grouping several measured quantities, not quantities themselves, and would otherwise inherit `hasMeasurementUnit` (domain `QuantitativeProperty`), which has no meaning on a container. This also makes the three `subPropertyOf` declarations above coherent, since `dpp:hasProperty` ranges over `Property`.
+* `AccidentEvent` re-anchored from `dpp:MaintenanceEvent` to `dpp:ProductEvent`. Verified in the EVENT module: `ProductEvent ⊑ ESPREvent`, with `MaintenanceEvent`, `RepairEvent`, `RefurbishmentEvent`, `RemanufacturingEvent`, `DestructionEvent` and `UpgradingEvent` as its subclasses — an accident is none of those, so the generic parent is the right anchor.
+* **Open point on units.** They remain in `rdfs:comment` only. P_DPP anchors units on the **SI Digital Framework** (`hasMeasurementUnit` → `si:MeasurementUnit`), not on OM-2; no OM-2 reference was found in `p_dpp.owl`. If LCA does use OM-2, the CORE carries two unit mechanisms and the question has to be settled there before the 42 properties of this module are converted.
+
 ### battery-labeling 0.2.0 — 19 August 2026
 
 Closes [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) points (1) to (4); point (5) waits for the CORE `Labelling` class.
