@@ -9,7 +9,7 @@ This repository includes development resources contributing to ontology developm
 
 ## Overview
 
-This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus seven thematic modules:
+This repository contains the **EU DPP Battery Ontology** (umbrella version 0.3.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus seven thematic modules:
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
@@ -21,6 +21,7 @@ This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0
 | `battery-extinguisher-classes.ttl` | **Extinguisher classes** — controlled vocabulary of the five extinguisher classes, value set of `batlab:extinguishingAgent` | `batext` | `https://w3id.org/eudpp/battery-extinguisher-classes#` |
 | `battery-categories.ttl` | **Categories** — controlled vocabulary of the five battery categories of Art. 3(1), as individuals of the CORE class `dpp:ClassificationCode` | `batcat` | `https://w3id.org/eudpp/battery-categories#` |
 | `battery-statuses.ttl` | **Statuses** — controlled vocabulary of the five battery lifecycle statuses of Annex XIII 4(c), value set of `bat:hasBatteryStatus` | `batstat` | `https://w3id.org/eudpp/battery-statuses#` |
+| `battery-cf-shapes.ttl` | **Carbon footprint shapes** — SHACL profile binding the battery carbon footprint to the CORE; declares no term | `batcf` | `https://w3id.org/eudpp/battery-cf-shapes#` |
 
 ### Battery status vs passport status
 
@@ -38,7 +39,38 @@ The **passport status** is the state of the digital resource — `Active`, `Arch
 
 When a battery is remanufactured, repurposed or prepared for re-use and placed on the market again, a new passport is issued and linked back to the previous one through the CORE property `dpp:linkToPreviousDPP` (ESPR Art. 11(d)). Status-change events belong to the CORE event module.
 
-`bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice, and is to be deprecated in favour of a cross-sectoral equivalent if one appears.
+`bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice. It is a stopgap: [ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) requests a cross-sectoral `eudpp:productStatus` on `eudpp:Product`, and is still open. When it lands, `bat:hasBatteryStatus` is to be deprecated in favour of it.
+
+### Carbon footprint binding
+
+No carbon-footprint term is declared in the battery namespace. The footprint is the
+cross-sectoral `dpp:CarbonFootprint` of P_DPP, reached through `dpp:hasProperty`, and
+`battery-cf-shapes.ttl` only constrains how a battery uses it:
+
+```turtle
+:battery-12345
+    a                 bat:Battery ;
+    dpp:hasProductGroup  batcat:ElectricVehicleBattery ;
+    dpp:hasProperty   [ a dpp:CarbonFootprint ;
+                        dpp:numericalValue      "52.4"^^xsd:decimal ;
+                        dpp:hasMeasurementUnit  si:kilogram ] .
+```
+
+Two shapes are active today. `CarbonFootprintRequiredShape` requires a footprint on
+batteries in the electric-vehicle, industrial and LMT categories, and leaves portable and
+SLI batteries unconstrained. `CarbonFootprintValueShape` requires exactly one non-negative
+decimal value and exactly one measurement unit.
+
+The rest of the binding requested in
+[ontologies-battery#1](https://github.com/CIRPASS-2/ontologies-battery/issues/1) — LCA
+study, per-stage breakdown, functional unit, verification, background datasets,
+manufacturing plant, declaration of conformity, public study link, performance class — is
+written in the same file but carries `sh:deactivated true`, and becomes active by removing
+one boolean. Each deactivated shape states why it is off, and the three reasons are not
+the same thing: **PENDING** — the term is to be created by a CORE issue that #1 itself
+cites; **MISSING** — #1 treats the term as available and it is absent from a module file
+that is complete; **UNKNOWN** — the term belongs to the LCA module, which is not in the
+folder and not imported by `core.owl`, so nothing can be concluded either way.
 
 ### Battery category
 
@@ -75,12 +107,21 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
 ## Changelog
 
+### battery-cf-shapes 0.1.0 — 19 August 2026
+
+Answers [#1](https://github.com/CIRPASS-2/ontologies-battery/issues/1). No ontology file changed: the issue asks for a binding, not for local modelling.
+
+* New `battery-cf-shapes.ttl`. Two active shapes constrain what the CORE provides today; nine deactivated shapes express the rest of the binding, each tagged PENDING, MISSING or UNKNOWN.
+* Each deactivated shape is tagged PENDING (the term is to be created by a CORE issue that #1 itself cites), MISSING (#1 treats it as available and it is absent from a module file that is complete) or UNKNOWN (it belongs to the LCA module, which is not in the folder — no claim either way).
+* Verified findings: `dpp:hasLCAStudy` is declared with domain `Product` and **no `rdfs:range`**; CONNECTOR has **no COMP properties at all** — neither `hasEUDeclarationOfConformity`, nor `hasNotifiedBody`, nor `hasComplianceDeclaration`; and `comp.owl` has **no DoC identifier term** — `certificateNumber` and `certificateRevisionNumber` hang off `ConformityCertificate`, not off `EUDeclarationOfConformity`. The `moduleD1` individual does exist.
+* `core.owl` imports SOC, EVENT, MAT, P_DPP, IDENT, CON and ACTOR. **LCA and COMP are not imported**, so two of the three modules named in the title of #1 are not part of the CORE today.
+
 ### Umbrella 0.3.0 — 19 August 2026
 
 Closes [#3](https://github.com/CIRPASS-2/ontologies-battery/issues/3) for the battery-side scope; the passport-side points are already covered by the CORE or raised as CORE issues.
 
 * New module `battery-statuses.ttl`: one `skos:ConceptScheme` and the five Annex XIII 4(c) statuses as `skos:Concept` individuals — `original`, `repurposed`, `re-used`, `remanufactured`, `waste` — with `skos:notation` carrying the literal value to publish.
-* New property `bat:hasBatteryStatus` (`bat:Battery` → `skos:Concept`). Declared locally because the CORE has no generic product status to reuse; flagged for deprecation if one appears, since remanufacturing is an ESPR-wide notion.
+* New property `bat:hasBatteryStatus` (`bat:Battery` → `skos:Concept`). Declared locally because the CORE has no generic product status to reuse. This is a stopgap: [ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35), opened on 22 June 2026 and still open, requests a cross-sectoral `eudpp:productStatus` on `eudpp:Product` — motivated by this very attribute. The property carries an `rdfs:seeAlso` to that issue and is flagged for deprecation when it lands.
 * **Passport lifecycle: nothing added.** Verified in `p_dpp.owl` — `dpp:DPP` already carries `dppStatus` (enumerated `Active` / `Archived` / `Inactive` / `Invalid`), `linkToPreviousDPP` (ESPR Art. 11(d)), `validFrom`, `validUntil` and `lastUpdate`; the EVENT module already has `DPPCreationEvent`, `DPPUpdateEvent` and `DPPArchivalEvent` under `DPPEvent`. Deactivation semantics and the predecessor link are cross-sectoral and stay in the CORE.
 * **Repair is not a status.** Annex XIII 4(c) records a repaired battery under `re-used`; the repair history belongs to the CORE event module (`dpp:RepairEvent`). No sixth status value, no repair property — recorded as a `skos:scopeNote` on `batstat:ReUsed`.
 * Access to the battery status is restricted to persons with a legitimate interest. Per the tier-free convention that is a SHACL rule, not an ontology axiom; recorded in the scheme `skos:scopeNote`.

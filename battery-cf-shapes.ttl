@@ -1,0 +1,270 @@
+@prefix batcf: <https://w3id.org/eudpp/battery-cf-shapes#> .
+@prefix bat: <https://w3id.org/eudpp/battery#> .
+@prefix batcat: <https://w3id.org/eudpp/battery-categories#> .
+@prefix dpp: <https://w3id.org/eudpp#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+#################################################
+# Ontology
+#################################################
+# SHACL profile binding the battery carbon footprint to the CORE.
+# No carbon-footprint term is declared in the battery namespace: this
+# file constrains how bat:Battery uses CORE terms, nothing more
+# (issue ontologies-battery#1).
+#
+# The file has two layers.
+#
+# ACTIVE shapes constrain what the CORE provides today, verified in the
+# module files of the 30 April 2026 update:
+#   dpp:CarbonFootprint (P_DPP) is a class, and the chain
+#   CarbonFootprint = EnvironmentalFootprint = QuantitativeProperty
+#   = Property holds, so dpp:hasProperty reaches it and
+#   dpp:numericalValue / dpp:hasMeasurementUnit apply to it.
+#
+# DESACTIVATED shapes carry sh:deactivated true. They express the rest
+# of the binding requested in #1. Each names the term it needs and its
+# status. They parse, they validate nothing, and each becomes active by
+# removing one boolean. They are written now so that the profile is
+# reviewable as a whole rather than in instalments.
+#
+# Three statuses are distinguished, and they are not the same thing:
+#   PENDING  - the term is to be created by a CORE issue that #1 itself
+#              cites (core#47, #52, #53, #54, #41).
+#   MISSING  - #1 treats the term as available, and it is absent from
+#              the module files, which are complete for that module.
+#   UNKNOWN  - cannot be checked here: the term belongs to the LCA
+#              module, which is not in the folder and is not imported
+#              by core.owl. It may well exist upstream.
+#
+# core.owl imports SOC, EVENT, MAT, P_DPP, IDENT, CON and ACTOR.
+# Neither LCA nor COMP is among them.
+
+<https://w3id.org/eudpp/battery-cf-shapes>
+    a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-cf-shapes/0.1.0> ;
+    rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
+                 <https://github.com/CIRPASS-2/ontologies-battery/issues/1> ;
+    rdfs:label "EU DPP Battery Carbon Footprint Shapes"@en ;
+    dcterms:title "EU DPP Battery Carbon Footprint Shapes"@en ;
+    dcterms:description "SHACL profile binding the carbon footprint of a battery to the CIRPASS-2 CORE ontology, under Regulation (EU) 2023/1542 Art. 7. Declares no battery-local carbon-footprint term: it constrains the use of the cross-sectoral dpp:CarbonFootprint and its neighbours. Shapes whose CORE targets are pending, missing or unverifiable carry sh:deactivated true and state which of the three applies."@en ;
+    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). Validated with the battery modules loaded alongside the CORE modules."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:bibliographicCitation "EU DPP Battery Carbon Footprint Shapes. Draft version 0.1.0."@en ;
+    dcterms:creator "Nader Jelassi"@en ;
+    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:created "2026-08-19"^^xsd:date ;
+    dcterms:issued "2026-08-19"^^xsd:date ;
+    dcterms:modified "2026-08-19"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 7 and Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-cf-shapes#" ;
+    vann:preferredNamespacePrefix "batcf" .
+
+#################################################
+# ACTIVE — a carbon footprint is required, per category
+#################################################
+# Implication idiom: either the battery is not in a category in scope,
+# or it carries a dpp:CarbonFootprint. Batteries outside the three
+# categories (portable, SLI) are unconstrained and pass.
+#
+# The dates below are those stated in issue #1 and have NOT been
+# verified against the consolidated regulation. They are recorded in
+# the message rather than enforced: whether a rule is in force on a
+# given day is a deployment decision, not a shape.
+
+batcf:CarbonFootprintRequiredShape
+    a sh:NodeShape ;
+    rdfs:label "A battery in scope of Art. 7 carries a carbon footprint"@en ;
+    sh:targetClass bat:Battery ;
+    sh:or (
+        [
+            sh:not [
+                a sh:NodeShape ;
+                sh:property [
+                    sh:path dpp:hasProductGroup ;
+                    sh:in ( batcat:ElectricVehicleBattery
+                            batcat:IndustrialBattery
+                            batcat:LMTBattery ) ;
+                    sh:minCount 1 ;
+                ] ;
+            ] ;
+        ]
+        [
+            a sh:NodeShape ;
+            sh:property [
+                sh:path dpp:hasProperty ;
+                sh:qualifiedValueShape [ sh:class dpp:CarbonFootprint ] ;
+                sh:qualifiedMinCount 1 ;
+            ] ;
+        ]
+    ) ;
+    sh:severity sh:Violation ;
+    sh:message "A battery in a category in scope of the carbon footprint declaration must carry at least one dpp:CarbonFootprint through dpp:hasProperty. Declaration deadlines per issue #1, to be confirmed: electric vehicle batteries 18 Feb 2025, industrial batteries above 2 kWh 18 Feb 2026, light means of transport batteries 18 Aug 2028. Portable and SLI batteries are out of scope."@en .
+
+#################################################
+# ACTIVE — shape of the carbon footprint value itself
+#################################################
+# dpp:CarbonFootprint inherits numericalValue and hasMeasurementUnit
+# from dpp:QuantitativeProperty. The unit is expected to be a
+# SI Digital Framework measurement unit, which is what P_DPP anchors
+# on; the regulation asks for kg CO2e per kWh of total energy over the
+# service life, and that composite unit cannot be checked here — see
+# the deactivated functional-unit shape below.
+
+batcf:CarbonFootprintValueShape
+    a sh:NodeShape ;
+    rdfs:label "A carbon footprint carries one value and one unit"@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:numericalValue ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 0 ;
+        sh:message "A carbon footprint must carry exactly one non-negative decimal value."@en ;
+    ] ;
+    sh:property [
+        sh:path dpp:hasMeasurementUnit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A carbon footprint must carry exactly one measurement unit. P_DPP anchors units on the SI Digital Framework."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+#################################################
+# DEACTIVATED — awaiting CORE terms
+#################################################
+# Each shape names the term it needs and tags it PENDING, MISSING or
+# UNKNOWN, as defined in the header. Remove sh:deactivated to activate.
+# Checked in the module files of the 30 April 2026 update; the LCA
+# module is not among them, hence the UNKNOWN tag on the LCA-side
+# terms, which is not a claim that they are absent.
+
+batcf:CarbonFootprintLCAStudyShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The carbon footprint comes from a declared LCA study"@en ;
+    rdfs:comment "MISSING and UNKNOWN. dpp:hasLCAStudy is declared in CONNECTOR with domain Product but carries no rdfs:range, so it cannot be traversed or validated as it stands — that part is verified. Whether an LCAStudy class exists cannot be checked here: the LCA module is not in the folder and is not imported by core.owl."@en ;
+    sh:targetClass bat:Battery ;
+    sh:property [
+        sh:path dpp:hasLCAStudy ;
+        sh:minCount 1 ;
+        sh:message "A battery in scope must reference the LCA study its carbon footprint results from."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintPerStageShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The carbon footprint is broken down by life-cycle stage"@en ;
+    rdfs:comment "PENDING ontologies-core#53, scoped by #47, both cited in #1. Art. 7 requires the declaration broken down by life-cycle stage; #1 states four battery stages."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasLifeCycleStage ;
+        sh:minCount 4 ;
+        sh:message "The carbon footprint must be broken down by life-cycle stage."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintFunctionalUnitShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The functional unit is kWh of total energy over the service life"@en ;
+    rdfs:comment "PENDING ontologies-core#53, cited in #1. Until it lands, the composite unit required by Art. 7 — kg CO2e per kWh of total energy over the service life — cannot be validated by the active value shape above."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasFunctionalUnit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The carbon footprint must state its functional unit: kWh of total energy provided over the service life."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintVerificationShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The carbon footprint declaration is verified"@en ;
+    rdfs:comment "PENDING and UNKNOWN. The verifier identity is pending ontologies-core#52, cited in #1. hasReview itself is not covered by that issue and cannot be checked here: it belongs to the LCA module, which is absent from the folder. Art. 7 requires verification by a notified body under Module D1."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasReview ;
+        sh:minCount 1 ;
+        sh:message "The carbon footprint declaration must carry its verification: type, date, report and verifier identity."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintBackgroundDataShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "Background datasets are declared"@en ;
+    rdfs:comment "UNKNOWN. referenceToBackgroundDatabase is treated as available in #1 and carries no issue reference, but it belongs to the LCA module, which is absent from the folder. Not a claim that it does not exist."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:referenceToBackgroundDatabase ;
+        sh:minCount 1 ;
+        sh:message "The carbon footprint must reference the EF-compliant background datasets used."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintPlantShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The carbon footprint is stated per manufacturing plant"@en ;
+    rdfs:comment "PENDING ontologies-core#54, cited in #1. Of the chain named there, only Facility exists today, in ACTOR and CONNECTOR. Art. 7 requires the declaration per battery model per manufacturing plant."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasManufacturingSite ;
+        sh:class dpp:Facility ;
+        sh:minCount 1 ;
+        sh:message "The carbon footprint must identify the manufacturing plant it applies to."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintDeclarationOfConformityShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The declaration of conformity is bound"@en ;
+    rdfs:comment "MISSING, verified. CONNECTOR has no COMP properties at all: its 20 object properties include neither hasEUDeclarationOfConformity, nor hasNotifiedBody, nor hasComplianceDeclaration. EUDeclarationOfConformity and ConformityAssessmentModule do exist in comp.owl — as does the moduleD1 individual — but nothing connects a product to them, and core.owl does not import COMP. There is also no DoC identifier term in comp.owl: certificateNumber and certificateRevisionNumber hang off ConformityCertificate, while EUDeclarationOfConformity carries only conformityDeclaredTo and hasUnionHarmonisationLegislation."@en ;
+    sh:targetClass bat:Battery ;
+    sh:property [
+        sh:path dpp:hasEUDeclarationOfConformity ;
+        sh:class dpp:EUDeclarationOfConformity ;
+        sh:minCount 1 ;
+        sh:message "A battery in scope must reference its EU declaration of conformity, its notified body, and Module D1 as the assessment module."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintPublicLinkShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The public carbon footprint study is linked"@en ;
+    rdfs:comment "UNKNOWN. #1 treats Source as delivered by the closed ontologies-core#36. Neither Source nor hasExternalDocumentation is in the folder, but Source is reported — by the author of #1 himself, in #8 — to live in the LCA module, which is absent here and not imported by core.owl. Not a claim that it does not exist."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasExternalDocumentation ;
+        sh:minCount 1 ;
+        sh:message "The carbon footprint must link to the publicly available study supporting it."@en ;
+    ] ;
+    sh:severity sh:Violation .
+
+batcf:CarbonFootprintPerformanceClassShape
+    a sh:NodeShape ;
+    sh:deactivated true ;
+    rdfs:label "The carbon footprint performance class is declared"@en ;
+    rdfs:comment "PENDING ontologies-core#41, cited in #1."@en ;
+    sh:targetClass dpp:CarbonFootprint ;
+    sh:property [
+        sh:path dpp:hasPerformanceClass ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The carbon footprint must state its performance class."@en ;
+    ] ;
+    sh:severity sh:Violation .
