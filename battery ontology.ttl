@@ -1,5 +1,6 @@
 @prefix bat: <https://w3id.org/eudpp/battery#> .
 @prefix batcat: <https://w3id.org/eudpp/battery-categories#> .
+@prefix batstat: <https://w3id.org/eudpp/battery-statuses#> .
 @prefix dpp: <https://w3id.org/eudpp#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -13,9 +14,14 @@
 # Ontology
 #################################################
 # Umbrella module of the EU DPP Battery sectoral ontology.
-# Battery data is organised in four companion modules:
+# Battery data is organised in companion modules:
 #   battery-performance, battery-materials, battery-labeling,
-#   battery-categories.
+#   battery-categories, battery-statuses.
+#
+# v0.3.0 (issue #3): bat:hasBatteryStatus added, pointing at the
+# battery-statuses vocabulary. The lifecycle status of the battery as a
+# physical item is a battery term; the status of its passport as a
+# digital resource is not, and stays on dpp:dppStatus.
 # Modelling rules applied (Hbeich et al. 2026, "Ontology Reuse as
 # Commitment Management"):
 #   - CORE concepts are referenced, never copied; no owl:imports
@@ -26,25 +32,26 @@
 
 <https://w3id.org/eudpp/battery>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery/0.2.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery/0.3.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery-performance> ,
                  <https://w3id.org/eudpp/battery-materials> ,
                  <https://w3id.org/eudpp/battery-labeling> ,
-                 <https://w3id.org/eudpp/battery-categories> ;
+                 <https://w3id.org/eudpp/battery-categories> ,
+                 <https://w3id.org/eudpp/battery-statuses> ;
     rdfs:label "EU DPP Battery Ontology"@en ;
     dcterms:title "EU DPP Battery Ontology"@en ;
-    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in four companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols) and battery-categories (the five Art. 3(1) battery categories). It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
+    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in four companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories) and battery-statuses (the five Annex XIII 4(c) lifecycle statuses). It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0, MAT v1.0.2; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.2.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.3.0."@en ;
     dcterms:creator "Nader Jelassi"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-18"^^xsd:date ;
+    dcterms:modified "2026-08-19"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery#" ;
     vann:preferredNamespacePrefix "bat" .
 
@@ -57,8 +64,23 @@ bat:Battery
     rdfs:subClassOf dpp:Product ;
     rdfs:label "Battery"@en ;
     rdfs:seeAlso batcat:BatteryCategoryScheme ;
-    rdfs:comment "A battery placed on the market or put into service, subject of a battery passport under Regulation (EU) 2023/1542. Modelled as a subclass of the cross-sectoral Product class. A battery incorporated as a component of another product remains a Product, linked through the CORE component property (no dedicated Component class), in line with CIRPASS-2 modelling decisions. The regulatory category of a battery is expressed through the CORE property dpp:hasProductGroup, pointing to one of the five individuals of the battery-categories vocabulary; no category property is declared in the battery namespace."@en ;
+    rdfs:comment "A battery placed on the market or put into service, subject of a battery passport under Regulation (EU) 2023/1542. Modelled as a subclass of the cross-sectoral Product class. A battery incorporated as a component of another product remains a Product, linked through the CORE component property (no dedicated Component class), in line with CIRPASS-2 modelling decisions. The regulatory category of a battery is expressed through the CORE property dpp:hasProductGroup, pointing to one of the five individuals of the battery-categories vocabulary; no category property is declared in the battery namespace. Its lifecycle status is expressed through bat:hasBatteryStatus, declared locally for want of a cross-sectoral equivalent."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 3(1)(1)"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+#################################################
+# Object Properties
+#################################################
+
+bat:hasBatteryStatus
+    a owl:ObjectProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range skos:Concept ;
+    rdfs:label "has battery status"@en ;
+    rdfs:comment "Links a battery to its lifecycle status: one of the five individuals of the battery-statuses vocabulary (original, repurposed, re-used, remanufactured, waste). This is the status of the battery as a physical item, and not the status of its passport as a digital resource, which the CORE carries on dpp:DPP through dpp:dppStatus. Declared locally, unlike the battery category and the battery chemistry, because the CORE has no generic product status property to reuse: dpp:hasProductGroup carries the product group, not the state of the item. If the CORE later introduces one — remanufacturing is an ESPR-wide notion, not a battery-specific one — this property is to be deprecated in favour of it, using owl:deprecated and dcterms:isReplacedBy."@en ;
+    rdfs:seeAlso batstat:BatteryStatusScheme ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(c); BatteryPass-Ready Data Attribute Long List v1.3, attribute 20"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
 

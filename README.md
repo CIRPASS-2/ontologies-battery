@@ -9,7 +9,7 @@ This repository includes development resources contributing to ontology developm
 
 ## Overview
 
-This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus six thematic modules:
+This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus seven thematic modules:
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
@@ -20,6 +20,25 @@ This repository contains the **EU DPP Battery Ontology** (umbrella version 0.2.0
 | `battery labeling.ttl` | **Labeling** — labels and symbols (BatteryPass-Ready category "Symbols, labels and documentation of conformity", attributes 21–24) | `batlab` | `https://w3id.org/eudpp/battery-labeling#` |
 | `battery-extinguisher-classes.ttl` | **Extinguisher classes** — controlled vocabulary of the five extinguisher classes, value set of `batlab:extinguishingAgent` | `batext` | `https://w3id.org/eudpp/battery-extinguisher-classes#` |
 | `battery-categories.ttl` | **Categories** — controlled vocabulary of the five battery categories of Art. 3(1), as individuals of the CORE class `dpp:ClassificationCode` | `batcat` | `https://w3id.org/eudpp/battery-categories#` |
+| `battery-statuses.ttl` | **Statuses** — controlled vocabulary of the five battery lifecycle statuses of Annex XIII 4(c), value set of `bat:hasBatteryStatus` | `batstat` | `https://w3id.org/eudpp/battery-statuses#` |
+
+### Battery status vs passport status
+
+Two different things, deliberately kept apart.
+
+The **battery status** is the state of the physical item — `original`, `repurposed`, `re-used`, `remanufactured`, `waste` (Annex XIII 4(c)). It is a battery term, carried by `bat:hasBatteryStatus`:
+
+```turtle
+:battery-12345
+    a                     bat:Battery ;
+    bat:hasBatteryStatus  batstat:Repurposed .
+```
+
+The **passport status** is the state of the digital resource — `Active`, `Archived`, `Inactive`, `Invalid`. It is cross-sectoral and already in the CORE, on `dpp:DPP` through `dpp:dppStatus`. It is not restated in the battery namespace.
+
+When a battery is remanufactured, repurposed or prepared for re-use and placed on the market again, a new passport is issued and linked back to the previous one through the CORE property `dpp:linkToPreviousDPP` (ESPR Art. 11(d)). Status-change events belong to the CORE event module.
+
+`bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice, and is to be deprecated in favour of a cross-sectoral equivalent if one appears.
 
 ### Battery category
 
@@ -55,6 +74,16 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * CORE reuse before local declaration: where the CORE already provides a class or property, it is reused rather than mirrored in the battery namespace.
 
 ## Changelog
+
+### Umbrella 0.3.0 — 19 August 2026
+
+Closes [#3](https://github.com/CIRPASS-2/ontologies-battery/issues/3) for the battery-side scope; the passport-side points are already covered by the CORE or raised as CORE issues.
+
+* New module `battery-statuses.ttl`: one `skos:ConceptScheme` and the five Annex XIII 4(c) statuses as `skos:Concept` individuals — `original`, `repurposed`, `re-used`, `remanufactured`, `waste` — with `skos:notation` carrying the literal value to publish.
+* New property `bat:hasBatteryStatus` (`bat:Battery` → `skos:Concept`). Declared locally because the CORE has no generic product status to reuse; flagged for deprecation if one appears, since remanufacturing is an ESPR-wide notion.
+* **Passport lifecycle: nothing added.** Verified in `p_dpp.owl` — `dpp:DPP` already carries `dppStatus` (enumerated `Active` / `Archived` / `Inactive` / `Invalid`), `linkToPreviousDPP` (ESPR Art. 11(d)), `validFrom`, `validUntil` and `lastUpdate`; the EVENT module already has `DPPCreationEvent`, `DPPUpdateEvent` and `DPPArchivalEvent` under `DPPEvent`. Deactivation semantics and the predecessor link are cross-sectoral and stay in the CORE.
+* **Repair is not a status.** Annex XIII 4(c) records a repaired battery under `re-used`; the repair history belongs to the CORE event module (`dpp:RepairEvent`). No sixth status value, no repair property — recorded as a `skos:scopeNote` on `batstat:ReUsed`.
+* Access to the battery status is restricted to persons with a legitimate interest. Per the tier-free convention that is a SHACL rule, not an ontology axiom; recorded in the scheme `skos:scopeNote`.
 
 ### battery-performance 0.2.0 — 19 August 2026
 
