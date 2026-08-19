@@ -1,4 +1,5 @@
 @prefix batlab: <https://w3id.org/eudpp/battery-labeling#> .
+@prefix batext: <https://w3id.org/eudpp/battery-extinguisher-classes#> .
 @prefix bat: <https://w3id.org/eudpp/battery#> .
 @prefix dpp: <https://w3id.org/eudpp#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -12,29 +13,36 @@
 #################################################
 # Ontology
 #################################################
-# v0.2: full coverage of the battery-labeling scope of the Gap Analysis
-# 1 class, 1 object property, 5 datatype properties.
+# 1 class, 2 object properties, 4 datatype properties.
+#
+# v0.2.0 (issue #8): cadmiumLeadSymbol split into cadmiumSymbol and
+# leadSymbol, which carry distinct legal triggers; extinguishingAgent
+# retyped as an object property onto the battery-extinguisher-classes
+# vocabulary; labelingSubject removed as a duplicate of the typed
+# properties.
+#
 # NOTE: a cross-sectoral Labelling class is under discussion at CORE
-# level (Gap Analysis); if adopted, BatteryLabel will be re-attached
-# as a specialisation of it.
+# level (ontologies-core#55); if adopted, BatteryLabel will be
+# re-attached as a specialisation of it.
 
 <https://w3id.org/eudpp/battery-labeling>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-labeling/0.1.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-labeling/0.2.0> ;
+    rdfs:seeAlso <https://w3id.org/eudpp/battery-extinguisher-classes> ;
     rdfs:label "EU DPP Battery Labeling Ontology"@en ;
     dcterms:title "EU DPP Battery Labeling Ontology"@en ;
-    dcterms:description "Module for the labels and symbols required on batteries in EU Digital Product Passports: separate collection symbol, symbols for cadmium and lead, extinguishing agent information, label symbol and label subject. Covers the battery-specific fields of the 'Symbols, labels and documentation of conformity' category of the BatteryPass-Ready Data Attribute Long List required by Regulation (EU) 2023/1542, and the Spherity Battery Pass Labeling entities."@en ;
+    dcterms:description "Module for the labels and symbols required on batteries in EU Digital Product Passports: separate collection symbol, the cadmium symbol and the lead symbol, extinguishing agent information and label symbol. Covers the battery-specific fields of the 'Symbols, labels and documentation of conformity' category of the BatteryPass-Ready Data Attribute Long List required by Regulation (EU) 2023/1542, and the Spherity Battery Pass Labeling entities."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Labeling Ontology. Draft version 0.1.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Labeling Ontology. Draft version 0.2.0."@en ;
     dcterms:creator "Nader Jelassi"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-06"^^xsd:date ;
+    dcterms:modified "2026-08-19"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542; BatteryPass-Ready Data Attribute Long List v1.3, attributes 21, 22, 24; Spherity Battery Pass ontology v0.1 (Labeling)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-labeling#" ;
     vann:preferredNamespacePrefix "batlab" .
 
@@ -45,7 +53,8 @@
 batlab:BatteryLabel
     a owl:Class ;
     rdfs:label "Battery Label"@en ;
-    rdfs:comment "A label or symbol required on the battery or in its passport under Regulation (EU) 2023/1542 (e.g. separate collection symbol, cadmium and lead symbols, carbon footprint label). Battery-specific class; pending the CORE-level decision on a cross-sectoral Labelling class."@en ;
+    rdfs:comment "A label or symbol required on the battery or in its passport under Regulation (EU) 2023/1542 (e.g. separate collection symbol, cadmium symbol, lead symbol, carbon footprint label). Provisional battery-specific class: it is declared here only because the CORE has no cross-sectoral Labelling class yet. When that class lands (CIRPASS-2/ontologies-core#55), BatteryLabel is to be re-anchored as a specialisation of it rather than kept as a root class."@en ;
+    rdfs:seeAlso <https://github.com/CIRPASS-2/ontologies-core/issues/55> ;
     dcterms:references "Regulation (EU) 2023/1542"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
@@ -63,6 +72,16 @@ batlab:hasBatteryLabel
     dcterms:references "Spherity Battery Pass ontology v0.1, labels"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
 
+batlab:extinguishingAgent
+    a owl:ObjectProperty ;
+    rdfs:domain batlab:BatteryLabel ;
+    rdfs:range skos:Concept ;
+    rdfs:label "extinguishing agent"@en ;
+    rdfs:comment "Specification of the usable extinguishing agent, as one of the extinguisher classes of the battery-extinguisher-classes vocabulary. Retyped from a free-text datatype property in v0.2.0: the value set is now controlled."@en ;
+    rdfs:seeAlso batext:ExtinguisherClassScheme ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
+
 #################################################
 # Datatype Properties
 #################################################
@@ -72,26 +91,26 @@ batlab:separateCollectionSymbol
     rdfs:domain batlab:BatteryLabel ;
     rdfs:range xsd:anyURI ;
     rdfs:label "separate collection symbol"@en ;
-    rdfs:comment "Symbol indicating the necessity of separate collection of the battery (crossed-out wheeled bin), as a link to the symbol resource."@en ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 21"@en ;
+    rdfs:comment "Symbol indicating the necessity of separate collection of the battery (crossed-out wheeled bin), as a link to the symbol resource. Required on all batteries; the symbol itself is set out in Annex VI Part B."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 21 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(4), Annex VI Part B)"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
 
-batlab:cadmiumLeadSymbol
+batlab:cadmiumSymbol
     a owl:DatatypeProperty ;
     rdfs:domain batlab:BatteryLabel ;
     rdfs:range xsd:anyURI ;
-    rdfs:label "symbols for cadmium and lead"@en ;
-    rdfs:comment "Representation of the chemical symbol 'Cd' for cadmium and 'Pb' for lead contained in the battery, as a link to the symbol resource."@en ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22"@en ;
+    rdfs:label "symbol for cadmium"@en ;
+    rdfs:comment "Representation of the chemical symbol 'Cd' for cadmium, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,002 % cadmium by weight, independently of the lead symbol."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
 
-batlab:extinguishingAgent
+batlab:leadSymbol
     a owl:DatatypeProperty ;
     rdfs:domain batlab:BatteryLabel ;
-    rdfs:range xsd:string ;
-    rdfs:label "extinguishing agent"@en ;
-    rdfs:comment "Specification of the usable extinguishing agent: applicable fire extinguisher classes (A, B, C, D, K). Value set to be managed as a controlled vocabulary / SHACL constraint."@en ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "symbol for lead"@en ;
+    rdfs:comment "Representation of the chemical symbol 'Pb' for lead, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,004 % lead by weight, independently of the cadmium symbol."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
 
 batlab:labelingSymbol
@@ -101,13 +120,4 @@ batlab:labelingSymbol
     rdfs:label "labeling symbol"@en ;
     rdfs:comment "Link to the image of the label symbol displayed on the battery."@en ;
     dcterms:references "Spherity Battery Pass ontology v0.1, labelingSymbol"@en ;
-    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
-
-batlab:labelingSubject
-    a owl:DatatypeProperty ;
-    rdfs:domain batlab:BatteryLabel ;
-    rdfs:range xsd:string ;
-    rdfs:label "labeling subject"@en ;
-    rdfs:comment "Subject category of the label (SeparateCollection, HazardousMaterial, CarbonFootPrint, ExtinguishingAgent). Value set to be managed as a controlled vocabulary / SHACL constraint."@en ;
-    dcterms:references "Spherity Battery Pass ontology v0.1, labelingSubject"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-labeling> .
