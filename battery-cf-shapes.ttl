@@ -57,8 +57,8 @@
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). Validated with the battery modules loaded alongside the CORE modules."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Carbon Footprint Shapes. Draft version 0.1.1."@en ;
-    dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:creator "Nader Jelassi"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
     dcterms:modified "2026-08-25"^^xsd:date ;

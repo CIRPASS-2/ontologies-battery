@@ -126,10 +126,6 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
 * `batmat:BatteryLocation` points at its new value set; the class comment no longer describes it as having none.
 
-### Metadata — 25 August 2026
-
-* `dcterms:contributor "Marc-Andrée Wolf"` added to all ten modules, alongside Arnab Sinha. Patch version bump on the six modules where this is the only change.
-
 
 ### battery-cf-shapes 0.1.0 — 19 August 2026
 

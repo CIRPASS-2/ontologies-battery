@@ -35,8 +35,8 @@
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Labeling Ontology. Draft version 0.2.1."@en ;
-    dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:creator "Nader Jelassi"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
     dcterms:modified "2026-08-25"^^xsd:date ;
