@@ -26,22 +26,22 @@
 
 <https://w3id.org/eudpp/battery-extinguisher-classes>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-extinguisher-classes/0.1.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-extinguisher-classes/0.1.1> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery-labeling> ;
     rdfs:label "EU DPP Battery Extinguisher Classes Vocabulary"@en ;
     dcterms:title "EU DPP Battery Extinguisher Classes Vocabulary"@en ;
     dcterms:description "Controlled vocabulary of the extinguisher classes applicable to a battery, used as the value set of batlab:extinguishingAgent. Replaces the free-text values of the battery-labeling module. The five terms are taken from the Spherity Battery Pass ontology v0.1; the reference standard behind them is an open point recorded in the scheme scopeNote."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Extinguisher Classes Vocabulary. Draft version 0.1.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Extinguisher Classes Vocabulary. Draft version 0.1.1."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
-    dcterms:modified "2026-08-19"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.1.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-extinguisher-classes#" ;
     vann:preferredNamespacePrefix "batext" .
 

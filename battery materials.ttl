@@ -15,26 +15,29 @@
 # 2 classes, 2 object properties. Chemistry values come from the
 # battery-chemistries vocabulary: BatteryChemistry is a subclass of
 # dpp:MaterialOfComposition, so it inherits dpp:hasMaterialType.
+# Location values come from the battery-locations vocabulary, new in
+# v0.3.0: BatteryLocation was declared but had no value set.
 # To be revisited when MAT v2 lands (ontologies-core#24, #25).
 
 <https://w3id.org/eudpp/battery-materials>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-materials/0.2.0> ;
-    rdfs:seeAlso <https://w3id.org/eudpp/battery-chemistries> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-materials/0.3.0> ;
+    rdfs:seeAlso <https://w3id.org/eudpp/battery-chemistries> ,
+                 <https://w3id.org/eudpp/battery-locations> ;
     rdfs:label "EU DPP Battery Materials Ontology"@en ;
     dcterms:title "EU DPP Battery Materials Ontology"@en ;
-    dcterms:description "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry, typed through the battery-chemistries controlled vocabulary, and the internal location of materials within the battery. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."@en ;
+    dcterms:description "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry, typed through the battery-chemistries controlled vocabulary, and the internal location of materials within the battery, typed through the battery-locations controlled vocabulary. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (MAT v1.0.2; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Materials Ontology. Draft version 0.2.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Materials Ontology. Draft version 0.3.0."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-18"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-materials#" ;
     vann:preferredNamespacePrefix "batmat" .
 
@@ -53,7 +56,8 @@ batmat:BatteryChemistry
 batmat:BatteryLocation
     a owl:Class ;
     rdfs:label "Battery Location"@en ;
-    rdfs:comment "An internal location within the battery where a material or sub-component resides (e.g. cathode, anode, electrolyte, casing). Battery-specific class with no CORE anchor."@en ;
+    rdfs:comment "An internal location within the battery where a material or sub-component resides. Battery-specific class with no CORE anchor. Its value set is the battery-locations vocabulary, which declares the three locations named by Regulation (EU) 2023/1542, Annex XIII 2(a): cathode, anode and electrolyte."@en ;
+    rdfs:seeAlso <https://w3id.org/eudpp/battery-locations> ;
     dcterms:references "Spherity Battery Pass ontology v0.1, BatteryLocationEntity"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
 
@@ -93,3 +97,13 @@ batmat:hasBatteryLocation
 # batmat:chemistryShortName and batmat:chemistryClearName are removed in
 # v0.2.0: the short code is skos:notation and the full name is
 # skos:prefLabel on the concept (ontologies-battery#9).
+
+#################################################
+# Location values
+#################################################
+# batmat:BatteryLocation has a value set since v0.3.0: the three
+# locations of Annex XIII 2(a), declared in the battery-locations
+# vocabulary as individuals of this class:
+#
+#     :chem-1 a batmat:BatteryChemistry ;
+#             batmat:hasBatteryLocation batloc:Cathode .

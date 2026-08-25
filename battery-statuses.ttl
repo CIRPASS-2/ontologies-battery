@@ -35,22 +35,22 @@
 
 <https://w3id.org/eudpp/battery-statuses>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-statuses/0.1.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-statuses/0.1.1> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ;
     rdfs:label "EU DPP Battery Statuses Vocabulary"@en ;
     dcterms:title "EU DPP Battery Statuses Vocabulary"@en ;
     dcterms:description "The five lifecycle statuses of a battery required by Regulation (EU) 2023/1542, Annex XIII 4(c): original, repurposed, re-used, remanufactured and waste. Value set of bat:hasBatteryStatus. Distinct from the status of the digital passport, which is carried by the cross-sectoral dpp:dppStatus."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Statuses Vocabulary. Draft version 0.1.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Statuses Vocabulary. Draft version 0.1.1."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
-    dcterms:modified "2026-08-19"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(c); BatteryPass-Ready Data Attribute Long List v1.3, attribute 20"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.1.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-statuses#" ;
     vann:preferredNamespacePrefix "batstat" .
 

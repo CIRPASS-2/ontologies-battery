@@ -11,13 +11,14 @@ See [DISCLAIMER.md](DISCLAIMER.md) for the full disclaimer.
 
 ## Overview
 
-This repository contains the **EU DPP Battery Ontology** (umbrella version 0.3.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus seven thematic modules:
+This repository contains the **EU DPP Battery Ontology** (umbrella version 0.4.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus eight thematic modules:
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
 | `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product` | `bat` | `https://w3id.org/eudpp/battery#` |
 | `battery performance.ttl` | **Performance** — electrochemical performance, durability and in-use state (BatteryPass-Ready category "Performance and durability", attributes 59–100) | `batperf` | `https://w3id.org/eudpp/battery-performance#` |
 | `battery materials.ttl` | **Materials** — battery chemistry and internal material location, extending the CORE MAT module | `batmat` | `https://w3id.org/eudpp/battery-materials#` |
+| `battery-locations.ttl` | **Locations** — the three internal locations named by Annex XIII 2(a) — cathode, anode, electrolyte — as individuals of `batmat:BatteryLocation`, value set of `batmat:hasBatteryLocation` | `batloc` | `https://w3id.org/eudpp/battery-locations#` |
 | `battery-chemistries.ttl` | **Chemistries** — the ten chemistry terms of the draft labelling Implementing Act, as individuals of the CORE class `dpp:MaterialType` | `batchem` | `https://w3id.org/eudpp/battery-chemistries#` |
 | `battery labeling.ttl` | **Labeling** — labels and symbols (BatteryPass-Ready category "Symbols, labels and documentation of conformity", attributes 21–24) | `batlab` | `https://w3id.org/eudpp/battery-labeling#` |
 | `battery-extinguisher-classes.ttl` | **Extinguisher classes** — controlled vocabulary of the five extinguisher classes, value set of `batlab:extinguishingAgent` | `batext` | `https://w3id.org/eudpp/battery-extinguisher-classes#` |
@@ -108,6 +109,27 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 * CORE reuse before local declaration: where the CORE already provides a class or property, it is reused rather than mirrored in the battery namespace.
 
 ## Changelog
+
+### Umbrella 0.4.0 — 25 August 2026
+
+* New property `bat:partNumber` (`xsd:string`), for data point 46 of the Commission guidance (Annex XIII 2(b), BatteryPass-Ready attribute 45). Domain is `dpp:Product`, not `bat:Battery`: the Regulation asks for the part numbers *of the components*, and a component is a product linked through `dpp:isComponentOf` — CIRPASS-2 decided in June 2026 not to introduce a Component class. Declared in the battery namespace because the CORE has no cross-sectoral part number; adding one went to the Commission as a recommendation. Typed as in Spherity Battery Pass v0.1, where `bp:partNumber` is an `xsd:string` datatype property.
+* `bat:safetyMeasures` carries an `rdfs:seeAlso` to `eudpp:DigitalInstruction` (P_DPP). Not a SKOS mapping: the battery term is a datatype property carrying a URL, the CORE term is a class of documents, and an alignment between the two would not hold at audit. Re-expressing the property on a CORE document pattern remains the subject of [#11](https://github.com/CIRPASS-2/ontologies-battery/issues/11).
+* Module list in `rdfs:seeAlso` and in the description corrected: it named five companion modules out of the eight that exist.
+
+### battery-locations 0.1.0 — 25 August 2026
+
+* New module. One `skos:ConceptScheme` and the three locations of Annex XIII 2(a) — `cathode`, `anode`, `electrolyte` — as individuals of `batmat:BatteryLocation` and `skos:Concept`, with `skos:notation` carrying the term as written in the Regulation.
+* Closes the gap recorded against data point 45 of the Commission guidance: `batmat:BatteryLocation` was declared but had no value set, so cathode / anode / electrolyte could not be named.
+* Deliberately limited to the three locations the Regulation names. Separator, casing and current collectors are not in Annex XIII 2(a) and are not declared; no definition is asserted, since the Regulation names these locations without defining them.
+
+### battery-materials 0.3.0 — 25 August 2026
+
+* `batmat:BatteryLocation` points at its new value set; the class comment no longer describes it as having none.
+
+### Metadata — 25 August 2026
+
+* `dcterms:contributor "Marc-Andrée Wolf"` added to all ten modules, alongside Arnab Sinha. Patch version bump on the six modules where this is the only change.
+
 
 ### battery-cf-shapes 0.1.0 — 19 August 2026
 

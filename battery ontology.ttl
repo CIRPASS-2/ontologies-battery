@@ -1,6 +1,7 @@
 @prefix bat: <https://w3id.org/eudpp/battery#> .
 @prefix batcat: <https://w3id.org/eudpp/battery-categories#> .
 @prefix batstat: <https://w3id.org/eudpp/battery-statuses#> .
+@prefix batloc: <https://w3id.org/eudpp/battery-locations#> .
 @prefix dpp: <https://w3id.org/eudpp#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -14,9 +15,16 @@
 # Ontology
 #################################################
 # Umbrella module of the EU DPP Battery sectoral ontology.
-# Battery data is organised in companion modules:
+# Battery data is organised in eight companion modules:
 #   battery-performance, battery-materials, battery-labeling,
-#   battery-categories, battery-statuses.
+#   battery-categories, battery-chemistries, battery-locations,
+#   battery-statuses, battery-extinguisher-classes,
+#   plus the battery-cf-shapes SHACL profile.
+#
+# v0.4.0: bat:partNumber added (Annex XIII 2(b), data point 46 of
+# the Commission guidance). CIRPASS-2 decided in June 2026 not to
+# add a cross-sectoral part number to the CORE, so the term is
+# declared here; a recommendation went to the Commission.
 #
 # v0.3.0 (issue #3): bat:hasBatteryStatus added, pointing at the
 # battery-statuses vocabulary. The lifecycle status of the battery as a
@@ -34,26 +42,30 @@
 
 <https://w3id.org/eudpp/battery>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery/0.3.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery/0.4.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery-performance> ,
                  <https://w3id.org/eudpp/battery-materials> ,
                  <https://w3id.org/eudpp/battery-labeling> ,
                  <https://w3id.org/eudpp/battery-categories> ,
-                 <https://w3id.org/eudpp/battery-statuses> ;
+                 <https://w3id.org/eudpp/battery-chemistries> ,
+                 <https://w3id.org/eudpp/battery-locations> ,
+                 <https://w3id.org/eudpp/battery-statuses> ,
+                 <https://w3id.org/eudpp/battery-extinguisher-classes> ,
+                 <https://w3id.org/eudpp/battery-cf-shapes> ;
     rdfs:label "EU DPP Battery Ontology"@en ;
     dcterms:title "EU DPP Battery Ontology"@en ;
-    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in five companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories) and battery-statuses (the five Annex XIII 4(c) lifecycle statuses). It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
+    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in eight companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories), battery-chemistries (the ten labelling chemistries), battery-locations (cathode, anode, electrolyte), battery-statuses (the five Annex XIII 4(c) lifecycle statuses) and battery-extinguisher-classes; battery-cf-shapes carries the carbon footprint SHACL profile. It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0, MAT v1.0.2; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.3.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.4.0."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-19"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery#" ;
     vann:preferredNamespacePrefix "bat" .
 
@@ -129,7 +141,8 @@ bat:safetyMeasures
     rdfs:domain bat:Battery ;
     rdfs:range xsd:anyURI ;
     rdfs:label "safety measures"@en ;
-    rdfs:comment "Link to the safety measures applicable to the battery."@en ;
+    rdfs:seeAlso dpp:DigitalInstruction ;
+    rdfs:comment "Link to the safety measures applicable to the battery. The document the URL points at is a digital instruction in the sense of the cross-sectoral class eudpp:DigitalInstruction (P_DPP), and the correspondence is recorded here as rdfs:seeAlso. It is deliberately not a SKOS mapping: this is a datatype property carrying a URL, eudpp:DigitalInstruction is a class of documents, and an alignment between the two would not hold at audit. Re-expressing this property on a CORE document pattern is the subject of ontologies-battery#11 and is deferred until that pattern is settled."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(d)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
@@ -141,5 +154,19 @@ bat:testReportResults
     rdfs:label "test report results"@en ;
     rdfs:comment "Link to the test report results. Access is restricted to notified bodies, market surveillance authorities and the Commission; the restriction is expressed in the SHACL layer, not here."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 3"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+#################################################
+# Datatype Properties - identification
+#################################################
+
+bat:partNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain dpp:Product ;
+    rdfs:range xsd:string ;
+    rdfs:label "part number"@en ;
+    rdfs:comment "Manufacturer part number of a component of the battery, and of the battery itself where one is assigned. Annex XIII 2(b) asks for the part numbers of the components, so the subject is the component and not the battery: CIRPASS-2 decided in June 2026 not to introduce a Component class, a component being a product in its own right, linked to the battery through the CORE property dpp:isComponentOf. The domain is therefore dpp:Product rather than bat:Battery. The property is declared in the battery namespace because the CORE has no cross-sectoral part number; adding one was raised as a recommendation to the Commission. Typed as in the Spherity Battery Pass ontology v0.1, where bp:partNumber is an xsd:string datatype property."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(b); BatteryPass-Ready Data Attribute Long List v1.3, attribute 45; Spherity Battery Pass ontology v0.1, partNumber"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .

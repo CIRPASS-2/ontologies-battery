@@ -38,21 +38,21 @@
 
 <https://w3id.org/eudpp/battery-performance>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.2.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.2.1> ;
     rdfs:label "EU DPP Battery Performance Ontology"@en ;
     dcterms:title "EU DPP Battery Performance Ontology"@en ;
     dcterms:description "Module for the electrochemical performance, durability and in-use state of batteries in EU Digital Product Passports (capacity, voltage, power capability, round trip efficiency, self-discharge, internal resistance, lifetime, temperature exposure, accidents), covering the 'Performance and durability' category of the BatteryPass-Ready Data Attribute Long List (attributes 59-100) required by Regulation (EU) 2023/1542, Annex XIII."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.2.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.2.1."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-19"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.2.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-performance#" ;
     vann:preferredNamespacePrefix "batperf" .
 

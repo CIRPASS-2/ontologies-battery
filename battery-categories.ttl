@@ -20,22 +20,22 @@
 
 <https://w3id.org/eudpp/battery-categories>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-categories/0.1.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-categories/0.1.1> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ;
     rdfs:label "EU DPP Battery Categories Vocabulary"@en ;
     dcterms:title "EU DPP Battery Categories Vocabulary"@en ;
     dcterms:description "Controlled vocabulary of the five battery categories defined in Article 3(1) of Regulation (EU) 2023/1542: portable (9), LMT (11), SLI (12), industrial (13) and electric vehicle (14). Declared as individuals of the cross-sectoral class dpp:ClassificationCode and attached to a battery through dpp:hasProductGroup; no term is declared in the battery namespace. The category conditions the scope of the battery passport."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:bibliographicCitation "EU DPP Battery Categories Vocabulary. Draft version 0.1.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Categories Vocabulary. Draft version 0.1.1."@en ;
     dcterms:creator "Nader Jelassi"@en ;
-    dcterms:contributor "Arnab Sinha"@en ;
+    dcterms:contributor "Arnab Sinha"@en , "Marc-Andrée Wolf"@en ;
     dcterms:created "2026-08-18"^^xsd:date ;
     dcterms:issued "2026-08-18"^^xsd:date ;
-    dcterms:modified "2026-08-18"^^xsd:date ;
+    dcterms:modified "2026-08-25"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 3(1)(9), (11), (12), (13), (14); Regulation (EU) No 168/2013; Regulation (EU) 2018/858"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.1.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.1.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-categories#" ;
     vann:preferredNamespacePrefix "batcat" .
 
