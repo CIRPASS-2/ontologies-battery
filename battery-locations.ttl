@@ -34,7 +34,7 @@
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (MAT v1.0.2; update of 30 April 2026). To be revisited when MAT v2 lands (ontologies-core#24, #25), which introduces a part level that may host these locations."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Locations Vocabulary. Draft version 0.1.0."@en ;
-    dcterms:creator "Nader Jelassi"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-25"^^xsd:date ;
     dcterms:issued "2026-08-25"^^xsd:date ;

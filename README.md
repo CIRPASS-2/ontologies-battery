@@ -110,6 +110,10 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
 ## Changelog
 
+### Metadata — 25 August 2026
+
+* `dcterms:creator "Marc-Andree Wolf"` added to all ten modules, alongside Nader Jelassi. Patch version bump on the six modules where this is the only change.
+
 ### Umbrella 0.4.0 — 25 August 2026
 
 * New property `bat:partNumber` (`xsd:string`), for data point 46 of the Commission guidance (Annex XIII 2(b), BatteryPass-Ready attribute 45). Domain is `dpp:Product`, not `bat:Battery`: the Regulation asks for the part numbers *of the components*, and a component is a product linked through `dpp:isComponentOf` — CIRPASS-2 decided in June 2026 not to introduce a Component class. Declared in the battery namespace because the CORE has no cross-sectoral part number; adding one went to the Commission as a recommendation. Typed as in Spherity Battery Pass v0.1, where `bp:partNumber` is an `xsd:string` datatype property.

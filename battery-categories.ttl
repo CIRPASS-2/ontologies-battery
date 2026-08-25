@@ -28,7 +28,7 @@
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Categories Vocabulary. Draft version 0.1.1."@en ;
-    dcterms:creator "Nader Jelassi"@en , "Marc-Andrée Wolf"@en ;
+    dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-18"^^xsd:date ;
     dcterms:issued "2026-08-18"^^xsd:date ;
