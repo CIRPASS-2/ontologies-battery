@@ -110,6 +110,16 @@ Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
 ## Changelog
 
+### battery-performance 0.3.0 — 25 August 2026
+
+Closes [#6](https://github.com/CIRPASS-2/ontologies-battery/issues/6).
+
+* New class `batperf:BatteryStateRecord` (`⊑ dpp:Property`), new object property `batperf:hasBatteryStateRecord` (`⊑ dpp:hasProperty`) and new datatype property `batperf:asOfDate` (`xsd:dateTimeStamp`). One record per BMS reading; the series of records is the history Annex XIII 4 and Annex VII Part B describe. `dateTimeStamp` rather than `dateTime` makes the time zone offset mandatory, so no separate offset property is needed.
+* **22 properties re-anchored** from `BatteryPerformance`, `BatteryDurability` and `TemperatureExposure` onto `BatteryStateRecord`. Which ones is not a local judgement: the BatteryPass-Ready long list v1.3 carries a *"Data behavioural characteristic: static vs. dynamic"* column, and the 18 attributes it marks dynamic (BPR 60, 63, 64, 65, 70, 76, 79, 80, 85, 88, 89, 91, 94-97, 98, 99) move. The four fades and increases it marks static (BPR 61, 71, 77, 82) move as well: their update rule is *"upon placement on market and battery status change"*, so they do change, and a fade with no date is ambiguous.
+* Only `rdfs:domain` changes. No IRI renamed, nothing deprecated: the modules are not published under `w3id.org` yet.
+* `TemperatureExposure` is kept, holding the two idle-state boundaries (BPR 92, 93), which are static specifications under Annex XIII 1(l).
+* `AccidentEvent` is untouched, and still carries no timestamp: the CORE event module declares no time property outside `evt:EPCISCarrier`.
+
 ### Metadata — 25 August 2026
 
 * `dcterms:creator "Marc-Andree Wolf"` added to all ten modules, alongside Nader Jelassi. Patch version bump on the six modules where this is the only change.
