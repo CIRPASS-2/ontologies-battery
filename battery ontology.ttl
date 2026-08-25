@@ -22,6 +22,8 @@
 # battery-statuses vocabulary. The lifecycle status of the battery as a
 # physical item is a battery term; the status of its passport as a
 # digital resource is not, and stays on dpp:dppStatus.
+# bat:hasBatteryStatus is a stopgap pending ontologies-core#35, which
+# requests a cross-sectoral eudpp:productStatus.
 # Modelling rules applied (Hbeich et al. 2026, "Ontology Reuse as
 # Commitment Management"):
 #   - CORE concepts are referenced, never copied; no owl:imports
@@ -78,8 +80,9 @@ bat:hasBatteryStatus
     rdfs:domain bat:Battery ;
     rdfs:range skos:Concept ;
     rdfs:label "has battery status"@en ;
-    rdfs:comment "Links a battery to its lifecycle status: one of the five individuals of the battery-statuses vocabulary (original, repurposed, re-used, remanufactured, waste). This is the status of the battery as a physical item, and not the status of its passport as a digital resource, which the CORE carries on dpp:DPP through dpp:dppStatus. Declared locally, unlike the battery category and the battery chemistry, because the CORE has no generic product status property to reuse: dpp:hasProductGroup carries the product group, not the state of the item. If the CORE later introduces one — remanufacturing is an ESPR-wide notion, not a battery-specific one — this property is to be deprecated in favour of it, using owl:deprecated and dcterms:isReplacedBy."@en ;
-    rdfs:seeAlso batstat:BatteryStatusScheme ;
+    rdfs:comment "Links a battery to its lifecycle status: one of the five individuals of the battery-statuses vocabulary (original, repurposed, re-used, remanufactured, waste). This is the status of the battery as a physical item, and not the status of its passport as a digital resource, which the CORE carries on dpp:DPP through dpp:dppStatus. Declared locally, unlike the battery category and the battery chemistry, because the CORE has no generic product status property to reuse: dpp:hasProductGroup carries the product group, not the state of the item. This is a stopgap: a cross-sectoral eudpp:productStatus on eudpp:Product was requested in CIRPASS-2/ontologies-core#35 (opened 22 June 2026, still open), motivated by this very attribute. When it lands, this property is to be deprecated in favour of it, using owl:deprecated and dcterms:isReplacedBy."@en ;
+    rdfs:seeAlso batstat:BatteryStatusScheme ,
+                 <https://github.com/CIRPASS-2/ontologies-core/issues/35> ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(c); BatteryPass-Ready Data Attribute Long List v1.3, attribute 20"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
