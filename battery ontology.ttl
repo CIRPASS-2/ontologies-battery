@@ -131,7 +131,7 @@ bat:dismantlingInformation
     rdfs:domain bat:Battery ;
     rdfs:range xsd:anyURI ;
     rdfs:label "dismantling information"@en ;
-    rdfs:comment "Link to the dismantling documentation: exploded diagrams, disassembly sequences, fastening techniques, required tools, safety warnings, and the number and layout of cells."@en ;
+    rdfs:comment "Link to the dismantling documentation: exploded diagrams, disassembly sequences, fastening techniques, required tools, safety warnings, and the number and layout of cells. Migration to the CORE document pattern eudpp:Source (LCA module) is tracked in ontologies-battery#11 and deferred until the LCA module is integrated into the CORE; xsd:anyURI is the agreed interim."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(c)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
@@ -152,7 +152,7 @@ bat:testReportResults
     rdfs:domain bat:Battery ;
     rdfs:range xsd:anyURI ;
     rdfs:label "test report results"@en ;
-    rdfs:comment "Link to the test report results. Access is restricted to notified bodies, market surveillance authorities and the Commission; the restriction is expressed in the SHACL layer, not here."@en ;
+    rdfs:comment "Link to the test report results. Access is restricted to notified bodies, market surveillance authorities and the Commission; the restriction is expressed in the SHACL layer, not here. Migration to the CORE document pattern eudpp:Source (LCA module) is tracked in ontologies-battery#11 and deferred until the LCA module is integrated into the CORE; xsd:anyURI is the agreed interim."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 3"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
