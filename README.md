@@ -116,6 +116,11 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ## Changelog
 
+### Umbrella — 26 August 2026
+
+* New property `bat:warrantyPeriod` (`xsd:duration`, domain `bat:Battery`), for data point 35 of the Commission guidance — Annex XIII 1(m), BatteryPass-Ready attribute 17. Declared here rather than in the CORE on the decision of 26 August 2026: [ontologies-core#34](https://github.com/CIRPASS-2/ontologies-core/issues/34) asked for a cross-sectoral warranty period, but the ESPR does not require one while Regulation (EU) 2023/1542 does, so the term stays sectoral.
+* The attribute is conditional — *"if applicable (if commercial warranty envisaged)"* for all three passport categories — an optionality for the [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shapes, not for the ontology.
+
 ### battery-performance 0.3.0 — 25 August 2026
 
 Closes [#6](https://github.com/CIRPASS-2/ontologies-battery/issues/6).

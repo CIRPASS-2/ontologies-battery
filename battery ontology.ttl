@@ -170,3 +170,18 @@ bat:partNumber
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(b); BatteryPass-Ready Data Attribute Long List v1.3, attribute 45; Spherity Battery Pass ontology v0.1, partNumber"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+#################################################
+# Datatype Properties - commercial
+#################################################
+
+bat:warrantyPeriod
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:duration ;
+    rdfs:label "warranty period"@en ;
+    rdfs:comment "Length of the commercial warranty covering the calendar life of the battery, as an ISO 8601 duration - for example \"P24M\" for twenty-four months. Declared in the battery namespace on the decision of 26 August 2026: a cross-sectoral warranty period was requested in CIRPASS-2/ontologies-core#34, but the ESPR does not require one, whereas Regulation (EU) 2023/1542 does, so the term stays sectoral."@en ;
+    rdfs:seeAlso <https://github.com/CIRPASS-2/ontologies-core/issues/34> ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 1(m); BatteryPass-Ready Data Attribute Long List v1.3, attribute 17; Spherity Battery Pass ontology v0.1, warrentyPeriod"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
