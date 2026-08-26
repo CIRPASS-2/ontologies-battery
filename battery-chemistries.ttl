@@ -66,7 +66,7 @@ batchem:BatteryChemistryScheme
                        batchem:LiIonNCA ,
                        batchem:LiMetal ,
                        batchem:NaIon ;
-    skos:editorialNote "Re-check flag. The Implementing Act is still a draft: the ten terms and their notations are to be re-checked on adoption. The scheme reference to be defined in CIRPASS-2/ontologies-core#25 is to be carried by the individuals once it exists."@en ;
+    skos:editorialNote "Re-check flag. The Implementing Act is still a draft: the ten terms and their notations are to be re-checked on adoption. CIRPASS-2/ontologies-core#25 introduces eudpp:materialTypeScheme on the MAT material type; once it exists, the ten individuals are to carry it, pointing at batchem:BatteryChemistryScheme, so that the CORE mechanism and SKOS both carry the value."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     dcterms:source "Draft Implementing Act on the harmonised format and technical specifications for the labelling of batteries, under Regulation (EU) 2023/1542, Annex VI Part A (7). Not yet adopted; the ten terms of this scheme are the draft ones."@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
