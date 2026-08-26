@@ -65,7 +65,7 @@ batcat:BatteryCategoryScheme
 batcat:PortableBattery
     a dpp:ClassificationCode , skos:Concept ;
     dpp:codeValue "portable" ;
-    dpp:codeSet <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    dpp:codeSet "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme"^^xsd:anyURI ;
     skos:inScheme batcat:BatteryCategoryScheme ;
     skos:topConceptOf batcat:BatteryCategoryScheme ;
     skos:notation "portable" ;
@@ -79,7 +79,7 @@ batcat:PortableBattery
 batcat:LMTBattery
     a dpp:ClassificationCode , skos:Concept ;
     dpp:codeValue "LMT" ;
-    dpp:codeSet <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    dpp:codeSet "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme"^^xsd:anyURI ;
     skos:inScheme batcat:BatteryCategoryScheme ;
     skos:topConceptOf batcat:BatteryCategoryScheme ;
     skos:notation "LMT" ;
@@ -94,7 +94,7 @@ batcat:LMTBattery
 batcat:SLIBattery
     a dpp:ClassificationCode , skos:Concept ;
     dpp:codeValue "SLI" ;
-    dpp:codeSet <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    dpp:codeSet "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme"^^xsd:anyURI ;
     skos:inScheme batcat:BatteryCategoryScheme ;
     skos:topConceptOf batcat:BatteryCategoryScheme ;
     skos:notation "SLI" ;
@@ -109,7 +109,7 @@ batcat:SLIBattery
 batcat:IndustrialBattery
     a dpp:ClassificationCode , skos:Concept ;
     dpp:codeValue "industrial" ;
-    dpp:codeSet <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    dpp:codeSet "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme"^^xsd:anyURI ;
     skos:inScheme batcat:BatteryCategoryScheme ;
     skos:topConceptOf batcat:BatteryCategoryScheme ;
     skos:notation "industrial" ;
@@ -123,7 +123,7 @@ batcat:IndustrialBattery
 batcat:ElectricVehicleBattery
     a dpp:ClassificationCode , skos:Concept ;
     dpp:codeValue "EV" ;
-    dpp:codeSet <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    dpp:codeSet "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme"^^xsd:anyURI ;
     skos:inScheme batcat:BatteryCategoryScheme ;
     skos:topConceptOf batcat:BatteryCategoryScheme ;
     skos:notation "EV" ;

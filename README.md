@@ -97,6 +97,8 @@ The five categories are defined in **Article 3(1)** of Regulation (EU) 2023/1542
 
 Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
+The industrial row is a **two-part test**: the category *and* a capacity above 2 kWh. The [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shape therefore needs a rated energy value in kWh next to `dpp:hasProductGroup`. **No term carries one today**: `batperf:ratedCapacity` is in ampere-hours, and `batperf:certifiedUsableBatteryEnergy` is the UN GTR No 22 value certified for a vehicle, which does not apply to an industrial battery. Open point on [#2](https://github.com/CIRPASS-2/ontologies-battery/issues/2).
+
 ## Modelling conventions
 
 * Each module is a self-contained `owl:Ontology` file with its own IRI, `owl:versionIRI`, namespace, prefix and metadata.
