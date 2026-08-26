@@ -11,18 +11,26 @@
 #################################################
 # Ontology
 #################################################
-# The five extinguisher classes A, B, C, D and K, replacing the free
+# The five extinguisher classes A, B, C, D and F, replacing the free
 # text of batlab:extinguishingAgent. skos:notation carries the letter.
 #
-# OPEN POINT — the reference standard is not settled. The five letters
-# are those of the Spherity Battery Pass ontology v0.1
-# ("classes of extinguishers (A, B, C, D, K)"). BatteryPass-Ready
-# Data Attribute Long List v1.3, attribute 24, instead points to
-# EN 2:2005, which defines A, B, C, D and F — class K belongs to
-# NFPA 10 (US) and its EN 2 counterpart is class F. Class C also
-# differs between the two schemes (gases in EN 2, electrical equipment
-# in NFPA 10). Per-concept definitions are therefore deliberately
-# scheme-neutral: see the scopeNote of the scheme.
+# REFERENCE STANDARD: EN 2:2005, settled in issue #8 on 26 August 2026.
+# BatteryPass-Ready Data Attribute Long List v1.3, attribute 24, pins
+# the determination of the fire class to EN 2:2005, which defines
+# classes A, B, C, D and F. The earlier class K came from the Spherity
+# Battery Pass ontology v0.1 and belongs to NFPA 10 (US); its EN 2
+# counterpart is class F, and the concept is renamed accordingly, with
+# skos:altLabel keeping the US term so Spherity-sourced data still
+# maps. Class C likewise takes its EN 2 reading (flammable gases) and
+# no longer the NFPA one (energised electrical equipment); the
+# divergence is kept as an editorial note, since it is a mapping trap
+# rather than an open question.
+#
+# RE-CHECK FLAG: ISO 3941:2026 introduces a class L for lithium-ion
+# battery fires. EN 2 has no such class. For batteries the class is
+# obviously pertinent, so this vocabulary is to be re-checked if EN 2
+# is amended, or if the final labelling Implementing Act references a
+# different standard.
 
 <https://w3id.org/eudpp/battery-extinguisher-classes>
     a owl:Ontology ;
@@ -30,7 +38,7 @@
     rdfs:seeAlso <https://w3id.org/eudpp/battery-labeling> ;
     rdfs:label "EU DPP Battery Extinguisher Classes Vocabulary"@en ;
     dcterms:title "EU DPP Battery Extinguisher Classes Vocabulary"@en ;
-    dcterms:description "Controlled vocabulary of the extinguisher classes applicable to a battery, used as the value set of batlab:extinguishingAgent. Replaces the free-text values of the battery-labeling module. The five terms are taken from the Spherity Battery Pass ontology v0.1; the reference standard behind them is an open point recorded in the scheme scopeNote."@en ;
+    dcterms:description "Controlled vocabulary of the extinguisher classes applicable to a battery, used as the value set of batlab:extinguishingAgent. Replaces the free-text values of the battery-labeling module. The five classes A, B, C, D and F are those of EN 2:2005, the standard to which BatteryPass-Ready long list attribute 24 pins the determination of the fire class."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (update of 30 April 2026). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Extinguisher Classes Vocabulary. Draft version 0.1.1."@en ;
@@ -39,7 +47,7 @@
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
     dcterms:modified "2026-08-25"^^xsd:date ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
+    dcterms:references "EN 2:2005, Classification of fires; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-extinguisher-classes#" ;
@@ -53,13 +61,14 @@ batext:ExtinguisherClassScheme
     a skos:ConceptScheme ;
     rdfs:label "Extinguisher classes applicable to a battery"@en ;
     skos:prefLabel "Extinguisher classes applicable to a battery"@en ;
-    skos:scopeNote "Closed list of five terms, taken verbatim from the Spherity Battery Pass ontology v0.1. The underlying classification standard is an open point: BatteryPass-Ready Data Attribute Long List v1.3, attribute 24, requires the fire class to be determined in accordance with EN 2:2005, which defines classes A, B, C, D and F. Class K is an NFPA 10 (US) class whose EN 2 counterpart is class F, and class C denotes flammable gases in EN 2 but electrical equipment in NFPA 10. Until the reference standard is confirmed, the definitions below state both readings where the two schemes diverge, and the scheme should not be treated as stable."@en ;
+    skos:scopeNote "Closed list of the five classes of EN 2:2005 \u2014 A, B, C, D and F \u2014 the standard to which BatteryPass-Ready long list attribute 24 pins the determination of the fire class. Two mapping traps for data sourced from NFPA 10 (US), which the Spherity Battery Pass ontology v0.1 follows: NFPA class K is EN 2 class F, kept here as a skos:altLabel on batext:ClassF; and NFPA class C denotes energised electrical equipment where EN 2 class C denotes flammable gases, so the letter C cannot be carried across unchanged."@en ;
+    skos:editorialNote "Re-check flag. ISO 3941:2026 introduces a class L for lithium-ion battery fires, which EN 2 does not have. The class is directly pertinent to batteries, so this vocabulary is to be re-checked if EN 2 is amended, or if the final labelling Implementing Act references a standard other than EN 2:2005."@en ;
     skos:hasTopConcept batext:ClassA ,
                        batext:ClassB ,
                        batext:ClassC ,
                        batext:ClassD ,
-                       batext:ClassK ;
-    dcterms:references "Spherity Battery Pass ontology v0.1, extinguishingAgent; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24"@en ;
+                       batext:ClassF ;
+    dcterms:references "EN 2:2005, Classification of fires; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-extinguisher-classes> .
 
 #################################################
@@ -96,8 +105,8 @@ batext:ClassC
     skos:notation "C" ;
     rdfs:label "Extinguisher class C"@en ;
     skos:prefLabel "Extinguisher class C"@en ;
-    skos:definition "Scheme-dependent: fires involving flammable gases under EN 2:2005, fires involving energised electrical equipment under NFPA 10. To be fixed once the reference standard is confirmed."@en ;
-    skos:editorialNote "The two readings are not interchangeable. Producers applying EN 2:2005 and producers applying NFPA 10 would populate this value with different meanings."@en ;
+    skos:definition "Fires involving flammable gases, per EN 2:2005."@en ;
+    skos:editorialNote "Mapping trap. Under NFPA 10 the same letter denotes fires involving energised electrical equipment. The two readings are not interchangeable, so a value of C taken from a US-sourced data set must not be carried across unchecked."@en ;
     dcterms:references "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-extinguisher-classes> .
 
@@ -112,14 +121,16 @@ batext:ClassD
     dcterms:references "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-extinguisher-classes> .
 
-batext:ClassK
+batext:ClassF
     a skos:Concept ;
     skos:inScheme batext:ExtinguisherClassScheme ;
     skos:topConceptOf batext:ExtinguisherClassScheme ;
-    skos:notation "K" ;
-    rdfs:label "Extinguisher class K"@en ;
-    skos:prefLabel "Extinguisher class K"@en ;
-    skos:definition "Fires involving cooking media (vegetable or animal oils and fats). An NFPA 10 (US) class; EN 2:2005 covers the same scope under class F."@en ;
-    skos:editorialNote "Retained because the term appears in the Spherity Battery Pass ontology v0.1 and in issue #8. If the vocabulary is realigned on EN 2:2005 as attribute 24 of the BatteryPass-Ready long list requires, this concept is to be deprecated in favour of a class F concept, using owl:deprecated and dcterms:isReplacedBy."@en ;
-    dcterms:references "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
+    skos:notation "F" ;
+    rdfs:label "Extinguisher class F"@en ;
+    skos:prefLabel "Extinguisher class F"@en ;
+    skos:altLabel "K (NFPA 10)"@en ;
+    skos:definition "Fires involving cooking media (vegetable or animal oils and fats), per EN 2:2005."@en ;
+    skos:scopeNote "EN 2:2005 class F and NFPA 10 (US) class K have the same scope. The US letter is kept as skos:altLabel so that data sourced from NFPA 10, such as the Spherity Battery Pass ontology v0.1, still maps onto this concept."@en ;
+    skos:editorialNote "Renamed from batext:ClassK on 26 August 2026, when EN 2:2005 was settled as the reference standard in issue #8. Renamed outright rather than deprecated: the namespace has never been published under w3id.org."@en ;
+    dcterms:references "EN 2:2005, Classification of fires; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-extinguisher-classes> .

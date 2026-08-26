@@ -116,6 +116,14 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ## Changelog
 
+### battery-extinguisher-classes — 26 August 2026
+
+Closes the open point of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) (3).
+
+* **Reference standard settled: EN 2:2005.** `batext:ClassK` renamed to `batext:ClassF`, `skos:notation "F"`, with `skos:altLabel "K (NFPA 10)"` and a `skos:scopeNote` on the equivalence so NFPA-sourced data — Spherity Battery Pass v0.1 — still maps. Renamed outright, not deprecated: the namespace is not published under `w3id.org`.
+* `batext:ClassC` takes its EN 2 reading, fires involving flammable gases. The NFPA reading, energised electrical equipment, is kept as an `skos:editorialNote`: it is a mapping trap, not an open question, and the letter C cannot be carried across unchecked.
+* **Re-check flag** on the scheme: ISO 3941:2026 introduces a class L for lithium-ion battery fires, which EN 2 does not have. To be re-checked if EN 2 is amended or if the final labelling Implementing Act references another standard.
+
 ### battery-performance — 26 August 2026
 
 Closes item (1) of [#7](https://github.com/CIRPASS-2/ontologies-battery/issues/7).
@@ -196,7 +204,7 @@ Closes [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) points (1)
 * `batlab:cadmiumLeadSymbol` split into `batlab:cadmiumSymbol` and `batlab:leadSymbol`, each carrying its own legal trigger in `rdfs:comment` (> 0,002 % cadmium, > 0,004 % lead). The two symbols are required independently of one another, so one property could not express either state.
 * Removed `batlab:labelingSubject`. It duplicated the typed properties, imposed a second labelling mechanism alongside them, and carried the `CarbonFootPrint` typo. Dropping it settles all three at once and leaves typed properties as the only mechanism. Nothing else referenced it.
 * New module `battery-extinguisher-classes.ttl`: the five extinguisher classes as `skos:Concept` individuals, with `skos:notation` carrying the letter. `batlab:extinguishingAgent` retyped from a free-text datatype property to an object property with range `skos:Concept`. Renamed directly rather than deprecated: the module has never been published under `w3id.org`.
-* **Open point on the extinguisher vocabulary.** The five letters A, B, C, D, K are those of the Spherity Battery Pass ontology v0.1. BatteryPass-Ready long list attribute 24 instead requires the fire class to be determined per **EN 2:2005**, which defines A, B, C, D and **F** — K is an NFPA 10 (US) class whose EN 2 counterpart is F, and class C means flammable gases in EN 2 but electrical equipment in NFPA 10. Recorded in the scheme `skos:scopeNote` and in `skos:editorialNote` on the two affected concepts, pending confirmation of the reference standard.
+* **Open point on the extinguisher vocabulary** — settled on 26 August 2026, see the entry of that date. The five letters A, B, C, D, K were those of the Spherity Battery Pass ontology v0.1, while BatteryPass-Ready long list attribute 24 pins the fire class to **EN 2:2005**, which defines A, B, C, D and **F**.
 * Data carrier / QR (point 4): **nothing added**. Verified in `ident.owl` and `connector.owl` — IDENT declares 13 identifier and scheme classes and no QR, barcode, NFC or data-carrier concept; the only GS1 references are the GLN and GTIN identifier schemes. This is a cross-sectoral gap, to be raised as a CORE issue rather than patched here.
 * `batlab:BatteryLabel` marked provisional, with an `rdfs:seeAlso` to [ontologies-core#55](https://github.com/CIRPASS-2/ontologies-core/issues/55); it is to be re-anchored on the cross-sectoral `Labelling` class when that lands.
 * Module now counts 1 class, 2 object properties and 4 datatype properties (was 1 / 1 / 5).
