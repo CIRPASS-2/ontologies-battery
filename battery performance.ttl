@@ -8,6 +8,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix siunit: <https://si-digital-framework.org/SI/units/> .
 
 #################################################
 # Ontology
@@ -30,10 +31,31 @@
 # series of records is the history. Only rdfs:domain changes - no IRI is
 # renamed, nothing is deprecated.
 #
-# OPEN POINT (issue #7 (1)): units are carried in rdfs:comment only.
-# P_DPP anchors units on the SI Digital Framework (hasMeasurementUnit ->
-# si:MeasurementUnit), not on OM-2. The reference to align on is to be
-# settled at CORE level before the 42 properties are converted.
+# UNITS (issue #7 (1), settled 26 August 2026): the module follows its
+# parent module and anchors on the SI Digital Framework, as P_DPP does
+# through dpp:hasMeasurementUnit -> si:MeasurementUnit. Each datatype
+# property whose unit has an IRI there carries it on the annotation
+# property batperf:measurementUnit. Turning individual quantities into
+# dpp:QuantitativeProperty instances with numericalValue and
+# hasMeasurementUnit is a separate question, out of scope of this pass.
+# The CORE-wide choice between the SI Digital Framework and OM-2 is
+# tracked as CIRPASS-2/ontologies-core#58; until it is decided, the
+# parent-module rule applies.
+#
+# UNITS WITH NO IRI IN THE FRAMEWORK. 14 of the 36 properties that carry
+# a unit could be annotated. The framework publishes SI units and a short
+# list of non-SI units accepted for use with the SI; the following are in
+# neither, so they stay in rdfs:comment and no other mechanism is used:
+#   - percent (%) - 11 properties; % is a number, not a unit;
+#   - percent per month (%/month) - 2 properties;
+#   - kilowatt-hour (kWh) - 3 properties; the SI unit of energy is the joule;
+#   - ampere-hour (Ah), milliampere-hour (mAh) - 3 properties; the SI unit
+#     of electric charge is the coulomb;
+#   - year - 1 property; the framework has minute, hour and day, not year;
+#   - ampere per ampere-hour (A/Ah), watt per watt-hour (W/Wh) - 2 ratios
+#     of non-SI units.
+# Almost every battery-specific quantity falls in this list, which is the
+# substance of the question raised on CIRPASS-2/ontologies-core#58.
 # Organisation:
 #   - BatteryPerformance: electrochemical performance and in-use state
 #     (capacity, voltage, power, round trip efficiency, self-discharge,
@@ -64,6 +86,16 @@
     owl:versionInfo "Version 0.3.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-performance#" ;
     vann:preferredNamespacePrefix "batperf" .
+
+#################################################
+# Annotation Properties
+#################################################
+
+batperf:measurementUnit
+    a owl:AnnotationProperty ;
+    rdfs:label "measurement unit"@en ;
+    rdfs:comment "The measurement unit of the annotated datatype property, as an IRI of the SI Digital Framework (https://si-digital-framework.org/SI/units/). Used because the values are plain typed literals in this pass and not dpp:QuantitativeProperty instances, so dpp:hasMeasurementUnit - an object property on QuantitativeProperty - does not apply. Where the unit has no IRI in the framework the annotation is absent and the unit stays in rdfs:comment; the cases are listed in the module header."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 #################################################
 # Classes
@@ -221,6 +253,7 @@ batperf:minimumVoltage
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:volt ;
     rdfs:label "minimum voltage"@en ;
     rdfs:comment "The lower voltage limit that the safe operation of the battery is rated for. Unit: volt (V)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 66"@en ;
@@ -230,6 +263,7 @@ batperf:maximumVoltage
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:volt ;
     rdfs:label "maximum voltage"@en ;
     rdfs:comment "The upper voltage limit that the safe operation of the battery is rated for. Unit: volt (V)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 67"@en ;
@@ -239,6 +273,7 @@ batperf:nominalVoltage
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:volt ;
     rdfs:label "nominal voltage"@en ;
     rdfs:comment "The suitable approximate value of the voltage used to designate or identify the battery. Unit: volt (V)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 68"@en ;
@@ -248,6 +283,7 @@ batperf:originalPowerCapability
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:watt ;
     rdfs:label "original power capability"@en ;
     rdfs:comment "The amount of energy that a battery is capable to provide over a given period of time under reference conditions. Unit: watt (W)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 69"@en ;
@@ -257,6 +293,7 @@ batperf:remainingPowerCapability
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:watt ;
     rdfs:label "remaining power capability"@en ;
     rdfs:comment "The amount of energy that a battery is capable to provide over a given period of time under reference conditions at a distinct point in time during its usage. Unit: watt (W)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 70"@en ;
@@ -275,6 +312,7 @@ batperf:maximumPermittedBatteryPower
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:watt ;
     rdfs:label "maximum permitted battery power"@en ;
     rdfs:comment "The value of maximum permitted power the battery is rated for and reflects the data relevant for power limits. Unit: watt (W). Declared as Integer [W] in the BatteryPass-Ready long list; xsd:decimal retained per the Gap Analysis decision (open question to BatteryPass-Ready)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 72"@en ;
@@ -356,6 +394,7 @@ batperf:initialInternalResistance
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:ohm ;
     rdfs:label "initial internal resistance of battery cell and pack"@en ;
     rdfs:comment "'Quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions' (IEV 482 03 36), at begin of life, for battery cell and pack (module recommended). Unit: ohm."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 81"@en ;
@@ -472,6 +511,7 @@ batperf:temperatureInformation
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:degreeCelsius ;
     rdfs:label "temperature information"@en ;
     rdfs:comment "Temperature information regarding operating environmental conditions. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 91"@en ;
@@ -481,6 +521,7 @@ batperf:temperatureRangeIdleStateLowerBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:degreeCelsius ;
     rdfs:label "temperature range idle state, lower boundary"@en ;
     rdfs:comment "The lower boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 92"@en ;
@@ -490,6 +531,7 @@ batperf:temperatureRangeIdleStateUpperBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:TemperatureExposure ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:degreeCelsius ;
     rdfs:label "temperature range idle state, upper boundary"@en ;
     rdfs:comment "The upper boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 93"@en ;
@@ -499,6 +541,7 @@ batperf:timeSpentInExtremeTemperaturesAboveBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:minute ;
     rdfs:label "time spent in extreme temperatures above boundary"@en ;
     rdfs:comment "The aggregated time, in which temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 94"@en ;
@@ -508,6 +551,7 @@ batperf:timeSpentInExtremeTemperaturesBelowBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:minute ;
     rdfs:label "time spent in extreme temperatures below boundary"@en ;
     rdfs:comment "The aggregated time, in which temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 95"@en ;
@@ -517,6 +561,7 @@ batperf:timeSpentChargingInExtremeTemperaturesAboveBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:minute ;
     rdfs:label "time spent charging during extreme temperatures above boundary"@en ;
     rdfs:comment "The aggregated time, in which the battery is charged, while temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 96"@en ;
@@ -526,6 +571,7 @@ batperf:timeSpentChargingInExtremeTemperaturesBelowBoundary
     a owl:DatatypeProperty ;
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:minute ;
     rdfs:label "time spent charging during extreme temperatures below boundary"@en ;
     rdfs:comment "The aggregated time, in which the battery is charged, while temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 97"@en ;

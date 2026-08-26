@@ -116,6 +116,13 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ## Changelog
 
+### battery-performance — 26 August 2026
+
+Closes item (1) of [#7](https://github.com/CIRPASS-2/ontologies-battery/issues/7).
+
+* Units are no longer comment-only. New annotation property `batperf:measurementUnit` carries the SI Digital Framework IRI of the unit on each datatype property — the module follows its parent module, as `dpp:hasMeasurementUnit` anchors P_DPP on `si:MeasurementUnit`. `dpp:hasMeasurementUnit` itself does not apply here: it is an object property on `QuantitativeProperty`, and turning quantities into `QuantitativeProperty` instances is a separate question.
+* **14 of the 36 properties that carry a unit could be annotated** — volt, watt, ohm, degree Celsius, minute. The other 22 have no IRI in the framework, which publishes SI units and a short list of accepted non-SI units: percent (11), percent per month (2), kilowatt-hour (3), ampere-hour (3), year (1), A/Ah and W/Wh (2). They stay in `rdfs:comment` and the cases are listed in the module header, per the rule agreed in #7. Almost every battery-specific quantity is in that list — which is the substance of [ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) on the CORE-wide unit mechanism.
+
 ### Umbrella — 26 August 2026
 
 * New property `bat:warrantyPeriod` (`xsd:duration`, domain `bat:Battery`), for data point 35 of the Commission guidance — Annex XIII 1(m), BatteryPass-Ready attribute 17. Declared here rather than in the CORE on the decision of 26 August 2026: [ontologies-core#34](https://github.com/CIRPASS-2/ontologies-core/issues/34) asked for a cross-sectoral warranty period, but the ESPR does not require one while Regulation (EU) 2023/1542 does, so the term stays sectoral.
