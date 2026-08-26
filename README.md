@@ -116,6 +116,13 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ## Changelog
 
+### battery-chemistries — 26 August 2026
+
+Items (1) and (2) of [#9](https://github.com/CIRPASS-2/ontologies-battery/issues/9).
+
+* `dcterms:source` on the scheme now names the **draft labelling Implementing Act**, as a literal: the draft has no stable citable URL. The re-check flag it anchors is an explicit `skos:editorialNote` — terms and notations to be re-checked on adoption, and the scheme reference of [ontologies-core#25](https://github.com/CIRPASS-2/ontologies-core/issues/25) to be carried by the individuals once it exists.
+* `skos:prefLabel` already carried the clear name of each chemistry, verbatim from long list attribute 39 — *Lead acid*, *Nickel metal hydride*, *Lithium ion NMC*. The Implementing Act does not spell the oxide names out, so the five expanded names (*Lithium nickel manganese cobalt oxide* and the like) are added as `skos:altLabel`, not as `prefLabel`: `prefLabel` stays pinned to the legal text.
+
 ### battery-extinguisher-classes — 26 August 2026
 
 Closes the open point of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) (3).

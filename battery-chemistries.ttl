@@ -66,7 +66,9 @@ batchem:BatteryChemistryScheme
                        batchem:LiIonNCA ,
                        batchem:LiMetal ,
                        batchem:NaIon ;
+    skos:editorialNote "Re-check flag. The Implementing Act is still a draft: the ten terms and their notations are to be re-checked on adoption. The scheme reference to be defined in CIRPASS-2/ontologies-core#25 is to be carried by the individuals once it exists."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
+    dcterms:source "Draft Implementing Act on the harmonised format and technical specifications for the labelling of batteries, under Regulation (EU) 2023/1542, Annex VI Part A (7). Not yet adopted; the ten terms of this scheme are the draft ones."@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
 #################################################
@@ -115,6 +117,7 @@ batchem:LiIonNMC
     rdfs:label "Lithium ion NMC"@en ;
     skos:prefLabel "Lithium ion NMC"@en ;
     skos:altLabel "Li-ion NMC"@en ;
+    skos:altLabel "Lithium nickel manganese cobalt oxide"@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
@@ -126,6 +129,7 @@ batchem:LiIonLFP
     rdfs:label "Lithium ion LFP"@en ;
     skos:prefLabel "Lithium ion LFP"@en ;
     skos:altLabel "Li-ion LFP"@en ;
+    skos:altLabel "Lithium iron phosphate"@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
@@ -137,6 +141,7 @@ batchem:LiIonLMO
     rdfs:label "Lithium ion LMO"@en ;
     skos:prefLabel "Lithium ion LMO"@en ;
     skos:altLabel "Li-ion LMO"@en ;
+    skos:altLabel "Lithium manganese oxide"@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
@@ -148,6 +153,7 @@ batchem:LiIonLCO
     rdfs:label "Lithium ion LCO"@en ;
     skos:prefLabel "Lithium ion LCO"@en ;
     skos:altLabel "Li-ion LCO"@en ;
+    skos:altLabel "Lithium cobalt oxide"@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
@@ -159,6 +165,7 @@ batchem:LiIonNCA
     rdfs:label "Lithium ion NCA"@en ;
     skos:prefLabel "Lithium ion NCA"@en ;
     skos:altLabel "Li-ion NCA"@en ;
+    skos:altLabel "Lithium nickel cobalt aluminium oxide"@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-chemistries> .
 
