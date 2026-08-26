@@ -40,7 +40,11 @@ The **battery status** is the state of the physical item — `original`, `repurp
 
 The **passport status** is the state of the digital resource — `Active`, `Archived`, `Inactive`, `Invalid`. It is cross-sectoral and already in the CORE, on `dpp:DPP` through `dpp:dppStatus`. It is not restated in the battery namespace.
 
+The OWL range of `bat:hasBatteryStatus` is `skos:Concept`, deliberately loose. Closing the list is a conformance rule: the [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shape set carries an `sh:in` over the five concepts of `batstat:BatteryStatusScheme`.
+
 When a battery is remanufactured, repurposed or prepared for re-use and placed on the market again, a new passport is issued and linked back to the previous one through the CORE property `dpp:linkToPreviousDPP` (ESPR Art. 11(d)). Status-change events belong to the CORE event module.
+
+Two gaps on that CORE side were raised rather than patched here: [ontologies-core#56](https://github.com/CIRPASS-2/ontologies-core/issues/56) — `linkToPreviousDPP` is one-directional and typed `xsd:anyURI` rather than pointing at `dpp:DPP` — and [ontologies-core#57](https://github.com/CIRPASS-2/ontologies-core/issues/57) — `dppStatus` enumerates `Invalid` where prEN 18223 says `Marked-for-deletion`.
 
 `bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice. It is a stopgap: [ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) requests a cross-sectoral `eudpp:productStatus` on `eudpp:Product`, and is still open. When it lands, `bat:hasBatteryStatus` is to be deprecated in favour of it.
 
