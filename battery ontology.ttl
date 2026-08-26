@@ -111,7 +111,7 @@ bat:dueDiligenceReport
     rdfs:domain bat:Battery ;
     rdfs:range xsd:anyURI ;
     rdfs:label "due diligence report"@en ;
-    rdfs:comment "Link to the battery due diligence policy and report on the supply chain, covering the raw materials listed in Annex X (cobalt, natural graphite, lithium, nickel) and the chemical compounds based on them."@en ;
+    rdfs:comment "Link to the battery due diligence policy and report on the supply chain, covering the raw materials listed in Annex X (cobalt, natural graphite, lithium, nickel) and the chemical compounds based on them. Migration to the CORE document pattern eudpp:Source (LCA module) is tracked in ontologies-battery#11 and deferred until the LCA module is integrated into the CORE; xsd:anyURI is the agreed interim."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 52 and Annex X; Annex XIII Part C"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
@@ -121,7 +121,7 @@ bat:dueDiligenceAudit
     rdfs:domain bat:Battery ;
     rdfs:range xsd:anyURI ;
     rdfs:label "due diligence audit"@en ;
-    rdfs:comment "Link to the third-party verification of the battery due diligence policy, carried out by a notified body."@en ;
+    rdfs:comment "Link to the third-party verification of the battery due diligence policy, carried out by a notified body. Migration to the CORE document pattern eudpp:Source (LCA module) is tracked in ontologies-battery#11 and deferred until the LCA module is integrated into the CORE; xsd:anyURI is the agreed interim."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 52 and Annex X; Annex XIII Part C"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
