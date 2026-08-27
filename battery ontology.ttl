@@ -26,6 +26,12 @@
 # add a cross-sectoral part number to the CORE, so the term is
 # declared here; a recommendation went to the Commission.
 #
+# Manufacturing date (27 August 2026): carried by the CORE property
+# eudpp:manufacturingDate, not declared here. Settled on
+# ontologies-core#33 - xsd:gYearMonth, domain eudpp:Product, optional
+# in P_DPP. The battery obligation is a conformance rule and belongs
+# to the #10 shape set.
+#
 # v0.3.0 (issue #3): bat:hasBatteryStatus added, pointing at the
 # battery-statuses vocabulary. The lifecycle status of the battery as a
 # physical item is a battery term; the status of its passport as a
@@ -62,7 +68,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-08-25"^^xsd:date ;
+    dcterms:modified "2026-08-27"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.4.0 DRAFT"@en ;
@@ -78,7 +84,7 @@ bat:Battery
     rdfs:subClassOf dpp:Product ;
     rdfs:label "Battery"@en ;
     rdfs:seeAlso batcat:BatteryCategoryScheme ;
-    rdfs:comment "A battery placed on the market or put into service, subject of a battery passport under Regulation (EU) 2023/1542. Modelled as a subclass of the cross-sectoral Product class. A battery incorporated as a component of another product remains a Product, linked through the CORE component property (no dedicated Component class), in line with CIRPASS-2 modelling decisions. The regulatory category of a battery is expressed through the CORE property dpp:hasProductGroup, pointing to one of the five individuals of the battery-categories vocabulary; no category property is declared in the battery namespace. Its lifecycle status is expressed through bat:hasBatteryStatus, declared locally for want of a cross-sectoral equivalent."@en ;
+    rdfs:comment "A battery placed on the market or put into service, subject of a battery passport under Regulation (EU) 2023/1542. Modelled as a subclass of the cross-sectoral Product class. A battery incorporated as a component of another product remains a Product, linked through the CORE component property (no dedicated Component class), in line with CIRPASS-2 modelling decisions. The regulatory category of a battery is expressed through the CORE property dpp:hasProductGroup, pointing to one of the five individuals of the battery-categories vocabulary; no category property is declared in the battery namespace. Its lifecycle status is expressed through bat:hasBatteryStatus, declared locally for want of a cross-sectoral equivalent. The date of manufacture is carried by the cross-sectoral property dpp:manufacturingDate, settled on ontologies-core#33; no manufacturing date property is declared in the battery namespace."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 3(1)(1)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
