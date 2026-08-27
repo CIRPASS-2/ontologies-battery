@@ -110,7 +110,7 @@ Data point 9 of the Commission guidance — *the date of manufacturing (month an
 ## Modelling conventions
 
 * Each module is a self-contained `owl:Ontology` file with its own IRI, `owl:versionIRI`, namespace, prefix and metadata.
-* CORE concepts are referenced directly by IRI — no `owl:imports`, no copied axioms (same approach as the Textile sector modules). To obtain a connected graph, load these modules together with the EU DPP CO modules.
+* CORE concepts are referenced directly by IRI — no `owl:imports`, no copied axioms (same approach as the Textile sector modules). To obtain a connected graph, load these modules together with the EU DPP CO modules, published on the [DPP Vocabulary Hub](https://dpp.vocabulary-hub.eu/).
 * The modules are developed against CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0, MAT v1.0.2; update of 30 April 2026); external references are pinned to these versions.
 * No cardinality restrictions in OWL: the mandatory/optional constraints of Regulation (EU) 2023/1542 are to be expressed in separate SHACL shapes.
 * **Tier-free ontology**: access tiers (public / legitimate interest / authorities) are carried by the SHACL shapes, not by the ontology — no annotation property, no per-class flags.
