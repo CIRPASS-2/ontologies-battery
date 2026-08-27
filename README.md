@@ -116,6 +116,13 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ## Changelog
 
+### battery-cf-shapes — 26 August 2026
+
+Answers [#1](https://github.com/CIRPASS-2/ontologies-battery/issues/1).
+
+* **`batcf:CarbonFootprintDeclarationOfConformityShape` activated** — 8 shapes remain deactivated. Both targets resolve: `dpp:hasEUDeclarationOfConformity` (CONNECTOR, `Product` → `EUDeclarationOfConformity`) and the class in COMP.
+* **The two shapes that were already active carry a waits-on note** referencing [ontologies-core#47](https://github.com/CIRPASS-2/ontologies-core/issues/47), which deprecates `dpp:CarbonFootprint` in favour of the LCA representation. They are interim and are to be replaced by LCA-study shapes on activation, not amended in place.
+
 ### battery-chemistries — 26 August 2026
 
 Items (1) and (2) of [#9](https://github.com/CIRPASS-2/ontologies-battery/issues/9).

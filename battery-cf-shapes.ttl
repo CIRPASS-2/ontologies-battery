@@ -43,8 +43,7 @@
 #              module, which is not in the folder and is not imported
 #              by core.owl. It may well exist upstream.
 #
-# core.owl imports SOC, EVENT, MAT, P_DPP, IDENT, CON and ACTOR.
-# Neither LCA nor COMP is among them.
+#
 
 <https://w3id.org/eudpp/battery-cf-shapes>
     a owl:Ontology ;
@@ -54,7 +53,7 @@
     rdfs:label "EU DPP Battery Carbon Footprint Shapes"@en ;
     dcterms:title "EU DPP Battery Carbon Footprint Shapes"@en ;
     dcterms:description "SHACL profile binding the carbon footprint of a battery to the CIRPASS-2 CORE ontology, under Regulation (EU) 2023/1542 Art. 7. Declares no battery-local carbon-footprint term: it constrains the use of the cross-sectoral dpp:CarbonFootprint and its neighbours. Shapes whose CORE targets are pending, missing or unverifiable carry sh:deactivated true and state which of the three applies."@en ;
-    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0; update of 30 April 2026). Validated with the battery modules loaded alongside the CORE modules."@en ;
+    rdfs:comment "Binding targets re-checked on 26 August 2026 against the refreshed CORE modules (core.owl v2.0.5, importing ACTOR, COMP, CON, EVENT, IDENT, MAT, P_DPP and SOC). The LCA module is not part of the CORE at that date. Validated with the battery modules loaded alongside the CORE modules."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:bibliographicCitation "EU DPP Battery Carbon Footprint Shapes. Draft version 0.1.1."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
@@ -83,6 +82,7 @@
 batcf:CarbonFootprintRequiredShape
     a sh:NodeShape ;
     rdfs:label "A battery in scope of Art. 7 carries a carbon footprint"@en ;
+    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47. This shape constrains dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. It is therefore itself interim, and is to be replaced by an LCA-study shape when that representation is activated."@en ;
     sh:targetClass bat:Battery ;
     sh:or (
         [
@@ -122,6 +122,7 @@ batcf:CarbonFootprintRequiredShape
 batcf:CarbonFootprintValueShape
     a sh:NodeShape ;
     rdfs:label "A carbon footprint carries one value and one unit"@en ;
+    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47, for the same reason as the shape above: it targets dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. To be replaced by an LCA-study shape on activation."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:numericalValue ;
@@ -152,7 +153,7 @@ batcf:CarbonFootprintLCAStudyShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The carbon footprint comes from a declared LCA study"@en ;
-    rdfs:comment "MISSING and UNKNOWN. dpp:hasLCAStudy is declared in CONNECTOR with domain Product but carries no rdfs:range, so it cannot be traversed or validated as it stands — that part is verified. Whether an LCAStudy class exists cannot be checked here: the LCA module is not in the folder and is not imported by core.owl."@en ;
+    rdfs:comment "PENDING the LCA module. Corrected on 26 August 2026: dpp:hasLCAStudy is now complete in CONNECTOR — domain Product, range eudpp:LCAStudy — so the property side of the earlier finding is resolved. The shape stays deactivated because the LCAStudy class itself lives in the LCA module, which core.owl does not import; activating it would require example data to point at a resource that cannot be typed. One boolean to remove once LCA lands."@en ;
     sh:targetClass bat:Battery ;
     sh:property [
         sh:path dpp:hasLCAStudy ;
@@ -165,7 +166,7 @@ batcf:CarbonFootprintPerStageShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The carbon footprint is broken down by life-cycle stage"@en ;
-    rdfs:comment "PENDING ontologies-core#53, scoped by #47, both cited in #1. Art. 7 requires the declaration broken down by life-cycle stage; #1 states four battery stages."@en ;
+    rdfs:comment "PENDING ontologies-core#53, scoped by #47, both cited in #1. Art. 7 requires the declaration broken down by life-cycle stage; #1 states four battery stages. Note, verified on 26 August 2026: a term named dpp:hasLifeCycleStage does exist, but it is declared in SOC with domain eudpp:SubstanceOfConcern. The shape waits for the LifeCycleModule terms of core#53, not for that property."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:hasLifeCycleStage ;
@@ -230,9 +231,8 @@ batcf:CarbonFootprintPlantShape
 
 batcf:CarbonFootprintDeclarationOfConformityShape
     a sh:NodeShape ;
-    sh:deactivated true ;
     rdfs:label "The declaration of conformity is bound"@en ;
-    rdfs:comment "MISSING, verified. CONNECTOR has no COMP properties at all: its 20 object properties include neither hasEUDeclarationOfConformity, nor hasNotifiedBody, nor hasComplianceDeclaration. EUDeclarationOfConformity and ConformityAssessmentModule do exist in comp.owl — as does the moduleD1 individual — but nothing connects a product to them, and core.owl does not import COMP. There is also no DoC identifier term in comp.owl: certificateNumber and certificateRevisionNumber hang off ConformityCertificate, while EUDeclarationOfConformity carries only conformityDeclaredTo and hasUnionHarmonisationLegislation."@en ;
+    rdfs:comment "ACTIVATED on 26 August 2026. Both targets resolve on the refreshed modules: dpp:hasEUDeclarationOfConformity is declared in CONNECTOR with domain Product and range EUDeclarationOfConformity, and the class itself is in COMP, which core.owl imports."@en ;
     sh:targetClass bat:Battery ;
     sh:property [
         sh:path dpp:hasEUDeclarationOfConformity ;
@@ -246,7 +246,7 @@ batcf:CarbonFootprintPublicLinkShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The public carbon footprint study is linked"@en ;
-    rdfs:comment "UNKNOWN. #1 treats Source as delivered by the closed ontologies-core#36. Neither Source nor hasExternalDocumentation is in the folder, but Source is reported — by the author of #1 himself, in #8 — to live in the LCA module, which is absent here and not imported by core.owl. Not a claim that it does not exist."@en ;
+    rdfs:comment "PENDING the LCA module. eudpp:Source is confirmed by the author of #1 to live there, with typed subclasses PCR, BackgroundDatabase, ComplianceSystem, ReviewReport and EPDDocument, referenced through eudpp:hasExternalDocumentation."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:hasExternalDocumentation ;
@@ -259,7 +259,7 @@ batcf:CarbonFootprintPerformanceClassShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The carbon footprint performance class is declared"@en ;
-    rdfs:comment "PENDING ontologies-core#41, cited in #1."@en ;
+    rdfs:comment "PENDING ontologies-core#41, cited in #1. Name to reconcile on delivery: #41 asks for eudpp:carbonFootprintPerformanceClass on eudpp:CarbonFootprint, while this shape uses the path dpp:hasPerformanceClass named in #1. Neither is in the refreshed modules as of 26 August 2026."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:hasPerformanceClass ;
