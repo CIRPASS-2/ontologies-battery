@@ -40,7 +40,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-18"^^xsd:date ;
     dcterms:issued "2026-08-18"^^xsd:date ;
-    dcterms:modified "2026-08-25"^^xsd:date ;
+    dcterms:modified "2026-08-26"^^xsd:date ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; draft labelling Implementing Act under Regulation (EU) 2023/1542"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.1 DRAFT"@en ;
