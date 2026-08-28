@@ -120,6 +120,10 @@ Data point 9 of the Commission guidance — *the date of manufacturing (month an
 
 ## Changelog
 
+### All modules — 28 August 2026
+
+* **License aligned on Apache 2.0**, resolving the divergence between the ten TTL (CC BY 4.0) and this README. The modules now carry the same two statements as the CORE and TYRE ontologies: `dcterms:license <https://www.apache.org/licenses/LICENSE-2.0>` plus the CC BY 4.0 fallback for the document reading.
+
 ### Umbrella — 27 August 2026
 
 Answers data point 9 of the Commission guidance, through [ontologies-core#33](https://github.com/CIRPASS-2/ontologies-core/issues/33).
