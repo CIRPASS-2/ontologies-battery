@@ -31,7 +31,7 @@
     rdfs:label "EU DPP Battery Locations Vocabulary"@en ;
     dcterms:title "EU DPP Battery Locations Vocabulary"@en ;
     dcterms:description "The three internal battery locations named by Regulation (EU) 2023/1542, Annex XIII 2(a) for the detailed composition of a battery: cathode, anode and electrolyte. Declared as individuals of batmat:BatteryLocation and used as the value set of batmat:hasBatteryLocation. Corresponds to BatteryPass-Ready Data Attribute Long List v1.3, attribute 41, and to the Spherity Battery Pass class BatteryLocationEntity, which declares no values."@en ;
-    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0 (MAT v1.0.2; update of 30 April 2026). To be revisited when MAT v2 lands (ontologies-core#24, #25), which introduces a part level that may host these locations."@en ;
+    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). To be revisited when MAT v2 lands (ontologies-core#24, #25), which introduces a part level that may host these locations."@en ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
     dcterms:license "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en ;
     dcterms:bibliographicCitation "EU DPP Battery Locations Vocabulary. Draft version 0.1.0."@en ;
@@ -39,7 +39,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-25"^^xsd:date ;
     dcterms:issued "2026-08-25"^^xsd:date ;
-    dcterms:modified "2026-08-28"^^xsd:date ;
+    dcterms:modified "2026-09-01"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41; Spherity Battery Pass ontology v0.1, BatteryLocationEntity"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.0 DRAFT"@en ;

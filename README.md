@@ -105,7 +105,9 @@ The industrial row is a **two-part test**: the category *and* a capacity above 2
 
 ### Manufacturing date
 
-Data point 9 of the Commission guidance — *the date of manufacturing (month and year)*, Annex VI A(4), mandatory for the three passport categories — is carried by the cross-sectoral property `eudpp:manufacturingDate`. **No manufacturing date term is declared in the battery namespace.**
+Data point 9 of the Commission guidance — *the date of manufacturing (month and year)*, Annex VI A(4), mandatory for the three passport categories — is carried by the cross-sectoral property `eudpp:manufacturingDate`, released in P_DPP v2.0.6 on 27 August 2026. **No manufacturing date term is declared in the battery namespace.**
+
+The CORE property carries no `rdfs:range`: *"the range of the data property is intentionally left open to be specified in accordance of sectorial needs"*. The `xsd:gYearMonth` format required by Annex VI A(4) — month and year — is therefore carried by the battery [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shape set, together with the mandatory cardinality.
 
 ## Modelling conventions
 
@@ -120,16 +122,29 @@ Data point 9 of the Commission guidance — *the date of manufacturing (month an
 
 ## Changelog
 
+### All modules — 1 September 2026
+
+* **Pinned CORE version updated in the ten module headers**: CORE v2.0.5 (refresh of 25 August 2026), P_DPP v2.0.6 (27 August 2026), MAT v1.0.2 — replacing the stale "CORE v2.0 (P_DPP v2.0.0; update of 30 April 2026)" pin. Same wording in all ten files; the two dated comments in `battery-cf-shapes.ttl` follow. No term changed.
+
+### SHACL profile — 28 August 2026
+
+Answers [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10), in one pass, and carries the access tiers of [#5](https://github.com/CIRPASS-2/ontologies-battery/issues/5).
+
+* **`battery-shapes.ttl`** — the conformance profile. `owl:imports battery-cf-shapes` rather than restating it. A property is required when the BatteryPass-Ready long list v2.0 marks it mandatory for all four applicability columns **and** mandatory from February 2027; properties mandatory everywhere except for non-stationary industrial batteries carry `sh:severity sh:Warning`. Closed vocabularies for the five categories and the five statuses (`sh:in`). Two shapes are deactivated as a checklist: the 2 kWh test of [#2](https://github.com/CIRPASS-2/ontologies-battery/issues/2), which waits on a rated energy in kWh, and the data carrier of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8), which waits on a CORE term.
+* **`battery-access-tiers.ttl`** — the three audiences of Art. 77 as SKOS concepts. The ontology stays tier-free: only the view files use them.
+* **`battery-view-public.ttl`, `battery-view-legitimate-interest.ttl`, `battery-view-authorities.ttl`** — one shape graph per audience, stating what the served view must carry and what it must not disclose. Validate a view against its own file alone, never together with `battery-shapes.ttl`, which requires data points a public view may not contain.
+
 ### All modules — 28 August 2026
 
+* **Manufacturing date corrected.** `eudpp:manufacturingDate` was released in P_DPP v2.0.6 with **no `rdfs:range`**, open by design for sectoral specification — not the `xsd:gYearMonth` recorded here on 27 August. The typing moves to the [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shapes. Same batch fixed the leading space in the `eudpp:granularity` enumeration.
 * **License aligned on Apache 2.0**, resolving the divergence between the ten TTL (CC BY 4.0) and this README. The modules now carry the same two statements as the CORE and TYRE ontologies: `dcterms:license <https://www.apache.org/licenses/LICENSE-2.0>` plus the CC BY 4.0 fallback for the document reading.
 
 ### Umbrella — 27 August 2026
 
 Answers data point 9 of the Commission guidance, through [ontologies-core#33](https://github.com/CIRPASS-2/ontologies-core/issues/33).
 
-* **No new term.** The manufacturing date is carried by `eudpp:manufacturingDate` (P_DPP): `xsd:gYearMonth`, domain `eudpp:Product`, optional cross-sector. `bat:Battery` records the reuse in its `rdfs:comment`, as it already does for the battery category.
-* **Shape requirement registered for [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10)** — `sh:minCount 1` on `bat:Battery`, `sh:datatype xsd:gYearMonth`, unconditional. Deliberately not conditioned on `eudpp:granularity`: agreed with the P_DPP owner rather than derived here.
+* **No new term.** The manufacturing date is carried by `eudpp:manufacturingDate` (P_DPP): domain `eudpp:Product`, optional cross-sector, range deliberately left open for sectoral specification. `bat:Battery` records the reuse in its `rdfs:comment`, as it already does for the battery category.
+* **Shape requirement registered for [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10)** — `sh:minCount 1` on `bat:Battery`, `sh:datatype xsd:gYearMonth`, unconditional. With the CORE range left open, this shape is the only thing that types data point 9 for batteries. Deliberately not conditioned on `eudpp:granularity`: agreed with the P_DPP owner rather than derived here.
 * Opposite call to `bat:warrantyPeriod` the day before, and the criterion is cross-sector reusability rather than the ESPR: a manufacturing date is meaningful for every sector, a battery warranty period is not.
 
 ### battery-cf-shapes — 26 August 2026

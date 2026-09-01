@@ -22,7 +22,7 @@
 # The file has two layers.
 #
 # ACTIVE shapes constrain what the CORE provides today, verified in the
-# module files of the 30 April 2026 update:
+# module files of the 25 August 2026 refresh:
 #   dpp:CarbonFootprint (P_DPP) is a class, and the chain
 #   CarbonFootprint = EnvironmentalFootprint = QuantitativeProperty
 #   = Property holds, so dpp:hasProperty reaches it and
@@ -61,7 +61,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
-    dcterms:modified "2026-08-28"^^xsd:date ;
+    dcterms:modified "2026-09-01"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 7 and Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.1 DRAFT"@en ;
@@ -146,7 +146,7 @@ batcf:CarbonFootprintValueShape
 #################################################
 # Each shape names the term it needs and tags it PENDING, MISSING or
 # UNKNOWN, as defined in the header. Remove sh:deactivated to activate.
-# Checked in the module files of the 30 April 2026 update; the LCA
+# Checked in the module files of the 25 August 2026 refresh; the LCA
 # module is not among them, hence the UNKNOWN tag on the LCA-side
 # terms, which is not a claim that they are absent.
 
