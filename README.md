@@ -101,6 +101,8 @@ The five categories are defined in **Article 3(1)** of Regulation (EU) 2023/1542
 
 Passport scope is a conformance rule (Art. 77), expressed in SHACL, not in OWL.
 
+The vocabulary carries the five categories only. Article 3(1)(15) also defines the **stationary battery energy storage system**, *"an industrial battery with internal storage that is specifically designed to store from and deliver electric energy to the grid or store for and deliver electric energy to end-users"*, and the BatteryPass-Ready long list v2.0 sets a different requirement level for *Stationary >2kWh* than for *Other Industrial >2kWh* on **14 attributes**, 12 of them mandatory from February 2027. The profile cannot express that split, so those properties are reported as `sh:Warning`. Adding SBESS as a narrower concept of `batcat:IndustrialBattery` rather than as a sixth top concept is proposed in [#13](https://github.com/CIRPASS-2/ontologies-battery/issues/13).
+
 The industrial row is a **two-part test**: the category *and* a capacity above 2 kWh. The [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shape therefore needs a rated energy value in kWh next to `dpp:hasProductGroup`. **No term carries one today**: `batperf:ratedCapacity` is in ampere-hours, and `batperf:certifiedUsableBatteryEnergy` is the UN GTR No 22 value certified for a vehicle, which does not apply to an industrial battery. Open point on [#2](https://github.com/CIRPASS-2/ontologies-battery/issues/2).
 
 ### Manufacturing date
@@ -120,7 +122,47 @@ The CORE property carries no `rdfs:range`: *"the range of the data property is i
 * Controlled vocabularies are declared in their own module rather than inside the T-Box modules, so that they can be versioned independently.
 * CORE reuse before local declaration: where the CORE already provides a class or property, it is reused rather than mirrored in the battery namespace.
 
+## SHACL profile
+
+Rebuilt on 2 September 2026 against **BatteryPass-Ready Data Attribute Long List v1.3** (March 2026), in place of v2.0.
+
+Sources, in order of authority:
+
+1. **Regulation (EU) 2023/1542** — Art. 77 for passport scope, Art. 3(1) for the categories, Annex XIII for the passport content, Annex VI Parts A and C for marking, Annex VII Part B for the extreme-temperature attributes.
+2. **Long list v1.3**, 100 attributes — the four applicability columns (EV / LMT / Other Industrial >2kWh / Stationary >2kWh) give the cardinalities, *Data format* and *Unit of attribute* the datatypes, *Data behavioural characteristic: static vs. dynamic* what hangs off the dated state record, *Access rights according to Battery Regulation* the three views.
+3. **prEN 18223 Table 1** — the passport-level attributes.
+4. **The battery vocabularies** — the closed value lists (`sh:in`).
+
+The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only.
+
+86 of the 100 attributes carry a path — 66 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 7 typed but never required. The 14 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+
+⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance of 15 August 2026 does defer some data points; reconciling the two is an open point.
+
 ## Changelog
+
+### SHACL profile — 2 September 2026
+
+Rebuilt against long list v1.3 instead of v2.0, at the CEA's request. Sources and rule above.
+
+* **`battery-shapes.ttl` 0.2.0** — regenerated from v1.3. New `batsh:PassportScopeShape` for Art. 77: portable and SLI batteries carry no passport. One unconditional shape (66 attributes), two conditional ones on `dpp:hasProductGroup` (LMT and stationary, 11; electric vehicle, 2), one for the 7 voluntary attributes. Every `sh:path` was checked against the loaded CORE and battery modules before generation; two terms that did not exist were replaced — battery mass goes through `dpp:hasProperty` with `sh:class dpp:Weight`, hazardous substances through `dpp:containsSubstanceOfConcern`.
+* **The three view files 0.2.0** — regenerated from the v1.3 *Access rights* column: 52 public data points, 26 reserved to persons with a legitimate interest, 4 shared with the authorities, 4 reserved to notified bodies and authorities.
+* **`battery-access-tiers.ttl`** — reference changed from v2.0 to v1.3.
+* `battery-cf-shapes.ttl` untouched: it is driven by [ontologies-core#41](https://github.com/CIRPASS-2/ontologies-core/issues/41) and the LCA module, not by the long list.
+
+Three defects were found and fixed by running the profile with pyshacl against `example-lmt-battery.ttl`:
+
+* **The performance block was mis-mapped.** Attributes 62 to 72 were shifted by one position and 88/89 were swapped — thirteen constraints pointed at the wrong term. The generator now compares each v1.3 attribute name with the term it maps to and refuses to run on an undeclared mismatch.
+* **`sh:or` swallows the messages it contains.** One conditional shape holding eleven properties produced a single unreadable `OrConstraintComponent` report. Each conditional attribute now has its own node shape carrying its own `sh:message`.
+* **`sh:class` on `dpp:hasProperty` constrained every property of the battery**, so battery mass reported a violation on the carbon footprint node. Replaced by `sh:qualifiedValueShape` with `sh:qualifiedMinCount 1`.
+
+### battery-cf-shapes — 1 September 2026
+
+Records what [ontologies-core#36](https://github.com/CIRPASS-2/ontologies-core/issues/36) and [#41](https://github.com/CIRPASS-2/ontologies-core/issues/41) decided. Comments only: no shape activated or deactivated, no term added.
+
+* **#41 re-scopes the carbon footprint into the LCA module alone.** Values become `eudpp:LCIAResult` (indicators `eudpp:ind_GWPtotal`, EN 15804+A2, and `eudpp:ind_EF_climateChange`, EF 3.1) carrying unit, life-cycle module, scenario and method, reached through `eudpp:hasLCAStudy`; the value-bearing `eudpp:CarbonFootprint` is to be deprecated in P_DPP. The two interim shapes now cite it alongside #47 and stay active while that class is still declared.
+* **The performance class shape is to be rewritten, not activated.** #41 makes it a common-reuse LCA concept classifying an `LCIAResult`, in three cardinality patterns (A–C, A–E, A–G), to be implemented later — so neither `dpp:hasPerformanceClass` nor `eudpp:carbonFootprintPerformanceClass` will exist.
+* **#36 closed with no `eudpp:carbonFootprintLabel`.** The public carbon-footprint details and label URL uses the `eudpp:hasExternalDocumentation` → `eudpp:Source` pattern — the same one [#11](https://github.com/CIRPASS-2/ontologies-battery/issues/11) migrates the five documentation links to.
 
 ### All modules — 1 September 2026
 
@@ -130,7 +172,7 @@ The CORE property carries no `rdfs:range`: *"the range of the data property is i
 
 Answers [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10), in one pass, and carries the access tiers of [#5](https://github.com/CIRPASS-2/ontologies-battery/issues/5).
 
-* **`battery-shapes.ttl`** — the conformance profile. `owl:imports battery-cf-shapes` rather than restating it. A property is required when the BatteryPass-Ready long list v2.0 marks it mandatory for all four applicability columns **and** mandatory from February 2027; properties mandatory everywhere except for non-stationary industrial batteries carry `sh:severity sh:Warning`. Closed vocabularies for the five categories and the five statuses (`sh:in`). Two shapes are deactivated as a checklist: the 2 kWh test of [#2](https://github.com/CIRPASS-2/ontologies-battery/issues/2), which waits on a rated energy in kWh, and the data carrier of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8), which waits on a CORE term.
+* **`battery-shapes.ttl`** — the conformance profile. `owl:imports battery-cf-shapes` rather than restating it. A property is required when the BatteryPass-Ready long list v2.0 marks it mandatory for all four applicability columns **and** mandatory from February 2027; properties mandatory everywhere except for non-stationary industrial batteries carry `sh:severity sh:Warning`, a downgrade that lasts until the category vocabulary distinguishes SBESS ([#13](https://github.com/CIRPASS-2/ontologies-battery/issues/13)). Closed vocabularies for the five categories and the five statuses (`sh:in`). Two shapes are deactivated as a checklist: the 2 kWh test of [#2](https://github.com/CIRPASS-2/ontologies-battery/issues/2), which waits on a rated energy in kWh, and the data carrier of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8), which waits on the CORE term requested in [ontologies-core#61](https://github.com/CIRPASS-2/ontologies-core/issues/61).
 * **`battery-access-tiers.ttl`** — the three audiences of Art. 77 as SKOS concepts. The ontology stays tier-free: only the view files use them.
 * **`battery-view-public.ttl`, `battery-view-legitimate-interest.ttl`, `battery-view-authorities.ttl`** — one shape graph per audience, stating what the served view must carry and what it must not disclose. Validate a view against its own file alone, never together with `battery-shapes.ttl`, which requires data points a public view may not contain.
 
@@ -250,7 +292,7 @@ Closes [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) points (1)
 * Removed `batlab:labelingSubject`. It duplicated the typed properties, imposed a second labelling mechanism alongside them, and carried the `CarbonFootPrint` typo. Dropping it settles all three at once and leaves typed properties as the only mechanism. Nothing else referenced it.
 * New module `battery-extinguisher-classes.ttl`: the five extinguisher classes as `skos:Concept` individuals, with `skos:notation` carrying the letter. `batlab:extinguishingAgent` retyped from a free-text datatype property to an object property with range `skos:Concept`. Renamed directly rather than deprecated: the module has never been published under `w3id.org`.
 * **Open point on the extinguisher vocabulary** — settled on 26 August 2026, see the entry of that date. The five letters A, B, C, D, K were those of the Spherity Battery Pass ontology v0.1, while BatteryPass-Ready long list attribute 24 pins the fire class to **EN 2:2005**, which defines A, B, C, D and **F**.
-* Data carrier / QR (point 4): **nothing added**. Verified in `ident.owl` and `connector.owl` — IDENT declares 13 identifier and scheme classes and no QR, barcode, NFC or data-carrier concept; the only GS1 references are the GLN and GTIN identifier schemes. This is a cross-sectoral gap, to be raised as a CORE issue rather than patched here.
+* Data carrier / QR (point 4): **nothing added**. Verified in `ident.owl` and `connector.owl` — IDENT declares 13 identifier and scheme classes and no QR, barcode, NFC or data-carrier concept; the only GS1 references are the GLN and GTIN identifier schemes. This is a cross-sectoral gap, raised as [ontologies-core#61](https://github.com/CIRPASS-2/ontologies-core/issues/61) rather than patched here: a `DataCarrier` class with a controlled vocabulary of carrier types and a property linking a product or its passport to the carrier borne on it, anchored on ESPR Art. 2(29) and Art. 10(1)(b) and on Battery Regulation Art. 13(6).
 * `batlab:BatteryLabel` marked provisional, with an `rdfs:seeAlso` to [ontologies-core#55](https://github.com/CIRPASS-2/ontologies-core/issues/55); it is to be re-anchored on the cross-sectoral `Labelling` class when that lands.
 * Module now counts 1 class, 2 object properties and 4 datatype properties (was 1 / 1 / 5).
 

@@ -83,7 +83,7 @@
 batcf:CarbonFootprintRequiredShape
     a sh:NodeShape ;
     rdfs:label "A battery in scope of Art. 7 carries a carbon footprint"@en ;
-    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47. This shape constrains dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. It is therefore itself interim, and is to be replaced by an LCA-study shape when that representation is activated."@en ;
+    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47. This shape constrains dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. It is therefore itself interim, and is to be replaced by an LCA-study shape when that representation is activated. Confirmed on 1 September 2026 by ontologies-core#41, which places the carbon footprint in the LCA module only, deprecates the value-bearing eudpp:CarbonFootprint in P_DPP, and carries values as eudpp:LCIAResult (indicators eudpp:ind_GWPtotal, EN 15804+A2, and eudpp:ind_EF_climateChange, EF 3.1) reached through eudpp:hasLCAStudy. Kept active meanwhile, since eudpp:CarbonFootprint is still declared in the P_DPP module as refreshed on 25 August 2026."@en ;
     sh:targetClass bat:Battery ;
     sh:or (
         [
@@ -123,7 +123,7 @@ batcf:CarbonFootprintRequiredShape
 batcf:CarbonFootprintValueShape
     a sh:NodeShape ;
     rdfs:label "A carbon footprint carries one value and one unit"@en ;
-    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47, for the same reason as the shape above: it targets dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. To be replaced by an LCA-study shape on activation."@en ;
+    rdfs:comment "INTERIM, waits on CIRPASS-2/ontologies-core#47, for the same reason as the shape above: it targets dpp:CarbonFootprint, which #47 deprecates in favour of the LCA representation. To be replaced by an LCA-study shape on activation, constraining the unit, life-cycle module, scenario and method that ontologies-core#41 places on eudpp:LCIAResult."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:numericalValue ;
@@ -247,7 +247,7 @@ batcf:CarbonFootprintPublicLinkShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The public carbon footprint study is linked"@en ;
-    rdfs:comment "PENDING the LCA module. eudpp:Source is confirmed by the author of #1 to live there, with typed subclasses PCR, BackgroundDatabase, ComplianceSystem, ReviewReport and EPDDocument, referenced through eudpp:hasExternalDocumentation."@en ;
+    rdfs:comment "PENDING the LCA module. eudpp:Source is confirmed by the author of #1 to live there, with typed subclasses PCR, BackgroundDatabase, ComplianceSystem, ReviewReport and EPDDocument, referenced through eudpp:hasExternalDocumentation. Confirmed by ontologies-core#36, closed with no eudpp:carbonFootprintLabel: the public carbon-footprint details and label URL is carried by this same hasExternalDocumentation -> eudpp:Source pattern, the one that ontologies-battery#11 migrates the five battery documentation links to. Target to be re-pointed at the LCA representation together with the two interim shapes above."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:hasExternalDocumentation ;
@@ -260,7 +260,7 @@ batcf:CarbonFootprintPerformanceClassShape
     a sh:NodeShape ;
     sh:deactivated true ;
     rdfs:label "The carbon footprint performance class is declared"@en ;
-    rdfs:comment "PENDING ontologies-core#41, cited in #1. Name to reconcile on delivery: #41 asks for eudpp:carbonFootprintPerformanceClass on eudpp:CarbonFootprint, while this shape uses the path dpp:hasPerformanceClass named in #1. Neither is in the refreshed modules as of 26 August 2026."@en ;
+    rdfs:comment "PENDING ontologies-core#41, cited in #1 and since re-scoped by its author: the performance class becomes a common-reuse concept of the LCA module that classifies an eudpp:LCIAResult, applies to the carbon footprint or to the full environmental footprint, and comes in three cardinality patterns (A-C, A-E, A-G). It is to be implemented later. Neither dpp:hasPerformanceClass, the path named in #1 and used below, nor eudpp:carbonFootprintPerformanceClass will therefore exist: on delivery this shape is to be rewritten against the LCA representation, not merely activated. The path below records the requirement of #1, not the expected term."@en ;
     sh:targetClass dpp:CarbonFootprint ;
     sh:property [
         sh:path dpp:hasPerformanceClass ;
