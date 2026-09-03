@@ -20,6 +20,7 @@ This repository contains the **EU DPP Battery Ontology** (umbrella version 0.4.0
 | `battery materials.ttl` | **Materials** — battery chemistry and internal material location, extending the CORE MAT module | `batmat` | `https://w3id.org/eudpp/battery-materials#` |
 | `battery-locations.ttl` | **Locations** — the three internal locations named by Annex XIII 2(a) — cathode, anode, electrolyte — as individuals of `batmat:BatteryLocation`, value set of `batmat:hasBatteryLocation` | `batloc` | `https://w3id.org/eudpp/battery-locations#` |
 | `battery-chemistries.ttl` | **Chemistries** — the ten chemistry terms of the draft labelling Implementing Act, as individuals of the CORE class `dpp:MaterialType` | `batchem` | `https://w3id.org/eudpp/battery-chemistries#` |
+| `battery-metals.ttl` | **Metals** — the four metals whose recycled content Art. 8(1) requires a battery to declare (cobalt, lead, lithium, nickel), as individuals of the CORE class `dpp:MaterialType` | `batmet` | `https://w3id.org/eudpp/battery-metals#` |
 | `battery labeling.ttl` | **Labeling** — labels and symbols (BatteryPass-Ready category "Symbols, labels and documentation of conformity", attributes 21–24) | `batlab` | `https://w3id.org/eudpp/battery-labeling#` |
 | `battery-extinguisher-classes.ttl` | **Extinguisher classes** — controlled vocabulary of the five extinguisher classes, value set of `batlab:extinguishingAgent` | `batext` | `https://w3id.org/eudpp/battery-extinguisher-classes#` |
 | `battery-categories.ttl` | **Categories** — controlled vocabulary of the five battery categories of Art. 3(1), as individuals of the CORE class `dpp:ClassificationCode` | `batcat` | `https://w3id.org/eudpp/battery-categories#` |
@@ -141,6 +142,15 @@ The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it manda
 
 ## Changelog
 
+### battery-metals 0.1.0 — 3 September 2026
+
+New vocabulary module, and the first constraint that can tell one recycled share from another.
+
+* **`battery-metals.ttl`** — cobalt, lead, lithium and nickel, the four metals whose recycled content Art. 8(1) requires a battery to declare, as individuals of `dpp:MaterialType` in their own `skos:ConceptScheme`. Same pattern as `battery-chemistries` and `battery-locations`; no term declared beyond the individuals.
+* **Art. 8(1) does not treat the four alike**, and each concept says so: for cobalt, lithium and nickel the share is measured on the metal present in *active materials*, recovered from battery manufacturing waste or post-consumer waste; for lead it is measured on the metal present in *the battery*, recovered from waste, with no manufacturing / post-consumer split.
+* **`battery-shapes.ttl`** — attributes 48 to 54 now use `sh:qualifiedValueShape` on `dpp:hasMaterial`, requiring a material typed by the metal *and* carrying a `eudpp:materialRecycledContent`.
+
+
 ### SHACL profile — 2 September 2026
 
 Rebuilt against long list v1.3 instead of v2.0, at the CEA's request. Sources and rule above.
@@ -155,6 +165,8 @@ Three defects were found and fixed by running the profile with pyshacl against `
 * **The performance block was mis-mapped.** Attributes 62 to 72 were shifted by one position and 88/89 were swapped — thirteen constraints pointed at the wrong term. The generator now compares each v1.3 attribute name with the term it maps to and refuses to run on an undeclared mismatch.
 * **`sh:or` swallows the messages it contains.** One conditional shape holding eleven properties produced a single unreadable `OrConstraintComponent` report. Each conditional attribute now has its own node shape carrying its own `sh:message`.
 * **`sh:class` on `dpp:hasProperty` constrained every property of the battery**, so battery mass reported a violation on the carbon footprint node. Replaced by `sh:qualifiedValueShape` with `sh:qualifiedMinCount 1`.
+* **Only one container class was reached.** Properties declared on `batperf:BatteryPerformance`, `batperf:BatteryDurability`, `batperf:TemperatureExposure` and `batlab:BatteryLabel` were constrained directly on `bat:Battery`, so data that was present reported as missing — 17 of the 39 violations on the LMT example. The generator now derives the reach path from each property's `rdfs:domain` and the object property leading there, read from the ontology rather than listed by hand.
+* **Attribute 100, information on accidents, is not constrainable.** `batperf:accidentInformation` is declared on `batperf:AccidentEvent`, and no object property links `bat:Battery` to that class — the same gap as the putting-into-service event. Moved to the not-constrained list with its reason.
 
 ### battery-cf-shapes — 1 September 2026
 

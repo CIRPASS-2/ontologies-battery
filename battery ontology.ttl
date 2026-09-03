@@ -17,7 +17,7 @@
 # Umbrella module of the EU DPP Battery sectoral ontology.
 # Battery data is organised in eight companion modules:
 #   battery-performance, battery-materials, battery-labeling,
-#   battery-categories, battery-chemistries, battery-locations,
+#   battery-categories, battery-chemistries, battery-locations, battery-metals,
 #   battery-statuses, battery-extinguisher-classes,
 #   plus the battery-cf-shapes SHACL profile.
 #
@@ -57,12 +57,13 @@
                  <https://w3id.org/eudpp/battery-categories> ,
                  <https://w3id.org/eudpp/battery-chemistries> ,
                  <https://w3id.org/eudpp/battery-locations> ,
+                 <https://w3id.org/eudpp/battery-metals> ,
                  <https://w3id.org/eudpp/battery-statuses> ,
                  <https://w3id.org/eudpp/battery-extinguisher-classes> ,
                  <https://w3id.org/eudpp/battery-cf-shapes> ;
     rdfs:label "EU DPP Battery Ontology"@en ;
     dcterms:title "EU DPP Battery Ontology"@en ;
-    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in eight companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories), battery-chemistries (the ten labelling chemistries), battery-locations (cathode, anode, electrolyte), battery-statuses (the five Annex XIII 4(c) lifecycle statuses) and battery-extinguisher-classes; battery-cf-shapes carries the carbon footprint SHACL profile. It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
+    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class; battery data is organised in nine companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories), battery-chemistries (the ten labelling chemistries), battery-locations (cathode, anode, electrolyte), battery-metals (the four metals whose recycled content Art. 8(1) requires), battery-statuses (the five Annex XIII 4(c) lifecycle statuses) and battery-extinguisher-classes; battery-cf-shapes carries the carbon footprint SHACL profile. It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."@en ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
     dcterms:license "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en ;
@@ -71,7 +72,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-09-01"^^xsd:date ;
+    dcterms:modified "2026-09-03"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.4.0 DRAFT"@en ;

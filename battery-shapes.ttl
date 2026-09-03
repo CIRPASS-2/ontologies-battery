@@ -5,6 +5,7 @@
 @prefix batlab: <https://w3id.org/eudpp/battery-labeling#> .
 @prefix batcat: <https://w3id.org/eudpp/battery-categories#> .
 @prefix batstat: <https://w3id.org/eudpp/battery-statuses#> .
+@prefix batmet: <https://w3id.org/eudpp/battery-metals#> .
 @prefix dpp: <https://w3id.org/eudpp#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -100,7 +101,7 @@ batsh:PassportScopeShape
 #################################################
 # 2. Required for every passport category
 #################################################
-# The 66 attributes that v1.3 marks mandatory in all four
+# The 65 attributes that v1.3 marks mandatory in all four
 # applicability columns.
 
 batsh:BatteryShape
@@ -255,7 +256,7 @@ batsh:BatteryShape
 
     # 21. Separate collection symbol
     sh:property [
-        sh:path batlab:separateCollectionSymbol ;
+        sh:path ( batlab:hasBatteryLabel batlab:separateCollectionSymbol ) ;
         sh:minCount 1 ;
         sh:datatype xsd:anyURI ;
         sh:message "Separate collection symbol — long list v1.3 attribute 21, Battery Regulation." ;
@@ -264,7 +265,7 @@ batsh:BatteryShape
     # 22. Symbols for cadmium and lead
     #     leadSymbol carries the second half
     sh:property [
-        sh:path batlab:cadmiumSymbol ;
+        sh:path ( batlab:hasBatteryLabel batlab:cadmiumSymbol ) ;
         sh:minCount 1 ;
         sh:datatype xsd:anyURI ;
         sh:message "Symbols for cadmium and lead — long list v1.3 attribute 22, Battery Regulation." ;
@@ -272,7 +273,7 @@ batsh:BatteryShape
 
     # 24. Extinguishing agent
     sh:property [
-        sh:path batlab:extinguishingAgent ;
+        sh:path ( batlab:hasBatteryLabel batlab:extinguishingAgent ) ;
         sh:minCount 1 ;
         sh:message "Extinguishing agent — long list v1.3 attribute 24, Battery Regulation." ;
     ] ;
@@ -319,7 +320,7 @@ batsh:BatteryShape
     # 41. Materials used in cathode, anode and electrolyte
     #     material node
     sh:property [
-        sh:path ( dpp:hasMaterial batmat:hasBatteryLocation ) ;
+        sh:path ( batmat:hasBatteryChemistry batmat:hasBatteryLocation ) ;
         sh:minCount 1 ;
         sh:message "Materials used in cathode, anode and electrolyte — long list v1.3 attribute 41, Battery Regulation." ;
     ] ;
@@ -367,72 +368,93 @@ batsh:BatteryShape
     # 48. Pre-consumer recycled nickel share
     #     material node, pre-consumer nickel
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Nickel ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Pre-consumer recycled nickel share — long list v1.3 attribute 48, Battery Regulation." ;
     ] ;
 
     # 49. Pre-consumer recycled cobalt share
     #     material node, pre-consumer cobalt
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Cobalt ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Pre-consumer recycled cobalt share — long list v1.3 attribute 49, Battery Regulation." ;
     ] ;
 
     # 50. Pre-consumer recycled lithium share
     #     material node, pre-consumer lithium
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lithium ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Pre-consumer recycled lithium share — long list v1.3 attribute 50, Battery Regulation." ;
     ] ;
 
     # 51. Post-consumer recycled nickel share
     #     material node, post-consumer nickel
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Nickel ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Post-consumer recycled nickel share — long list v1.3 attribute 51, Battery Regulation." ;
     ] ;
 
     # 52. Post-consumer recycled cobalt share
     #     material node, post-consumer cobalt
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Cobalt ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Post-consumer recycled cobalt share — long list v1.3 attribute 52, Battery Regulation." ;
     ] ;
 
     # 53. Post-consumer recycled lithium share
     #     material node, post-consumer lithium
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lithium ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Post-consumer recycled lithium share — long list v1.3 attribute 53, Battery Regulation." ;
     ] ;
 
     # 54. Recycled lead share
     #     material node, lead
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:decimal ;
+        sh:path dpp:hasMaterial ;
+        sh:qualifiedValueShape [
+            sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lead ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Recycled lead share — long list v1.3 attribute 54, Battery Regulation." ;
     ] ;
 
     # 55. Renewable content share
-    #     material node; the share needs SustainableRenewableMaterialsUse
+    #     sh:class dpp:SustainableRenewableMaterialsUse — the share is a quantitative property, not the MAT boolean
     sh:property [
-        sh:path ( dpp:hasMaterial dpp:materialIsSustainableRenewable ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:boolean ;
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [ sh:class dpp:SustainableRenewableMaterialsUse ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Renewable content share — long list v1.3 attribute 55, Battery Regulation." ;
     ] ;
 
@@ -462,7 +484,7 @@ batsh:BatteryShape
 
     # 59. Rated capacity
     sh:property [
-        sh:path batperf:ratedCapacity ;
+        sh:path ( batperf:hasBatteryPerformance batperf:ratedCapacity ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Rated capacity — long list v1.3 attribute 59, Battery Regulation." ;
@@ -486,7 +508,7 @@ batsh:BatteryShape
 
     # 66. Minimum voltage
     sh:property [
-        sh:path batperf:minimumVoltage ;
+        sh:path ( batperf:hasBatteryPerformance batperf:minimumVoltage ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Minimum voltage — long list v1.3 attribute 66, Battery Regulation." ;
@@ -494,7 +516,7 @@ batsh:BatteryShape
 
     # 67. Maximum voltage
     sh:property [
-        sh:path batperf:maximumVoltage ;
+        sh:path ( batperf:hasBatteryPerformance batperf:maximumVoltage ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Maximum voltage — long list v1.3 attribute 67, Battery Regulation." ;
@@ -502,7 +524,7 @@ batsh:BatteryShape
 
     # 68. Nominal voltage
     sh:property [
-        sh:path batperf:nominalVoltage ;
+        sh:path ( batperf:hasBatteryPerformance batperf:nominalVoltage ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Nominal voltage — long list v1.3 attribute 68, Battery Regulation." ;
@@ -510,7 +532,7 @@ batsh:BatteryShape
 
     # 69. Original power capability
     sh:property [
-        sh:path batperf:originalPowerCapability ;
+        sh:path ( batperf:hasBatteryPerformance batperf:originalPowerCapability ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Original power capability — long list v1.3 attribute 69, Battery Regulation." ;
@@ -526,7 +548,7 @@ batsh:BatteryShape
 
     # 72. Maximum permitted battery power
     sh:property [
-        sh:path batperf:maximumPermittedBatteryPower ;
+        sh:path ( batperf:hasBatteryPerformance batperf:maximumPermittedBatteryPower ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Maximum permitted battery power — long list v1.3 attribute 72, Battery Regulation." ;
@@ -534,7 +556,7 @@ batsh:BatteryShape
 
     # 74. Initial round trip energy efficiency
     sh:property [
-        sh:path batperf:initialRoundTripEnergyEfficiency ;
+        sh:path ( batperf:hasBatteryPerformance batperf:initialRoundTripEnergyEfficiency ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Initial round trip energy efficiency — long list v1.3 attribute 74, Battery Regulation." ;
@@ -542,7 +564,7 @@ batsh:BatteryShape
 
     # 75. Round trip energy efficiency at 50% of cycle life
     sh:property [
-        sh:path batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ;
+        sh:path ( batperf:hasBatteryPerformance batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Round trip energy efficiency at 50% of cycle life — long list v1.3 attribute 75, Battery Regulation." ;
@@ -558,7 +580,7 @@ batsh:BatteryShape
 
     # 81. Initial internal resistance of battery cell and pack (module recommended)
     sh:property [
-        sh:path batperf:initialInternalResistance ;
+        sh:path ( batperf:hasBatteryPerformance batperf:initialInternalResistance ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Initial internal resistance of battery cell and pack (module recommend — long list v1.3 attribute 81, Battery Regulation." ;
@@ -574,7 +596,7 @@ batsh:BatteryShape
 
     # 83. Expected lifetime in calendar years
     sh:property [
-        sh:path batperf:expectedLifetimeCalendarYears ;
+        sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCalendarYears ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Expected lifetime in calendar years — long list v1.3 attribute 83, Battery Regulation." ;
@@ -582,7 +604,7 @@ batsh:BatteryShape
 
     # 84. Expected lifetime: Number of charge-discharge cycles
     sh:property [
-        sh:path batperf:expectedLifetimeCycles ;
+        sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCycles ) ;
         sh:minCount 1 ;
         sh:datatype xsd:integer ;
         sh:message "Expected lifetime: Number of charge-discharge cycles — long list v1.3 attribute 84, Battery Regulation." ;
@@ -598,7 +620,7 @@ batsh:BatteryShape
 
     # 86. Cycle-life reference test
     sh:property [
-        sh:path batperf:cycleLifeReferenceTest ;
+        sh:path ( batperf:hasBatteryPerformance batperf:cycleLifeReferenceTest ) ;
         sh:minCount 1 ;
         sh:datatype xsd:string ;
         sh:message "Cycle-life reference test — long list v1.3 attribute 86, Battery Regulation." ;
@@ -606,7 +628,7 @@ batsh:BatteryShape
 
     # 87. C-rate of relevant cycle-life test
     sh:property [
-        sh:path batperf:cRateOfCycleLifeTest ;
+        sh:path ( batperf:hasBatteryPerformance batperf:cRateOfCycleLifeTest ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "C-rate of relevant cycle-life test — long list v1.3 attribute 87, Battery Regulation." ;
@@ -622,7 +644,7 @@ batsh:BatteryShape
 
     # 92. Temperature range idle state, lower boundary
     sh:property [
-        sh:path batperf:temperatureRangeIdleStateLowerBoundary ;
+        sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateLowerBoundary ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Temperature range idle state, lower boundary — long list v1.3 attribute 92, Battery Regulation." ;
@@ -630,23 +652,20 @@ batsh:BatteryShape
 
     # 93. Temperature range idle state, upper boundary
     sh:property [
-        sh:path batperf:temperatureRangeIdleStateUpperBoundary ;
+        sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateUpperBoundary ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Temperature range idle state, upper boundary — long list v1.3 attribute 93, Battery Regulation." ;
-    ] ;
-
-    # 100. Information on accidents
-    sh:property [
-        sh:path batperf:accidentInformation ;
-        sh:minCount 1 ;
-        sh:datatype xsd:anyURI ;
-        sh:message "Information on accidents — long list v1.3 attribute 100, Battery Regulation." ;
     ]  .
 
 #################################################
 # 3. Required for some categories only
 #################################################
+
+# v1.3 requires these for LMT AND for stationary batteries. Only the LMT
+# half is enforceable: batcat carries no stationary concept yet, so a
+# stationary battery declares batcat:IndustrialBattery and escapes this
+# shape. Proposed in ontologies-battery#13.
 
 # 60. Remaining capacity
 batsh:LMT60Shape
@@ -901,7 +920,7 @@ batsh:EV90Shape
                                  sh:minCount 1 ] ] ]
         [
             sh:property [
-                sh:path batperf:capacityThresholdForExhaustion ;
+                sh:path ( batperf:hasBatteryDurability batperf:capacityThresholdForExhaustion ) ;
                 sh:minCount 1 ;
                 sh:datatype xsd:decimal ;
                 sh:message "Capacity threshold for exhaustion — long list v1.3 attribute 90, Battery Regulation." ;
@@ -930,7 +949,7 @@ batsh:BatteryVoluntaryShape
 
     # 62. Certified usable battery energy
     sh:property [
-        sh:path batperf:certifiedUsableBatteryEnergy ;
+        sh:path ( batperf:hasBatteryPerformance batperf:certifiedUsableBatteryEnergy ) ;
         sh:datatype xsd:decimal ;
         sh:message "Certified usable battery energy — long list v1.3 attribute 62, Battery Regulation." ;
     ] ;
@@ -944,14 +963,14 @@ batsh:BatteryVoluntaryShape
 
     # 73. Ratio between nominal battery power and battery energy
     sh:property [
-        sh:path batperf:powerToEnergyRatio ;
+        sh:path ( batperf:hasBatteryPerformance batperf:powerToEnergyRatio ) ;
         sh:datatype xsd:decimal ;
         sh:message "Ratio between nominal battery power and battery energy — long list v1.3 attribute 73, Battery Regulation." ;
     ] ;
 
     # 78. Initial self-discharge rate
     sh:property [
-        sh:path batperf:initialSelfDischargeRate ;
+        sh:path ( batperf:hasBatteryPerformance batperf:initialSelfDischargeRate ) ;
         sh:datatype xsd:decimal ;
         sh:message "Initial self-discharge rate — long list v1.3 attribute 78, Battery Regulation." ;
     ] ;

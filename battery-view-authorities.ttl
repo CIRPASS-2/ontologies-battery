@@ -21,6 +21,12 @@
 # column of BatteryPass-Ready Data Attribute Long List v1.3, which
 # restates Regulation (EU) 2023/1542 Art. 77.
 #
+# Validate a view against THIS file alone, never together with
+# battery-shapes.ttl: that profile requires data points a restricted view
+# is not allowed to disclose.
+#
+# SHACL enforces nothing. The passport service decides who receives what;
+# this file is the specification it implements and the test that it did.
 
 <https://w3id.org/eudpp/battery-view-authorities>
     a owl:Ontology ;
@@ -51,7 +57,7 @@ batv:AuthoritiesBatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     batacc:accessTier batacc:Authorities ;
-    rdfs:comment "The 86 data points long list v1.3 makes visible to this audience."@en ;
+    rdfs:comment "The 85 data points long list v1.3 makes visible to this audience."@en ;
     # 2. DPP Status
     sh:property [ sh:path ( dpp:hasDPP dpp:dppStatus ) ; sh:minCount 1 ] ;
     # 3. DPP Granularity
@@ -81,11 +87,11 @@ batv:AuthoritiesBatteryShape
     # 19. Battery mass
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 21. Separate collection symbol
-    sh:property [ sh:path batlab:separateCollectionSymbol ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batlab:hasBatteryLabel batlab:separateCollectionSymbol ) ; sh:minCount 1 ] ;
     # 22. Symbols for cadmium and lead
-    sh:property [ sh:path batlab:cadmiumSymbol ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batlab:hasBatteryLabel batlab:cadmiumSymbol ) ; sh:minCount 1 ] ;
     # 24. Extinguishing agent
-    sh:property [ sh:path batlab:extinguishingAgent ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batlab:hasBatteryLabel batlab:extinguishingAgent ) ; sh:minCount 1 ] ;
     # 26. EU declaration of conformity
     sh:property [ sh:path dpp:hasEUDeclarationOfConformity ; sh:minCount 1 ] ;
     # 36. Information of due diligence report
@@ -115,7 +121,7 @@ batv:AuthoritiesBatteryShape
     # 54. Recycled lead share
     sh:property [ sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ; sh:minCount 1 ] ;
     # 55. Renewable content share
-    sh:property [ sh:path ( dpp:hasMaterial dpp:materialIsSustainableRenewable ) ; sh:minCount 1 ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 56. Information on the role of end-users in contributing to waste prevention
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 57. Information on the role of end-users in contributing to the separate colle
@@ -123,39 +129,39 @@ batv:AuthoritiesBatteryShape
     # 58. Information on battery collection, preparation for second life and on trea
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 59. Rated capacity
-    sh:property [ sh:path batperf:ratedCapacity ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:ratedCapacity ) ; sh:minCount 1 ] ;
     # 62. Certified usable battery energy
-    sh:property [ sh:path batperf:certifiedUsableBatteryEnergy ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:certifiedUsableBatteryEnergy ) ; sh:minCount 1 ] ;
     # 66. Minimum voltage
-    sh:property [ sh:path batperf:minimumVoltage ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:minimumVoltage ) ; sh:minCount 1 ] ;
     # 67. Maximum voltage
-    sh:property [ sh:path batperf:maximumVoltage ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:maximumVoltage ) ; sh:minCount 1 ] ;
     # 68. Nominal voltage
-    sh:property [ sh:path batperf:nominalVoltage ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:nominalVoltage ) ; sh:minCount 1 ] ;
     # 69. Original power capability
-    sh:property [ sh:path batperf:originalPowerCapability ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:originalPowerCapability ) ; sh:minCount 1 ] ;
     # 72. Maximum permitted battery power
-    sh:property [ sh:path batperf:maximumPermittedBatteryPower ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:maximumPermittedBatteryPower ) ; sh:minCount 1 ] ;
     # 73. Ratio between nominal battery power and battery energy
-    sh:property [ sh:path batperf:powerToEnergyRatio ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:powerToEnergyRatio ) ; sh:minCount 1 ] ;
     # 74. Initial round trip energy efficiency
-    sh:property [ sh:path batperf:initialRoundTripEnergyEfficiency ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialRoundTripEnergyEfficiency ) ; sh:minCount 1 ] ;
     # 75. Round trip energy efficiency at 50% of cycle life
-    sh:property [ sh:path batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ) ; sh:minCount 1 ] ;
     # 81. Initial internal resistance of battery cell and pack (module recommended)
-    sh:property [ sh:path batperf:initialInternalResistance ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialInternalResistance ) ; sh:minCount 1 ] ;
     # 84. Expected lifetime: Number of charge-discharge cycles
-    sh:property [ sh:path batperf:expectedLifetimeCycles ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCycles ) ; sh:minCount 1 ] ;
     # 86. Cycle-life reference test
-    sh:property [ sh:path batperf:cycleLifeReferenceTest ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cycleLifeReferenceTest ) ; sh:minCount 1 ] ;
     # 87. C-rate of relevant cycle-life test
-    sh:property [ sh:path batperf:cRateOfCycleLifeTest ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cRateOfCycleLifeTest ) ; sh:minCount 1 ] ;
     # 90. Capacity threshold for exhaustion
-    sh:property [ sh:path batperf:capacityThresholdForExhaustion ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryDurability batperf:capacityThresholdForExhaustion ) ; sh:minCount 1 ] ;
     # 92. Temperature range idle state, lower boundary
-    sh:property [ sh:path batperf:temperatureRangeIdleStateLowerBoundary ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateLowerBoundary ) ; sh:minCount 1 ] ;
     # 93. Temperature range idle state, upper boundary
-    sh:property [ sh:path batperf:temperatureRangeIdleStateUpperBoundary ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateUpperBoundary ) ; sh:minCount 1 ] ;
     # 20. Battery status
     sh:property [ sh:path bat:hasBatteryStatus ; sh:minCount 1 ] ;
     # 60. Remaining capacity
@@ -177,7 +183,7 @@ batv:AuthoritiesBatteryShape
     # 77. Energy round trip efficiency fade
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:roundTripEnergyEfficiencyFade ) ; sh:minCount 1 ] ;
     # 78. Initial self-discharge rate
-    sh:property [ sh:path batperf:initialSelfDischargeRate ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialSelfDischargeRate ) ; sh:minCount 1 ] ;
     # 79. Current self-discharge rate
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:currentSelfDischargeRate ) ; sh:minCount 1 ] ;
     # 80. Evolution of self-discharge rates
@@ -185,7 +191,7 @@ batv:AuthoritiesBatteryShape
     # 82. Internal resistance increase of pack (cell and module recommended)
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:internalResistanceIncrease ) ; sh:minCount 1 ] ;
     # 83. Expected lifetime in calendar years
-    sh:property [ sh:path batperf:expectedLifetimeCalendarYears ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCalendarYears ) ; sh:minCount 1 ] ;
     # 85. Number of full charging and discharging cycles
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:numberOfFullCycles ) ; sh:minCount 1 ] ;
     # 88. Energy throughput
@@ -206,10 +212,8 @@ batv:AuthoritiesBatteryShape
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:numberOfDeepDischargeEvents ) ; sh:minCount 1 ] ;
     # 99. Number of overcharge events
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:numberOfOverchargeEvents ) ; sh:minCount 1 ] ;
-    # 100. Information on accidents
-    sh:property [ sh:path batperf:accidentInformation ; sh:minCount 1 ] ;
     # 41. Materials used in cathode, anode and electrolyte
-    sh:property [ sh:path ( dpp:hasMaterial batmat:hasBatteryLocation ) ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batmat:hasBatteryChemistry batmat:hasBatteryLocation ) ; sh:minCount 1 ] ;
     # 44. Dismantling information: Manuals for the removal and the disassembly of th
     sh:property [ sh:path bat:dismantlingInformation ; sh:minCount 1 ] ;
     # 45. Part numbers for components
