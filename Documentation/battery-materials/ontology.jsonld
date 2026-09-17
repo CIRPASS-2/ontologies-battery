@@ -1,0 +1,222 @@
+[ {
+  "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/contributor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/created",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/creator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/issued",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/license",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/modified",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/references",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/source",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/title",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespacePrefix",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#date",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
+  "@id" : "https://w3id.org/eudpp#MaterialOfComposition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/eudpp#hasMaterial",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery#Battery",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery-materials",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/terms/bibliographicCitation" : [ {
+    "@language" : "en",
+    "@value" : "EU DPP Battery Materials Ontology. Draft version 0.3.0."
+  } ],
+  "http://purl.org/dc/terms/contributor" : [ {
+    "@language" : "en",
+    "@value" : "Arnab Sinha"
+  } ],
+  "http://purl.org/dc/terms/created" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2026-07-07"
+  } ],
+  "http://purl.org/dc/terms/creator" : [ {
+    "@language" : "en",
+    "@value" : "Marc-Andree Wolf"
+  }, {
+    "@language" : "en",
+    "@value" : "Nader Jelassi"
+  } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry, typed through the battery-chemistries controlled vocabulary, and the internal location of materials within the battery, typed through the battery-locations controlled vocabulary. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2026-07-07"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://www.apache.org/licenses/LICENSE-2.0"
+  }, {
+    "@language" : "en",
+    "@value" : "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."
+  } ],
+  "http://purl.org/dc/terms/modified" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2026-09-01"
+  } ],
+  "http://purl.org/dc/terms/references" : [ {
+    "@language" : "en",
+    "@value" : "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1"
+  } ],
+  "http://purl.org/dc/terms/source" : [ {
+    "@id" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "en",
+    "@value" : "EU DPP Battery Materials Ontology"
+  } ],
+  "http://purl.org/vocab/vann/preferredNamespacePrefix" : [ {
+    "@value" : "batmat"
+  } ],
+  "http://purl.org/vocab/vann/preferredNamespaceUri" : [ {
+    "@value" : "https://w3id.org/eudpp/battery-materials#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "EU DPP Battery Materials Ontology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-chemistries"
+  }, {
+    "@id" : "https://w3id.org/eudpp/battery-locations"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials/0.3.0"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "en",
+    "@value" : "Version 0.3.0 DRAFT"
+  } ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery-materials#BatteryChemistry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/references" : [ {
+    "@language" : "en",
+    "@value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, BatteryChemistryEntity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The electrochemical composition of the battery, reflecting the active materials used in cathode and anode and, voluntarily, electrolyte. Specialises the cross-sectoral MaterialOfComposition class."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Battery Chemistry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/eudpp#MaterialOfComposition"
+  } ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery-materials#BatteryLocation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/references" : [ {
+    "@language" : "en",
+    "@value" : "Spherity Battery Pass ontology v0.1, BatteryLocationEntity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An internal location within the battery where a material or sub-component resides. Battery-specific class with no CORE anchor. Its value set is the battery-locations vocabulary, which declares the three locations named by Regulation (EU) 2023/1542, Annex XIII 2(a): cathode, anode and electrolyte."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Battery Location"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-locations"
+  } ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery-materials#hasBatteryChemistry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/references" : [ {
+    "@language" : "en",
+    "@value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, batteryChemistry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a battery to its electrochemical chemistry. Declared as a sub-property of the CORE product-to-material link dpp:hasMaterial (CONNECTOR)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/eudpp/battery#Battery"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has battery chemistry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials#BatteryChemistry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://w3id.org/eudpp#hasMaterial"
+  } ]
+}, {
+  "@id" : "https://w3id.org/eudpp/battery-materials#hasBatteryLocation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/references" : [ {
+    "@language" : "en",
+    "@value" : "Spherity Battery Pass ontology v0.1, batteryMaterialLocation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Links a battery material of composition to its internal location within the battery. The domain is restricted to BatteryChemistry rather than the cross-sectoral MaterialOfComposition, so that this battery-specific property is not asserted on materials of other sectors."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials#BatteryChemistry"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has battery location"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/eudpp/battery-materials#BatteryLocation"
+  } ]
+} ]

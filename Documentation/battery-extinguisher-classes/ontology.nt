@@ -1,0 +1,212 @@
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/eudpp/battery-extinguisher-classes/0.1.1> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/bibliographicCitation> "EU DPP Battery Extinguisher Classes Vocabulary. Draft version 0.1.1."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/contributor> "Arnab Sinha"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/created> "2026-08-19"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/creator> "Marc-Andree Wolf"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/creator> "Nader Jelassi"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/description> "Controlled vocabulary of the extinguisher classes applicable to a battery, used as the value set of batlab:extinguishingAgent. Replaces the free-text values of the battery-labeling module. The five classes A, B, C, D and F are those of EN 2:2005, the standard to which BatteryPass-Ready long list attribute 24 pins the determination of the fire class."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/issued> "2026-08-19"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/license> <https://www.apache.org/licenses/LICENSE-2.0> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/license> "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/modified> "2026-09-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/references> "EN 2:2005, Classification of fires; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/dc/terms/title> "EU DPP Battery Extinguisher Classes Vocabulary"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/vocab/vann/preferredNamespacePrefix> "batext" .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/eudpp/battery-extinguisher-classes#" .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/2000/01/rdf-schema#comment> "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/2000/01/rdf-schema#label> "EU DPP Battery Extinguisher Classes Vocabulary"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-extinguisher-classes> <http://www.w3.org/2002/07/owl#versionInfo> "Version 0.1.1 DRAFT"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/references
+<http://purl.org/dc/terms/references> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/source
+<http://purl.org/dc/terms/source> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#hasTopConcept
+<http://www.w3.org/2004/02/skos/core#hasTopConcept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#inScheme
+<http://www.w3.org/2004/02/skos/core#inScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#notation
+<http://www.w3.org/2004/02/skos/core#notation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#scopeNote
+<http://www.w3.org/2004/02/skos/core#scopeNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2004/02/skos/core#topConceptOf
+<http://www.w3.org/2004/02/skos/core#topConceptOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/2004/02/skos/core#ConceptScheme
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ClassA
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher class A"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2004/02/skos/core#definition> "Fires involving combustible solids. Same scope in EN 2:2005 and in NFPA 10."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2004/02/skos/core#inScheme> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2004/02/skos/core#notation> "A" .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher class A"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ClassB
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher class B"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2004/02/skos/core#definition> "Fires involving flammable liquids or liquefiable solids. Same scope in EN 2:2005 and in NFPA 10."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2004/02/skos/core#inScheme> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2004/02/skos/core#notation> "B" .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher class B"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ClassC
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher class C"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#definition> "Fires involving flammable gases, per EN 2:2005."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#editorialNote> "Mapping trap. Under NFPA 10 the same letter denotes fires involving energised electrical equipment. The two readings are not interchangeable, so a value of C taken from a US-sourced data set must not be carried across unchecked."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#inScheme> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#notation> "C" .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher class C"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ClassD
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher class D"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2004/02/skos/core#definition> "Fires involving combustible metals. Same scope in EN 2:2005 and in NFPA 10; the class most likely to be relevant to lithium battery cells."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2004/02/skos/core#inScheme> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2004/02/skos/core#notation> "D" .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher class D"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ClassF
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://purl.org/dc/terms/references> "EN 2:2005, Classification of fires; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher class F"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#altLabel> "K (NFPA 10)"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#definition> "Fires involving cooking media (vegetable or animal oils and fats), per EN 2:2005."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#editorialNote> "Renamed from batext:ClassK on 26 August 2026, when EN 2:2005 was settled as the reference standard in issue #8. Renamed outright rather than deprecated: the namespace has never been published under w3id.org."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#inScheme> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#notation> "F" .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher class F"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#scopeNote> "EN 2:2005 class F and NFPA 10 (US) class K have the same scope. The US letter is kept as skos:altLabel so that data sourced from NFPA 10, such as the Spherity Battery Pass ontology v0.1, still maps onto this concept."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://purl.org/dc/terms/references> "EN 2:2005, Classification of fires; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2000/01/rdf-schema#label> "Extinguisher classes applicable to a battery"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#editorialNote> "Re-check flag. ISO 3941:2026 introduces a class L for lithium-ion battery fires, which EN 2 does not have. The class is directly pertinent to batteries, so this vocabulary is to be re-checked if EN 2 is amended, or if the final labelling Implementing Act references a standard other than EN 2:2005."@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://w3id.org/eudpp/battery-extinguisher-classes#ClassA> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://w3id.org/eudpp/battery-extinguisher-classes#ClassB> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://w3id.org/eudpp/battery-extinguisher-classes#ClassC> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://w3id.org/eudpp/battery-extinguisher-classes#ClassD> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://w3id.org/eudpp/battery-extinguisher-classes#ClassF> .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#prefLabel> "Extinguisher classes applicable to a battery"@en .
+<https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> <http://www.w3.org/2004/02/skos/core#scopeNote> "Closed list of the five classes of EN 2:2005 — A, B, C, D and F — the standard to which BatteryPass-Ready long list attribute 24 pins the determination of the fire class. Two mapping traps for data sourced from NFPA 10 (US), which the Spherity Battery Pass ontology v0.1 follows: NFPA class K is EN 2 class F, kept here as a skos:altLabel on batext:ClassF; and NFPA class C denotes energised electrical equipment where EN 2 class C denotes flammable gases, so the letter C cannot be carried across unchanged."@en .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

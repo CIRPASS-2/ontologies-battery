@@ -1,0 +1,179 @@
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/eudpp/battery-labeling/0.2.1> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/bibliographicCitation> "EU DPP Battery Labeling Ontology. Draft version 0.2.1."@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/contributor> "Arnab Sinha"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/created> "2026-07-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/creator> "Marc-Andree Wolf"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/creator> "Nader Jelassi"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/description> "Module for the labels and symbols required on batteries in EU Digital Product Passports: separate collection symbol, the cadmium symbol and the lead symbol, extinguishing agent information and label symbol. Covers the battery-specific fields of the 'Symbols, labels and documentation of conformity' category of the BatteryPass-Ready Data Attribute Long List required by Regulation (EU) 2023/1542, and the Spherity Battery Pass Labeling entities."@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/issued> "2026-07-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/license> <https://www.apache.org/licenses/LICENSE-2.0> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/license> "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/modified> "2026-09-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542; BatteryPass-Ready Data Attribute Long List v1.3, attributes 21, 22, 24; Spherity Battery Pass ontology v0.1 (Labeling)"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/dc/terms/title> "EU DPP Battery Labeling Ontology"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/vocab/vann/preferredNamespacePrefix> "batlab" .
+<https://w3id.org/eudpp/battery-labeling> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/eudpp/battery-labeling#" .
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/2000/01/rdf-schema#comment> "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."@en .
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/2000/01/rdf-schema#label> "EU DPP Battery Labeling Ontology"@en .
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://w3id.org/eudpp/battery-extinguisher-classes> .
+<https://w3id.org/eudpp/battery-labeling> <http://www.w3.org/2002/07/owl#versionInfo> "Version 0.2.1 DRAFT"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/references
+<http://purl.org/dc/terms/references> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/source
+<http://purl.org/dc/terms/source> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp/battery-labeling#extinguishingAgent
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent"@en .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#comment> "Specification of the usable extinguishing agent, as one of the extinguisher classes of the battery-extinguisher-classes vocabulary. Retyped from a free-text datatype property in v0.2.0: the value set is now controlled."@en .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#label> "extinguishing agent"@en .
+<https://w3id.org/eudpp/battery-labeling#extinguishingAgent> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme> .
+# 
+# https://w3id.org/eudpp/battery-labeling#hasBatteryLabel
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery#Battery> .
+<https://w3id.org/eudpp/battery#Battery> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, labels"@en .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a battery to a label or symbol required by the Batteries Regulation."@en .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#hasBatteryLabel> <http://www.w3.org/2000/01/rdf-schema#label> "has battery label"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp/battery-labeling#cadmiumSymbol
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))"@en .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/2000/01/rdf-schema#comment> "Representation of the chemical symbol 'Cd' for cadmium, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,002 % cadmium by weight, independently of the lead symbol."@en .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#cadmiumSymbol> <http://www.w3.org/2000/01/rdf-schema#label> "symbol for cadmium"@en .
+# 
+# https://w3id.org/eudpp/battery-labeling#labelingSymbol
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://purl.org/dc/terms/references> "Spherity Battery Pass ontology v0.1, labelingSymbol"@en .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/2000/01/rdf-schema#comment> "Link to the image of the label symbol displayed on the battery."@en .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#labelingSymbol> <http://www.w3.org/2000/01/rdf-schema#label> "labeling symbol"@en .
+# 
+# https://w3id.org/eudpp/battery-labeling#leadSymbol
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))"@en .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/2000/01/rdf-schema#comment> "Representation of the chemical symbol 'Pb' for lead, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,004 % lead by weight, independently of the cadmium symbol."@en .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#leadSymbol> <http://www.w3.org/2000/01/rdf-schema#label> "symbol for lead"@en .
+# 
+# https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-labeling#BatteryLabel> .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 21 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(4), Annex VI Part B)"@en .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/2000/01/rdf-schema#comment> "Symbol indicating the necessity of separate collection of the battery (crossed-out wheeled bin), as a link to the symbol resource. Required on all batteries; the symbol itself is set out in Annex VI Part B."@en .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol> <http://www.w3.org/2000/01/rdf-schema#label> "separate collection symbol"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#Concept
+# 
+# https://w3id.org/eudpp/battery#Battery
+# 
+# https://w3id.org/eudpp/battery-labeling#BatteryLabel
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542"@en .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://www.w3.org/2000/01/rdf-schema#comment> "A label or symbol required on the battery or in its passport under Regulation (EU) 2023/1542 (e.g. separate collection symbol, cadmium symbol, lead symbol, carbon footprint label). Provisional battery-specific class: it is declared here only because the CORE has no cross-sectoral Labelling class yet. When that class lands (CIRPASS-2/ontologies-core#55), BatteryLabel is to be re-anchored as a specialisation of it rather than kept as a root class."@en .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-labeling> .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://www.w3.org/2000/01/rdf-schema#label> "Battery Label"@en .
+<https://w3id.org/eudpp/battery-labeling#BatteryLabel> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <https://github.com/CIRPASS-2/ontologies-core/issues/55> .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

@@ -1,0 +1,313 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2001/XMLSchema", "https://w3id.org/eudpp/battery", "https://w3id.org/eudpp", "https://w3id.org/eudpp/battery-materials" ],
+    "title" : {
+      "en" : "EU DPP Battery Materials Ontology"
+    },
+    "iri" : "https://w3id.org/eudpp/battery-materials",
+    "version" : "Version 0.3.0 DRAFT",
+    "author" : [ "Nader Jelassi", "Marc-Andree Wolf" ],
+    "description" : {
+      "en" : "Module for the chemistry and material composition specifics of batteries in EU Digital Product Passports: battery chemistry, typed through the battery-chemistries controlled vocabulary, and the internal location of materials within the battery, typed through the battery-locations controlled vocabulary. Extends the cross-sectoral MAT module of the CIRPASS-2 CORE ontology by direct reference."
+    },
+    "labels" : {
+      "en" : "EU DPP Battery Materials Ontology"
+    },
+    "comments" : {
+      "en" : "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Nader Jelassi",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Marc-Andree Wolf",
+        "type" : "label"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-07-07",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+        "type" : "iri"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "Version 0.3.0 DRAFT",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "EU DPP Battery Materials Ontology",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-chemistries",
+        "type" : "iri"
+      }, {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-locations",
+        "type" : "iri"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "en",
+        "value" : "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).",
+        "type" : "label"
+      }, {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://www.apache.org/licenses/LICENSE-2.0",
+        "type" : "iri"
+      } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "en",
+        "value" : "Arnab Sinha",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "batmat",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-09-01",
+        "type" : "label"
+      } ],
+      "bibliographicCitation" : [ {
+        "identifier" : "bibliographicCitation",
+        "language" : "en",
+        "value" : "EU DPP Battery Materials Ontology. Draft version 0.3.0.",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials#",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-07-07",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Thing"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://w3id.org/eudpp/battery-materials#BatteryLocation",
+    "baseIri" : "https://w3id.org/eudpp/battery-materials",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Spherity Battery Pass ontology v0.1, BatteryLocationEntity",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-locations",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BatteryLocation",
+      "en" : "Battery Location"
+    },
+    "comment" : {
+      "en" : "An internal location within the battery where a material or sub-component resides. Battery-specific class with no CORE anchor. Its value set is the battery-locations vocabulary, which declares the three locations named by Regulation (EU) 2023/1542, Annex XIII 2(a): cathode, anode and electrolyte."
+    },
+    "id" : "3"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery#Battery",
+    "baseIri" : "https://w3id.org/eudpp/battery",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Battery"
+    },
+    "attributes" : [ "external" ],
+    "id" : "6"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-materials#BatteryChemistry",
+    "baseIri" : "https://w3id.org/eudpp/battery-materials",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, BatteryChemistryEntity",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BatteryChemistry",
+      "en" : "Battery Chemistry"
+    },
+    "comment" : {
+      "en" : "The electrochemical composition of the battery, reflecting the active materials used in cathode and anode and, voluntarily, electrolyte. Specialises the cross-sectoral MaterialOfComposition class."
+    },
+    "id" : "5",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "https://w3id.org/eudpp#MaterialOfComposition",
+    "baseIri" : "https://w3id.org/eudpp",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MaterialOfComposition"
+    },
+    "subClasses" : [ "5" ],
+    "attributes" : [ "external" ],
+    "id" : "7"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "1",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "4",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "2",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "8",
+    "type" : "rdfs:SubClassOf"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "https://w3id.org/eudpp#hasMaterial",
+    "baseIri" : "https://w3id.org/eudpp",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "hasMaterial"
+    },
+    "domain" : "1",
+    "subproperty" : [ "2" ],
+    "attributes" : [ "object", "external" ],
+    "id" : "0"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-materials#hasBatteryLocation",
+    "baseIri" : "https://w3id.org/eudpp/battery-materials",
+    "range" : "3",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Spherity Battery Pass ontology v0.1, batteryMaterialLocation",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasBatteryLocation",
+      "en" : "has battery location"
+    },
+    "domain" : "5",
+    "comment" : {
+      "en" : "Links a battery material of composition to its internal location within the battery. The domain is restricted to BatteryChemistry rather than the cross-sectoral MaterialOfComposition, so that this battery-specific property is not asserted on materials of other sectors."
+    },
+    "attributes" : [ "object" ],
+    "id" : "4"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-materials#hasBatteryChemistry",
+    "baseIri" : "https://w3id.org/eudpp/battery-materials",
+    "range" : "5",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; Spherity Battery Pass ontology v0.1, batteryChemistry",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasBatteryChemistry",
+      "en" : "has battery chemistry"
+    },
+    "superproperty" : [ "0" ],
+    "domain" : "6",
+    "comment" : {
+      "en" : "Links a battery to its electrochemical chemistry. Declared as a sub-property of the CORE product-to-material link dpp:hasMaterial (CONNECTOR)."
+    },
+    "attributes" : [ "object" ],
+    "id" : "2"
+  }, {
+    "range" : "7",
+    "domain" : "5",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "8"
+  } ]
+}

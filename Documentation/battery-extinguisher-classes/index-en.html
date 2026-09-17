@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>EU DPP Battery Extinguisher Classes Vocabulary</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/eudpp/battery-extinguisher-classes#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/eudpp/battery-extinguisher-classes#","name":"EU DPP Battery Extinguisher Classes Vocabulary", "headline":"Document describing the ontology https://w3id.org/eudpp/battery-extinguisher-classes#", "dateReleased":"2026-08-19", "dateModified":"2026-09-01", "version":"Version 0.1.1 DRAFT", "author":[{"@type":"Person","name":"Marc-Andree Wolf"},{"@type":"Person","name":"Nader Jelassi"}], "contributor":[{"@type":"Person","name":"Arnab Sinha"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>EU DPP Battery Extinguisher Classes Vocabulary</h1>
+<h2>Release: 2026-08-19</h2>
+
+
+<dl>
+<dt>Modified on: 2026-09-01</dt>
+<dt>This version:</dt>
+<dd><a href="https://w3id.org/eudpp/battery-extinguisher-classes/0.1.1">https://w3id.org/eudpp/battery-extinguisher-classes/0.1.1</a></dd>
+<dt>Revision:</dt>
+<dd>Version 0.1.1 DRAFT</dd>
+<dt>Issued on:</dt>
+<dd>2026-08-19</dd>
+<dt>Authors:</dt>
+<dd>Marc-Andree Wolf</dd><dd>Nader Jelassi</dd>
+
+<dt>Contributors:</dt>
+<dd>Arnab Sinha</dd>
+
+<dt>Source:</dt>
+<dd><a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a></dd>
+
+<dt>See also:</dt>
+<dd><a href="https://w3id.org/eudpp/battery-labeling">https://w3id.org/eudpp/battery-labeling</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0" /></a></dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>EU DPP Battery Extinguisher Classes Vocabulary. Draft version 0.1.1.</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">EU DPP Battery Extinguisher Classes Vocabulary: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel">
+         <span>alt Label</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation">
+         <span>bibliographic Citation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor">
+         <span>contributor</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created">
+         <span>created</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition">
+         <span>definition</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">
+         <span>description</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#editorialNote"
+         title="http://www.w3.org/2004/02/skos/core#editorialNote">
+         <span>editorial Note</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept"
+         title="http://www.w3.org/2004/02/skos/core#hasTopConcept">
+         <span>has Top Concept</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">
+         <span>in Scheme</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">
+         <span>issued</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">
+         <span>license</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified">
+         <span>modified</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">
+         <span>notation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel">
+         <span>pref Label</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespacePrefix"
+         title="http://purl.org/vocab/vann/preferredNamespacePrefix">
+         <span>preferred Namespace Prefix</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri">
+         <span>preferred Namespace Uri</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references">
+         <span>references</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote">
+         <span>scope Note</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source">
+         <span>source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title">
+         <span>title</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">
+         <span>top Concept Of</span>
+      </a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#ClassA"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassA">Extinguisher class A</a>
+   </li>
+   <li>
+      <a href="#ClassB"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassB">Extinguisher class B</a>
+   </li>
+   <li>
+      <a href="#ClassC"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassC">Extinguisher class C</a>
+   </li>
+   <li>
+      <a href="#ClassD"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassD">Extinguisher class D</a>
+   </li>
+   <li>
+      <a href="#ClassF"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassF">Extinguisher class F</a>
+   </li>
+   <li>
+      <a href="#ExtinguisherClassScheme"
+         title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">EU DPP Battery Extinguisher Classes Vocabulary: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for EU DPP Battery Extinguisher Classes Vocabulary classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by EU DPP Battery Extinguisher Classes Vocabulary.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel"> <span>alt Label</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation"> <span>bibliographic Citation</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor"> <span>contributor</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created"> <span>created</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator"> <span>creator</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition"> <span>definition</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description"> <span>description</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#editorialNote" title="http://www.w3.org/2004/02/skos/core#editorialNote"> <span>editorial Note</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept"> <span>has Top Concept</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme"> <span>in Scheme</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued"> <span>issued</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license"> <span>license</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified"> <span>modified</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation"> <span>notation</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel"> <span>pref Label</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespacePrefix" title="http://purl.org/vocab/vann/preferredNamespacePrefix"> <span>preferred Namespace Prefix</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri"> <span>preferred Namespace Uri</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references"> <span>references</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote"> <span>scope Note</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source"> <span>source</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title"> <span>title</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf"> <span>top Concept Of</span> </a></li>
+ </ul>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#altLabel">
+  <h3>alt Label<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#altLabel</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/bibliographicCitation">
+  <h3>bibliographic Citation<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/bibliographicCitation</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/contributor">
+  <h3>contributor<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/contributor</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/created">
+  <h3>created<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/created</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/creator">
+  <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/creator</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#definition">
+  <h3>definition<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#definition</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/description">
+  <h3>description<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#editorialNote">
+  <h3>editorial Note<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#editorialNote</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#hasTopConcept">
+  <h3>has Top Concept<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#hasTopConcept</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#inScheme">
+  <h3>in Scheme<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#inScheme</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/issued">
+  <h3>issued<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/license">
+  <h3>license<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/modified">
+  <h3>modified<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#notation">
+  <h3>notation<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#notation</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#prefLabel">
+  <h3>pref Label<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#prefLabel</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <h3>preferred Namespace Prefix<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespacePrefix</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespaceUri">
+  <h3>preferred Namespace Uri<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespaceUri</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/references">
+  <h3>references<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/references</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#scopeNote">
+  <h3>scope Note<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#scopeNote</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/source">
+  <h3>source<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/source</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/title">
+  <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/title</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#topConceptOf">
+  <h3>top Concept Of<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#topConceptOf</p>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#ClassA" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassA">Extinguisher class A</a></li>
+  <li><a href="#ClassB" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassB">Extinguisher class B</a></li>
+  <li><a href="#ClassC" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassC">Extinguisher class C</a></li>
+  <li><a href="#ClassD" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassD">Extinguisher class D</a></li>
+  <li><a href="#ClassF" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassF">Extinguisher class F</a></li>
+  <li><a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a></li>
+ </ul>
+ <div class="entity" id="ClassA">
+  <h3>Extinguisher class A<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ClassA</p>
+  <div class="comment">
+   <span class="markdown">Fires involving combustible solids. Same scope in EN 2:2005 and in NFPA 10.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Fires involving combustible solids. Same scope in EN 2:2005 and in NFPA 10."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"A"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher class A"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClassB">
+  <h3>Extinguisher class B<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ClassB</p>
+  <div class="comment">
+   <span class="markdown">Fires involving flammable liquids or liquefiable solids. Same scope in EN 2:2005 and in NFPA 10.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Fires involving flammable liquids or liquefiable solids. Same scope in EN 2:2005 and in NFPA 10."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"B"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher class B"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClassC">
+  <h3>Extinguisher class C<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ClassC</p>
+  <div class="comment">
+   <span class="markdown">Fires involving flammable gases, per EN 2:2005.</span>
+  </div>
+  <dl>
+   <dt>
+    editorial note
+   </dt>
+   <dd>
+    Mapping trap. Under NFPA 10 the same letter denotes fires involving energised electrical equipment. The two readings are not interchangeable, so a value of C taken from a US-sourced data set must not be carried across unchecked.
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Fires involving flammable gases, per EN 2:2005."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#editorialNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#editorialNote">editorial Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Mapping trap. Under NFPA 10 the same letter denotes fires involving energised electrical equipment. The two readings are not interchangeable, so a value of C taken from a US-sourced data set must not be carried across unchecked."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"C"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher class C"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClassD">
+  <h3>Extinguisher class D<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ClassD</p>
+  <div class="comment">
+   <span class="markdown">Fires involving combustible metals. Same scope in EN 2:2005 and in NFPA 10; the class most likely to be relevant to lithium battery cells.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Fires involving combustible metals. Same scope in EN 2:2005 and in NFPA 10; the class most likely to be relevant to lithium battery cells."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"D"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher class D"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClassF">
+  <h3>Extinguisher class F<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ClassF</p>
+  <div class="comment">
+   <span class="markdown">Fires involving cooking media (vegetable or animal oils and fats), per EN 2:2005.</span>
+  </div>
+  <dl>
+   <dt>
+    editorial note
+   </dt>
+   <dd>
+    Renamed from batext:ClassK on 26 August 2026, when EN 2:2005 was settled as the reference standard in issue #8. Renamed outright rather than deprecated: the namespace has never been published under w3id.org.
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EN 2:2005, Classification of fires; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#altLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#altLabel">alt Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"K (NFPA 10)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Fires involving cooking media (vegetable or animal oils and fats), per EN 2:2005."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#editorialNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#editorialNote">editorial Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Renamed from batext:ClassK on 26 August 2026, when EN 2:2005 was settled as the reference standard in issue #8. Renamed outright rather than deprecated: the namespace has never been published under w3id.org."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"F"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher class F"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EN 2:2005 class F and NFPA 10 (US) class K have the same scope. The US letter is kept as skos:altLabel so that data sourced from NFPA 10, such as the Spherity Battery Pass ontology v0.1, still maps onto this concept."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ExtinguisherClassScheme" title="https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme">Extinguisher classes applicable to a battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ExtinguisherClassScheme">
+  <h3>Extinguisher classes applicable to a battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme</p>
+  <dl>
+   <dt>
+    editorial note
+   </dt>
+   <dd>
+    Re-check flag. ISO 3941:2026 introduces a class L for lithium-ion battery fires, which EN 2 does not have. The class is directly pertinent to batteries, so this vocabulary is to be re-checked if EN 2 is amended, or if the final labelling Implementing Act references a standard other than EN 2:2005.
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-extinguisher-classes">https://w3id.org/eudpp/battery-extinguisher-classes</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EN 2:2005, Classification of fires; BatteryPass-Ready Data Attribute Long List v1.3, attribute 24; Spherity Battery Pass ontology v0.1, extinguishingAgent"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#editorialNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#editorialNote">editorial Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Re-check flag. ISO 3941:2026 introduces a class L for lithium-ion battery fires, which EN 2 does not have. The class is directly pertinent to batteries, so this vocabulary is to be re-checked if EN 2 is amended, or if the final labelling Implementing Act references a standard other than EN 2:2005."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ClassA" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassA">Extinguisher class A</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ClassB" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassB">Extinguisher class B</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ClassC" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassC">Extinguisher class C</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ClassD" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassD">Extinguisher class D</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ClassF" title="https://w3id.org/eudpp/battery-extinguisher-classes#ClassF">Extinguisher class F</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Extinguisher classes applicable to a battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Closed list of the five classes of EN 2:2005 — A, B, C, D and F — the standard to which BatteryPass-Ready long list attribute 24 pins the determination of the fire class. Two mapping traps for data sourced from NFPA 10 (US), which the Spherity Battery Pass ontology v0.1 follows: NFPA class K is EN 2 class F, kept here as a skos:altLabel on batext:ClassF; and NFPA class C denotes energised electrical equipment where EN 2 class C denotes flammable gases, so the letter C cannot be carried across unchanged."@en</span>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

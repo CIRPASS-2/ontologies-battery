@@ -1,0 +1,951 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2001/XMLSchema", "https://w3id.org/eudpp", "http://www.w3.org/2004/02/skos/core" ],
+    "title" : {
+      "en" : "EU DPP Battery Categories Vocabulary"
+    },
+    "iri" : "https://w3id.org/eudpp/battery-categories",
+    "version" : "Version 0.1.1 DRAFT",
+    "author" : [ "Marc-Andree Wolf", "Nader Jelassi" ],
+    "description" : {
+      "en" : "Controlled vocabulary of the five battery categories defined in Article 3(1) of Regulation (EU) 2023/1542: portable (9), LMT (11), SLI (12), industrial (13) and electric vehicle (14). Declared as individuals of the cross-sectoral class dpp:ClassificationCode and attached to a battery through dpp:hasProductGroup; no term is declared in the battery namespace. The category conditions the scope of the battery passport."
+    },
+    "labels" : {
+      "en" : "EU DPP Battery Categories Vocabulary"
+    },
+    "comments" : {
+      "en" : "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Marc-Andree Wolf",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Nader Jelassi",
+        "type" : "label"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Regulation (EU) 2023/1542, Art. 3(1)(9), (11), (12), (13), (14); Regulation (EU) No 168/2013; Regulation (EU) 2018/858",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-08-18",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "Version 0.1.1 DRAFT",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+        "type" : "iri"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "EU DPP Battery Categories Vocabulary",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery",
+        "type" : "iri"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "en",
+        "value" : "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).",
+        "type" : "label"
+      }, {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://www.apache.org/licenses/LICENSE-2.0",
+        "type" : "iri"
+      } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "en",
+        "value" : "Arnab Sinha",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "batcat",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-09-01",
+        "type" : "label"
+      } ],
+      "bibliographicCitation" : [ {
+        "identifier" : "bibliographicCitation",
+        "language" : "en",
+        "value" : "EU DPP Battery Categories Vocabulary. Draft version 0.1.1.",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-categories#",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-08-18",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://w3id.org/eudpp#ClassificationCode",
+    "baseIri" : "https://w3id.org/eudpp",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ClassificationCode"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-categories#PortableBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(9)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "portable",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Portable battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is sealed, weighs 5 kg or less, is not designed specifically for industrial use and is neither an electric vehicle battery, an LMT battery, nor an SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "portable",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Out of scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "PortableBattery",
+        "en" : "Portable battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#LMTBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(11)",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "LMT",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Light means of transport battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is sealed, weighs 25 kg or less and is specifically designed to provide electric power for the traction of wheeled vehicles that can be powered by an electric motor alone or by a combination of motor and human power, including type-approved vehicles of category L within the meaning of Regulation (EU) No 168/2013 of the European Parliament and of the Council, and that is not an electric vehicle battery",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "LMT battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport.",
+          "type" : "label"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "LMT",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LMTBattery",
+        "en" : "Light means of transport battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#SLIBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(12)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "SLI",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Starting, lighting and ignition battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed to supply electric power for starting, lighting, or ignition and that can also be used for auxiliary or backup purposes in vehicles, other means of transport or machinery",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "SLI",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Out of scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "SLIBattery",
+        "en" : "Starting, lighting and ignition battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(14)",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "EV",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Electric vehicle battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of category L as provided for in Regulation (EU) No 168/2013, that weighs more than 25 kg, or a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of categories M, N or O as provided for in Regulation (EU) 2018/858",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "EV battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "EV",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "ElectricVehicleBattery",
+        "en" : "Electric vehicle battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#IndustrialBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(13)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "industrial",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Industrial battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed for industrial uses, intended for industrial uses after having been subject to preparation for repurposing or repurposing, or any other battery that weighs more than 5 kg and that is neither an electric vehicle battery, an LMT battery, nor an SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport above 2 kWh.",
+          "type" : "label"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "industrial",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "IndustrialBattery",
+        "en" : "Industrial battery"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "0"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ConceptScheme"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Battery categories per Regulation (EU) 2023/1542, Art. 3(1)",
+          "type" : "label"
+        } ],
+        "hasTopConcept" : [ {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#IndustrialBattery",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#LMTBattery",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#SLIBattery",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#PortableBattery",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery",
+          "type" : "iri"
+        } ],
+        "source" : [ {
+          "identifier" : "source",
+          "language" : "undefined",
+          "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+          "type" : "iri"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Battery passport scope (Art. 77): LMT, industrial above 2 kWh and electric vehicle batteries are in scope; portable and SLI batteries are not.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "BatteryCategoryScheme",
+        "en" : "Battery categories per Regulation (EU) 2023/1542, Art. 3(1)"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "1"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#Concept",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Concept"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-categories#PortableBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(9)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "portable",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Portable battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is sealed, weighs 5 kg or less, is not designed specifically for industrial use and is neither an electric vehicle battery, an LMT battery, nor an SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "portable",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Out of scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "PortableBattery",
+        "en" : "Portable battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#LMTBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(11)",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "LMT",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Light means of transport battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is sealed, weighs 25 kg or less and is specifically designed to provide electric power for the traction of wheeled vehicles that can be powered by an electric motor alone or by a combination of motor and human power, including type-approved vehicles of category L within the meaning of Regulation (EU) No 168/2013 of the European Parliament and of the Council, and that is not an electric vehicle battery",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "LMT battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport.",
+          "type" : "label"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "LMT",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LMTBattery",
+        "en" : "Light means of transport battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#SLIBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(12)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "SLI",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Starting, lighting and ignition battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed to supply electric power for starting, lighting, or ignition and that can also be used for auxiliary or backup purposes in vehicles, other means of transport or machinery",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "SLI",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Out of scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "SLIBattery",
+        "en" : "Starting, lighting and ignition battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(14)",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "EV",
+          "type" : "label"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Electric vehicle battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of category L as provided for in Regulation (EU) No 168/2013, that weighs more than 25 kg, or a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of categories M, N or O as provided for in Regulation (EU) 2018/858",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "EV battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "EV",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "ElectricVehicleBattery",
+        "en" : "Electric vehicle battery"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-categories#IndustrialBattery",
+      "baseIri" : "https://w3id.org/eudpp/battery-categories",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "Regulation (EU) 2023/1542, Art. 3(1)(13)",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "codeSet" : [ {
+          "identifier" : "codeSet",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "industrial",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Industrial battery",
+          "type" : "label"
+        } ],
+        "definition" : [ {
+          "identifier" : "definition",
+          "language" : "en",
+          "value" : "a battery that is specifically designed for industrial uses, intended for industrial uses after having been subject to preparation for repurposing or repurposing, or any other battery that weighs more than 5 kg and that is neither an electric vehicle battery, an LMT battery, nor an SLI battery",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme",
+          "type" : "iri"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "In scope of the battery passport above 2 kWh.",
+          "type" : "label"
+        } ],
+        "codeValue" : [ {
+          "identifier" : "codeValue",
+          "language" : "undefined",
+          "value" : "industrial",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "IndustrialBattery",
+        "en" : "Industrial battery"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "2"
+  } ]
+}

@@ -1,0 +1,223 @@
+@prefix : <https://w3id.org/eudpp/battery-metals#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/eudpp/battery-metals#> .
+
+<https://w3id.org/eudpp/battery-metals> rdf:type owl:Ontology ;
+                                         owl:versionIRI <https://w3id.org/eudpp/battery-metals/0.1.0> ;
+                                         <http://purl.org/dc/terms/bibliographicCitation> "EU DPP Battery Metals Vocabulary. Draft version 0.1.0."@en ;
+                                         <http://purl.org/dc/terms/contributor> "Arnab Sinha"@en ;
+                                         <http://purl.org/dc/terms/created> "2026-09-03"^^xsd:date ;
+                                         <http://purl.org/dc/terms/creator> "Marc-Andree Wolf"@en ,
+                                                                            "Nader Jelassi"@en ;
+                                         <http://purl.org/dc/terms/description> "The four metals whose recycled content Regulation (EU) 2023/1542, Art. 8(1) requires a battery to declare: cobalt, lead, lithium and nickel. Declared as individuals of the cross-sectoral class dpp:MaterialType and used as the value set of eudpp:hasMaterialType on a eudpp:MaterialOfComposition, so that a recycled-content figure can be attributed to a named metal. Corresponds to BatteryPass-Ready Data Attribute Long List v1.3, attributes 48 to 54."@en ;
+                                         <http://purl.org/dc/terms/issued> "2026-09-03"^^xsd:date ;
+                                         <http://purl.org/dc/terms/license> <https://www.apache.org/licenses/LICENSE-2.0> ,
+                                                                            "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en ;
+                                         <http://purl.org/dc/terms/modified> "2026-09-03"^^xsd:date ;
+                                         <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1) and Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attributes 48 to 54"@en ;
+                                         <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+                                         <http://purl.org/dc/terms/title> "EU DPP Battery Metals Vocabulary"@en ;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "batmet" ;
+                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/eudpp/battery-metals#" ;
+                                         rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). To be revisited when MAT v2 lands (ontologies-core#24, #25): #25 introduces eudpp:materialTypeScheme, to be added to these four concepts as it is to the ten chemistries, and recycledContentType, which splits pre- from post-consumer shares."@en ;
+                                         rdfs:label "EU DPP Battery Metals Vocabulary"@en ;
+                                         rdfs:seeAlso <https://w3id.org/eudpp/battery-chemistries> ,
+                                                      <https://w3id.org/eudpp/battery-materials> ;
+                                         owl:versionInfo "Version 0.1.0 DRAFT"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/references
+<http://purl.org/dc/terms/references> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/source
+<http://purl.org/dc/terms/source> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#hasTopConcept
+<http://www.w3.org/2004/02/skos/core#hasTopConcept> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+<http://www.w3.org/2004/02/skos/core#inScheme> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+<http://www.w3.org/2004/02/skos/core#notation> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+<http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#topConceptOf
+<http://www.w3.org/2004/02/skos/core#topConceptOf> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> rdf:type owl:Class .
+
+
+###  https://w3id.org/eudpp#MaterialType
+<https://w3id.org/eudpp#MaterialType> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/eudpp/battery-metals#BatteryMetalScheme
+:BatteryMetalScheme rdf:type owl:NamedIndividual ,
+                             <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                    <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1)"@en ;
+                    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-metals> ;
+                    rdfs:label "Battery metals subject to recycled content declaration, Art. 8(1)"@en ;
+                    <http://www.w3.org/2004/02/skos/core#hasTopConcept> :Cobalt ,
+                                                                        :Lead ,
+                                                                        :Lithium ,
+                                                                        :Nickel ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Battery metals subject to recycled content declaration, Art. 8(1)"@en ;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Art. 8(1) does not treat the four metals alike. For cobalt, lithium and nickel it asks for the share present in ACTIVE MATERIALS and recovered from battery manufacturing waste or post-consumer waste; for lead it asks for the share present in THE BATTERY and recovered from waste. The distinction is recorded on each concept and is not expressible in the CORE today."@en .
+
+
+###  https://w3id.org/eudpp/battery-metals#Cobalt
+:Cobalt rdf:type owl:NamedIndividual ,
+                 <http://www.w3.org/2004/02/skos/core#Concept> ,
+                 <https://w3id.org/eudpp#MaterialType> ;
+        <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1); BatteryPass-Ready Data Attribute Long List v1.3, attributes 49 and 52"@en ;
+        rdfs:isDefinedBy <https://w3id.org/eudpp/battery-metals> ;
+        rdfs:label "Cobalt"@en ;
+        <http://www.w3.org/2004/02/skos/core#altLabel> "Co"@en ;
+        <http://www.w3.org/2004/02/skos/core#inScheme> :BatteryMetalScheme ;
+        <http://www.w3.org/2004/02/skos/core#notation> "Co" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Cobalt"@en ;
+        <http://www.w3.org/2004/02/skos/core#scopeNote> "Recycled share is measured on the cobalt present in active materials, recovered from battery manufacturing waste or post-consumer waste. Long list attributes 49 and 52."@en ;
+        <http://www.w3.org/2004/02/skos/core#topConceptOf> :BatteryMetalScheme .
+
+
+###  https://w3id.org/eudpp/battery-metals#Lead
+:Lead rdf:type owl:NamedIndividual ,
+               <http://www.w3.org/2004/02/skos/core#Concept> ,
+               <https://w3id.org/eudpp#MaterialType> ;
+      <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1); BatteryPass-Ready Data Attribute Long List v1.3, attribute 54"@en ;
+      rdfs:isDefinedBy <https://w3id.org/eudpp/battery-metals> ;
+      rdfs:label "Lead"@en ;
+      <http://www.w3.org/2004/02/skos/core#altLabel> "Pb"@en ;
+      <http://www.w3.org/2004/02/skos/core#editorialNote> "Not to be confused with batchem:Pb, the lead-acid CELL CHEMISTRY of battery-chemistries. This concept is the METAL whose recycled content is declared. Different namespaces, different meanings."@en ;
+      <http://www.w3.org/2004/02/skos/core#inScheme> :BatteryMetalScheme ;
+      <http://www.w3.org/2004/02/skos/core#notation> "Pb" ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Lead"@en ;
+      <http://www.w3.org/2004/02/skos/core#scopeNote> "Lead is the exception in Art. 8(1): the recycled share is measured on the lead present in THE BATTERY, not in active materials, and recovered from waste without the manufacturing / post-consumer split. Long list attribute 54, which has no pre- and post-consumer counterpart."@en ;
+      <http://www.w3.org/2004/02/skos/core#topConceptOf> :BatteryMetalScheme .
+
+
+###  https://w3id.org/eudpp/battery-metals#Lithium
+:Lithium rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/2004/02/skos/core#Concept> ,
+                  <https://w3id.org/eudpp#MaterialType> ;
+         <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1); BatteryPass-Ready Data Attribute Long List v1.3, attributes 50 and 53"@en ;
+         rdfs:isDefinedBy <https://w3id.org/eudpp/battery-metals> ;
+         rdfs:label "Lithium"@en ;
+         <http://www.w3.org/2004/02/skos/core#altLabel> "Li"@en ;
+         <http://www.w3.org/2004/02/skos/core#inScheme> :BatteryMetalScheme ;
+         <http://www.w3.org/2004/02/skos/core#notation> "Li" ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Lithium"@en ;
+         <http://www.w3.org/2004/02/skos/core#scopeNote> "Recycled share is measured on the lithium present in active materials, recovered from battery manufacturing waste or post-consumer waste. Long list attributes 50 and 53."@en ;
+         <http://www.w3.org/2004/02/skos/core#topConceptOf> :BatteryMetalScheme .
+
+
+###  https://w3id.org/eudpp/battery-metals#Nickel
+:Nickel rdf:type owl:NamedIndividual ,
+                 <http://www.w3.org/2004/02/skos/core#Concept> ,
+                 <https://w3id.org/eudpp#MaterialType> ;
+        <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Art. 8(1); BatteryPass-Ready Data Attribute Long List v1.3, attributes 48 and 51"@en ;
+        rdfs:isDefinedBy <https://w3id.org/eudpp/battery-metals> ;
+        rdfs:label "Nickel"@en ;
+        <http://www.w3.org/2004/02/skos/core#altLabel> "Ni"@en ;
+        <http://www.w3.org/2004/02/skos/core#inScheme> :BatteryMetalScheme ;
+        <http://www.w3.org/2004/02/skos/core#notation> "Ni" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Nickel"@en ;
+        <http://www.w3.org/2004/02/skos/core#scopeNote> "Recycled share is measured on the nickel present in active materials, recovered from battery manufacturing waste or post-consumer waste. Long list attributes 48 and 51."@en ;
+        <http://www.w3.org/2004/02/skos/core#topConceptOf> :BatteryMetalScheme .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

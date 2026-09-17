@@ -1,0 +1,608 @@
+<https://w3id.org/eudpp/battery-performance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/eudpp/battery-performance> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/eudpp/battery-performance/0.3.0> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/bibliographicCitation> "EU DPP Battery Performance Ontology. Draft version 0.3.0."@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/contributor> "Arnab Sinha"@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/created> "2026-07-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/creator> "Marc-Andree Wolf"@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/creator> "Nader Jelassi"@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/description> "Module for the electrochemical performance, durability and in-use state of batteries in EU Digital Product Passports (capacity, voltage, power capability, round trip efficiency, self-discharge, internal resistance, lifetime, temperature exposure, accidents), covering the 'Performance and durability' category of the BatteryPass-Ready Data Attribute Long List (attributes 59-100) required by Regulation (EU) 2023/1542, Annex XIII."@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/issued> "2026-07-07"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/license> <https://www.apache.org/licenses/LICENSE-2.0> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/license> "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/modified> "2026-09-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3"@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/dc/terms/title> "EU DPP Battery Performance Ontology"@en .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/vocab/vann/preferredNamespacePrefix> "batperf" .
+<https://w3id.org/eudpp/battery-performance> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/eudpp/battery-performance#" .
+<https://w3id.org/eudpp/battery-performance> <http://www.w3.org/2000/01/rdf-schema#comment> "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."@en .
+<https://w3id.org/eudpp/battery-performance> <http://www.w3.org/2000/01/rdf-schema#label> "EU DPP Battery Performance Ontology"@en .
+<https://w3id.org/eudpp/battery-performance> <http://www.w3.org/2002/07/owl#versionInfo> "Version 0.3.0 DRAFT"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/bibliographicCitation
+<http://purl.org/dc/terms/bibliographicCitation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/references
+<http://purl.org/dc/terms/references> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/source
+<http://purl.org/dc/terms/source> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# https://w3id.org/eudpp/battery-performance#measurementUnit
+<https://w3id.org/eudpp/battery-performance#measurementUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<https://w3id.org/eudpp/battery-performance#measurementUnit> <http://www.w3.org/2000/01/rdf-schema#comment> "The measurement unit of the annotated datatype property, as an IRI of the SI Digital Framework (https://si-digital-framework.org/SI/units/). Used because the values are plain typed literals in this pass and not dpp:QuantitativeProperty instances, so dpp:hasMeasurementUnit - an object property on QuantitativeProperty - does not apply. Where the unit has no IRI in the framework the annotation is absent and the unit stays in rdfs:comment; the cases are listed in the module header."@en .
+<https://w3id.org/eudpp/battery-performance#measurementUnit> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#measurementUnit> <http://www.w3.org/2000/01/rdf-schema#label> "measurement unit"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp#hasProperty
+<https://w3id.org/eudpp#hasProperty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+# 
+# https://w3id.org/eudpp/battery-performance#hasBatteryDurability
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/eudpp#hasProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery#Battery> .
+<https://w3id.org/eudpp/battery#Battery> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/eudpp/battery-performance#BatteryDurability> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a battery to its durability data. Specialises the cross-sectoral dpp:hasProperty (Product -> Property); the chain BatteryDurability = dpp:Durability = QualityIndicator = QuantitativeProperty = Property was verified in P_DPP v2.0.0."@en .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryDurability> <http://www.w3.org/2000/01/rdf-schema#label> "has battery durability"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#hasBatteryPerformance
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/eudpp#hasProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery#Battery> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a battery to its electrochemical performance and in-use state data."@en .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#label> "has battery performance"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/eudpp#hasProperty> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery#Battery> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a battery to one dated record of its in-use state. A battery carries as many records as there are readings; no ordering property is declared, the as-of date orders the series."@en .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#label> "has battery state record"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#hasTemperatureExposure
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/eudpp#hasProperty> .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery#Battery> .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/eudpp/battery-performance#TemperatureExposure> .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a battery to its in-use thermal exposure data."@en .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#hasTemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#label> "has temperature exposure"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp/battery-performance#accidentInformation
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#AccidentEvent> .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 100"@en .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/2000/01/rdf-schema#comment> "Information on accidents affecting the battery, including when incorporated in equipment it is powering, as a link to the relevant resource."@en .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#accidentInformation> <http://www.w3.org/2000/01/rdf-schema#label> "information on accidents"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#asOfDate
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTimeStamp> .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Annex XIII 4"@en .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/2000/01/rdf-schema#comment> "The date and time the values of this record were read. xsd:dateTimeStamp rather than xsd:dateTime: the time zone offset is then mandatory, so no separate offset property is needed."@en .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#asOfDate> <http://www.w3.org/2000/01/rdf-schema#label> "as-of date"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 87"@en .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/2000/01/rdf-schema#comment> "Measurement parameter for 'Expected lifetime: Number of charge-discharge cycles': applied charge and discharge rate in terms of rated capacity (C-rate) of the relevant cycle-life reference test. Unit: ampere per ampere-hour (A/Ah)."@en .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest> <http://www.w3.org/2000/01/rdf-schema#label> "C-rate of relevant cycle-life test"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#capacityFade
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 61"@en .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/2000/01/rdf-schema#comment> "The decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity as declared by the manufacturer. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#capacityFade> <http://www.w3.org/2000/01/rdf-schema#label> "capacity fade"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryDurability> .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 90"@en .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/2000/01/rdf-schema#comment> "The percentage of SOCE (State of Certified Energy), above which the battery is still considered operational as EV battery in its current life, as provided by the economic operator. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion> <http://www.w3.org/2000/01/rdf-schema#label> "capacity threshold for exhaustion"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#capacityThroughput
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 89"@en .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/2000/01/rdf-schema#comment> "The overall sum of the capacity throughput over the battery lifetime at a specific time during usage. Unit: ampere-hour (Ah)."@en .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#capacityThroughput> <http://www.w3.org/2000/01/rdf-schema#label> "capacity throughput"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 62"@en .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#comment> "The usable battery energy according to the procedure in the UN GTR No 22 as determined during the certification of the vehicle. Unit: kilowatt-hour (kWh)."@en .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#label> "certified usable battery energy"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 79"@en .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The change of the self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at aging parameter x, e.g. after a certain amount of storage time or number of cycles. Unit: percent per month (%/month)."@en .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#label> "current self-discharge rate"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 86"@en .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/2000/01/rdf-schema#comment> "The reference test for 'Expected lifetime: Number of charge-discharge cycles'."@en .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest> <http://www.w3.org/2000/01/rdf-schema#label> "cycle-life reference test"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#energyThroughput
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 88"@en .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/2000/01/rdf-schema#comment> "The overall sum of the energy throughput over the battery lifetime at a specific time during usage. Unit: kilowatt-hour (kWh)."@en .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#energyThroughput> <http://www.w3.org/2000/01/rdf-schema#label> "energy throughput"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryDurability> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 83"@en .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/2000/01/rdf-schema#comment> "Expected lifetime under the reference conditions for which the battery has been designed, in calendar years. Unit: year."@en .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears> <http://www.w3.org/2000/01/rdf-schema#label> "expected lifetime in calendar years"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryDurability> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 84"@en .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/2000/01/rdf-schema#comment> "Expected lifetime under the reference conditions for which the battery has been designed, in number of charge-discharge cycles (except for non-cycle applications)."@en .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles> <http://www.w3.org/2000/01/rdf-schema#label> "expected lifetime: number of charge-discharge cycles"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#initialInternalResistance
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 81"@en .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/2000/01/rdf-schema#comment> "'Quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions' (IEV 482 03 36), at begin of life, for battery cell and pack (module recommended). Unit: ohm."@en .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <http://www.w3.org/2000/01/rdf-schema#label> "initial internal resistance of battery cell and pack"@en .
+<https://w3id.org/eudpp/battery-performance#initialInternalResistance> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/ohm> .
+# 
+# https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 74"@en .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#comment> "The ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge (see Regulation (EU) 2023/1542, Annex IV (6)). Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#label> "initial round trip energy efficiency"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 78"@en .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#comment> "The self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at begin of life. Unit: percent per month (%/month)."@en .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate> <http://www.w3.org/2000/01/rdf-schema#label> "initial self-discharge rate"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#internalResistanceIncrease
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 82"@en .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/2000/01/rdf-schema#comment> "The increase over time and upon usage of internal resistance, for the pack (cell and module recommended). Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#internalResistanceIncrease> <http://www.w3.org/2000/01/rdf-schema#label> "internal resistance increase of pack"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 72"@en .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/2000/01/rdf-schema#comment> "The value of maximum permitted power the battery is rated for and reflects the data relevant for power limits. Unit: watt (W). Declared as Integer [W] in the BatteryPass-Ready long list; xsd:decimal retained per the Gap Analysis decision (open question to BatteryPass-Ready)."@en .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <http://www.w3.org/2000/01/rdf-schema#label> "maximum permitted battery power"@en .
+<https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/watt> .
+# 
+# https://w3id.org/eudpp/battery-performance#maximumVoltage
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 67"@en .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/2000/01/rdf-schema#comment> "The upper voltage limit that the safe operation of the battery is rated for. Unit: volt (V)."@en .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <http://www.w3.org/2000/01/rdf-schema#label> "maximum voltage"@en .
+<https://w3id.org/eudpp/battery-performance#maximumVoltage> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/volt> .
+# 
+# https://w3id.org/eudpp/battery-performance#minimumVoltage
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 66"@en .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/2000/01/rdf-schema#comment> "The lower voltage limit that the safe operation of the battery is rated for. Unit: volt (V)."@en .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <http://www.w3.org/2000/01/rdf-schema#label> "minimum voltage"@en .
+<https://w3id.org/eudpp/battery-performance#minimumVoltage> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/volt> .
+# 
+# https://w3id.org/eudpp/battery-performance#nominalVoltage
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 68"@en .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#comment> "The suitable approximate value of the voltage used to designate or identify the battery. Unit: volt (V)."@en .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <http://www.w3.org/2000/01/rdf-schema#label> "nominal voltage"@en .
+<https://w3id.org/eudpp/battery-performance#nominalVoltage> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/volt> .
+# 
+# https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 98"@en .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/2000/01/rdf-schema#comment> "The number of occasions, in which voltage has dropped below the lower operational limit as provided in the battery passport. In-use event counter."@en .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents> <http://www.w3.org/2000/01/rdf-schema#label> "number of deep discharge events"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#numberOfFullCycles
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 85"@en .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/2000/01/rdf-schema#comment> "In-use number of (full) charging and discharging cycles."@en .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#numberOfFullCycles> <http://www.w3.org/2000/01/rdf-schema#label> "number of full charging and discharging cycles"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 99"@en .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/2000/01/rdf-schema#comment> "The number of occasions, in which voltage has increased above the upper operational limit as provided in the battery passport. In-use event counter."@en .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents> <http://www.w3.org/2000/01/rdf-schema#label> "number of overcharge events"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#originalPowerCapability
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 69"@en .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The amount of energy that a battery is capable to provide over a given period of time under reference conditions. Unit: watt (W)."@en .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <http://www.w3.org/2000/01/rdf-schema#label> "original power capability"@en .
+<https://w3id.org/eudpp/battery-performance#originalPowerCapability> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/watt> .
+# 
+# https://w3id.org/eudpp/battery-performance#powerFade
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 71"@en .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/2000/01/rdf-schema#comment> "The decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#powerFade> <http://www.w3.org/2000/01/rdf-schema#label> "power fade"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#powerToEnergyRatio
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 73"@en .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/2000/01/rdf-schema#comment> "The suitable approximate value of the power capability used to designate or identify the battery, while the battery energy is determined in reference conditions to be defined. Unit: watt per watt-hour (W/Wh). Declared as Integer [W/Wh] in the BatteryPass-Ready long list; xsd:decimal retained per the Gap Analysis decision (open question to BatteryPass-Ready)."@en .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#powerToEnergyRatio> <http://www.w3.org/2000/01/rdf-schema#label> "ratio between nominal battery power and battery energy"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#ratedCapacity
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 59"@en .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/2000/01/rdf-schema#comment> "The total number of ampere-hours that can be withdrawn from a fully charged battery under reference conditions. Unit: ampere-hour (Ah), or milliampere-hour (mAh) for LMT batteries."@en .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#ratedCapacity> <http://www.w3.org/2000/01/rdf-schema#label> "rated capacity"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#remainingCapacity
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 60"@en .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/2000/01/rdf-schema#comment> "The corresponding in-use data attribute to rated capacity. Unit: ampere-hour (Ah)."@en .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#remainingCapacity> <http://www.w3.org/2000/01/rdf-schema#label> "remaining capacity"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#remainingPowerCapability
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 70"@en .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/2000/01/rdf-schema#comment> "The amount of energy that a battery is capable to provide over a given period of time under reference conditions at a distinct point in time during its usage. Unit: watt (W)."@en .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <http://www.w3.org/2000/01/rdf-schema#label> "remaining power capability"@en .
+<https://w3id.org/eudpp/battery-performance#remainingPowerCapability> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/watt> .
+# 
+# https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 76"@en .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#comment> "The in-use analogy to the initial round trip energy efficiency: the ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency> <http://www.w3.org/2000/01/rdf-schema#label> "remaining round trip energy efficiency"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 63"@en .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#comment> "The usable battery energy at the present point in the lifetime of a battery as determined according to the procedure in the UN GTR No 22. Unit: kilowatt-hour (kWh)."@en .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy> <http://www.w3.org/2000/01/rdf-schema#label> "remaining usable battery energy"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryPerformance> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 75"@en .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/2000/01/rdf-schema#comment> "The ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge, measured at 50% of cycle life (see Regulation (EU) 2023/1542, Annex IV (6)). Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife> <http://www.w3.org/2000/01/rdf-schema#label> "round trip energy efficiency at 50% of cycle life"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 77"@en .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/2000/01/rdf-schema#comment> "The decrease of round trip energy efficiency as percentage. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade> <http://www.w3.org/2000/01/rdf-schema#label> "energy round trip efficiency fade"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 80"@en .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/2000/01/rdf-schema#comment> "The change of self-discharge over time and usage, as percentage calculated from the initial and current self-discharge rate. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution> <http://www.w3.org/2000/01/rdf-schema#label> "evolution of self-discharge rates"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 64"@en .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/2000/01/rdf-schema#comment> "The measured or on-board usable battery energy performance at a specific point in its lifetime, expressed as a percentage of the certified usable battery energy. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy> <http://www.w3.org/2000/01/rdf-schema#label> "state of certified energy (SOCE)"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#stateOfCharge
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 65"@en .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/2000/01/rdf-schema#comment> "The available energy or charge in a battery expressed as a percentage of rated capacity as declared by the manufacturer. When the battery's state of health is no longer equal to its initial condition, SoC refers to the maximum energy or charge that can be stored in the battery at the time of charging. Unit: percent (%)."@en .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#stateOfCharge> <http://www.w3.org/2000/01/rdf-schema#label> "state of charge (SoC)"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#temperatureInformation
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 91"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/2000/01/rdf-schema#comment> "Temperature information regarding operating environmental conditions. Unit: degree Celsius (°C)."@en .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <http://www.w3.org/2000/01/rdf-schema#label> "temperature information"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureInformation> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/degreeCelsius> .
+# 
+# https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#TemperatureExposure> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 92"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The lower boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "temperature range idle state, lower boundary"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/degreeCelsius> .
+# 
+# https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#TemperatureExposure> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 93"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The upper boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "temperature range idle state, upper boundary"@en .
+<https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/degreeCelsius> .
+# 
+# https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 96"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The aggregated time, in which the battery is charged, while temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "time spent charging during extreme temperatures above boundary"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/minute> .
+# 
+# https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 97"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The aggregated time, in which the battery is charged, while temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "time spent charging during extreme temperatures below boundary"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/minute> .
+# 
+# https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 94"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The aggregated time, in which temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute."@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "time spent in extreme temperatures above boundary"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/minute> .
+# 
+# https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/eudpp/battery-performance#BatteryStateRecord> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 95"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#comment> "The aggregated time, in which temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute."@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <http://www.w3.org/2000/01/rdf-schema#label> "time spent in extreme temperatures below boundary"@en .
+<https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary> <https://w3id.org/eudpp/battery-performance#measurementUnit> <https://si-digital-framework.org/SI/units/minute> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/eudpp#Durability
+<https://w3id.org/eudpp#Durability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://w3id.org/eudpp#ProductEvent
+<https://w3id.org/eudpp#ProductEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://w3id.org/eudpp#Property
+<https://w3id.org/eudpp#Property> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://w3id.org/eudpp/battery#Battery
+# 
+# https://w3id.org/eudpp/battery-performance#AccidentEvent
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/eudpp#ProductEvent> .
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attribute 100"@en .
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "An accident affecting the battery, including when incorporated in the equipment it is powering. Specialises the generic ProductEvent class of the CORE event module, of which MaintenanceEvent is a sibling: an accident is not a maintenance operation. The link to the battery is provided by the CORE event mechanism (no dedicated object property in this module)."@en .
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#AccidentEvent> <http://www.w3.org/2000/01/rdf-schema#label> "Accident Event"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#BatteryDurability
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/eudpp#Durability> .
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attributes 83-90"@en .
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://www.w3.org/2000/01/rdf-schema#comment> "Battery-specific durability data: expected lifetime in calendar years and in charge-discharge cycles, number of full cycles, energy and capacity throughput, capacity threshold for exhaustion. Specialises the cross-sectoral Durability quality indicator (ESPR Art. 2 (22))."@en .
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#BatteryDurability> <http://www.w3.org/2000/01/rdf-schema#label> "Battery Durability"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#BatteryPerformance
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/eudpp#Property> .
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, category 'Performance and durability'"@en .
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#comment> "Container for the electrochemical performance and in-use state parameters of a battery: capacity (rated, remaining, fade), voltage (minimum, maximum, nominal), power capability, round trip energy efficiency, self-discharge rates, internal resistance, cycle-life test parameters, and in-use event counters. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself, and would otherwise inherit hasMeasurementUnit, which has no meaning on a container."@en .
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#BatteryPerformance> <http://www.w3.org/2000/01/rdf-schema#label> "Battery Performance"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#BatteryStateRecord
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/eudpp#Property> .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://purl.org/dc/terms/references> "Regulation (EU) 2023/1542, Annex XIII 4 and Annex VII Part B; BatteryPass-Ready Data Attribute Long List v1.3, column 'Data behavioural characteristic'"@en .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://purl.org/dc/terms/source> <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#comment> "A dated record of the values a battery management system updates during operational life. One record per reading; the series of records is the history required by Annex XIII 4 and Annex VII Part B, which describe data that changes over the life of the product rather than a single snapshot. Anchored under dpp:Property and deliberately not under dpp:QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself, and would otherwise inherit dpp:hasMeasurementUnit, which has no meaning on a container. Which properties belong here follows the 'Data behavioural characteristic: static vs. dynamic' column of the BatteryPass-Ready Data Attribute Long List v1.3, not a local judgement."@en .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#BatteryStateRecord> <http://www.w3.org/2000/01/rdf-schema#label> "Battery State Record"@en .
+# 
+# https://w3id.org/eudpp/battery-performance#TemperatureExposure
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/eudpp#Property> .
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://purl.org/dc/terms/references> "BatteryPass-Ready Data Attribute Long List v1.3, attributes 91-97"@en .
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#comment> "Container for the thermal exposure of the battery in use: operating temperature information, idle-state temperature range boundaries, and aggregated time spent (and spent charging) in extreme temperatures outside those boundaries. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself."@en .
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/eudpp/battery-performance> .
+<https://w3id.org/eudpp/battery-performance#TemperatureExposure> <http://www.w3.org/2000/01/rdf-schema#label> "Temperature Exposure"@en .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

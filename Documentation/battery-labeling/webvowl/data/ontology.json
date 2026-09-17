@@ -1,0 +1,420 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "https://w3id.org/eudpp/battery-labeling", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2001/XMLSchema", "https://w3id.org/eudpp/battery", "http://www.w3.org/2004/02/skos/core" ],
+    "title" : {
+      "en" : "EU DPP Battery Labeling Ontology"
+    },
+    "iri" : "https://w3id.org/eudpp/battery-labeling",
+    "version" : "Version 0.2.1 DRAFT",
+    "author" : [ "Nader Jelassi", "Marc-Andree Wolf" ],
+    "description" : {
+      "en" : "Module for the labels and symbols required on batteries in EU Digital Product Passports: separate collection symbol, the cadmium symbol and the lead symbol, extinguishing agent information and label symbol. Covers the battery-specific fields of the 'Symbols, labels and documentation of conformity' category of the BatteryPass-Ready Data Attribute Long List required by Regulation (EU) 2023/1542, and the Spherity Battery Pass Labeling entities."
+    },
+    "labels" : {
+      "en" : "EU DPP Battery Labeling Ontology"
+    },
+    "comments" : {
+      "en" : "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Nader Jelassi",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Marc-Andree Wolf",
+        "type" : "label"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Regulation (EU) 2023/1542; BatteryPass-Ready Data Attribute Long List v1.3, attributes 21, 22, 24; Spherity Battery Pass ontology v0.1 (Labeling)",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-07-07",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "Version 0.2.1 DRAFT",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+        "type" : "iri"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "EU DPP Battery Labeling Ontology",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-extinguisher-classes",
+        "type" : "iri"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "en",
+        "value" : "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).",
+        "type" : "label"
+      }, {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://www.apache.org/licenses/LICENSE-2.0",
+        "type" : "iri"
+      } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "en",
+        "value" : "Arnab Sinha",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "batlab",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-09-01",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling#",
+        "type" : "label"
+      } ],
+      "bibliographicCitation" : [ {
+        "identifier" : "bibliographicCitation",
+        "language" : "en",
+        "value" : "EU DPP Battery Labeling Ontology. Draft version 0.2.1.",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-07-07",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "owl:Class"
+  }, {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "4",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "11",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "9",
+    "type" : "rdfs:Datatype"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#BatteryLabel",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Regulation (EU) 2023/1542",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+        "type" : "iri"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://github.com/CIRPASS-2/ontologies-core/issues/55",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BatteryLabel",
+      "en" : "Battery Label"
+    },
+    "comment" : {
+      "en" : "A label or symbol required on the battery or in its passport under Regulation (EU) 2023/1542 (e.g. separate collection symbol, cadmium symbol, lead symbol, carbon footprint label). Provisional battery-specific class: it is declared here only because the CORE has no cross-sectoral Labelling class yet. When that class lands (CIRPASS-2/ontologies-core#55), BatteryLabel is to be re-anchored as a specialisation of it rather than kept as a root class."
+    },
+    "id" : "0"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#Concept",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Concept"
+    },
+    "attributes" : [ "external" ],
+    "id" : "3"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "2",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "4",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery#Battery",
+    "baseIri" : "https://w3id.org/eudpp/battery",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Battery"
+    },
+    "attributes" : [ "external" ],
+    "id" : "6"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "11",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "9",
+    "label" : {
+      "IRI-based" : "anyURI"
+    }
+  } ],
+  "property" : [ {
+    "id" : "1",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "5",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "7",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "8",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "10",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "12",
+    "type" : "owl:objectProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#leadSymbol",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "2",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "leadSymbol",
+      "en" : "symbol for lead"
+    },
+    "domain" : "0",
+    "comment" : {
+      "en" : "Representation of the chemical symbol 'Pb' for lead, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,004 % lead by weight, independently of the cadmium symbol."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "1"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#separateCollectionSymbol",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "4",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 21 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(4), Annex VI Part B)",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "separateCollectionSymbol",
+      "en" : "separate collection symbol"
+    },
+    "domain" : "0",
+    "comment" : {
+      "en" : "Symbol indicating the necessity of separate collection of the battery (crossed-out wheeled bin), as a link to the symbol resource. Required on all batteries; the symbol itself is set out in Annex VI Part B."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "5"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#extinguishingAgent",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "3",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 24 (Regulation (EU) 2023/1542, Annex VI Part A (9)); Spherity Battery Pass ontology v0.1, extinguishingAgent",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-extinguisher-classes#ExtinguisherClassScheme",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "extinguishingAgent",
+      "en" : "extinguishing agent"
+    },
+    "domain" : "0",
+    "comment" : {
+      "en" : "Specification of the usable extinguishing agent, as one of the extinguisher classes of the battery-extinguisher-classes vocabulary. Retyped from a free-text datatype property in v0.2.0: the value set is now controlled."
+    },
+    "attributes" : [ "object" ],
+    "id" : "7"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#labelingSymbol",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Spherity Battery Pass ontology v0.1, labelingSymbol",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "labelingSymbol",
+      "en" : "labeling symbol"
+    },
+    "domain" : "0",
+    "comment" : {
+      "en" : "Link to the image of the label symbol displayed on the battery."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "8"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#cadmiumSymbol",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "11",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 22 (Regulation (EU) 2023/1542, Annex XIII (1s), Art. 13(5))",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "cadmiumSymbol",
+      "en" : "symbol for cadmium"
+    },
+    "domain" : "0",
+    "comment" : {
+      "en" : "Representation of the chemical symbol 'Cd' for cadmium, as a link to the symbol resource. Its legal trigger is its own: the symbol is required for batteries containing more than 0,002 % cadmium by weight, independently of the lead symbol."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "10"
+  }, {
+    "iri" : "https://w3id.org/eudpp/battery-labeling#hasBatteryLabel",
+    "baseIri" : "https://w3id.org/eudpp/battery-labeling",
+    "range" : "0",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-labeling",
+        "type" : "iri"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "Spherity Battery Pass ontology v0.1, labels",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasBatteryLabel",
+      "en" : "has battery label"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Links a battery to a label or symbol required by the Batteries Regulation."
+    },
+    "attributes" : [ "object" ],
+    "id" : "12"
+  } ]
+}

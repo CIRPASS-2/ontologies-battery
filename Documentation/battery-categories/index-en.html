@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>EU DPP Battery Categories Vocabulary</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/eudpp/battery-categories#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/eudpp/battery-categories#","name":"EU DPP Battery Categories Vocabulary", "headline":"Document describing the ontology https://w3id.org/eudpp/battery-categories#", "dateReleased":"2026-08-18", "dateModified":"2026-09-01", "version":"Version 0.1.1 DRAFT", "author":[{"@type":"Person","name":"Marc-Andree Wolf"},{"@type":"Person","name":"Nader Jelassi"}], "contributor":[{"@type":"Person","name":"Arnab Sinha"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>EU DPP Battery Categories Vocabulary</h1>
+<h2>Release: 2026-08-18</h2>
+
+
+<dl>
+<dt>Modified on: 2026-09-01</dt>
+<dt>This version:</dt>
+<dd><a href="https://w3id.org/eudpp/battery-categories/0.1.1">https://w3id.org/eudpp/battery-categories/0.1.1</a></dd>
+<dt>Revision:</dt>
+<dd>Version 0.1.1 DRAFT</dd>
+<dt>Issued on:</dt>
+<dd>2026-08-18</dd>
+<dt>Authors:</dt>
+<dd>Marc-Andree Wolf</dd><dd>Nader Jelassi</dd>
+
+<dt>Contributors:</dt>
+<dd>Arnab Sinha</dd>
+
+<dt>Source:</dt>
+<dd><a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a></dd>
+
+<dt>See also:</dt>
+<dd><a href="https://w3id.org/eudpp/battery">https://w3id.org/eudpp/battery</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0" /></a></dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>EU DPP Battery Categories Vocabulary. Draft version 0.1.1.</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">EU DPP Battery Categories Vocabulary: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel">
+         <span>alt Label</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation">
+         <span>bibliographic Citation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/eudpp#codeSet" title="https://w3id.org/eudpp#codeSet">
+         <span>code Set</span>
+      </a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/eudpp#codeValue" title="https://w3id.org/eudpp#codeValue">
+         <span>code Value</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor">
+         <span>contributor</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created">
+         <span>created</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition">
+         <span>definition</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">
+         <span>description</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept"
+         title="http://www.w3.org/2004/02/skos/core#hasTopConcept">
+         <span>has Top Concept</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">
+         <span>in Scheme</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">
+         <span>issued</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">
+         <span>license</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified">
+         <span>modified</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation">
+         <span>notation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel">
+         <span>pref Label</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespacePrefix"
+         title="http://purl.org/vocab/vann/preferredNamespacePrefix">
+         <span>preferred Namespace Prefix</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri">
+         <span>preferred Namespace Uri</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references">
+         <span>references</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote">
+         <span>scope Note</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source">
+         <span>source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title">
+         <span>title</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf">
+         <span>top Concept Of</span>
+      </a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#BatteryCategoryScheme"
+         title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a>
+   </li>
+   <li>
+      <a href="#ElectricVehicleBattery"
+         title="https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery">Electric vehicle battery</a>
+   </li>
+   <li>
+      <a href="#IndustrialBattery"
+         title="https://w3id.org/eudpp/battery-categories#IndustrialBattery">Industrial battery</a>
+   </li>
+   <li>
+      <a href="#LMTBattery"
+         title="https://w3id.org/eudpp/battery-categories#LMTBattery">Light means of transport battery</a>
+   </li>
+   <li>
+      <a href="#PortableBattery"
+         title="https://w3id.org/eudpp/battery-categories#PortableBattery">Portable battery</a>
+   </li>
+   <li>
+      <a href="#SLIBattery"
+         title="https://w3id.org/eudpp/battery-categories#SLIBattery">Starting, lighting and ignition battery</a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">EU DPP Battery Categories Vocabulary: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for EU DPP Battery Categories Vocabulary classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by EU DPP Battery Categories Vocabulary.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel"> <span>alt Label</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation"> <span>bibliographic Citation</span> </a></li>
+  <li><a href="#https://w3id.org/eudpp#codeSet" title="https://w3id.org/eudpp#codeSet"> <span>code Set</span> </a></li>
+  <li><a href="#https://w3id.org/eudpp#codeValue" title="https://w3id.org/eudpp#codeValue"> <span>code Value</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor"> <span>contributor</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created"> <span>created</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator"> <span>creator</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition"> <span>definition</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description"> <span>description</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#hasTopConcept" title="http://www.w3.org/2004/02/skos/core#hasTopConcept"> <span>has Top Concept</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme"> <span>in Scheme</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued"> <span>issued</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license"> <span>license</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified"> <span>modified</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#notation" title="http://www.w3.org/2004/02/skos/core#notation"> <span>notation</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel"> <span>pref Label</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespacePrefix" title="http://purl.org/vocab/vann/preferredNamespacePrefix"> <span>preferred Namespace Prefix</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri"> <span>preferred Namespace Uri</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references"> <span>references</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote"> <span>scope Note</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source"> <span>source</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title"> <span>title</span> </a></li>
+  <li><a href="#http://www.w3.org/2004/02/skos/core#topConceptOf" title="http://www.w3.org/2004/02/skos/core#topConceptOf"> <span>top Concept Of</span> </a></li>
+ </ul>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#altLabel">
+  <h3>alt Label<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#altLabel</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/bibliographicCitation">
+  <h3>bibliographic Citation<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/bibliographicCitation</p>
+ </div>
+ <div class="entity" id="https://w3id.org/eudpp#codeSet">
+  <h3>code Set<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp#codeSet</p>
+ </div>
+ <div class="entity" id="https://w3id.org/eudpp#codeValue">
+  <h3>code Value<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp#codeValue</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/contributor">
+  <h3>contributor<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/contributor</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/created">
+  <h3>created<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/created</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/creator">
+  <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/creator</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#definition">
+  <h3>definition<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#definition</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/description">
+  <h3>description<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#hasTopConcept">
+  <h3>has Top Concept<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#hasTopConcept</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#inScheme">
+  <h3>in Scheme<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#inScheme</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/issued">
+  <h3>issued<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/license">
+  <h3>license<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/modified">
+  <h3>modified<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#notation">
+  <h3>notation<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#notation</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#prefLabel">
+  <h3>pref Label<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#prefLabel</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <h3>preferred Namespace Prefix<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespacePrefix</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespaceUri">
+  <h3>preferred Namespace Uri<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespaceUri</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/references">
+  <h3>references<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/references</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#scopeNote">
+  <h3>scope Note<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#scopeNote</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/source">
+  <h3>source<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/source</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/title">
+  <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/title</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2004/02/skos/core#topConceptOf">
+  <h3>top Concept Of<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#topConceptOf</p>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a></li>
+  <li><a href="#ElectricVehicleBattery" title="https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery">Electric vehicle battery</a></li>
+  <li><a href="#IndustrialBattery" title="https://w3id.org/eudpp/battery-categories#IndustrialBattery">Industrial battery</a></li>
+  <li><a href="#LMTBattery" title="https://w3id.org/eudpp/battery-categories#LMTBattery">Light means of transport battery</a></li>
+  <li><a href="#PortableBattery" title="https://w3id.org/eudpp/battery-categories#PortableBattery">Portable battery</a></li>
+  <li><a href="#SLIBattery" title="https://w3id.org/eudpp/battery-categories#SLIBattery">Starting, lighting and ignition battery</a></li>
+ </ul>
+ <div class="entity" id="BatteryCategoryScheme">
+  <h3>Battery categories per Regulation (EU) 2023/1542, Art. 3(1)<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</p>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://purl.org/dc/terms/source" target="_blank" title="http://purl.org/dc/terms/source">source</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj" target="_blank" title="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">oj</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#ElectricVehicleBattery" title="https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery">Electric vehicle battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#IndustrialBattery" title="https://w3id.org/eudpp/battery-categories#IndustrialBattery">Industrial battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#LMTBattery" title="https://w3id.org/eudpp/battery-categories#LMTBattery">Light means of transport battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#PortableBattery" title="https://w3id.org/eudpp/battery-categories#PortableBattery">Portable battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept" target="_blank" title="http://www.w3.org/2004/02/skos/core#hasTopConcept">has Top Concept</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#SLIBattery" title="https://w3id.org/eudpp/battery-categories#SLIBattery">Starting, lighting and ignition battery</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Battery categories per Regulation (EU) 2023/1542, Art. 3(1)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Battery passport scope (Art. 77): LMT, industrial above 2 kWh and electric vehicle batteries are in scope; portable and SLI batteries are not."@en</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ElectricVehicleBattery">
+  <h3>Electric vehicle battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#ElectricVehicleBattery</p>
+  <div class="comment">
+   <span class="markdown">a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of category L as provided for in Regulation (EU) No 168/2013, that weighs more than 25 kg, or a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of categories M, N or O as provided for in Regulation (EU) 2018/858</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#ClassificationCode" target="_blank" title="https://w3id.org/eudpp#ClassificationCode">Classification Code</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)(14)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#altLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#altLabel">alt Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EV battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of category L as provided for in Regulation (EU) No 168/2013, that weighs more than 25 kg, or a battery that is specifically designed to provide electric power for traction in hybrid or electric vehicles of categories M, N or O as provided for in Regulation (EU) 2018/858"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EV"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Electric vehicle battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"In scope of the battery passport."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeSet" target="_blank" title="https://w3id.org/eudpp#codeSet">code Set</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme" target="_blank">https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</a>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeValue" target="_blank" title="https://w3id.org/eudpp#codeValue">code Value</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"EV"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="IndustrialBattery">
+  <h3>Industrial battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#IndustrialBattery</p>
+  <div class="comment">
+   <span class="markdown">a battery that is specifically designed for industrial uses, intended for industrial uses after having been subject to preparation for repurposing or repurposing, or any other battery that weighs more than 5 kg and that is neither an electric vehicle battery, an LMT battery, nor an SLI battery</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#ClassificationCode" target="_blank" title="https://w3id.org/eudpp#ClassificationCode">Classification Code</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)(13)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"a battery that is specifically designed for industrial uses, intended for industrial uses after having been subject to preparation for repurposing or repurposing, or any other battery that weighs more than 5 kg and that is neither an electric vehicle battery, an LMT battery, nor an SLI battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"industrial"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Industrial battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"In scope of the battery passport above 2 kWh."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeSet" target="_blank" title="https://w3id.org/eudpp#codeSet">code Set</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme" target="_blank">https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</a>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeValue" target="_blank" title="https://w3id.org/eudpp#codeValue">code Value</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"industrial"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="LMTBattery">
+  <h3>Light means of transport battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#LMTBattery</p>
+  <div class="comment">
+   <span class="markdown">a battery that is sealed, weighs 25 kg or less and is specifically designed to provide electric power for the traction of wheeled vehicles that can be powered by an electric motor alone or by a combination of motor and human power, including type-approved vehicles of category L within the meaning of Regulation (EU) No 168/2013 of the European Parliament and of the Council, and that is not an electric vehicle battery</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#ClassificationCode" target="_blank" title="https://w3id.org/eudpp#ClassificationCode">Classification Code</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)(11)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#altLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#altLabel">alt Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"LMT battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"a battery that is sealed, weighs 25 kg or less and is specifically designed to provide electric power for the traction of wheeled vehicles that can be powered by an electric motor alone or by a combination of motor and human power, including type-approved vehicles of category L within the meaning of Regulation (EU) No 168/2013 of the European Parliament and of the Council, and that is not an electric vehicle battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"LMT"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Light means of transport battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"In scope of the battery passport."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeSet" target="_blank" title="https://w3id.org/eudpp#codeSet">code Set</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme" target="_blank">https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</a>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeValue" target="_blank" title="https://w3id.org/eudpp#codeValue">code Value</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"LMT"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PortableBattery">
+  <h3>Portable battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#PortableBattery</p>
+  <div class="comment">
+   <span class="markdown">a battery that is sealed, weighs 5 kg or less, is not designed specifically for industrial use and is neither an electric vehicle battery, an LMT battery, nor an SLI battery</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#ClassificationCode" target="_blank" title="https://w3id.org/eudpp#ClassificationCode">Classification Code</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)(9)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"a battery that is sealed, weighs 5 kg or less, is not designed specifically for industrial use and is neither an electric vehicle battery, an LMT battery, nor an SLI battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"portable"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Portable battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Out of scope of the battery passport."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeSet" target="_blank" title="https://w3id.org/eudpp#codeSet">code Set</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme" target="_blank">https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</a>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeValue" target="_blank" title="https://w3id.org/eudpp#codeValue">code Value</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"portable"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SLIBattery">
+  <h3>Starting, lighting and ignition battery<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-categories#SLIBattery</p>
+  <div class="comment">
+   <span class="markdown">a battery that is specifically designed to supply electric power for starting, lighting, or ignition and that can also be used for auxiliary or backup purposes in vehicles, other means of transport or machinery</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-categories">https://w3id.org/eudpp/battery-categories</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#Concept" target="_blank" title="http://www.w3.org/2004/02/skos/core#Concept">Concept</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#ClassificationCode" target="_blank" title="https://w3id.org/eudpp#ClassificationCode">Classification Code</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://purl.org/dc/terms/references" target="_blank" title="http://purl.org/dc/terms/references">references</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Regulation (EU) 2023/1542, Art. 3(1)(12)"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#altLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#altLabel">alt Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"SLI battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#definition" target="_blank" title="http://www.w3.org/2004/02/skos/core#definition">definition</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"a battery that is specifically designed to supply electric power for starting, lighting, or ignition and that can also be used for auxiliary or backup purposes in vehicles, other means of transport or machinery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#inScheme" target="_blank" title="http://www.w3.org/2004/02/skos/core#inScheme">in Scheme</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#notation" target="_blank" title="http://www.w3.org/2004/02/skos/core#notation">notation</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"SLI"</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#prefLabel" target="_blank" title="http://www.w3.org/2004/02/skos/core#prefLabel">pref Label</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Starting, lighting and ignition battery"@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#scopeNote" target="_blank" title="http://www.w3.org/2004/02/skos/core#scopeNote">scope Note</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"Out of scope of the battery passport."@en</span>
+   </dd>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#topConceptOf" target="_blank" title="http://www.w3.org/2004/02/skos/core#topConceptOf">top Concept Of</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="#BatteryCategoryScheme" title="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme">Battery categories per Regulation (EU) 2023/1542, Art. 3(1)</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeSet" target="_blank" title="https://w3id.org/eudpp#codeSet">code Set</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme" target="_blank">https://w3id.org/eudpp/battery-categories#BatteryCategoryScheme</a>
+   </dd>
+   <dd>
+    <a href="https://w3id.org/eudpp#codeValue" target="_blank" title="https://w3id.org/eudpp#codeValue">code Value</a> <sup class="type-ap" title="annotation property">ap</sup> <span class="literal">"SLI"</span>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+<sup class="type-ep" title="External Properties">ep</sup>: External Properties
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

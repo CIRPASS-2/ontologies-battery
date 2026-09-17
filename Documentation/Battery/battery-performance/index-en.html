@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>EU DPP Battery Performance Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/eudpp/battery-performance#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/eudpp/battery-performance#","name":"EU DPP Battery Performance Ontology", "headline":"Document describing the ontology https://w3id.org/eudpp/battery-performance#", "dateReleased":"2026-07-07", "dateModified":"2026-09-01", "version":"Version 0.3.0 DRAFT", "author":[{"@type":"Person","name":"Marc-Andree Wolf"},{"@type":"Person","name":"Nader Jelassi"}], "contributor":[{"@type":"Person","name":"Arnab Sinha"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>EU DPP Battery Performance Ontology</h1>
+<h2>Release: 2026-07-07</h2>
+
+
+<dl>
+<dt>Modified on: 2026-09-01</dt>
+<dt>This version:</dt>
+<dd><a href="https://w3id.org/eudpp/battery-performance/0.3.0">https://w3id.org/eudpp/battery-performance/0.3.0</a></dd>
+<dt>Revision:</dt>
+<dd>Version 0.3.0 DRAFT</dd>
+<dt>Issued on:</dt>
+<dd>2026-07-07</dd>
+<dt>Authors:</dt>
+<dd>Marc-Andree Wolf</dd><dd>Nader Jelassi</dd>
+
+<dt>Contributors:</dt>
+<dd>Arnab Sinha</dd>
+
+<dt>Source:</dt>
+<dd><a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0" /></a></dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>EU DPP Battery Performance Ontology. Draft version 0.3.0.</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">EU DPP Battery Performance Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#AccidentEvent"
+         title="https://w3id.org/eudpp/battery-performance#AccidentEvent">Accident Event</a>
+   </li>
+   <li>
+      <a href="#BatteryDurability"
+         title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a>
+   </li>
+   <li>
+      <a href="#BatteryPerformance"
+         title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a>
+   </li>
+   <li>
+      <a href="#BatteryStateRecord"
+         title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a>
+   </li>
+   <li>
+      <a href="#TemperatureExposure"
+         title="https://w3id.org/eudpp/battery-performance#TemperatureExposure">Temperature Exposure</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasBatteryDurability"
+         title="https://w3id.org/eudpp/battery-performance#hasBatteryDurability">has battery durability</a>
+   </li>
+   <li>
+      <a href="#hasBatteryPerformance"
+         title="https://w3id.org/eudpp/battery-performance#hasBatteryPerformance">has battery performance</a>
+   </li>
+   <li>
+      <a href="#hasBatteryStateRecord"
+         title="https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord">has battery state record</a>
+   </li>
+   <li>
+      <a href="#hasTemperatureExposure"
+         title="https://w3id.org/eudpp/battery-performance#hasTemperatureExposure">has temperature exposure</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#asOfDate"
+         title="https://w3id.org/eudpp/battery-performance#asOfDate">as-of date</a>
+   </li>
+   <li>
+      <a href="#cRateOfCycleLifeTest"
+         title="https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest">C-rate of relevant cycle-life test</a>
+   </li>
+   <li>
+      <a href="#capacityFade"
+         title="https://w3id.org/eudpp/battery-performance#capacityFade">capacity fade</a>
+   </li>
+   <li>
+      <a href="#capacityThresholdForExhaustion"
+         title="https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion">capacity threshold for exhaustion</a>
+   </li>
+   <li>
+      <a href="#capacityThroughput"
+         title="https://w3id.org/eudpp/battery-performance#capacityThroughput">capacity throughput</a>
+   </li>
+   <li>
+      <a href="#certifiedUsableBatteryEnergy"
+         title="https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy">certified usable battery energy</a>
+   </li>
+   <li>
+      <a href="#currentSelfDischargeRate"
+         title="https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate">current self-discharge rate</a>
+   </li>
+   <li>
+      <a href="#cycleLifeReferenceTest"
+         title="https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest">cycle-life reference test</a>
+   </li>
+   <li>
+      <a href="#roundTripEnergyEfficiencyFade"
+         title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade">energy round trip efficiency fade</a>
+   </li>
+   <li>
+      <a href="#energyThroughput"
+         title="https://w3id.org/eudpp/battery-performance#energyThroughput">energy throughput</a>
+   </li>
+   <li>
+      <a href="#selfDischargeRateEvolution"
+         title="https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution">evolution of self-discharge rates</a>
+   </li>
+   <li>
+      <a href="#expectedLifetimeCalendarYears"
+         title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears">expected lifetime in calendar years</a>
+   </li>
+   <li>
+      <a href="#expectedLifetimeCycles"
+         title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles">expected lifetime: number of charge-discharge cycles</a>
+   </li>
+   <li>
+      <a href="#accidentInformation"
+         title="https://w3id.org/eudpp/battery-performance#accidentInformation">information on accidents</a>
+   </li>
+   <li>
+      <a href="#initialInternalResistance"
+         title="https://w3id.org/eudpp/battery-performance#initialInternalResistance">initial internal resistance of battery cell and pack</a>
+   </li>
+   <li>
+      <a href="#initialRoundTripEnergyEfficiency"
+         title="https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency">initial round trip energy efficiency</a>
+   </li>
+   <li>
+      <a href="#initialSelfDischargeRate"
+         title="https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate">initial self-discharge rate</a>
+   </li>
+   <li>
+      <a href="#internalResistanceIncrease"
+         title="https://w3id.org/eudpp/battery-performance#internalResistanceIncrease">internal resistance increase of pack</a>
+   </li>
+   <li>
+      <a href="#maximumPermittedBatteryPower"
+         title="https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower">maximum permitted battery power</a>
+   </li>
+   <li>
+      <a href="#maximumVoltage"
+         title="https://w3id.org/eudpp/battery-performance#maximumVoltage">maximum voltage</a>
+   </li>
+   <li>
+      <a href="#minimumVoltage"
+         title="https://w3id.org/eudpp/battery-performance#minimumVoltage">minimum voltage</a>
+   </li>
+   <li>
+      <a href="#nominalVoltage"
+         title="https://w3id.org/eudpp/battery-performance#nominalVoltage">nominal voltage</a>
+   </li>
+   <li>
+      <a href="#numberOfDeepDischargeEvents"
+         title="https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents">number of deep discharge events</a>
+   </li>
+   <li>
+      <a href="#numberOfFullCycles"
+         title="https://w3id.org/eudpp/battery-performance#numberOfFullCycles">number of full charging and discharging cycles</a>
+   </li>
+   <li>
+      <a href="#numberOfOverchargeEvents"
+         title="https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents">number of overcharge events</a>
+   </li>
+   <li>
+      <a href="#originalPowerCapability"
+         title="https://w3id.org/eudpp/battery-performance#originalPowerCapability">original power capability</a>
+   </li>
+   <li>
+      <a href="#powerFade"
+         title="https://w3id.org/eudpp/battery-performance#powerFade">power fade</a>
+   </li>
+   <li>
+      <a href="#ratedCapacity"
+         title="https://w3id.org/eudpp/battery-performance#ratedCapacity">rated capacity</a>
+   </li>
+   <li>
+      <a href="#powerToEnergyRatio"
+         title="https://w3id.org/eudpp/battery-performance#powerToEnergyRatio">ratio between nominal battery power and battery energy</a>
+   </li>
+   <li>
+      <a href="#remainingCapacity"
+         title="https://w3id.org/eudpp/battery-performance#remainingCapacity">remaining capacity</a>
+   </li>
+   <li>
+      <a href="#remainingPowerCapability"
+         title="https://w3id.org/eudpp/battery-performance#remainingPowerCapability">remaining power capability</a>
+   </li>
+   <li>
+      <a href="#remainingRoundTripEnergyEfficiency"
+         title="https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency">remaining round trip energy efficiency</a>
+   </li>
+   <li>
+      <a href="#remainingUsableBatteryEnergy"
+         title="https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy">remaining usable battery energy</a>
+   </li>
+   <li>
+      <a href="#roundTripEnergyEfficiencyAt50PercentCycleLife"
+         title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife">round trip energy efficiency at 50% of cycle life</a>
+   </li>
+   <li>
+      <a href="#stateOfCertifiedEnergy"
+         title="https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy">state of certified energy (SOCE)</a>
+   </li>
+   <li>
+      <a href="#stateOfCharge"
+         title="https://w3id.org/eudpp/battery-performance#stateOfCharge">state of charge (SoC)</a>
+   </li>
+   <li>
+      <a href="#temperatureInformation"
+         title="https://w3id.org/eudpp/battery-performance#temperatureInformation">temperature information</a>
+   </li>
+   <li>
+      <a href="#temperatureRangeIdleStateLowerBoundary"
+         title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary">temperature range idle state, lower boundary</a>
+   </li>
+   <li>
+      <a href="#temperatureRangeIdleStateUpperBoundary"
+         title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary">temperature range idle state, upper boundary</a>
+   </li>
+   <li>
+      <a href="#timeSpentChargingInExtremeTemperaturesAboveBoundary"
+         title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary">time spent charging during extreme temperatures above boundary</a>
+   </li>
+   <li>
+      <a href="#timeSpentChargingInExtremeTemperaturesBelowBoundary"
+         title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary">time spent charging during extreme temperatures below boundary</a>
+   </li>
+   <li>
+      <a href="#timeSpentInExtremeTemperaturesAboveBoundary"
+         title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary">time spent in extreme temperatures above boundary</a>
+   </li>
+   <li>
+      <a href="#timeSpentInExtremeTemperaturesBelowBoundary"
+         title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary">time spent in extreme temperatures below boundary</a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation">
+         <span>bibliographic Citation</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor">
+         <span>contributor</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created">
+         <span>created</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">
+         <span>description</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">
+         <span>issued</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">
+         <span>license</span>
+      </a>
+   </li>
+   <li>
+      <a href="#measurementUnit"
+         title="https://w3id.org/eudpp/battery-performance#measurementUnit">measurement unit</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified">
+         <span>modified</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespacePrefix"
+         title="http://purl.org/vocab/vann/preferredNamespacePrefix">
+         <span>preferred Namespace Prefix</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri">
+         <span>preferred Namespace Uri</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references">
+         <span>references</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source">
+         <span>source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title">
+         <span>title</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">EU DPP Battery Performance Ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for EU DPP Battery Performance Ontology classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by EU DPP Battery Performance Ontology.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#AccidentEvent" title="https://w3id.org/eudpp/battery-performance#AccidentEvent">Accident Event</a></li>
+  <li><a href="#BatteryDurability" title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a></li>
+  <li><a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a></li>
+  <li><a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a></li>
+  <li><a href="#TemperatureExposure" title="https://w3id.org/eudpp/battery-performance#TemperatureExposure">Temperature Exposure</a></li>
+ </ul>
+ <div class="entity" id="AccidentEvent">
+  <h3>Accident Event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#AccidentEvent</p>
+  <div class="comment">
+   <span class="markdown">An accident affecting the battery, including when incorporated in the equipment it is powering. Specialises the generic ProductEvent class of the CORE event module, of which MaintenanceEvent is a sibling: an accident is not a maintenance operation. The link to the battery is provided by the CORE event mechanism (no dedicated object property in this module).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp#ProductEvent" target="_blank" title="https://w3id.org/eudpp#ProductEvent">Product Event</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#accidentInformation" title="https://w3id.org/eudpp/battery-performance#accidentInformation">information on accidents</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BatteryDurability">
+  <h3>Battery Durability<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#BatteryDurability</p>
+  <div class="comment">
+   <span class="markdown">Battery-specific durability data: expected lifetime in calendar years and in charge-discharge cycles, number of full cycles, energy and capacity throughput, capacity threshold for exhaustion. Specialises the cross-sectoral Durability quality indicator (ESPR Art. 2 (22)).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp#Durability" target="_blank" title="https://w3id.org/eudpp#Durability">Durability</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#capacityThresholdForExhaustion" title="https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion">capacity threshold for exhaustion</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#expectedLifetimeCalendarYears" title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears">expected lifetime in calendar years</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#expectedLifetimeCycles" title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles">expected lifetime: number of charge-discharge cycles</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasBatteryDurability" title="https://w3id.org/eudpp/battery-performance#hasBatteryDurability">has battery durability</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BatteryPerformance">
+  <h3>Battery Performance<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#BatteryPerformance</p>
+  <div class="comment">
+   <span class="markdown">Container for the electrochemical performance and in-use state parameters of a battery: capacity (rated, remaining, fade), voltage (minimum, maximum, nominal), power capability, round trip energy efficiency, self-discharge rates, internal resistance, cycle-life test parameters, and in-use event counters. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself, and would otherwise inherit hasMeasurementUnit, which has no meaning on a container.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp#Property" target="_blank" title="https://w3id.org/eudpp#Property">Property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#cRateOfCycleLifeTest" title="https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest">C-rate of relevant cycle-life test</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#certifiedUsableBatteryEnergy" title="https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy">certified usable battery energy</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#cycleLifeReferenceTest" title="https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest">cycle-life reference test</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#initialInternalResistance" title="https://w3id.org/eudpp/battery-performance#initialInternalResistance">initial internal resistance of battery cell and pack</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#initialRoundTripEnergyEfficiency" title="https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency">initial round trip energy efficiency</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#initialSelfDischargeRate" title="https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate">initial self-discharge rate</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#maximumPermittedBatteryPower" title="https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower">maximum permitted battery power</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#maximumVoltage" title="https://w3id.org/eudpp/battery-performance#maximumVoltage">maximum voltage</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#minimumVoltage" title="https://w3id.org/eudpp/battery-performance#minimumVoltage">minimum voltage</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#nominalVoltage" title="https://w3id.org/eudpp/battery-performance#nominalVoltage">nominal voltage</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#originalPowerCapability" title="https://w3id.org/eudpp/battery-performance#originalPowerCapability">original power capability</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#ratedCapacity" title="https://w3id.org/eudpp/battery-performance#ratedCapacity">rated capacity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#powerToEnergyRatio" title="https://w3id.org/eudpp/battery-performance#powerToEnergyRatio">ratio between nominal battery power and battery energy</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#roundTripEnergyEfficiencyAt50PercentCycleLife" title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife">round trip energy efficiency at 50% of cycle life</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasBatteryPerformance" title="https://w3id.org/eudpp/battery-performance#hasBatteryPerformance">has battery performance</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BatteryStateRecord">
+  <h3>Battery State Record<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#BatteryStateRecord</p>
+  <div class="comment">
+   <span class="markdown">A dated record of the values a battery management system updates during operational life. One record per reading; the series of records is the history required by Annex XIII 4 and Annex VII Part B, which describe data that changes over the life of the product rather than a single snapshot. Anchored under dpp:Property and deliberately not under dpp:QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself, and would otherwise inherit dpp:hasMeasurementUnit, which has no meaning on a container. Which properties belong here follows the 'Data behavioural characteristic: static vs. dynamic' column of the BatteryPass-Ready Data Attribute Long List v1.3, not a local judgement.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp#Property" target="_blank" title="https://w3id.org/eudpp#Property">Property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#asOfDate" title="https://w3id.org/eudpp/battery-performance#asOfDate">as-of date</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#capacityFade" title="https://w3id.org/eudpp/battery-performance#capacityFade">capacity fade</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#capacityThroughput" title="https://w3id.org/eudpp/battery-performance#capacityThroughput">capacity throughput</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#currentSelfDischargeRate" title="https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate">current self-discharge rate</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#roundTripEnergyEfficiencyFade" title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade">energy round trip efficiency fade</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#energyThroughput" title="https://w3id.org/eudpp/battery-performance#energyThroughput">energy throughput</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#selfDischargeRateEvolution" title="https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution">evolution of self-discharge rates</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#internalResistanceIncrease" title="https://w3id.org/eudpp/battery-performance#internalResistanceIncrease">internal resistance increase of pack</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfDeepDischargeEvents" title="https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents">number of deep discharge events</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfFullCycles" title="https://w3id.org/eudpp/battery-performance#numberOfFullCycles">number of full charging and discharging cycles</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#numberOfOverchargeEvents" title="https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents">number of overcharge events</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#powerFade" title="https://w3id.org/eudpp/battery-performance#powerFade">power fade</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#remainingCapacity" title="https://w3id.org/eudpp/battery-performance#remainingCapacity">remaining capacity</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#remainingPowerCapability" title="https://w3id.org/eudpp/battery-performance#remainingPowerCapability">remaining power capability</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#remainingRoundTripEnergyEfficiency" title="https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency">remaining round trip energy efficiency</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#remainingUsableBatteryEnergy" title="https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy">remaining usable battery energy</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#stateOfCertifiedEnergy" title="https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy">state of certified energy (SOCE)</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#stateOfCharge" title="https://w3id.org/eudpp/battery-performance#stateOfCharge">state of charge (SoC)</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#temperatureInformation" title="https://w3id.org/eudpp/battery-performance#temperatureInformation">temperature information</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#timeSpentChargingInExtremeTemperaturesAboveBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary">time spent charging during extreme temperatures above boundary</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#timeSpentChargingInExtremeTemperaturesBelowBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary">time spent charging during extreme temperatures below boundary</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#timeSpentInExtremeTemperaturesAboveBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary">time spent in extreme temperatures above boundary</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#timeSpentInExtremeTemperaturesBelowBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary">time spent in extreme temperatures below boundary</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasBatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord">has battery state record</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TemperatureExposure">
+  <h3>Temperature Exposure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#TemperatureExposure</p>
+  <div class="comment">
+   <span class="markdown">Container for the thermal exposure of the battery in use: operating temperature information, idle-state temperature range boundaries, and aggregated time spent (and spent charging) in extreme temperatures outside those boundaries. Anchored under the cross-sectoral Property class, not under QuantitativeProperty: this is a container grouping several measured quantities, not a quantity itself.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp#Property" target="_blank" title="https://w3id.org/eudpp#Property">Property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#temperatureRangeIdleStateLowerBoundary" title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary">temperature range idle state, lower boundary</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#temperatureRangeIdleStateUpperBoundary" title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary">temperature range idle state, upper boundary</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasTemperatureExposure" title="https://w3id.org/eudpp/battery-performance#hasTemperatureExposure">has temperature exposure</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#hasBatteryDurability" title="https://w3id.org/eudpp/battery-performance#hasBatteryDurability">has battery durability</a></li>
+  <li><a href="#hasBatteryPerformance" title="https://w3id.org/eudpp/battery-performance#hasBatteryPerformance">has battery performance</a></li>
+  <li><a href="#hasBatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord">has battery state record</a></li>
+  <li><a href="#hasTemperatureExposure" title="https://w3id.org/eudpp/battery-performance#hasTemperatureExposure">has temperature exposure</a></li>
+ </ul>
+ <div class="entity" id="hasBatteryDurability">
+  <h3>has battery durability<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#hasBatteryDurability</p>
+  <div class="comment">
+   <span class="markdown">Links a battery to its durability data. Specialises the cross-sectoral dpp:hasProperty (Product -&gt; Property); the chain BatteryDurability = dpp:Durability = QualityIndicator = QuantitativeProperty = Property was verified in P_DPP v2.0.0.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp#hasProperty" target="_blank" title="https://w3id.org/eudpp#hasProperty">has Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp/battery#Battery" target="_blank" title="https://w3id.org/eudpp/battery#Battery">Battery</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#BatteryDurability" title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasBatteryPerformance">
+  <h3>has battery performance<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#hasBatteryPerformance</p>
+  <div class="comment">
+   <span class="markdown">Links a battery to its electrochemical performance and in-use state data.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp#hasProperty" target="_blank" title="https://w3id.org/eudpp#hasProperty">has Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp/battery#Battery" target="_blank" title="https://w3id.org/eudpp/battery#Battery">Battery</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasBatteryStateRecord">
+  <h3>has battery state record<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#hasBatteryStateRecord</p>
+  <div class="comment">
+   <span class="markdown">Links a battery to one dated record of its in-use state. A battery carries as many records as there are readings; no ordering property is declared, the as-of date orders the series.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp#hasProperty" target="_blank" title="https://w3id.org/eudpp#hasProperty">has Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp/battery#Battery" target="_blank" title="https://w3id.org/eudpp/battery#Battery">Battery</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasTemperatureExposure">
+  <h3>has temperature exposure<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#hasTemperatureExposure</p>
+  <div class="comment">
+   <span class="markdown">Links a battery to its in-use thermal exposure data.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp#hasProperty" target="_blank" title="https://w3id.org/eudpp#hasProperty">has Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/eudpp/battery#Battery" target="_blank" title="https://w3id.org/eudpp/battery#Battery">Battery</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#TemperatureExposure" title="https://w3id.org/eudpp/battery-performance#TemperatureExposure">Temperature Exposure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#asOfDate" title="https://w3id.org/eudpp/battery-performance#asOfDate">as-of date</a></li>
+  <li><a href="#cRateOfCycleLifeTest" title="https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest">C-rate of relevant cycle-life test</a></li>
+  <li><a href="#capacityFade" title="https://w3id.org/eudpp/battery-performance#capacityFade">capacity fade</a></li>
+  <li><a href="#capacityThresholdForExhaustion" title="https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion">capacity threshold for exhaustion</a></li>
+  <li><a href="#capacityThroughput" title="https://w3id.org/eudpp/battery-performance#capacityThroughput">capacity throughput</a></li>
+  <li><a href="#certifiedUsableBatteryEnergy" title="https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy">certified usable battery energy</a></li>
+  <li><a href="#currentSelfDischargeRate" title="https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate">current self-discharge rate</a></li>
+  <li><a href="#cycleLifeReferenceTest" title="https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest">cycle-life reference test</a></li>
+  <li><a href="#roundTripEnergyEfficiencyFade" title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade">energy round trip efficiency fade</a></li>
+  <li><a href="#energyThroughput" title="https://w3id.org/eudpp/battery-performance#energyThroughput">energy throughput</a></li>
+  <li><a href="#selfDischargeRateEvolution" title="https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution">evolution of self-discharge rates</a></li>
+  <li><a href="#expectedLifetimeCalendarYears" title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears">expected lifetime in calendar years</a></li>
+  <li><a href="#expectedLifetimeCycles" title="https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles">expected lifetime: number of charge-discharge cycles</a></li>
+  <li><a href="#accidentInformation" title="https://w3id.org/eudpp/battery-performance#accidentInformation">information on accidents</a></li>
+  <li><a href="#initialInternalResistance" title="https://w3id.org/eudpp/battery-performance#initialInternalResistance">initial internal resistance of battery cell and pack</a></li>
+  <li><a href="#initialRoundTripEnergyEfficiency" title="https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency">initial round trip energy efficiency</a></li>
+  <li><a href="#initialSelfDischargeRate" title="https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate">initial self-discharge rate</a></li>
+  <li><a href="#internalResistanceIncrease" title="https://w3id.org/eudpp/battery-performance#internalResistanceIncrease">internal resistance increase of pack</a></li>
+  <li><a href="#maximumPermittedBatteryPower" title="https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower">maximum permitted battery power</a></li>
+  <li><a href="#maximumVoltage" title="https://w3id.org/eudpp/battery-performance#maximumVoltage">maximum voltage</a></li>
+  <li><a href="#minimumVoltage" title="https://w3id.org/eudpp/battery-performance#minimumVoltage">minimum voltage</a></li>
+  <li><a href="#nominalVoltage" title="https://w3id.org/eudpp/battery-performance#nominalVoltage">nominal voltage</a></li>
+  <li><a href="#numberOfDeepDischargeEvents" title="https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents">number of deep discharge events</a></li>
+  <li><a href="#numberOfFullCycles" title="https://w3id.org/eudpp/battery-performance#numberOfFullCycles">number of full charging and discharging cycles</a></li>
+  <li><a href="#numberOfOverchargeEvents" title="https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents">number of overcharge events</a></li>
+  <li><a href="#originalPowerCapability" title="https://w3id.org/eudpp/battery-performance#originalPowerCapability">original power capability</a></li>
+  <li><a href="#powerFade" title="https://w3id.org/eudpp/battery-performance#powerFade">power fade</a></li>
+  <li><a href="#ratedCapacity" title="https://w3id.org/eudpp/battery-performance#ratedCapacity">rated capacity</a></li>
+  <li><a href="#powerToEnergyRatio" title="https://w3id.org/eudpp/battery-performance#powerToEnergyRatio">ratio between nominal battery power and battery energy</a></li>
+  <li><a href="#remainingCapacity" title="https://w3id.org/eudpp/battery-performance#remainingCapacity">remaining capacity</a></li>
+  <li><a href="#remainingPowerCapability" title="https://w3id.org/eudpp/battery-performance#remainingPowerCapability">remaining power capability</a></li>
+  <li><a href="#remainingRoundTripEnergyEfficiency" title="https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency">remaining round trip energy efficiency</a></li>
+  <li><a href="#remainingUsableBatteryEnergy" title="https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy">remaining usable battery energy</a></li>
+  <li><a href="#roundTripEnergyEfficiencyAt50PercentCycleLife" title="https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife">round trip energy efficiency at 50% of cycle life</a></li>
+  <li><a href="#stateOfCertifiedEnergy" title="https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy">state of certified energy (SOCE)</a></li>
+  <li><a href="#stateOfCharge" title="https://w3id.org/eudpp/battery-performance#stateOfCharge">state of charge (SoC)</a></li>
+  <li><a href="#temperatureInformation" title="https://w3id.org/eudpp/battery-performance#temperatureInformation">temperature information</a></li>
+  <li><a href="#temperatureRangeIdleStateLowerBoundary" title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary">temperature range idle state, lower boundary</a></li>
+  <li><a href="#temperatureRangeIdleStateUpperBoundary" title="https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary">temperature range idle state, upper boundary</a></li>
+  <li><a href="#timeSpentChargingInExtremeTemperaturesAboveBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary">time spent charging during extreme temperatures above boundary</a></li>
+  <li><a href="#timeSpentChargingInExtremeTemperaturesBelowBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary">time spent charging during extreme temperatures below boundary</a></li>
+  <li><a href="#timeSpentInExtremeTemperaturesAboveBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary">time spent in extreme temperatures above boundary</a></li>
+  <li><a href="#timeSpentInExtremeTemperaturesBelowBoundary" title="https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary">time spent in extreme temperatures below boundary</a></li>
+ </ul>
+ <div class="entity" id="asOfDate">
+  <h3>as-of date<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#asOfDate</p>
+  <div class="comment">
+   <span class="markdown">The date and time the values of this record were read. xsd:dateTimeStamp rather than xsd:dateTime: the time zone offset is then mandatory, so no separate offset property is needed.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <dl class="definedBy">
+   <dt>
+    Source
+   </dt>
+   <dd>
+    <a href="https://eur-lex.europa.eu/eli/reg/2023/1542/oj">https://eur-lex.europa.eu/eli/reg/2023/1542/oj</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTimeStamp">date Time Stamp</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="cRateOfCycleLifeTest">
+  <h3>C-rate of relevant cycle-life test<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#cRateOfCycleLifeTest</p>
+  <div class="comment">
+   <span class="markdown">Measurement parameter for 'Expected lifetime: Number of charge-discharge cycles': applied charge and discharge rate in terms of rated capacity (C-rate) of the relevant cycle-life reference test. Unit: ampere per ampere-hour (A/Ah).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="capacityFade">
+  <h3>capacity fade<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#capacityFade</p>
+  <div class="comment">
+   <span class="markdown">The decrease over time and upon usage in the amount of charge that a battery can deliver at the rated voltage, with respect to the original rated capacity as declared by the manufacturer. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="capacityThresholdForExhaustion">
+  <h3>capacity threshold for exhaustion<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#capacityThresholdForExhaustion</p>
+  <div class="comment">
+   <span class="markdown">The percentage of SOCE (State of Certified Energy), above which the battery is still considered operational as EV battery in its current life, as provided by the economic operator. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryDurability" title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="capacityThroughput">
+  <h3>capacity throughput<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#capacityThroughput</p>
+  <div class="comment">
+   <span class="markdown">The overall sum of the capacity throughput over the battery lifetime at a specific time during usage. Unit: ampere-hour (Ah).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="certifiedUsableBatteryEnergy">
+  <h3>certified usable battery energy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#certifiedUsableBatteryEnergy</p>
+  <div class="comment">
+   <span class="markdown">The usable battery energy according to the procedure in the UN GTR No 22 as determined during the certification of the vehicle. Unit: kilowatt-hour (kWh).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="currentSelfDischargeRate">
+  <h3>current self-discharge rate<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#currentSelfDischargeRate</p>
+  <div class="comment">
+   <span class="markdown">The change of the self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at aging parameter x, e.g. after a certain amount of storage time or number of cycles. Unit: percent per month (%/month).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="cycleLifeReferenceTest">
+  <h3>cycle-life reference test<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#cycleLifeReferenceTest</p>
+  <div class="comment">
+   <span class="markdown">The reference test for 'Expected lifetime: Number of charge-discharge cycles'.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="roundTripEnergyEfficiencyFade">
+  <h3>energy round trip efficiency fade<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyFade</p>
+  <div class="comment">
+   <span class="markdown">The decrease of round trip energy efficiency as percentage. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="energyThroughput">
+  <h3>energy throughput<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#energyThroughput</p>
+  <div class="comment">
+   <span class="markdown">The overall sum of the energy throughput over the battery lifetime at a specific time during usage. Unit: kilowatt-hour (kWh).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="selfDischargeRateEvolution">
+  <h3>evolution of self-discharge rates<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#selfDischargeRateEvolution</p>
+  <div class="comment">
+   <span class="markdown">The change of self-discharge over time and usage, as percentage calculated from the initial and current self-discharge rate. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="expectedLifetimeCalendarYears">
+  <h3>expected lifetime in calendar years<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#expectedLifetimeCalendarYears</p>
+  <div class="comment">
+   <span class="markdown">Expected lifetime under the reference conditions for which the battery has been designed, in calendar years. Unit: year.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryDurability" title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="expectedLifetimeCycles">
+  <h3>expected lifetime: number of charge-discharge cycles<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#expectedLifetimeCycles</p>
+  <div class="comment">
+   <span class="markdown">Expected lifetime under the reference conditions for which the battery has been designed, in number of charge-discharge cycles (except for non-cycle applications).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryDurability" title="https://w3id.org/eudpp/battery-performance#BatteryDurability">Battery Durability</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="accidentInformation">
+  <h3>information on accidents<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#accidentInformation</p>
+  <div class="comment">
+   <span class="markdown">Information on accidents affecting the battery, including when incorporated in equipment it is powering, as a link to the relevant resource.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#AccidentEvent" title="https://w3id.org/eudpp/battery-performance#AccidentEvent">Accident Event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#anyURI" target="_blank" title="http://www.w3.org/2001/XMLSchema#anyURI">any U R I</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="initialInternalResistance">
+  <h3>initial internal resistance of battery cell and pack<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#initialInternalResistance</p>
+  <div class="comment">
+   <span class="markdown">'Quotient of change of voltage of a battery by the corresponding change in discharge current under specified conditions' (IEV 482 03 36), at begin of life, for battery cell and pack (module recommended). Unit: ohm.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="initialRoundTripEnergyEfficiency">
+  <h3>initial round trip energy efficiency<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#initialRoundTripEnergyEfficiency</p>
+  <div class="comment">
+   <span class="markdown">The ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge (see Regulation (EU) 2023/1542, Annex IV (6)). Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="initialSelfDischargeRate">
+  <h3>initial self-discharge rate<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#initialSelfDischargeRate</p>
+  <div class="comment">
+   <span class="markdown">The self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at begin of life. Unit: percent per month (%/month).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="internalResistanceIncrease">
+  <h3>internal resistance increase of pack<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#internalResistanceIncrease</p>
+  <div class="comment">
+   <span class="markdown">The increase over time and upon usage of internal resistance, for the pack (cell and module recommended). Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="maximumPermittedBatteryPower">
+  <h3>maximum permitted battery power<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#maximumPermittedBatteryPower</p>
+  <div class="comment">
+   <span class="markdown">The value of maximum permitted power the battery is rated for and reflects the data relevant for power limits. Unit: watt (W). Declared as Integer [W] in the BatteryPass-Ready long list; xsd:decimal retained per the Gap Analysis decision (open question to BatteryPass-Ready).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="maximumVoltage">
+  <h3>maximum voltage<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#maximumVoltage</p>
+  <div class="comment">
+   <span class="markdown">The upper voltage limit that the safe operation of the battery is rated for. Unit: volt (V).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="minimumVoltage">
+  <h3>minimum voltage<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#minimumVoltage</p>
+  <div class="comment">
+   <span class="markdown">The lower voltage limit that the safe operation of the battery is rated for. Unit: volt (V).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="nominalVoltage">
+  <h3>nominal voltage<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#nominalVoltage</p>
+  <div class="comment">
+   <span class="markdown">The suitable approximate value of the voltage used to designate or identify the battery. Unit: volt (V).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="numberOfDeepDischargeEvents">
+  <h3>number of deep discharge events<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#numberOfDeepDischargeEvents</p>
+  <div class="comment">
+   <span class="markdown">The number of occasions, in which voltage has dropped below the lower operational limit as provided in the battery passport. In-use event counter.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="numberOfFullCycles">
+  <h3>number of full charging and discharging cycles<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#numberOfFullCycles</p>
+  <div class="comment">
+   <span class="markdown">In-use number of (full) charging and discharging cycles.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="numberOfOverchargeEvents">
+  <h3>number of overcharge events<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#numberOfOverchargeEvents</p>
+  <div class="comment">
+   <span class="markdown">The number of occasions, in which voltage has increased above the upper operational limit as provided in the battery passport. In-use event counter.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="originalPowerCapability">
+  <h3>original power capability<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#originalPowerCapability</p>
+  <div class="comment">
+   <span class="markdown">The amount of energy that a battery is capable to provide over a given period of time under reference conditions. Unit: watt (W).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="powerFade">
+  <h3>power fade<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#powerFade</p>
+  <div class="comment">
+   <span class="markdown">The decrease over time and upon usage in the amount of power that a battery can deliver at the rated voltage. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ratedCapacity">
+  <h3>rated capacity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#ratedCapacity</p>
+  <div class="comment">
+   <span class="markdown">The total number of ampere-hours that can be withdrawn from a fully charged battery under reference conditions. Unit: ampere-hour (Ah), or milliampere-hour (mAh) for LMT batteries.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="powerToEnergyRatio">
+  <h3>ratio between nominal battery power and battery energy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#powerToEnergyRatio</p>
+  <div class="comment">
+   <span class="markdown">The suitable approximate value of the power capability used to designate or identify the battery, while the battery energy is determined in reference conditions to be defined. Unit: watt per watt-hour (W/Wh). Declared as Integer [W/Wh] in the BatteryPass-Ready long list; xsd:decimal retained per the Gap Analysis decision (open question to BatteryPass-Ready).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="remainingCapacity">
+  <h3>remaining capacity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#remainingCapacity</p>
+  <div class="comment">
+   <span class="markdown">The corresponding in-use data attribute to rated capacity. Unit: ampere-hour (Ah).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="remainingPowerCapability">
+  <h3>remaining power capability<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#remainingPowerCapability</p>
+  <div class="comment">
+   <span class="markdown">The amount of energy that a battery is capable to provide over a given period of time under reference conditions at a distinct point in time during its usage. Unit: watt (W).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="remainingRoundTripEnergyEfficiency">
+  <h3>remaining round trip energy efficiency<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#remainingRoundTripEnergyEfficiency</p>
+  <div class="comment">
+   <span class="markdown">The in-use analogy to the initial round trip energy efficiency: the ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="remainingUsableBatteryEnergy">
+  <h3>remaining usable battery energy<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#remainingUsableBatteryEnergy</p>
+  <div class="comment">
+   <span class="markdown">The usable battery energy at the present point in the lifetime of a battery as determined according to the procedure in the UN GTR No 22. Unit: kilowatt-hour (kWh).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="roundTripEnergyEfficiencyAt50PercentCycleLife">
+  <h3>round trip energy efficiency at 50% of cycle life<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#roundTripEnergyEfficiencyAt50PercentCycleLife</p>
+  <div class="comment">
+   <span class="markdown">The ratio of the net energy delivered by a battery during a discharge test to the total energy required to restore the initial state of charge by a standard charge, measured at 50% of cycle life (see Regulation (EU) 2023/1542, Annex IV (6)). Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryPerformance" title="https://w3id.org/eudpp/battery-performance#BatteryPerformance">Battery Performance</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="stateOfCertifiedEnergy">
+  <h3>state of certified energy (SOCE)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#stateOfCertifiedEnergy</p>
+  <div class="comment">
+   <span class="markdown">The measured or on-board usable battery energy performance at a specific point in its lifetime, expressed as a percentage of the certified usable battery energy. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="stateOfCharge">
+  <h3>state of charge (SoC)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#stateOfCharge</p>
+  <div class="comment">
+   <span class="markdown">The available energy or charge in a battery expressed as a percentage of rated capacity as declared by the manufacturer. When the battery's state of health is no longer equal to its initial condition, SoC refers to the maximum energy or charge that can be stored in the battery at the time of charging. Unit: percent (%).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="temperatureInformation">
+  <h3>temperature information<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#temperatureInformation</p>
+  <div class="comment">
+   <span class="markdown">Temperature information regarding operating environmental conditions. Unit: degree Celsius (°C).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="temperatureRangeIdleStateLowerBoundary">
+  <h3>temperature range idle state, lower boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateLowerBoundary</p>
+  <div class="comment">
+   <span class="markdown">The lower boundary of the surrounding temperature range. Unit: degree Celsius (°C).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TemperatureExposure" title="https://w3id.org/eudpp/battery-performance#TemperatureExposure">Temperature Exposure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="temperatureRangeIdleStateUpperBoundary">
+  <h3>temperature range idle state, upper boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#temperatureRangeIdleStateUpperBoundary</p>
+  <div class="comment">
+   <span class="markdown">The upper boundary of the surrounding temperature range. Unit: degree Celsius (°C).</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TemperatureExposure" title="https://w3id.org/eudpp/battery-performance#TemperatureExposure">Temperature Exposure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="timeSpentChargingInExtremeTemperaturesAboveBoundary">
+  <h3>time spent charging during extreme temperatures above boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesAboveBoundary</p>
+  <div class="comment">
+   <span class="markdown">The aggregated time, in which the battery is charged, while temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="timeSpentChargingInExtremeTemperaturesBelowBoundary">
+  <h3>time spent charging during extreme temperatures below boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#timeSpentChargingInExtremeTemperaturesBelowBoundary</p>
+  <div class="comment">
+   <span class="markdown">The aggregated time, in which the battery is charged, while temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="timeSpentInExtremeTemperaturesAboveBoundary">
+  <h3>time spent in extreme temperatures above boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesAboveBoundary</p>
+  <div class="comment">
+   <span class="markdown">The aggregated time, in which temperatures above the upper boundary of the temperature range as defined in 'Temperature range idle state, upper boundary' are prevalent. Unit: minute.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="timeSpentInExtremeTemperaturesBelowBoundary">
+  <h3>time spent in extreme temperatures below boundary<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#timeSpentInExtremeTemperaturesBelowBoundary</p>
+  <div class="comment">
+   <span class="markdown">The aggregated time, in which temperatures below the lower boundary of the temperature range as defined in 'Temperature range idle state, lower boundary' are prevalent. Unit: minute.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BatteryStateRecord" title="https://w3id.org/eudpp/battery-performance#BatteryStateRecord">Battery State Record</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://purl.org/dc/terms/bibliographicCitation" title="http://purl.org/dc/terms/bibliographicCitation"> <span>bibliographic Citation</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/contributor" title="http://purl.org/dc/terms/contributor"> <span>contributor</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/created" title="http://purl.org/dc/terms/created"> <span>created</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/creator" title="http://purl.org/dc/terms/creator"> <span>creator</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description"> <span>description</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued"> <span>issued</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license"> <span>license</span> </a></li>
+  <li><a href="#measurementUnit" title="https://w3id.org/eudpp/battery-performance#measurementUnit">measurement unit</a></li>
+  <li><a href="#http://purl.org/dc/terms/modified" title="http://purl.org/dc/terms/modified"> <span>modified</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespacePrefix" title="http://purl.org/vocab/vann/preferredNamespacePrefix"> <span>preferred Namespace Prefix</span> </a></li>
+  <li><a href="#http://purl.org/vocab/vann/preferredNamespaceUri" title="http://purl.org/vocab/vann/preferredNamespaceUri"> <span>preferred Namespace Uri</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references"> <span>references</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/source" title="http://purl.org/dc/terms/source"> <span>source</span> </a></li>
+  <li><a href="#http://purl.org/dc/terms/title" title="http://purl.org/dc/terms/title"> <span>title</span> </a></li>
+ </ul>
+ <div class="entity" id="http://purl.org/dc/terms/bibliographicCitation">
+  <h3>bibliographic Citation<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/bibliographicCitation</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/contributor">
+  <h3>contributor<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/contributor</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/created">
+  <h3>created<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/created</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/creator">
+  <h3>creator<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/creator</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/description">
+  <h3>description<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/issued">
+  <h3>issued<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/license">
+  <h3>license<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+ </div>
+ <div class="entity" id="measurementUnit">
+  <h3>measurement unit<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/eudpp/battery-performance#measurementUnit</p>
+  <div class="comment">
+   <span class="markdown">The measurement unit of the annotated datatype property, as an IRI of the SI Digital Framework (https://si-digital-framework.org/SI/units/). Used because the values are plain typed literals in this pass and not dpp:QuantitativeProperty instances, so dpp:hasMeasurementUnit - an object property on QuantitativeProperty - does not apply. Where the unit has no IRI in the framework the annotation is absent and the unit stays in rdfs:comment; the cases are listed in the module header.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/eudpp/battery-performance">https://w3id.org/eudpp/battery-performance</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/modified">
+  <h3>modified<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <h3>preferred Namespace Prefix<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespacePrefix</p>
+ </div>
+ <div class="entity" id="http://purl.org/vocab/vann/preferredNamespaceUri">
+  <h3>preferred Namespace Uri<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/vocab/vann/preferredNamespaceUri</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/references">
+  <h3>references<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/references</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/source">
+  <h3>source<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/source</p>
+ </div>
+ <div class="entity" id="http://purl.org/dc/terms/title">
+  <h3>title<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://purl.org/dc/terms/title</p>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

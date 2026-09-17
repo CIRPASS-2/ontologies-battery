@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/eudpp/battery-locations#"
+     xml:base="https://w3id.org/eudpp/battery-locations"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/eudpp/battery-locations">
+        <owl:versionIRI rdf:resource="https://w3id.org/eudpp/battery-locations/0.1.0"/>
+        <terms:bibliographicCitation xml:lang="en">EU DPP Battery Locations Vocabulary. Draft version 0.1.0.</terms:bibliographicCitation>
+        <terms:contributor xml:lang="en">Arnab Sinha</terms:contributor>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-25</terms:created>
+        <terms:creator xml:lang="en">Marc-Andree Wolf</terms:creator>
+        <terms:creator xml:lang="en">Nader Jelassi</terms:creator>
+        <terms:description xml:lang="en">The three internal battery locations named by Regulation (EU) 2023/1542, Annex XIII 2(a) for the detailed composition of a battery: cathode, anode and electrolyte. Declared as individuals of batmat:BatteryLocation and used as the value set of batmat:hasBatteryLocation. Corresponds to BatteryPass-Ready Data Attribute Long List v1.3, attribute 41, and to the Spherity Battery Pass class BatteryLocationEntity, which declares no values.</terms:description>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-25</terms:issued>
+        <terms:license rdf:resource="https://www.apache.org/licenses/LICENSE-2.0"/>
+        <terms:license xml:lang="en">This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).</terms:license>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-01</terms:modified>
+        <terms:references xml:lang="en">Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41; Spherity Battery Pass ontology v0.1, BatteryLocationEntity</terms:references>
+        <terms:source rdf:resource="https://eur-lex.europa.eu/eli/reg/2023/1542/oj"/>
+        <terms:title xml:lang="en">EU DPP Battery Locations Vocabulary</terms:title>
+        <vann:preferredNamespacePrefix>batloc</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/eudpp/battery-locations#</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). To be revisited when MAT v2 lands (ontologies-core#24, #25), which introduces a part level that may host these locations.</rdfs:comment>
+        <rdfs:label xml:lang="en">EU DPP Battery Locations Vocabulary</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://w3id.org/eudpp/battery-materials"/>
+        <owl:versionInfo xml:lang="en">Version 0.1.0 DRAFT</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/references"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#hasTopConcept -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#notation"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#topConceptOf -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#topConceptOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    
+
+
+    <!-- https://w3id.org/eudpp/battery-materials#BatteryLocation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/eudpp/battery-materials#BatteryLocation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/eudpp/battery-locations#Anode -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/eudpp/battery-locations#Anode">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://w3id.org/eudpp/battery-materials#BatteryLocation"/>
+        <terms:references xml:lang="en">Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41</terms:references>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/eudpp/battery-locations"/>
+        <rdfs:label xml:lang="en">Anode</rdfs:label>
+        <skos:inScheme rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+        <skos:notation>anode</skos:notation>
+        <skos:prefLabel xml:lang="en">Anode</skos:prefLabel>
+        <skos:topConceptOf rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/eudpp/battery-locations#BatteryLocationScheme -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <terms:references xml:lang="en">Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41</terms:references>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/eudpp/battery-locations"/>
+        <rdfs:label xml:lang="en">Battery locations per Annex XIII 2(a)</rdfs:label>
+        <skos:hasTopConcept rdf:resource="https://w3id.org/eudpp/battery-locations#Anode"/>
+        <skos:hasTopConcept rdf:resource="https://w3id.org/eudpp/battery-locations#Cathode"/>
+        <skos:hasTopConcept rdf:resource="https://w3id.org/eudpp/battery-locations#Electrolyte"/>
+        <skos:prefLabel xml:lang="en">Battery locations per Annex XIII 2(a)</skos:prefLabel>
+        <skos:scopeNote xml:lang="en">The three locations named by Regulation (EU) 2023/1542, Annex XIII 2(a). The Regulation names them without defining them, so no definition is asserted here. Access to the detailed composition is restricted to notified bodies, market surveillance authorities and the Commission; per the tier-free convention of this ontology, that restriction is expressed in the SHACL layer, not here.</skos:scopeNote>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/eudpp/battery-locations#Cathode -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/eudpp/battery-locations#Cathode">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://w3id.org/eudpp/battery-materials#BatteryLocation"/>
+        <terms:references xml:lang="en">Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41</terms:references>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/eudpp/battery-locations"/>
+        <rdfs:label xml:lang="en">Cathode</rdfs:label>
+        <skos:inScheme rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+        <skos:notation>cathode</skos:notation>
+        <skos:prefLabel xml:lang="en">Cathode</skos:prefLabel>
+        <skos:topConceptOf rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/eudpp/battery-locations#Electrolyte -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/eudpp/battery-locations#Electrolyte">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdf:type rdf:resource="https://w3id.org/eudpp/battery-materials#BatteryLocation"/>
+        <terms:references xml:lang="en">Regulation (EU) 2023/1542, Annex XIII 2(a); BatteryPass-Ready Data Attribute Long List v1.3, attribute 41</terms:references>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/eudpp/battery-locations"/>
+        <rdfs:label xml:lang="en">Electrolyte</rdfs:label>
+        <skos:inScheme rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+        <skos:notation>electrolyte</skos:notation>
+        <skos:prefLabel xml:lang="en">Electrolyte</skos:prefLabel>
+        <skos:topConceptOf rdf:resource="https://w3id.org/eudpp/battery-locations#BatteryLocationScheme"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

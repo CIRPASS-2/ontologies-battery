@@ -1,0 +1,15 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<https://w3id.org/eudpp/battery-metals/0.1.0> a prov:Entity;
+	 dc:title "EU DPP Battery Metals Vocabulary";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
+	 prov:wasAttributedTo :agent2;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:wasGeneratedAt "2026-09-03";
+.
+:agent0 a prov:Agent; foaf:name "Marc-Andree Wolf".
+:agent1 a prov:Agent; foaf:name "Nader Jelassi".
+:agent2 a prov:Agent; foaf:name "Arnab Sinha".

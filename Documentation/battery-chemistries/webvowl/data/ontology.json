@@ -1,0 +1,1326 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2001/XMLSchema", "https://w3id.org/eudpp", "http://www.w3.org/2004/02/skos/core" ],
+    "title" : {
+      "en" : "EU DPP Battery Chemistries Vocabulary"
+    },
+    "iri" : "https://w3id.org/eudpp/battery-chemistries",
+    "version" : "Version 0.1.1 DRAFT",
+    "author" : [ "Marc-Andree Wolf", "Nader Jelassi" ],
+    "description" : {
+      "en" : "The ten battery chemistry terms prescribed by the draft labelling Implementing Act under Regulation (EU) 2023/1542, as listed in BatteryPass-Ready Data Attribute Long List v1.3, attribute 39. Declared as individuals of the cross-sectoral class dpp:MaterialType of the CORE MAT module and reached through the inherited dpp:hasMaterialType. Replaces the free-text chemistry names of the battery-materials module."
+    },
+    "labels" : {
+      "en" : "EU DPP Battery Chemistries Vocabulary"
+    },
+    "comments" : {
+      "en" : "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). To be revisited when MAT v2 lands (ontologies-core#24, #25) and when the labelling Implementing Act is adopted."
+    },
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Marc-Andree Wolf",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "en",
+        "value" : "Nader Jelassi",
+        "type" : "label"
+      } ],
+      "references" : [ {
+        "identifier" : "references",
+        "language" : "en",
+        "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39; draft labelling Implementing Act under Regulation (EU) 2023/1542",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-08-18",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+        "type" : "iri"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "Version 0.1.1 DRAFT",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "EU DPP Battery Chemistries Vocabulary",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-materials",
+        "type" : "iri"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "en",
+        "value" : "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).",
+        "type" : "label"
+      }, {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://www.apache.org/licenses/LICENSE-2.0",
+        "type" : "iri"
+      } ],
+      "contributor" : [ {
+        "identifier" : "contributor",
+        "language" : "en",
+        "value" : "Arnab Sinha",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "batchem",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-09-01",
+        "type" : "label"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://w3id.org/eudpp/battery-chemistries#",
+        "type" : "label"
+      } ],
+      "bibliographicCitation" : [ {
+        "identifier" : "bibliographicCitation",
+        "language" : "en",
+        "value" : "EU DPP Battery Chemistries Vocabulary. Draft version 0.1.1.",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-08-18",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "0",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ConceptScheme"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "editorialNote" : [ {
+          "identifier" : "editorialNote",
+          "language" : "en",
+          "value" : "Re-check flag. The Implementing Act is still a draft: the ten terms and their notations are to be re-checked on adoption. CIRPASS-2/ontologies-core#25 introduces eudpp:materialTypeScheme on the MAT material type; once it exists, the ten individuals are to carry it, pointing at batchem:BatteryChemistryScheme, so that the CORE mechanism and SKOS both carry the value.",
+          "type" : "label"
+        } ],
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Battery chemistries per the draft labelling Implementing Act",
+          "type" : "label"
+        } ],
+        "hasTopConcept" : [ {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiMetal",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#NaIon",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiIonNCA",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiIonLMO",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#NiCd",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#Pb",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiIonLFP",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiIonLCO",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#NiMH",
+          "type" : "iri"
+        }, {
+          "identifier" : "hasTopConcept",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#LiIonNMC",
+          "type" : "iri"
+        } ],
+        "source" : [ {
+          "identifier" : "source",
+          "language" : "en",
+          "value" : "Draft Implementing Act on the harmonised format and technical specifications for the labelling of batteries, under Regulation (EU) 2023/1542, Annex VI Part A (7). Not yet adopted; the ten terms of this scheme are the draft ones.",
+          "type" : "label"
+        } ],
+        "scopeNote" : [ {
+          "identifier" : "scopeNote",
+          "language" : "en",
+          "value" : "Closed list of ten terms. For secondary (rechargeable) batteries whose electrochemical composition does not correspond to any of these, the composition shall be indicated based on the molecular formula of the cathode and/or anode — that fallback is not a concept of this scheme and is to be handled by the SHACL shapes.",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "BatteryChemistryScheme",
+        "en" : "Battery chemistries per the draft labelling Implementing Act"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "0"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#Concept",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Concept"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#Pb",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Pb",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lead acid",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Pb",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Pb",
+        "en" : "Lead acid"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLFP",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LFP",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LFP",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LFP",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium iron phosphate",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLFP",
+        "en" : "Lithium ion LFP"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonNMC",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion NMC",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion NMC",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium nickel manganese cobalt oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion NMC",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonNMC",
+        "en" : "Lithium ion NMC"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NiMH",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Ni-MH",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Nickel metal hydride",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Ni-MH",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NiMH",
+        "en" : "Nickel metal hydride"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLCO",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LCO",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LCO",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium cobalt oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LCO",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLCO",
+        "en" : "Lithium ion LCO"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLMO",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LMO",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LMO",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium manganese oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LMO",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLMO",
+        "en" : "Lithium ion LMO"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonNCA",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion NCA",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion NCA",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium nickel cobalt aluminium oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion NCA",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonNCA",
+        "en" : "Lithium ion NCA"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiMetal",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-metal",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium metal",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-metal",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiMetal",
+        "en" : "Lithium metal"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NaIon",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Na-ion",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Sodium-ion",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Na-ion",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NaIon",
+        "en" : "Sodium-ion"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NiCd",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Ni-Cd",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Nickel cadmium",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Ni-Cd",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NiCd",
+        "en" : "Nickel cadmium"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "1"
+  }, {
+    "iri" : "https://w3id.org/eudpp#MaterialType",
+    "baseIri" : "https://w3id.org/eudpp",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MaterialType"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLFP",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LFP",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LFP",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LFP",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium iron phosphate",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLFP",
+        "en" : "Lithium ion LFP"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#Pb",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Pb",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lead acid",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Pb",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Pb",
+        "en" : "Lead acid"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonNMC",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion NMC",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion NMC",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium nickel manganese cobalt oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion NMC",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonNMC",
+        "en" : "Lithium ion NMC"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NiMH",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Ni-MH",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Nickel metal hydride",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Ni-MH",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NiMH",
+        "en" : "Nickel metal hydride"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLCO",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LCO",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LCO",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium cobalt oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LCO",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLCO",
+        "en" : "Lithium ion LCO"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonLMO",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion LMO",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion LMO",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium manganese oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion LMO",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonLMO",
+        "en" : "Lithium ion LMO"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiIonNCA",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-ion NCA",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium ion NCA",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Lithium nickel cobalt aluminium oxide",
+          "type" : "label"
+        }, {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-ion NCA",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiIonNCA",
+        "en" : "Lithium ion NCA"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NaIon",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Na-ion",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Sodium-ion",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Na-ion",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NaIon",
+        "en" : "Sodium-ion"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#NiCd",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Ni-Cd",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Nickel cadmium",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Ni-Cd",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "NiCd",
+        "en" : "Nickel cadmium"
+      }
+    }, {
+      "iri" : "https://w3id.org/eudpp/battery-chemistries#LiMetal",
+      "baseIri" : "https://w3id.org/eudpp/battery-chemistries",
+      "annotations" : {
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries",
+          "type" : "iri"
+        } ],
+        "inScheme" : [ {
+          "identifier" : "inScheme",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ],
+        "references" : [ {
+          "identifier" : "references",
+          "language" : "en",
+          "value" : "BatteryPass-Ready Data Attribute Long List v1.3, attribute 39",
+          "type" : "label"
+        } ],
+        "notation" : [ {
+          "identifier" : "notation",
+          "language" : "undefined",
+          "value" : "Li-metal",
+          "type" : "label"
+        } ],
+        "prefLabel" : [ {
+          "identifier" : "prefLabel",
+          "language" : "en",
+          "value" : "Lithium metal",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en",
+          "value" : "Li-metal",
+          "type" : "label"
+        } ],
+        "topConceptOf" : [ {
+          "identifier" : "topConceptOf",
+          "language" : "undefined",
+          "value" : "https://w3id.org/eudpp/battery-chemistries#BatteryChemistryScheme",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "LiMetal",
+        "en" : "Lithium metal"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "2"
+  } ]
+}
