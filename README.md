@@ -134,13 +134,24 @@ Sources, in order of authority:
 3. **prEN 18223 Table 1** — the passport-level attributes.
 4. **The battery vocabularies** — the closed value lists (`sh:in`).
 
-The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only.
+The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only. Two exceptions, attributes 22 and 36, are declared but not required: see the changelog of 28 September 2026.
 
-86 of the 100 attributes carry a path — 66 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 7 typed but never required. The 14 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+85 of the 100 attributes carry a path — 63 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but never required. The 15 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+
+A view never requires more than the profile: it requires the data points it shows that the profile requires, under the same category conditions.
 
 ⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance of 15 August 2026 does defer some data points; reconciling the two is an open point.
 
 ## Changelog
+
+### SHACL profile and views — 28 September 2026
+
+Following [#14](https://github.com/CIRPASS-2/ontologies-battery/issues/14): a real LFP battery run through the public view showed the shapes requiring data the Regulation does not always require.
+
+* **`battery-shapes.ttl`** — attributes 22 and 36 move to *Declared, never required*. The cadmium and lead symbols are due only above 0.002 % cadmium or 0.004 % lead by weight, which the passport does not state; the due diligence report only from 18 August 2027 (Regulation (EU) 2025/1561). New shape for `batlab:leadSymbol`, typed like `cadmiumSymbol`.
+* **The three view files** — a view no longer requires more than the profile. Attributes the profile never requires are no longer required (public 5, legitimate interest 9, authorities 9); the 13 the profile requires for some categories only are conditioned the same way (public 1, legitimate interest and authorities 13).
+* **`tests/`** — `run_tests.py` replays the profile and the views against the three worked examples and the two fixtures contributed in #14, negative cases included: 27 checks, all passing.
+* **Unchanged**: recycled content keeps one value per metal until [ontologies-core#25](https://github.com/CIRPASS-2/ontologies-core/issues/25); long list v2.0 also merges the pre- and post-consumer shares.
 
 ### battery-metals 0.1.0 — 3 September 2026
 
@@ -155,7 +166,7 @@ New vocabulary module, and the first constraint that can tell one recycled share
 
 Rebuilt against long list v1.3 instead of v2.0, at the CEA's request. Sources and rule above.
 
-* **`battery-shapes.ttl` 0.2.0** — regenerated from v1.3. New `batsh:PassportScopeShape` for Art. 77: portable and SLI batteries carry no passport. One unconditional shape (66 attributes), two conditional ones on `dpp:hasProductGroup` (LMT and stationary, 11; electric vehicle, 2), one for the 7 voluntary attributes. Every `sh:path` was checked against the loaded CORE and battery modules before generation; two terms that did not exist were replaced — battery mass goes through `dpp:hasProperty` with `sh:class dpp:Weight`, hazardous substances through `dpp:containsSubstanceOfConcern`.
+* **`battery-shapes.ttl` 0.2.0** — regenerated from v1.3. New `batsh:PassportScopeShape` for Art. 77: portable and SLI batteries carry no passport. One unconditional shape (65 attributes), two conditional ones on `dpp:hasProductGroup` (LMT and stationary, 11; electric vehicle, 2), one for the 7 voluntary attributes. Every `sh:path` was checked against the loaded CORE and battery modules before generation; two terms that did not exist were replaced — battery mass goes through `dpp:hasProperty` with `sh:class dpp:Weight`, hazardous substances through `dpp:containsSubstanceOfConcern`.
 * **The three view files 0.2.0** — regenerated from the v1.3 *Access rights* column: 52 public data points, 26 reserved to persons with a legitimate interest, 4 shared with the authorities, 4 reserved to notified bodies and authorities.
 * **`battery-access-tiers.ttl`** — reference changed from v2.0 to v1.3.
 * `battery-cf-shapes.ttl` untouched: it is driven by [ontologies-core#41](https://github.com/CIRPASS-2/ontologies-core/issues/41) and the LCA module, not by the long list.

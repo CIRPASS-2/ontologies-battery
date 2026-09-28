@@ -1,6 +1,7 @@
 @prefix batv: <https://w3id.org/eudpp/battery-view-public#> .
 @prefix batacc: <https://w3id.org/eudpp/battery-access-tiers#> .
 @prefix bat: <https://w3id.org/eudpp/battery#> .
+@prefix batcat: <https://w3id.org/eudpp/battery-categories#> .
 @prefix batperf: <https://w3id.org/eudpp/battery-performance#> .
 @prefix batmat: <https://w3id.org/eudpp/battery-materials#> .
 @prefix batlab: <https://w3id.org/eudpp/battery-labeling#> .
@@ -42,7 +43,7 @@
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-09-02"^^xsd:date ;
+    dcterms:modified "2026-09-28"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'"@en ;
     owl:versionInfo "Version 0.2.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-view-public#" ;
@@ -57,7 +58,8 @@ batv:PublicBatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     batacc:accessTier batacc:Public ;
-    rdfs:comment "The 52 data points long list v1.3 makes visible to this audience."@en ;
+    rdfs:comment "The 46 data points visible to this audience that battery-shapes.ttl requires for every battery category; 1 more is required for some categories only, below."@en ;
+    # Visible here but never required, as in section 4 of battery-shapes.ttl: 22, 36, 37, 62, 73.
     # 2. DPP Status
     sh:property [ sh:path ( dpp:hasDPP dpp:dppStatus ) ; sh:minCount 1 ] ;
     # 3. DPP Granularity
@@ -88,16 +90,10 @@ batv:PublicBatteryShape
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 21. Separate collection symbol
     sh:property [ sh:path ( batlab:hasBatteryLabel batlab:separateCollectionSymbol ) ; sh:minCount 1 ] ;
-    # 22. Symbols for cadmium and lead
-    sh:property [ sh:path ( batlab:hasBatteryLabel batlab:cadmiumSymbol ) ; sh:minCount 1 ] ;
     # 24. Extinguishing agent
     sh:property [ sh:path ( batlab:hasBatteryLabel batlab:extinguishingAgent ) ; sh:minCount 1 ] ;
     # 26. EU declaration of conformity
     sh:property [ sh:path dpp:hasEUDeclarationOfConformity ; sh:minCount 1 ] ;
-    # 36. Information of due diligence report
-    sh:property [ sh:path bat:dueDiligenceReport ; sh:minCount 1 ] ;
-    # 37. Third party assurances of recognised schemes
-    sh:property [ sh:path bat:dueDiligenceAudit ; sh:minCount 1 ] ;
     # 39. Battery chemistry
     sh:property [ sh:path batmat:hasBatteryChemistry ; sh:minCount 1 ] ;
     # 40. Critical raw materials
@@ -130,8 +126,6 @@ batv:PublicBatteryShape
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 59. Rated capacity
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:ratedCapacity ) ; sh:minCount 1 ] ;
-    # 62. Certified usable battery energy
-    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:certifiedUsableBatteryEnergy ) ; sh:minCount 1 ] ;
     # 66. Minimum voltage
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:minimumVoltage ) ; sh:minCount 1 ] ;
     # 67. Maximum voltage
@@ -142,8 +136,6 @@ batv:PublicBatteryShape
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:originalPowerCapability ) ; sh:minCount 1 ] ;
     # 72. Maximum permitted battery power
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:maximumPermittedBatteryPower ) ; sh:minCount 1 ] ;
-    # 73. Ratio between nominal battery power and battery energy
-    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:powerToEnergyRatio ) ; sh:minCount 1 ] ;
     # 74. Initial round trip energy efficiency
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialRoundTripEnergyEfficiency ) ; sh:minCount 1 ] ;
     # 75. Round trip energy efficiency at 50% of cycle life
@@ -156,12 +148,30 @@ batv:PublicBatteryShape
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cycleLifeReferenceTest ) ; sh:minCount 1 ] ;
     # 87. C-rate of relevant cycle-life test
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cRateOfCycleLifeTest ) ; sh:minCount 1 ] ;
-    # 90. Capacity threshold for exhaustion
-    sh:property [ sh:path ( batperf:hasBatteryDurability batperf:capacityThresholdForExhaustion ) ; sh:minCount 1 ] ;
     # 92. Temperature range idle state, lower boundary
     sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateLowerBoundary ) ; sh:minCount 1 ] ;
     # 93. Temperature range idle state, upper boundary
     sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateUpperBoundary ) ; sh:minCount 1 ]  .
+
+#################################################
+# Must be there for some categories only
+#################################################
+# Required only for the categories named, as in section 3 of
+# battery-shapes.ttl: a view never requires more than the profile
+# (ontologies-battery#14).
+
+# 90. Capacity threshold for exhaustion
+batv:Public90Shape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    batacc:accessTier batacc:Public ;
+    sh:message "Capacity threshold for exhaustion — long list v1.3 attribute 90, required for electric vehicle batteries." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:ElectricVehicleBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [ sh:property [ sh:path ( batperf:hasBatteryDurability batperf:capacityThresholdForExhaustion ) ; sh:minCount 1 ] ]
+    ) .
 
 #################################################
 # Must not be there

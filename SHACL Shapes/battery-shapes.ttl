@@ -41,6 +41,7 @@
 # it mandatory and "(x)" when the ESPR or JTC-24 does; both are legal
 # obligations, so both produce sh:minCount 1 and the message names which
 # text applies. "o" and a blank column produce a datatype only.
+# Two exceptions, attributes 22 and 36, are explained in section 4.
 #
 # An attribute mandatory in all four columns is required unconditionally.
 # An attribute mandatory in some columns is required inside a shape
@@ -71,7 +72,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
     dcterms:issued "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-09-02"^^xsd:date ;
+    dcterms:modified "2026-09-28"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.2.0 DRAFT"@en ;
@@ -101,8 +102,9 @@ batsh:PassportScopeShape
 #################################################
 # 2. Required for every passport category
 #################################################
-# The 65 attributes that v1.3 marks mandatory in all four
-# applicability columns.
+# 63 of the 65 attributes that v1.3 marks mandatory in all four
+# applicability columns. The other two, 22 and 36, are declared in
+# section 4: no validator can tell when they are due (issue #14).
 
 batsh:BatteryShape
     a sh:NodeShape ;
@@ -262,15 +264,6 @@ batsh:BatteryShape
         sh:message "Separate collection symbol — long list v1.3 attribute 21, Battery Regulation." ;
     ] ;
 
-    # 22. Symbols for cadmium and lead
-    #     leadSymbol carries the second half
-    sh:property [
-        sh:path ( batlab:hasBatteryLabel batlab:cadmiumSymbol ) ;
-        sh:minCount 1 ;
-        sh:datatype xsd:anyURI ;
-        sh:message "Symbols for cadmium and lead — long list v1.3 attribute 22, Battery Regulation." ;
-    ] ;
-
     # 24. Extinguishing agent
     sh:property [
         sh:path ( batlab:hasBatteryLabel batlab:extinguishingAgent ) ;
@@ -291,14 +284,6 @@ batsh:BatteryShape
         sh:minCount 1 ;
         sh:datatype xsd:anyURI ;
         sh:message "Results of test reports proving compliance — long list v1.3 attribute 27, Battery Regulation." ;
-    ] ;
-
-    # 36. Information of due diligence report
-    sh:property [
-        sh:path bat:dueDiligenceReport ;
-        sh:minCount 1 ;
-        sh:datatype xsd:anyURI ;
-        sh:message "Information of due diligence report — long list v1.3 attribute 36, Battery Regulation." ;
     ] ;
 
     # 39. Battery chemistry
@@ -933,12 +918,42 @@ batsh:EV90Shape
 #################################################
 # The 7 attributes v1.3 marks voluntary or not applicable in all
 # four columns: typed here, never required.
+#
+# Two attributes v1.3 marks mandatory join them (ontologies-battery#14):
+#   22. the cadmium and lead symbols are due only above 0.002 % cadmium
+#       and 0.004 % lead by weight (Art. 13(5)), which the passport
+#       does not state;
+#   36. the due diligence report is due only from 18 August 2027
+#       (Regulation (EU) 2025/1561), and only from economic operators
+#       above the net turnover threshold set for due diligence.
 
 batsh:BatteryVoluntaryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     rdfs:label "Voluntary attributes"@en ;
-    rdfs:comment "Typed but never required by long list v1.3."@en ;
+    rdfs:comment "Typed but never required: voluntary in long list v1.3, or due under conditions a validator cannot check (22, 36)."@en ;
+
+    # 22. Symbols for cadmium and lead
+    #     due only above 0.002 % cadmium or 0.004 % lead by weight: declared, not required
+    sh:property [
+        sh:path ( batlab:hasBatteryLabel batlab:cadmiumSymbol ) ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Symbols for cadmium and lead — long list v1.3 attribute 22, Battery Regulation." ;
+    ] ;
+
+    sh:property [
+        sh:path ( batlab:hasBatteryLabel batlab:leadSymbol ) ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Symbols for cadmium and lead — long list v1.3 attribute 22, Battery Regulation." ;
+    ] ;
+
+    # 36. Information of due diligence report
+    #     due from 18 August 2027 (Regulation (EU) 2025/1561): declared, not required
+    sh:property [
+        sh:path bat:dueDiligenceReport ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Information of due diligence report — long list v1.3 attribute 36, Battery Regulation." ;
+    ] ;
 
     # 37. Third party assurances of recognised schemes
     sh:property [
@@ -988,3 +1003,39 @@ batsh:BatteryVoluntaryShape
         sh:datatype xsd:integer ;
         sh:message "Number of overcharge events — long list v1.3 attribute 99, Battery Regulation." ;
     ]  .
+
+#################################################
+# 5. Deliberately not constrained
+#################################################
+# 15 of the 100 v1.3 attributes have no path here. Each line says why.
+#
+#     1. DPP Schema version
+#        DPP-level, prEN 18223 Table 1; no CORE successor since P_DPP v1.9.4 (core issue of 28/08)
+#    16. Date of putting the battery into service
+#        no CORE date property; event vs property still open (battery#26 line of the Broader table)
+#    23. Carbon footprint label
+#        carbon footprint label; core#36 closed without a term, the URL goes through hasExternalDocumentation -> Source (LCA)
+#    25. Meaning of labels and symbols
+#        meaning of labels and symbols; the Commission marks it a repetition of 21-22
+#    28. Battery carbon footprint per Functional Unit
+#        carbon footprint: battery-cf-shapes.ttl, deferred to the LCA module (core#41)
+#    29. Contribution of raw material acquisition and pre-processing 
+#        carbon footprint: battery-cf-shapes.ttl
+#    30. Contribution of main product production lifecycle stage
+#        carbon footprint: battery-cf-shapes.ttl
+#    31. Contribution of distribution lifecycle stage
+#        carbon footprint: battery-cf-shapes.ttl
+#    32. Contribution of end of life and recycling lifecycle stage
+#        carbon footprint: battery-cf-shapes.ttl
+#    33. Carbon footprint performance class
+#        performance class: core#41 makes it an LCA concept, not yet implemented
+#    34. Web link to public carbon footprint study
+#        public study link: hasExternalDocumentation -> Source (LCA), core#36
+#    35. Absolute battery carbon footprint
+#        absolute carbon footprint: battery-cf-shapes.ttl
+#    38. Supply chain indices
+#        supply chain indices: no term, in the CORE or in the battery modules
+#    46. Information on sources of spare parts
+#        spare-part sources are actor data in ACTOR, not a battery term
+#   100. Information on accidents
+#        no object property links bat:Battery to batperf:AccidentEvent; same gap as the putting-into-service event
