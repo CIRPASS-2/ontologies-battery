@@ -1,6 +1,6 @@
 # Tests
 
-`run_tests.py` replays the SHACL profile and the three views against the worked examples of `Guide Utilisation/` and the fixtures below, including a few negative cases.
+`run_tests.py` replays the SHACL profile and the three views against the worked examples of `Examples/` and the fixtures below, including a few negative cases.
 
 ```
 pip install pyshacl
