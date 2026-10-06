@@ -43,7 +43,7 @@
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-09-28"^^xsd:date ;
+    dcterms:modified "2026-10-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'"@en ;
     owl:versionInfo "Version 0.2.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-view-public#" ;
@@ -58,8 +58,10 @@ batv:PublicBatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     batacc:accessTier batacc:Public ;
-    rdfs:comment "The 46 data points visible to this audience that battery-shapes.ttl requires for every battery category; 1 more is required for some categories only, below."@en ;
+    rdfs:comment "The 47 data points visible to this audience that battery-shapes.ttl requires for every battery category; 1 more is required for some categories only, below."@en ;
     # Visible here but never required, as in section 4 of battery-shapes.ttl: 22, 36, 37, 62, 73.
+    # 1. DPP Schema version
+    sh:property [ sh:path ( dpp:hasDPP dpp:dppSchemaVersion ) ; sh:minCount 1 ] ;
     # 2. DPP Status
     sh:property [ sh:path ( dpp:hasDPP dpp:dppStatus ) ; sh:minCount 1 ] ;
     # 3. DPP Granularity
@@ -266,8 +268,11 @@ batv:PublicBatteryShapeExclusions
     sh:property [ sh:path bat:partNumber ; sh:maxCount 0 ;
                   sh:message "Attribute 45 is not disclosed in this view." ] ;
     # 47. Safety measures
-    sh:property [ sh:path bat:safetyMeasures ; sh:maxCount 0 ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMaxCount 0 ;
+                  sh:qualifiedValueShape [ sh:class bat:SafetyInstruction ] ;
                   sh:message "Attribute 47 is not disclosed in this view." ] ;
+    sh:property [ sh:path bat:safetyMeasures ; sh:maxCount 0 ;
+                  sh:message "Attribute 47 is not disclosed in this view (deprecated property)." ] ;
     # 9. Unique economic operator identifier
     sh:property [ sh:path ( dpp:hasEconomicOperator dpp:hasUniqueOperatorIdentifier ) ; sh:maxCount 0 ;
                   sh:message "Attribute 9 is not disclosed in this view." ] ;

@@ -32,6 +32,7 @@
       "@id": "urn:example:passport:DEMO-LFP-200"
     },
     "dpp:dppStatus": "Active",
+    "dpp:dppSchemaVersion": "prEN18223:v1.0",
     "dpp:granularity": "item",
     "dpp:lastUpdate": {
       "@type": "xsd:dateTimeStamp",

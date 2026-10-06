@@ -51,7 +51,8 @@ ex:battery-1 a bat:Battery ;
     eudpp:hasProductGroup batcat:LMTBattery ;
     eudpp:hasProperty ex:carbon-footprint-1,
         ex:mass-1,
-        ex:renewable-content-1 ;
+        ex:renewable-content-1,
+        ex:safety-instruction-1 ;
     eudpp:hasUniqueProductIdentifier ex:pid-1 ;
     eudpp:isEnergyRelated true ;
     eudpp:manufacturingDate "2027-05"^^xsd:gYearMonth ;
@@ -63,7 +64,6 @@ ex:battery-1 a bat:Battery ;
     bat:hasBatteryStatus batstat:Original ;
     bat:partNumber "CELL-21700-14S",
         "LMT-630-A" ;
-    bat:safetyMeasures "https://example.org/doc/lmt/safety.pdf"^^xsd:anyURI ;
     bat:testReportResults "https://example.org/doc/lmt/test-reports.pdf"^^xsd:anyURI ;
     bat:warrantyPeriod "P2Y"^^xsd:duration ;
     batlab:hasBatteryLabel ex:label-1 ;
@@ -85,6 +85,7 @@ ex:design-life-1 a batperf:BatteryDurability ;
 
 ex:dpp-1 a eudpp:DPP ;
     eudpp:appliesToProduct ex:battery-1 ;
+    eudpp:dppSchemaVersion "prEN18223:v1.0" ;
     eudpp:dppStatus "Active" ;
     eudpp:granularity "item" ;
     eudpp:hasDigitalProductPassportId ex:dppid-1 ;
@@ -189,6 +190,9 @@ ex:reg-2023-1542 a eudpp:UnionHarmonisationLegislation ;
 ex:renewable-content-1 a eudpp:SustainableRenewableMaterialsUse ;
     eudpp:hasMeasurementUnit siunit:percent ;
     eudpp:numericalValue 3.5 .
+
+ex:safety-instruction-1 a bat:SafetyInstruction ;
+    eudpp:webLink "https://example.org/doc/lmt/safety.pdf"^^xsd:anyURI .
 
 ex:soc-1 a eudpp:SubstanceOfConcern ;
     eudpp:hasImpactOnEnvironment "Aquatic toxicity if the cell casing is breached; see the safety data sheet." ;

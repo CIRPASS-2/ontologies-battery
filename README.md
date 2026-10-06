@@ -15,7 +15,7 @@ This repository contains the **EU DPP Battery Ontology** (umbrella version 0.4.0
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
-| `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product` | `bat` | `https://w3id.org/eudpp/battery#` |
+| `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product`, and `bat:SafetyInstruction` as a subclass of `dpp:DigitalInstruction` | `bat` | `https://w3id.org/eudpp/battery#` |
 | `battery performance.ttl` | **Performance** — electrochemical performance, durability and in-use state (BatteryPass-Ready category "Performance and durability", attributes 59–100) | `batperf` | `https://w3id.org/eudpp/battery-performance#` |
 | `battery materials.ttl` | **Materials** — battery chemistry and internal material location, extending the CORE MAT module | `batmat` | `https://w3id.org/eudpp/battery-materials#` |
 | `battery-locations.ttl` | **Locations** — the three internal locations named by Annex XIII 2(a) — cathode, anode, electrolyte — as individuals of `batmat:BatteryLocation`, value set of `batmat:hasBatteryLocation` | `batloc` | `https://w3id.org/eudpp/battery-locations#` |
@@ -43,11 +43,11 @@ The **passport status** is the state of the digital resource — `Active`, `Arch
 
 The OWL range of `bat:hasBatteryStatus` is `skos:Concept`, deliberately loose. Closing the list is a conformance rule: the [#10](https://github.com/CIRPASS-2/ontologies-battery/issues/10) shape set carries an `sh:in` over the five concepts of `batstat:BatteryStatusScheme`.
 
-When a battery is remanufactured, repurposed or prepared for re-use and placed on the market again, a new passport is issued and linked back to the previous one through the CORE property `dpp:linkToPreviousDPP` (ESPR Art. 11(d)). Status-change events belong to the CORE event module.
+When a battery is remanufactured, repurposed or prepared for re-use and placed on the market again, a new passport is issued and linked back to the previous one through the CORE: `dpp:linkToPreviousDPP` (ESPR Art. 11(d)) and, since P_DPP v2.1.0, the object properties of [ontologies-core#56](https://github.com/CIRPASS-2/ontologies-core/issues/56) linking a passport to its previous and next passports. Status-change events belong to the CORE event module.
 
-Two gaps on that CORE side were raised rather than patched here: [ontologies-core#56](https://github.com/CIRPASS-2/ontologies-core/issues/56) — `linkToPreviousDPP` is one-directional and typed `xsd:anyURI` rather than pointing at `dpp:DPP` — and [ontologies-core#57](https://github.com/CIRPASS-2/ontologies-core/issues/57) — `dppStatus` enumerates `Invalid` where prEN 18223 says `Marked-for-deletion`.
+Two points were raised on the CORE side rather than patched here. [ontologies-core#56](https://github.com/CIRPASS-2/ontologies-core/issues/56) — `linkToPreviousDPP` was one-directional and typed `xsd:anyURI`: P_DPP v2.1.0 adds the object properties and keeps `linkToPreviousDPP` for passports outside the graph. [ontologies-core#57](https://github.com/CIRPASS-2/ontologies-core/issues/57) — `dppStatus`: the prEN 18223 formal vote text (N440, 4.1.2.1) gives `Active`, `Inactive`, `Archived` and `Invalid` as example values, plus any value provided by relevant legal acts, so the CORE matches the standard; `Marked-for-deletion` comes from the BatteryPass-Ready long list, not from prEN 18223.
 
-`bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice. It is a stopgap: [ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) requests a cross-sectoral `eudpp:productStatus` on `eudpp:Product`, and is still open. When it lands, `bat:hasBatteryStatus` is to be deprecated in favour of it.
+`bat:hasBatteryStatus` is the one place where the battery module declares a term the CORE could have provided. There is no generic product status in the CORE — `dpp:hasProductGroup` carries the product group, not the state of the item — so the property is local by necessity, not by choice. It is a stopgap: [ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) requests a cross-sectoral product status and is still open; the direction discussed there is a `ProductStatus` resource with SKOS status concepts, linked by `hasProductStatus` in CONNECTOR. What to do when it lands is listed under [Waiting on CORE](#waiting-on-core).
 
 ### Carbon footprint binding
 
@@ -116,7 +116,7 @@ The CORE property carries no `rdfs:range`: *"the range of the data property is i
 
 * Each module is a self-contained `owl:Ontology` file with its own IRI, `owl:versionIRI`, namespace, prefix and metadata.
 * CORE concepts are referenced directly by IRI — no `owl:imports`, no copied axioms (same approach as the Textile sector modules). To obtain a connected graph, load these modules together with the EU DPP CO modules, published on the [DPP Vocabulary Hub](https://dpp.vocabulary-hub.eu/).
-* The modules are developed against CIRPASS-2 CORE ontology v2.0 (P_DPP v2.0.0, MAT v1.0.2; update of 30 April 2026); external references are pinned to these versions.
+* The modules are developed against the CIRPASS-2 CORE ontology of October 2026 (P_DPP v2.1.0, MAT v1.1.0); external references are pinned to these versions.
 * No cardinality restrictions in OWL: the mandatory/optional constraints of Regulation (EU) 2023/1542 are to be expressed in separate SHACL shapes.
 * **Tier-free ontology**: access tiers (public / legitimate interest / authorities) are carried by the SHACL shapes, not by the ontology — no annotation property, no per-class flags.
 * Alignments to BatteryPass-Ready and to the Spherity Battery Pass ontology are to be maintained in a dedicated SSSOM mappings file, not in the ontology itself.
@@ -136,13 +136,33 @@ Sources, in order of authority:
 
 The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only. Two exceptions, attributes 22 and 36, are declared but not required: see the changelog of 28 September 2026.
 
-85 of the 100 attributes carry a path — 63 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but never required. The 15 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+86 of the 100 attributes carry a path — 64 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but never required. The 14 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
 
 A view never requires more than the profile: it requires the data points it shows that the profile requires, under the same category conditions.
 
 ⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance of 15 August 2026 does defer some data points; reconciling the two is an open point.
 
+## Waiting on CORE
+
+What to change in the battery modules when these CORE issues land:
+
+* **[ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) — product status.** When the CORE publishes `ProductStatus` and `hasProductStatus`: attach the five `battery-statuses` concepts to `ProductStatus`; deprecate `bat:hasBatteryStatus` in favour of `hasProductStatus`; in the profile and the views, move attribute 20 to the new path, with the same `sh:in`.
+* **[ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) — units and value pattern.** When decided: apply the chosen unit mechanism to `batperf` (today SI Digital Framework IRIs on `batperf:measurementUnit`, the 22 units without one in `rdfs:comment`); switch shares from percentages to fractions only if the CORE decides so.
+
 ## Changelog
+
+### All modules, SHACL profile and views — 6 October 2026
+
+Follow-up of the CORE issues answered at the end of September.
+
+* **Header of the ten modules** — pinned to the CORE of October 2026 (P_DPP v2.1.0, MAT v1.1.0), in place of CORE v2.0.5.
+* **MAT** — [ontologies-core#24](https://github.com/CIRPASS-2/ontologies-core/issues/24) closed without a part level: the "MAT v2" notes are gone from `battery materials`, `battery-locations`, `battery-chemistries` and `battery-metals`; the locations stay in `battery-locations`, which settles point (3) of [#9](https://github.com/CIRPASS-2/ontologies-battery/issues/9). [ontologies-core#25](https://github.com/CIRPASS-2/ontologies-core/issues/25) closed with MAT v1.1.0: the ten chemistries and the four metals carry `eudpp:materialTypeScheme`. Recycled content keeps one total share per metal, as long list v2.0 and the Commission guidance ask; `eudpp:materialRecycledContentType` would allow the pre- / post-consumer split.
+* **Safety measures** ([ontologies-core#45](https://github.com/CIRPASS-2/ontologies-core/issues/45)) — new class `bat:SafetyInstruction`, subclass of `dpp:DigitalInstruction`, reached through `dpp:hasProperty` with its URL on `dpp:webLink`. `bat:safetyMeasures` is deprecated, not removed. Attribute 47 follows in the profile, the views and the three examples; the public view still forbids the deprecated property.
+* **Attribute 1, DPP Schema version** ([ontologies-core#62](https://github.com/CIRPASS-2/ontologies-core/issues/62)) — `dppSchemaVersion` is back in P_DPP v2.1.0, so the profile and the three views require it. The examples and the two fixtures of [#14](https://github.com/CIRPASS-2/ontologies-battery/issues/14) carry `prEN18223:v1.0`, the example value of prEN 18223.
+* **Attribute 25, meaning of labels and symbols** ([ontologies-core#37](https://github.com/CIRPASS-2/ontologies-core/issues/37)) — the comment in `battery-shapes.ttl` now gives the reason it has no path: long list v2.0 subsumes it in data point 43 of the Commission guidance (Art. 74(1)).
+* **Passport links and status** — this README and `battery-statuses.ttl` cite the object properties of [ontologies-core#56](https://github.com/CIRPASS-2/ontologies-core/issues/56); the README no longer says that prEN 18223 gives `Marked-for-deletion` ([ontologies-core#57](https://github.com/CIRPASS-2/ontologies-core/issues/57)).
+* **Data carrier** — [ontologies-core#61](https://github.com/CIRPASS-2/ontologies-core/issues/61) closed: data carriers are out of the CORE scope, a DPP does not describe the carrier it is borne on. Point (4) of [#8](https://github.com/CIRPASS-2/ontologies-battery/issues/8) is settled, with nothing to model.
+* **`tests/`** — `run_tests.py` now finds its files in this repository (it looked for the working-folder layout and ran 5 checks, 2 of them failing). Two negative checks added: no DPP schema version, no safety instruction link. 23 checks pass here, 29 with the Semantic Treehouse versions beside the shapes.
 
 ### SHACL profile and views — 28 September 2026
 

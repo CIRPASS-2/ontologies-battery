@@ -40,7 +40,7 @@
     rdfs:label "EU DPP Battery Statuses Vocabulary"@en ;
     dcterms:title "EU DPP Battery Statuses Vocabulary"@en ;
     dcterms:description "The five lifecycle statuses of a battery required by Regulation (EU) 2023/1542, Annex XIII 4(c): original, repurposed, re-used, remanufactured and waste. Value set of bat:hasBatteryStatus. Distinct from the status of the digital passport, which is carried by the cross-sectoral dpp:dppStatus."@en ;
-    rdfs:comment "Developed against the CIRPASS-2 CORE ontology v2.0.5 (refresh of 25 August 2026; P_DPP v2.0.6 of 27 August 2026, MAT v1.0.2). External references are pinned to these versions."@en ;
+    rdfs:comment "Developed against the CIRPASS-2 CORE ontology of October 2026 (P_DPP v2.1.0, MAT v1.1.0). External references are pinned to these versions."@en ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
     dcterms:license "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en ;
     dcterms:bibliographicCitation "EU DPP Battery Statuses Vocabulary. Draft version 0.1.1."@en ;
@@ -48,7 +48,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-19"^^xsd:date ;
     dcterms:issued "2026-08-19"^^xsd:date ;
-    dcterms:modified "2026-09-01"^^xsd:date ;
+    dcterms:modified "2026-10-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(c); BatteryPass-Ready Data Attribute Long List v1.3, attribute 20"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.1.1 DRAFT"@en ;
@@ -63,7 +63,7 @@ batstat:BatteryStatusScheme
     a skos:ConceptScheme ;
     rdfs:label "Battery lifecycle statuses per Annex XIII 4(c)"@en ;
     skos:prefLabel "Battery lifecycle statuses per Annex XIII 4(c)"@en ;
-    skos:scopeNote "Closed list of five terms. The status is dynamic at individual-battery granularity: it is updated on placing on the market and on every status change. A new battery passport is issued when the battery has been remanufactured, repurposed or subjected to a treatment operation preparing for re-use or repurposing and is placed on the market again; the link back to the previous passport is carried by the CORE property dpp:linkToPreviousDPP, not by this vocabulary. Access to the battery status is restricted to persons with a legitimate interest — a conformance rule expressed in the SHACL shapes, not in this ontology."@en ;
+    skos:scopeNote "Closed list of five terms. The status is dynamic at individual-battery granularity: it is updated on placing on the market and on every status change. A new battery passport is issued when the battery has been remanufactured, repurposed or subjected to a treatment operation preparing for re-use or repurposing and is placed on the market again; the link back to the previous passport is carried by the CORE, not by this vocabulary: dpp:linkToPreviousDPP, and since P_DPP v2.1.0 the object properties linking a passport to its previous and next passports (ontologies-core#56). Access to the battery status is restricted to persons with a legitimate interest — a conformance rule expressed in the SHACL shapes, not in this ontology."@en ;
     skos:hasTopConcept batstat:Original ,
                        batstat:Repurposed ,
                        batstat:ReUsed ,

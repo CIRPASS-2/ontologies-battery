@@ -43,7 +43,7 @@
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-09-28"^^xsd:date ;
+    dcterms:modified "2026-10-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'"@en ;
     owl:versionInfo "Version 0.2.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-view-authorities#" ;
@@ -58,8 +58,10 @@ batv:AuthoritiesBatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     batacc:accessTier batacc:Authorities ;
-    rdfs:comment "The 63 data points visible to this audience that battery-shapes.ttl requires for every battery category; 13 more are required for some categories only, below."@en ;
+    rdfs:comment "The 64 data points visible to this audience that battery-shapes.ttl requires for every battery category; 13 more are required for some categories only, below."@en ;
     # Visible here but never required, as in section 4 of battery-shapes.ttl: 22, 36, 37, 62, 63, 73, 78, 79, 99.
+    # 1. DPP Schema version
+    sh:property [ sh:path ( dpp:hasDPP dpp:dppSchemaVersion ) ; sh:minCount 1 ] ;
     # 2. DPP Status
     sh:property [ sh:path ( dpp:hasDPP dpp:dppStatus ) ; sh:minCount 1 ] ;
     # 3. DPP Granularity
@@ -177,7 +179,9 @@ batv:AuthoritiesBatteryShape
     # 45. Part numbers for components
     sh:property [ sh:path bat:partNumber ; sh:minCount 1 ] ;
     # 47. Safety measures
-    sh:property [ sh:path bat:safetyMeasures ; sh:minCount 1 ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:SafetyInstruction ;
+                      sh:property [ sh:path dpp:webLink ; sh:minCount 1 ] ] ] ;
     # 9. Unique economic operator identifier
     sh:property [ sh:path ( dpp:hasEconomicOperator dpp:hasUniqueOperatorIdentifier ) ; sh:minCount 1 ] ;
     # 10. Unique manufacturer identifier

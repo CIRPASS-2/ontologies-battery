@@ -19,9 +19,15 @@ from rdflib.namespace import XSD
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-EXAMPLES = ROOT / "Guide Utilisation"
-STH = ROOT / "Shapes SHACL" / "SHACL simple paths"
-CORE = Path(os.environ.get("CORE_DIR", ROOT.parent.parent / "2-Core et modules"))
+if (ROOT / "SHACL Shapes").is_dir():  # layout of the ontologies-battery repository
+    ONTOLOGY, SHAPES, EXAMPLES = ROOT / "Ontology", ROOT / "SHACL Shapes", ROOT / "Examples"
+    STH = SHAPES / "SHACL simple paths"
+    CORE = Path(os.environ.get("CORE_DIR", ROOT.parent / "ontologies-core"))
+else:  # working-folder layout: shapes beside the ontology modules
+    ONTOLOGY = SHAPES = ROOT
+    EXAMPLES = ROOT / "Guide Utilisation"
+    STH = ROOT / "Shapes SHACL" / "SHACL simple paths"
+    CORE = Path(os.environ.get("CORE_DIR", ROOT.parent.parent / "2-Core et modules"))
 FIXTURES = HERE / "fixtures"
 
 SH = Namespace("http://www.w3.org/ns/shacl#")
@@ -41,10 +47,10 @@ def graph(*files):
     return g
 
 
-ONTO = graph(*[f for f in sorted(ROOT.glob("*.ttl")) if "shapes" not in f.name and "view" not in f.name],
+ONTO = graph(*[f for f in sorted(ONTOLOGY.glob("*.ttl")) if "shapes" not in f.name and "view" not in f.name],
              *sorted(CORE.glob("*.owl")), *sorted(CORE.glob("event.ttl")))
-PROFILE = graph(ROOT / "battery-shapes.ttl", ROOT / "battery-cf-shapes.ttl")
-VIEWS = {v: graph(ROOT / f"battery-view-{v}.ttl") for v in ("public", "legitimate-interest", "authorities")}
+PROFILE = graph(SHAPES / "battery-shapes.ttl", SHAPES / "battery-cf-shapes.ttl")
+VIEWS = {v: graph(SHAPES / f"battery-view-{v}.ttl") for v in ("public", "legitimate-interest", "authorities")}
 
 
 def without(file, *props):
@@ -78,7 +84,7 @@ def check(label, data, shapes, expected):
     if expected == "conforms":
         ok = conforms
     elif expected == "only forbidden data":  # a complete passport carries data a restricted view hides
-        ok = all(c == "MaxCountConstraintComponent" for c, _ in found)
+        ok = all(c in ("MaxCountConstraintComponent", "QualifiedMaxCountConstraintComponent") for c, _ in found)
     elif expected == "only recycled content":  # known STH difference: the nested form asks every material
         ok = all("hasMaterial" in t or "materialRecycledContent" in t for _, t in found)
     else:  # a token the violation must mention
@@ -99,7 +105,7 @@ for c, f in examples.items():
                    (f"{c} example, legitimate-interest view", f, VIEWS["legitimate-interest"], "only forbidden data"),
                    (f"{c} example, public view", f, VIEWS["public"], "only forbidden data")]
         if STH.is_dir():
-            checks += [(f"{c} example, profile STH", f, graph(STH / "battery-shapes_version_STH.ttl", ROOT / "battery-cf-shapes.ttl"), "conforms"),
+            checks += [(f"{c} example, profile STH", f, graph(STH / "battery-shapes_version_STH.ttl", SHAPES / "battery-cf-shapes.ttl"), "conforms"),
                        (f"{c} example, authorities view STH", f, graph(STH / "battery-view-authorities_version_STH.ttl"),
                         "only recycled content")]
 
@@ -120,7 +126,11 @@ if examples["lmt"].exists():
                ("lmt example without remaining capacity, legitimate-interest view",
                 without(examples["lmt"], BATPERF.remainingCapacity), VIEWS["legitimate-interest"], "attribute 60"),
                ("lmt example without battery category, profile",
-                without(examples["lmt"], DPP.hasProductGroup), PROFILE, "hasProductGroup")]
+                without(examples["lmt"], DPP.hasProductGroup), PROFILE, "hasProductGroup"),
+               ("lmt example without DPP schema version, profile",
+                without(examples["lmt"], DPP.dppSchemaVersion), PROFILE, "DPP Schema version"),
+               ("lmt example without safety instruction link, profile",
+                without(examples["lmt"], DPP.webLink), PROFILE, "attribute 47")]
 if examples["ev"].exists():
     checks += [("ev example without capacity threshold for exhaustion, public view",
                 without(examples["ev"], BATPERF.capacityThresholdForExhaustion), VIEWS["public"], "attribute 90")]

@@ -72,7 +72,7 @@
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
     dcterms:issued "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-09-28"^^xsd:date ;
+    dcterms:modified "2026-10-06"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     owl:versionInfo "Version 0.2.0 DRAFT"@en ;
@@ -102,7 +102,7 @@ batsh:PassportScopeShape
 #################################################
 # 2. Required for every passport category
 #################################################
-# 63 of the 65 attributes that v1.3 marks mandatory in all four
+# 64 of the 66 attributes that v1.3 marks mandatory in all four
 # applicability columns. The other two, 22 and 36, are declared in
 # section 4: no validator can tell when they are due (issue #14).
 
@@ -112,6 +112,15 @@ batsh:BatteryShape
     rdfs:label "Battery conformance shape"@en ;
     rdfs:comment "Attributes mandatory for every passport category in long list v1.3."@en ;
 
+
+    # 1. DPP Schema version
+    #     DPP node; back in P_DPP v2.1.0 (ontologies-core#62)
+    sh:property [
+        sh:path ( dpp:hasDPP dpp:dppSchemaVersion ) ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "DPP Schema version — long list v1.3 attribute 1, ESPR / JTC-24." ;
+    ] ;
 
     # 2. DPP Status
     #     DPP node
@@ -343,13 +352,22 @@ batsh:BatteryShape
     ] ;
 
     # 47. Safety measures
+    #     a bat:SafetyInstruction (dpp:DigitalInstruction) reached through
+    #     dpp:hasProperty, URL on dpp:webLink (ontologies-core#45)
     sh:property [
-        sh:path bat:safetyMeasures ;
-        sh:minCount 1 ;
-        sh:datatype xsd:anyURI ;
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:SafetyInstruction ;
+            sh:property [ sh:path dpp:webLink ; sh:minCount 1 ; sh:datatype xsd:anyURI ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
         sh:message "Safety measures — long list v1.3 attribute 47, Battery Regulation." ;
     ] ;
 
+    # 48 to 53. One total share per metal. MAT v1.1.0 can split pre- from
+    #     post-consumer content (dpp:materialRecycledContentType,
+    #     ontologies-core#25), but long list v2.0 and the Commission guidance
+    #     ask for one share per metal, so the six shapes below stay identical.
     # 48. Pre-consumer recycled nickel share
     #     material node, pre-consumer nickel
     sh:property [
@@ -1007,16 +1025,14 @@ batsh:BatteryVoluntaryShape
 #################################################
 # 5. Deliberately not constrained
 #################################################
-# 15 of the 100 v1.3 attributes have no path here. Each line says why.
+# 14 of the 100 v1.3 attributes have no path here. Each line says why.
 #
-#     1. DPP Schema version
-#        DPP-level, prEN 18223 Table 1; no CORE successor since P_DPP v1.9.4 (core issue of 28/08)
 #    16. Date of putting the battery into service
 #        no CORE date property; event vs property still open (battery#26 line of the Broader table)
 #    23. Carbon footprint label
 #        carbon footprint label; core#36 closed without a term, the URL goes through hasExternalDocumentation -> Source (LCA)
 #    25. Meaning of labels and symbols
-#        meaning of labels and symbols; the Commission marks it a repetition of 21-22
+#        meaning of labels and symbols; long list v2.0 subsumes it in data point 43 of the Commission guidance (Art. 74(1)), not a separate data point (ontologies-core#37)
 #    28. Battery carbon footprint per Functional Unit
 #        carbon footprint: battery-cf-shapes.ttl, deferred to the LCA module (core#41)
 #    29. Contribution of raw material acquisition and pre-processing 
