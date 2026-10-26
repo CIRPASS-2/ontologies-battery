@@ -327,8 +327,11 @@ batsh:BatteryShape
     ] ;
 
     # 43. Impact of substances on environment, human health, safety, persons
-    #     substance node; hasImpactOnHumanHealth carries the second half
+    #     DEACTIVATED on 26 October 2026: SOC 2.2.0 (15 October) removed
+    #     hasImpactOnEnvironment and hasImpactOnHumanHealth, with no replacement.
+    #     Pending a CORE issue on SOC; the path records the former term.
     sh:property [
+        sh:deactivated true ;
         sh:path ( dpp:containsSubstanceOfConcern dpp:hasImpactOnEnvironment ) ;
         sh:minCount 1 ;
         sh:datatype xsd:string ;
@@ -453,8 +456,12 @@ batsh:BatteryShape
     ] ;
 
     # 55. Renewable content share
-    #     sh:class dpp:SustainableRenewableMaterialsUse — the share is a quantitative property, not the MAT boolean
+    #     DEACTIVATED on 26 October 2026: P_DPP (16 October) removed
+    #     SustainableRenewableMaterialsUse; its LCA successor measures renewable
+    #     secondary fuels, not this share. Pending a CORE issue on P_DPP; the
+    #     class below records the former term.
     sh:property [
+        sh:deactivated true ;
         sh:path dpp:hasProperty ;
         sh:qualifiedValueShape [ sh:class dpp:SustainableRenewableMaterialsUse ] ;
         sh:qualifiedMinCount 1 ;

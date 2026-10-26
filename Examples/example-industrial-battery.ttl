@@ -372,24 +372,17 @@ ex:material-lead
     eudpp:materialRecycledContent "85.0"^^xsd:decimal ;
     eudpp:isCriticalRawMaterial   false .
 
-# Data point 55. The share of renewable content is a quantity, so it is carried
-# by eudpp:SustainableRenewableMaterialsUse through eudpp:hasProperty — not by
-# eudpp:materialIsSustainableRenewable, which is a boolean and states only
-# whether a given material is renewable at all.
-ex:battery-1  eudpp:hasProperty  ex:renewable-content-1 .
+# Data point 55, the share of renewable content, is left out: P_DPP removed
+# eudpp:SustainableRenewableMaterialsUse on 16 October 2026, and the CORE has
+# no term for this share yet.
 
-ex:renewable-content-1
-    a                        eudpp:SustainableRenewableMaterialsUse ;
-    eudpp:numericalValue     "3.5"^^xsd:decimal ;
-    eudpp:hasMeasurementUnit siunit:percent .
-
-# Data points 42 and 43. The substance of concern and its impacts.
+# Data point 42. The substance of concern. Data point 43, its impacts, is left
+# out: SOC 2.2.0 removed hasImpactOnEnvironment and hasImpactOnHumanHealth on
+# 15 October 2026, and the CORE has no term for them yet.
 ex:battery-1  eudpp:containsSubstanceOfConcern  ex:soc-1 .
 
 ex:soc-1
-    a                             eudpp:SubstanceOfConcern ;
-    eudpp:hasImpactOnEnvironment  "Aquatic toxicity if the cell casing is breached; see the safety data sheet." ;
-    eudpp:hasImpactOnHumanHealth  "Skin and eye irritation on contact with the electrolyte; see the safety data sheet." .
+    a  eudpp:SubstanceOfConcern .
 
 # Data point 49. The safety measures are a digital instruction
 # (ontologies-core#45): a bat:SafetyInstruction reached through

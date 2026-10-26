@@ -103,7 +103,8 @@ batv:AuthoritiesBatteryShape
     # 42. Hazardous substances
     sh:property [ sh:path dpp:containsSubstanceOfConcern ; sh:minCount 1 ] ;
     # 43. Impact of substances on environment, human health, safety, persons
-    sh:property [ sh:path ( dpp:containsSubstanceOfConcern dpp:hasImpactOnEnvironment ) ; sh:minCount 1 ] ;
+    #     deactivated: SOC 2.2.0 removed hasImpactOnEnvironment (pending a CORE issue)
+    sh:property [ sh:path ( dpp:containsSubstanceOfConcern dpp:hasImpactOnEnvironment ) ; sh:minCount 1 ; sh:deactivated true ] ;
     # 48. Pre-consumer recycled nickel share
     sh:property [ sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ; sh:minCount 1 ] ;
     # 49. Pre-consumer recycled cobalt share
@@ -119,7 +120,8 @@ batv:AuthoritiesBatteryShape
     # 54. Recycled lead share
     sh:property [ sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ; sh:minCount 1 ] ;
     # 55. Renewable content share
-    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
+    #     deactivated: P_DPP removed SustainableRenewableMaterialsUse (pending a CORE issue)
+    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ; sh:deactivated true ] ;
     # 56. Information on the role of end-users in contributing to waste prevention
     sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
     # 57. Information on the role of end-users in contributing to the separate colle
