@@ -85,8 +85,8 @@ ex:battery-1
     # Data point 42, carried by the CORE.
     eudpp:hasEUDeclarationOfConformity ex:eu-doc-1 ;
 
-    # Data points 17 and 18, carried by the CORE.
-    eudpp:hasProperty                  ex:carbon-footprint-1 ;
+    # Data points 17 and 18, carried by the CORE through the LCA study.
+    eudpp:hasLCAStudy                  ex:lca-study-1 ;
 
     batlab:hasBatteryLabel             ex:label-1 ;
     batperf:hasBatteryPerformance      ex:nameplate-1 ;
@@ -230,13 +230,47 @@ ex:label-1
     batlab:extinguishingAgent       batext:ClassD .
 
 ##############################################################################
-# 10. Carbon footprint - pure CORE, constrained by battery-cf-shapes.ttl
+# 10. Carbon footprint - pure CORE (LCA module), constrained by
+# battery-cf-shapes.ttl. The footprint is an LCIA result of the LCA study.
 ##############################################################################
 
+ex:lca-study-1
+    a                                      eudpp:LCAStudy ;
+    eudpp:hasLCIAResult                    ex:carbon-footprint-1 ;
+    eudpp:hasReview                        ex:cf-review-1 ;
+    eudpp:hasReferenceToBackgroundDatabase ex:background-database-1 ;
+    eudpp:declaresManufacturerRecord       ex:manufacturer-record-1 ;
+    eudpp:hasExternalSource                <https://example.org/doc/industrial/carbon-footprint-study.pdf> .
+
 ex:carbon-footprint-1
-    a                        eudpp:CarbonFootprint ;
-    eudpp:numericalValue     "68.2"^^xsd:decimal ;
-    eudpp:hasMeasurementUnit siunit:kilogram .
+    a                         eudpp:CarbonFootprint ;
+    eudpp:quantifiesIndicator eudpp:ind_EF_climateChange ;
+    eudpp:numericalValue      "68.2"^^xsd:decimal ;
+    eudpp:hasMeasurementUnit  siunit:kilogram .
+
+# Verification by the notified body of section 11.
+ex:cf-review-1
+    a                                     eudpp:Review ;
+    eudpp:hasTypeOfReview                 eudpp:accreditedThirdPartyReview ;
+    eudpp:reviewDate                      "2026-11-30"^^xsd:date ;
+    eudpp:referenceToCompleteReviewReport <https://example.org/doc/industrial/carbon-footprint-verification.pdf> ;
+    eudpp:hasLCAVerifier                  ex:notified-body-1 .
+
+<https://example.org/doc/industrial/carbon-footprint-verification.pdf>
+    a eudpp:ReviewReport .
+
+ex:background-database-1
+    a          eudpp:BackgroundDatabase ;
+    rdfs:label "Example EF-compliant background database" .
+
+# The plant the carbon footprint applies to: the facility of data point 8.
+ex:manufacturer-record-1
+    a                            eudpp:ManufacturerRecord ;
+    eudpp:identifiesManufacturer ex:manufacturer ;
+    eudpp:hasManufacturingSite   ex:plant-1 .
+
+<https://example.org/doc/industrial/carbon-footprint-study.pdf>
+    a eudpp:Source .
 
 ##############################################################################
 # 11. EU declaration of conformity - pure CORE (CONNECTOR + COMP)
