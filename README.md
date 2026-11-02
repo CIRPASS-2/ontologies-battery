@@ -157,6 +157,7 @@ Version 3.2 of the Commission guidance (19 October 2026) splits two data points.
 * **`battery performance` 0.4.0** — four subproperties of existing terms: `batperf:chargeCRateOfCycleLifeTest` and `batperf:dischargeCRateOfCycleLifeTest` under `batperf:cRateOfCycleLifeTest` (data points 39 and 40), `batperf:initialCellInternalResistance` and `batperf:initialPackInternalResistance` under `batperf:initialInternalResistance` (data point 38). Passports using the existing terms stay valid. The header now counts 5 classes, 4 object properties and 47 datatype properties.
 * **`battery-shapes.ttl` 0.3.0 and the three views 0.3.0** — attribute 81 also accepts the cell and pack resistances, attribute 87 the charge C-rate; the discharge C-rate is typed, never required. The guidance is cited in its version 3.2, and the message of attribute 81 is no longer truncated.
 * **`battery-cf-shapes.ttl` 0.2.0** — the binding to LCA 3.1 of 26 October, below.
+* **`Examples/example-lmt-battery_version_STH.ttl`** — regenerated from the LMT example: it no longer carries terms removed from the CORE, and its carbon footprint goes through an LCA study.
 * **`tests/`** — five checks added for the new properties: 28 checks pass here.
 
 ### SHACL profiles, views and examples — 26 October 2026
