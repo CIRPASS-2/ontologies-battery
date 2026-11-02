@@ -31,7 +31,7 @@
 
 <https://w3id.org/eudpp/battery-view-public>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-view-public/0.2.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-view-public/0.3.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
                  <https://w3id.org/eudpp/battery-access-tiers> ,
                  <https://github.com/CIRPASS-2/ontologies-battery/issues/5> ;
@@ -43,9 +43,9 @@
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-10-06"^^xsd:date ;
+    dcterms:modified "2026-11-02"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'"@en ;
-    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-view-public#" ;
     vann:preferredNamespacePrefix "batv" .
 
@@ -145,13 +145,13 @@ batv:PublicBatteryShape
     # 75. Round trip energy efficiency at 50% of cycle life
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ) ; sh:minCount 1 ] ;
     # 81. Initial internal resistance of battery cell and pack (module recommended)
-    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialInternalResistance ) ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:initialInternalResistance batperf:initialCellInternalResistance batperf:initialPackInternalResistance ) ] ) ; sh:minCount 1 ] ;
     # 84. Expected lifetime: Number of charge-discharge cycles
     sh:property [ sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCycles ) ; sh:minCount 1 ] ;
     # 86. Cycle-life reference test
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cycleLifeReferenceTest ) ; sh:minCount 1 ] ;
     # 87. C-rate of relevant cycle-life test
-    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:cRateOfCycleLifeTest ) ; sh:minCount 1 ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:cRateOfCycleLifeTest batperf:chargeCRateOfCycleLifeTest ) ] ) ; sh:minCount 1 ] ;
     # 92. Temperature range idle state, lower boundary
     sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateLowerBoundary ) ; sh:minCount 1 ] ;
     # 93. Temperature range idle state, upper boundary

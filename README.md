@@ -51,34 +51,33 @@ Two points were raised on the CORE side rather than patched here. [ontologies-co
 
 ### Carbon footprint binding
 
-No carbon-footprint term is declared in the battery namespace. The footprint is the
-cross-sectoral `dpp:CarbonFootprint` of P_DPP, reached through `dpp:hasProperty`, and
+No carbon-footprint term is declared in the battery namespace. Since CORE 2.1.0, the footprint is the
+`dpp:CarbonFootprint` of the LCA module (LCA 3.1), an LCIA result of an LCA study, and
 `battery-cf-shapes.ttl` only constrains how a battery uses it:
 
 ```turtle
 :battery-12345
-    a                 bat:Battery ;
+    a                    bat:Battery ;
     dpp:hasProductGroup  batcat:ElectricVehicleBattery ;
-    dpp:hasProperty   [ a dpp:CarbonFootprint ;
-                        dpp:numericalValue      "52.4"^^xsd:decimal ;
-                        dpp:hasMeasurementUnit  si:kilogram ] .
+    dpp:hasLCAStudy      :lca-study-1 .
+
+:lca-study-1
+    a                  dpp:LCAStudy ;
+    dpp:hasLCIAResult  [ a dpp:CarbonFootprint ;
+                         dpp:numericalValue      "52.4"^^xsd:decimal ;
+                         dpp:hasMeasurementUnit  si:kilogram ] .
 ```
 
-Two shapes are active today. `CarbonFootprintRequiredShape` requires a footprint on
-batteries in the electric-vehicle, industrial and LMT categories, and leaves portable and
-SLI batteries unconstrained. `CarbonFootprintValueShape` requires exactly one non-negative
-decimal value and exactly one measurement unit.
+`CarbonFootprintRequiredShape` requires a carbon footprint from an LCA study on batteries in the
+electric-vehicle, industrial and LMT categories, and leaves portable and SLI batteries unconstrained.
+`CarbonFootprintValueShape` requires exactly one non-negative decimal value and exactly one measurement
+unit. Further shapes constrain the study — its review (`dpp:hasReview`, with type, date, report and
+verifier), background database, manufacturer record (manufacturer and manufacturing site) and public
+sources (`dpp:hasExternalSource`) — and the battery's EU declaration of conformity.
 
-The rest of the binding requested in
-[ontologies-battery#1](https://github.com/CIRPASS-2/ontologies-battery/issues/1) — LCA
-study, per-stage breakdown, functional unit, verification, background datasets,
-manufacturing plant, declaration of conformity, public study link, performance class — is
-written in the same file but carries `sh:deactivated true`, and becomes active by removing
-one boolean. Each deactivated shape states why it is off, and the three reasons are not
-the same thing: **PENDING** — the term is to be created by a CORE issue that #1 itself
-cites; **MISSING** — #1 treats the term as available and it is absent from a module file
-that is complete; **UNKNOWN** — the term belongs to the LCA module, which is not in the
-folder and not imported by `core.owl`, so nothing can be concluded either way.
+Four shapes carry `sh:deactivated true`, each stating why: per-stage values, functional unit and
+compliance wait for [ontologies-core#53](https://github.com/CIRPASS-2/ontologies-core/issues/53); the
+performance class was dropped by [ontologies-core#41](https://github.com/CIRPASS-2/ontologies-core/issues/41).
 
 ### Battery category
 
@@ -140,7 +139,7 @@ The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it manda
 
 A view never requires more than the profile: it requires the data points it shows that the profile requires, under the same category conditions.
 
-⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance of 15 August 2026 does defer some data points; reconciling the two is an open point.
+⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance (version 3.2 of 19 October 2026) does defer some data points; reconciling the two is an open point. Its data points 38 to 40 split two v1.3 attributes: for attribute 81 the profile and the views also accept the cell and pack resistances, for attribute 87 the charge C-rate; the discharge C-rate is typed, never required.
 
 ## Waiting on CORE
 
@@ -150,6 +149,23 @@ What to change in the battery modules when these CORE issues land:
 * **[ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) — units and value pattern.** When decided: apply the chosen unit mechanism to `batperf` (today SI Digital Framework IRIs on `batperf:measurementUnit`, the 22 units without one in `rdfs:comment`); switch shares from percentages to fractions only if the CORE decides so.
 
 ## Changelog
+
+### battery-performance 0.4.0, SHACL profiles and views — 2 November 2026
+
+Version 3.2 of the Commission guidance (19 October 2026) splits two data points.
+
+* **`battery performance` 0.4.0** — four subproperties of existing terms: `batperf:chargeCRateOfCycleLifeTest` and `batperf:dischargeCRateOfCycleLifeTest` under `batperf:cRateOfCycleLifeTest` (data points 39 and 40), `batperf:initialCellInternalResistance` and `batperf:initialPackInternalResistance` under `batperf:initialInternalResistance` (data point 38). Passports using the existing terms stay valid. The header now counts 5 classes, 4 object properties and 47 datatype properties.
+* **`battery-shapes.ttl` 0.3.0 and the three views 0.3.0** — attribute 81 also accepts the cell and pack resistances, attribute 87 the charge C-rate; the discharge C-rate is typed, never required. The guidance is cited in its version 3.2, and the message of attribute 81 is no longer truncated.
+* **`battery-cf-shapes.ttl` 0.2.0** — the binding to LCA 3.1 of 26 October, below.
+* **`tests/`** — five checks added for the new properties: 28 checks pass here.
+
+### SHACL profiles, views and examples — 26 October 2026
+
+The CORE took the LCA module in (core 2.1.0, LCA 3.1) and removed two terms the battery used.
+
+* **`battery-cf-shapes.ttl`** — the carbon footprint is now an LCIA result of an LCA study, reached through `dpp:hasLCAStudy` and `dpp:hasLCIAResult` ([#1](https://github.com/CIRPASS-2/ontologies-battery/issues/1)); see *Carbon footprint binding* above.
+* **Attributes 43 and 55** — deactivated in the profile and the three views: `dpp:hasImpactOnEnvironment` left SOC in version 2.2.0, and `dpp:SustainableRenewableMaterialsUse` left P_DPP on 16 October. The examples no longer carry them.
+* **Examples** — the carbon footprint of the three worked examples goes through an LCA study, with its review, background database, manufacturer record and public source.
 
 ### All modules, SHACL profile and views — 6 October 2026
 

@@ -49,9 +49,9 @@
 #
 # ⚠ v1.3 carries no "Mandatory from February 2027" column, unlike v2.0.
 # This profile therefore validates the full v1.3 requirement set and does
-# not defer anything to a later date. The Commission guidance of
-# 15 August 2026 does defer some data points; reconciling the two is an
-# open point, recorded in the README.
+# not defer anything to a later date. The Commission guidance (version
+# 3.2 of 19 October 2026) does defer some data points; reconciling the
+# two is an open point, recorded in the README.
 #
 # Access tiers are not here: they live in the three battery-view-*.ttl
 # files, so this profile stays about conformance (issue #5).
@@ -59,7 +59,7 @@
 <https://w3id.org/eudpp/battery-shapes>
     a owl:Ontology ;
     owl:imports <https://w3id.org/eudpp/battery-cf-shapes> ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.2.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.3.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
                  <https://github.com/CIRPASS-2/ontologies-battery/issues/10> ;
     rdfs:label "EU DPP Battery Shapes"@en ;
@@ -67,15 +67,15 @@
     dcterms:description "SHACL conformance profile for battery Digital Product Passports under Regulation (EU) 2023/1542. Carries the cardinalities, datatypes and closed vocabularies that the battery ontology deliberately leaves out of OWL. Built against BatteryPass-Ready Data Attribute Long List v1.3. Covers the three passport categories: electric vehicle, light means of transport, and industrial batteries above 2 kWh."@en ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
     dcterms:license "This ontology is licensed under the Apache License, Version 2.0. In case of dispute over Apache 2.0 applicability, or in case considering the ontology as a document, this ontology document is to be considered licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.2.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.3.0."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
     dcterms:issued "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-10-06"^^xsd:date ;
+    dcterms:modified "2026-11-02"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.2.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-shapes#" ;
     vann:preferredNamespacePrefix "batsh" .
 
@@ -589,11 +589,12 @@ batsh:BatteryShape
     ] ;
 
     # 81. Initial internal resistance of battery cell and pack (module recommended)
+    #     the cell and pack values of data point 38 of the Commission guidance v3.2 count too
     sh:property [
-        sh:path ( batperf:hasBatteryPerformance batperf:initialInternalResistance ) ;
+        sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:initialInternalResistance batperf:initialCellInternalResistance batperf:initialPackInternalResistance ) ] ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
-        sh:message "Initial internal resistance of battery cell and pack (module recommend — long list v1.3 attribute 81, Battery Regulation." ;
+        sh:message "Initial internal resistance of battery cell and pack (module recommended) — long list v1.3 attribute 81, Battery Regulation." ;
     ] ;
 
     # 82. Internal resistance increase of pack (cell and module recommended)
@@ -637,8 +638,9 @@ batsh:BatteryShape
     ] ;
 
     # 87. C-rate of relevant cycle-life test
+    #     the charge C-rate, data point 39 of the Commission guidance v3.2, counts too
     sh:property [
-        sh:path ( batperf:hasBatteryPerformance batperf:cRateOfCycleLifeTest ) ;
+        sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:cRateOfCycleLifeTest batperf:chargeCRateOfCycleLifeTest ) ] ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "C-rate of relevant cycle-life test — long list v1.3 attribute 87, Battery Regulation." ;
@@ -951,12 +953,15 @@ batsh:EV90Shape
 #   36. the due diligence report is due only from 18 August 2027
 #       (Regulation (EU) 2025/1561), and only from economic operators
 #       above the net turnover threshold set for due diligence.
+#
+# The discharge C-rate, data point 40 of the Commission guidance v3.2 and
+# optional there, is typed here too: v1.3 has no attribute for it.
 
 batsh:BatteryVoluntaryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     rdfs:label "Voluntary attributes"@en ;
-    rdfs:comment "Typed but never required: voluntary in long list v1.3, or due under conditions a validator cannot check (22, 36)."@en ;
+    rdfs:comment "Typed but never required: voluntary in long list v1.3, due under conditions a validator cannot check (22, 36), or optional in the Commission guidance v3.2 (discharge C-rate)."@en ;
 
     # 22. Symbols for cadmium and lead
     #     due only above 0.002 % cadmium or 0.004 % lead by weight: declared, not required
@@ -1027,6 +1032,13 @@ batsh:BatteryVoluntaryShape
         sh:path ( batperf:hasBatteryStateRecord batperf:numberOfOverchargeEvents ) ;
         sh:datatype xsd:integer ;
         sh:message "Number of overcharge events — long list v1.3 attribute 99, Battery Regulation." ;
+    ] ;
+
+    # Discharge C-rate of relevant cycle-life test — Commission guidance v3.2, data point 40
+    sh:property [
+        sh:path ( batperf:hasBatteryPerformance batperf:dischargeCRateOfCycleLifeTest ) ;
+        sh:datatype xsd:decimal ;
+        sh:message "Discharge C-rate of relevant cycle-life test — Commission guidance v3.2, data point 40." ;
     ]  .
 
 #################################################

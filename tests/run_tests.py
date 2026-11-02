@@ -66,6 +66,22 @@ def plus(file, prop, value):
     return g
 
 
+def renamed(file, old, *new):
+    """Move the values of a property onto other properties, e.g. onto its subproperties."""
+    g = graph(file)
+    for s, o in list(g.subject_objects(old)):
+        g.remove((s, old, o))
+        for p in new:
+            g.add((s, p, o))
+    return g
+
+
+def on_performance(file, prop, value):
+    g = graph(file)
+    g.add((next(g.subjects(BATPERF.cRateOfCycleLifeTest, None)), prop, value))
+    return g
+
+
 def results(data, shapes):
     conforms, report, _ = validate(data, shacl_graph=shapes, ont_graph=ONTO, inference="none", advanced=True)
     found = []
@@ -130,7 +146,18 @@ if examples["lmt"].exists():
                ("lmt example without DPP schema version, profile",
                 without(examples["lmt"], DPP.dppSchemaVersion), PROFILE, "DPP Schema version"),
                ("lmt example without safety instruction link, profile",
-                without(examples["lmt"], DPP.webLink), PROFILE, "attribute 47")]
+                without(examples["lmt"], DPP.webLink), PROFILE, "attribute 47"),
+               ("lmt example with the charge C-rate of guidance v3.2, profile",
+                renamed(examples["lmt"], BATPERF.cRateOfCycleLifeTest, BATPERF.chargeCRateOfCycleLifeTest), PROFILE, "conforms"),
+               ("lmt example with the discharge C-rate only, profile",
+                renamed(examples["lmt"], BATPERF.cRateOfCycleLifeTest, BATPERF.dischargeCRateOfCycleLifeTest), PROFILE, "attribute 87"),
+               ("lmt example with a text discharge C-rate, profile",
+                on_performance(examples["lmt"], BATPERF.dischargeCRateOfCycleLifeTest, Literal("fast")), PROFILE, "data point 40"),
+               ("lmt example with cell and pack resistances of guidance v3.2, profile",
+                renamed(examples["lmt"], BATPERF.initialInternalResistance, BATPERF.initialCellInternalResistance, BATPERF.initialPackInternalResistance), PROFILE, "conforms"),
+               ("lmt example with cell and pack resistances, public view",
+                renamed(examples["lmt"], BATPERF.initialInternalResistance, BATPERF.initialCellInternalResistance, BATPERF.initialPackInternalResistance), VIEWS["public"],
+                "only forbidden data")]
 if examples["ev"].exists():
     checks += [("ev example without capacity threshold for exhaustion, public view",
                 without(examples["ev"], BATPERF.capacityThresholdForExhaustion), VIEWS["public"], "attribute 90")]
