@@ -150,6 +150,13 @@ What to change in the battery modules when these CORE issues land:
 
 ## Changelog
 
+### Licence of all modules, SHACL profiles and views — 3 November 2026
+
+The licence follows the CORE, now under CC BY 4.0 after the consortium decision on licensing.
+
+* **All modules and SHACL files** — `dcterms:license` is now `https://creativecommons.org/licenses/by/4.0/`, and the licence note reads as in the CORE: CC BY 4.0, or Apache 2.0 when the ontology is considered as software. Versions are unchanged; `dcterms:modified` is 3 November 2026.
+* **README** — the License section says the same.
+
 ### battery-performance 0.4.0, SHACL profiles and views — 2 November 2026
 
 Version 3.2 of the Commission guidance (19 October 2026) splits two data points.
@@ -391,20 +398,6 @@ The CIRPASS-2 project receives funding under the European Union's DIGITAL EUROPE
 
 ## License
 
-This project is licensed under the Apache License 2.0.
-
-```
 Copyright 2024-2027 CIRPASS-2
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+The ontology modules and SHACL files are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0), like the CIRPASS-2 CORE. In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, they are to be considered licensed under the Apache License, Version 2.0 (see LICENSE.txt).
