@@ -153,6 +153,10 @@ What to change in the battery modules when these CORE issues land:
 
 ## Changelog
 
+### Examples — 24 November 2026
+
+* The three worked examples carry `dpp:contentSpecificationIds`: the Commission specifications they follow, the core, batteries and their subgroup. The term is proposed for P_DPP 2.4.0 in a pull request on ontologies-core.
+
 ### Umbrella 0.5.0, battery-performance 0.5.0, battery-materials 0.4.0, SHACL profile, views and examples — 16 November 2026
 
 Alignment on the Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026).

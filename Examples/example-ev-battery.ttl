@@ -32,6 +32,10 @@ ex:dpp-1
     eudpp:granularity                 "item" ;
     eudpp:dppStatus                   "Active" ;
     eudpp:dppSchemaVersion            "prEN18223:v1.0" ;
+    # The Commission specifications this passport follows: the core, batteries and the subgroup.
+    eudpp:contentSpecificationIds     "https://repository.product-passport.ec.europa.eu/core/1.0.0" ,
+                                      "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0" ,
+                                      "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/evb/1.0.0" ;
     eudpp:validFrom                   "2027-02-18T00:00:00Z"^^xsd:dateTimeStamp ;
     eudpp:lastUpdate                  "2029-06-04T07:15:00Z"^^xsd:dateTimeStamp .
 
