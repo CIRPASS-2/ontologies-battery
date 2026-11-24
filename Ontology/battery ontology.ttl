@@ -21,6 +21,12 @@
 #   battery-statuses, battery-extinguisher-classes,
 #   plus the battery-cf-shapes SHACL profile.
 #
+# v0.5.0 (Commission semantic model for batteries 1.0.0, 30 October
+# 2026): nine subclasses of dpp:DigitalInstruction, one per text of the
+# waste battery information of Art. 74(1) and Annex XIII 1(s), the
+# Commission's wasteBatteryPreventionManagementInfo; and
+# bat:sparePartsInformation, the link of Annex XIII 2(b).
+#
 # v0.4.0: bat:partNumber added (Annex XIII 2(b), data point 46 of
 # the Commission guidance). CIRPASS-2 decided in June 2026 not to
 # add a cross-sectoral part number to the CORE, so the term is
@@ -54,7 +60,7 @@
 
 <https://w3id.org/eudpp/battery>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery/0.4.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery/0.5.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery-performance> ,
                  <https://w3id.org/eudpp/battery-materials> ,
                  <https://w3id.org/eudpp/battery-labeling> ,
@@ -67,19 +73,19 @@
                  <https://w3id.org/eudpp/battery-cf-shapes> ;
     rdfs:label "EU DPP Battery Ontology"@en ;
     dcterms:title "EU DPP Battery Ontology"@en ;
-    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class and the SafetyInstruction class; battery data is organised in nine companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories), battery-chemistries (the ten labelling chemistries), battery-locations (cathode, anode, electrolyte), battery-metals (the four metals whose recycled content Art. 8(1) requires), battery-statuses (the five Annex XIII 4(c) lifecycle statuses) and battery-extinguisher-classes; battery-cf-shapes carries the carbon footprint SHACL profile. It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
+    dcterms:description "Sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. This umbrella module declares the Battery product class, the SafetyInstruction class and the nine waste battery information classes of Art. 74(1); battery data is organised in nine companion modules: battery-performance (electrochemical performance, durability and in-use state), battery-materials (chemistry and material location), battery-labeling (labels and symbols), battery-categories (the five Art. 3(1) battery categories), battery-chemistries (the ten labelling chemistries), battery-locations (cathode, anode, electrolyte), battery-metals (the four metals whose recycled content Art. 8(1) requires), battery-statuses (the five Annex XIII 4(c) lifecycle statuses) and battery-extinguisher-classes; battery-cf-shapes carries the carbon footprint SHACL profile. It extends the CIRPASS-2 cross-sectoral CORE ontology by direct reference, following the approach of the Textile sector modules."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology of October 2026 (P_DPP v2.1.0, MAT v1.1.0). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:license "This ontology is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, this ontology is to be considered licensed under the Apache License, Version 2.0."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.4.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Ontology. Draft version 0.5.0."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-11-03"^^xsd:date ;
-    dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation)"@en ;
+    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542 (Batteries Regulation); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.5.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery#" ;
     vann:preferredNamespacePrefix "bat" .
 
@@ -103,6 +109,87 @@ bat:SafetyInstruction
     rdfs:label "Safety instruction"@en ;
     rdfs:comment "Instruction manual giving the safety measures to be taken when handling the battery, including dismantling. A digital instruction in the sense of the cross-sectoral class eudpp:DigitalInstruction (P_DPP): reached from the battery through dpp:hasProperty, with its URL on dpp:webLink. Declared here so that the safety measures can be told apart from the other instructions of a battery; replaces the datatype property bat:safetyMeasures (ontologies-core#45)."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(d); BatteryPass-Ready Data Attribute Long List v1.3, attribute 47"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:WastePreventionInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Waste prevention information"@en ;
+    rdfs:comment "Information on the role of end-users in contributing to waste prevention. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 56; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field endUserRoleInWastePrevention"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:SeparateCollectionInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Separate collection information"@en ;
+    rdfs:comment "Information on the role of end-users in contributing to the separate collection of waste batteries. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 57; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field endUserRoleInSeparateCollection"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:SeparateCollectionPointsInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Separate collection points information"@en ;
+    rdfs:comment "Information on the separate collection points for waste batteries. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 58; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field separateCollectionPoints"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:TakeBackPointsInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Take-back points information"@en ;
+    rdfs:comment "Information on the take-back and collection points for waste batteries. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 58; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field takeBackCollectionPoints"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:PreparationForReuseInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Preparation for re-use information"@en ;
+    rdfs:comment "Information on the facilities for preparing waste batteries for re-use. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 58; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field preparationForReuseFacilities"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:PreparationForRepurposingInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Preparation for repurposing information"@en ;
+    rdfs:comment "Information on the facilities for preparing waste batteries for repurposing. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 58; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field preparationForRepurposingFacilities"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:WasteTreatmentInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Waste treatment information"@en ;
+    rdfs:comment "Information on the treatment facilities for waste batteries. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 58; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field wasteBatteryTreatmentFacilities"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:WasteBatterySafetyInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Waste battery safety information"@en ;
+    rdfs:comment "Safety instructions for handling waste batteries. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field wasteBatterySafetyInstructions"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:SubstancesImpactInformation
+    a owl:Class ;
+    rdfs:subClassOf dpp:DigitalInstruction ;
+    rdfs:label "Substances impact information"@en ;
+    rdfs:comment "Information on the impact of the substances present in the battery on the environment and on human health or the safety of persons. A digital instruction in the sense of eudpp:DigitalInstruction (P_DPP), like bat:SafetyInstruction: reached from the battery through dpp:hasProperty, with its text on dpp:value or its URL on dpp:webLink. Declared here while the CORE has no term for it: SOC 2.2.0 removed dpp:hasImpactOnEnvironment and dpp:hasImpactOnHumanHealth on 15 October 2026. To deprecate if SOC restores them."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 74(1) and Annex XIII 1(s); BatteryPass-Ready Data Attribute Long List v1.3, attribute 43; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field batterySubstancesImpact"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
 
@@ -179,6 +266,16 @@ bat:testReportResults
     rdfs:label "test report results"@en ;
     rdfs:comment "Link to the test report results. Access is restricted to notified bodies, market surveillance authorities and the Commission; the restriction is expressed in the SHACL layer, not here. Migration to the CORE document pattern eudpp:Source (LCA module) is tracked in ontologies-battery#11 and deferred until the LCA module is integrated into the CORE; xsd:anyURI is the agreed interim."@en ;
     dcterms:references "Regulation (EU) 2023/1542, Annex XIII 3"@en ;
+    dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
+
+bat:sparePartsInformation
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "spare parts information"@en ;
+    rdfs:comment "Link to the part numbers for components and the contact details of sources for replacement spares. The part numbers themselves stay on bat:partNumber."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 2(b); BatteryPass-Ready Data Attribute Long List v1.3, attributes 45 and 46; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field sparePartReplacementDetails"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery> .
 

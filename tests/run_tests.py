@@ -35,6 +35,7 @@ DPP = Namespace("https://w3id.org/eudpp#")
 BAT = Namespace("https://w3id.org/eudpp/battery#")
 BATPERF = Namespace("https://w3id.org/eudpp/battery-performance#")
 BATLAB = Namespace("https://w3id.org/eudpp/battery-labeling#")
+BATMAT = Namespace("https://w3id.org/eudpp/battery-materials#")
 
 
 def graph(*files):
@@ -76,6 +77,14 @@ def renamed(file, old, *new):
     return g
 
 
+def on_records(file, prop, value):
+    """Add a value to every dated state record."""
+    g = graph(file)
+    for r in list(g.subjects(RDF.type, BATPERF.BatteryStateRecord)):
+        g.add((r, prop, value))
+    return g
+
+
 def on_performance(file, prop, value):
     g = graph(file)
     g.add((next(g.subjects(BATPERF.cRateOfCycleLifeTest, None)), prop, value))
@@ -101,6 +110,8 @@ def check(label, data, shapes, expected):
         ok = conforms
     elif expected == "only forbidden data":  # a complete passport carries data a restricted view hides
         ok = all(c in ("MaxCountConstraintComponent", "QualifiedMaxCountConstraintComponent") for c, _ in found)
+    elif expected == "only Commission additions":  # a passport written before the alignment of 16 November 2026
+        ok = not conforms and all("Commission semantic model" in t for _, t in found)
     elif expected == "only recycled content":  # known STH difference: the nested form asks every material
         ok = all("hasMaterial" in t or "materialRecycledContent" in t for _, t in found)
     else:  # a token the violation must mention
@@ -127,10 +138,10 @@ for c, f in examples.items():
 
 conforming = FIXTURES / "demo-lfp-200_public_conforms.jsonld"
 no_dd = FIXTURES / "demo-lfp-200_public_no-due-diligence.jsonld"
-checks += [("fixture as submitted, public view", conforming, VIEWS["public"], "conforms"),
-           ("fixture without due diligence, public view", no_dd, VIEWS["public"], "conforms"),
+checks += [("fixture as submitted, public view", conforming, VIEWS["public"], "only Commission additions"),
+           ("fixture without due diligence, public view", no_dd, VIEWS["public"], "only Commission additions"),
            ("fixture without due diligence nor cadmium symbol, public view",
-            without(no_dd, BATLAB.cadmiumSymbol), VIEWS["public"], "conforms"),
+            without(no_dd, BATLAB.cadmiumSymbol), VIEWS["public"], "only Commission additions"),
            ("fixture with a test report, public view",
             plus(conforming, BAT.testReportResults, Literal("https://example.org/test-report", datatype=XSD.anyURI)),
             VIEWS["public"], "testReportResults"),
@@ -157,10 +168,26 @@ if examples["lmt"].exists():
                 renamed(examples["lmt"], BATPERF.initialInternalResistance, BATPERF.initialCellInternalResistance, BATPERF.initialPackInternalResistance), PROFILE, "conforms"),
                ("lmt example with cell and pack resistances, public view",
                 renamed(examples["lmt"], BATPERF.initialInternalResistance, BATPERF.initialCellInternalResistance, BATPERF.initialPackInternalResistance), VIEWS["public"],
-                "only forbidden data")]
+                "only forbidden data"),
+               ("lmt example without the cell resistance, profile",
+                without(examples["lmt"], BATPERF.initialCellInternalResistance), PROFILE, "internalCellResistance"),
+               ("lmt example without ohmic resistance, profile",
+                without(examples["lmt"], BATPERF.ohmicResistance), PROFILE, "ohmicResistance"),
+               ("lmt example without renewable content share, public view",
+                without(examples["lmt"], BATMAT.renewableContentShare), VIEWS["public"], "renewableContentShare"),
+               ("lmt example without the reference test of the idle-state range, profile",
+                without(examples["lmt"], BATPERF.temperatureRangeIdleStateReferenceTest), PROFILE, "notInUseTemperatureRangeTest"),
+               ("lmt example with a state of certified energy, profile",
+                on_records(examples["lmt"], BATPERF.stateOfCertifiedEnergy, Literal("95.0", datatype=XSD.decimal)), PROFILE,
+                "not to be filled for LMT and industrial batteries")]
 if examples["ev"].exists():
     checks += [("ev example without capacity threshold for exhaustion, public view",
-                without(examples["ev"], BATPERF.capacityThresholdForExhaustion), VIEWS["public"], "attribute 90")]
+                without(examples["ev"], BATPERF.capacityThresholdForExhaustion), VIEWS["public"], "attribute 90"),
+               ("ev example with a remaining capacity, profile",
+                on_records(examples["ev"], BATPERF.remainingCapacity, Literal("200.0", datatype=XSD.decimal)), PROFILE,
+                "not to be filled for electric vehicle batteries"),
+               ("ev example without current internal resistance, legitimate-interest view",
+                without(examples["ev"], BATPERF.currentInternalResistance), VIEWS["legitimate-interest"], "internalResistance")]
 
 failed = sum(not check(*c) for c in checks)
 print(f"\n{len(checks) - failed}/{len(checks)} checks passed")

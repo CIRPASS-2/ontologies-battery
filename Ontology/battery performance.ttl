@@ -15,7 +15,7 @@
 #################################################
 # Full coverage of the BatteryPass-Ready category "Performance and
 # durability" (attributes 59-100): 5 classes, 4 object properties,
-# 47 datatype properties.
+# 50 datatype properties.
 #
 # v0.2.0 (issue #7): 14 measured quantities retyped from xsd:integer
 # to xsd:decimal; the 4 remaining integers are counts, not measurements
@@ -37,6 +37,15 @@
 # initialCellInternalResistance and initialPackInternalResistance
 # specialise initialInternalResistance. Nothing is renamed or deprecated.
 #
+# v0.5.0 (Commission semantic model for batteries 1.0.0, 30 October
+# 2026): three datatype properties for data points the model requires
+# and this module did not carry: currentInternalResistance and
+# ohmicResistance on the dated state record (Annex XIII 4), and
+# temperatureRangeIdleStateReferenceTest on TemperatureExposure
+# (Annex XIII 1(l)). The two self-discharge rates are now in percent
+# per year, the unit of the Commission model, instead of percent per
+# month, the unit of long list v1.3. Nothing is renamed or deprecated.
+#
 # UNITS (issue #7 (1), settled 26 August 2026): the module follows its
 # parent module and anchors on the SI Digital Framework, as P_DPP does
 # through dpp:hasMeasurementUnit -> si:MeasurementUnit. Each datatype
@@ -48,17 +57,17 @@
 # tracked as CIRPASS-2/ontologies-core#58; until it is decided, the
 # parent-module rule applies.
 #
-# UNITS WITH NO IRI IN THE FRAMEWORK. 14 of the 36 properties that carry
+# UNITS WITH NO IRI IN THE FRAMEWORK. 18 of the 42 properties that carry
 # a unit could be annotated. The framework publishes SI units and a short
 # list of non-SI units accepted for use with the SI; the following are in
 # neither, so they stay in rdfs:comment and no other mechanism is used:
 #   - percent (%) - 11 properties; % is a number, not a unit;
-#   - percent per month (%/month) - 2 properties;
+#   - percent per year (%/year) - 2 properties;
 #   - kilowatt-hour (kWh) - 3 properties; the SI unit of energy is the joule;
 #   - ampere-hour (Ah), milliampere-hour (mAh) - 3 properties; the SI unit
 #     of electric charge is the coulomb;
 #   - year - 1 property; the framework has minute, hour and day, not year;
-#   - ampere per ampere-hour (A/Ah), watt per watt-hour (W/Wh) - 2 ratios
+#   - ampere per ampere-hour (A/Ah), watt per watt-hour (W/Wh) - 4 ratios
 #     of non-SI units.
 # Almost every battery-specific quantity falls in this list, which is the
 # substance of the question raised on CIRPASS-2/ontologies-core#58.
@@ -75,22 +84,22 @@
 
 <https://w3id.org/eudpp/battery-performance>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.4.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-performance/0.5.0> ;
     rdfs:label "EU DPP Battery Performance Ontology"@en ;
     dcterms:title "EU DPP Battery Performance Ontology"@en ;
     dcterms:description "Module for the electrochemical performance, durability and in-use state of batteries in EU Digital Product Passports (capacity, voltage, power capability, round trip efficiency, self-discharge, internal resistance, lifetime, temperature exposure, accidents), covering the 'Performance and durability' category of the BatteryPass-Ready Data Attribute Long List (attributes 59-100) required by Regulation (EU) 2023/1542, Annex XIII."@en ;
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology of October 2026 (P_DPP v2.1.0, MAT v1.1.0). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:license "This ontology is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, this ontology is to be considered licensed under the Apache License, Version 2.0."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.4.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Performance Ontology. Draft version 0.5.0."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-11-03"^^xsd:date ;
-    dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Guidance Document: Digital Batteries Passport – data points by category, version 3.2 (19 October 2026)"@en ;
+    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Guidance Document: Digital Batteries Passport – data points by category, version 3.2 (19 October 2026); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.5.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-performance#" ;
     vann:preferredNamespacePrefix "batperf" .
 
@@ -375,7 +384,7 @@ batperf:initialSelfDischargeRate
     rdfs:domain batperf:BatteryPerformance ;
     rdfs:range xsd:decimal ;
     rdfs:label "initial self-discharge rate"@en ;
-    rdfs:comment "The self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at begin of life. Unit: percent per month (%/month)."@en ;
+    rdfs:comment "The self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at begin of life. Unit: percent per year (%/year), as in the Commission semantic model; long list v1.3 and versions up to 0.4.0 of this module used percent per month."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 78"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
@@ -384,8 +393,8 @@ batperf:currentSelfDischargeRate
     rdfs:domain batperf:BatteryStateRecord ;
     rdfs:range xsd:decimal ;
     rdfs:label "current self-discharge rate"@en ;
-    rdfs:comment "The change of the self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at aging parameter x, e.g. after a certain amount of storage time or number of cycles. Unit: percent per month (%/month)."@en ;
-    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 79"@en ;
+    rdfs:comment "The change of the self-discharge rate in an idle state of the battery in reference conditions (temperature etc.) at aging parameter x, e.g. after a certain amount of storage time or number of cycles. Unit: percent per year (%/year), as in the Commission semantic model; long list v1.3 and versions up to 0.4.0 of this module used percent per month."@en ;
+    dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 79; Regulation (EU) 2023/1542, Annex XIII 4(b); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field selfDischargingRate"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 batperf:selfDischargeRateEvolution
@@ -436,6 +445,26 @@ batperf:internalResistanceIncrease
     rdfs:label "internal resistance increase of pack"@en ;
     rdfs:comment "The increase over time and upon usage of internal resistance, for the pack (cell and module recommended). Unit: percent (%)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 82"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+batperf:currentInternalResistance
+    a owl:DatatypeProperty ;
+    rdfs:domain batperf:BatteryStateRecord ;
+    rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:ohm ;
+    rdfs:label "current internal resistance"@en ;
+    rdfs:comment "Internal resistance of the battery at the date of the state record: the in-use value, where initialInternalResistance is the value at begin of life. Unit: ohm."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(a); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field internalResistance"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+batperf:ohmicResistance
+    a owl:DatatypeProperty ;
+    rdfs:domain batperf:BatteryStateRecord ;
+    rdfs:range xsd:decimal ;
+    batperf:measurementUnit siunit:ohm ;
+    rdfs:label "ohmic resistance"@en ;
+    rdfs:comment "Ohmic resistance of the battery at the date of the state record: information on its state of health under Article 14 of Regulation (EU) 2023/1542, where possible. Unit: ohm."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 4(b); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field ohmicResistance"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 batperf:cycleLifeReferenceTest
@@ -584,6 +613,15 @@ batperf:temperatureRangeIdleStateUpperBoundary
     rdfs:label "temperature range idle state, upper boundary"@en ;
     rdfs:comment "The upper boundary of the surrounding temperature range. Unit: degree Celsius (°C)."@en ;
     dcterms:references "BatteryPass-Ready Data Attribute Long List v1.3, attribute 93"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
+
+batperf:temperatureRangeIdleStateReferenceTest
+    a owl:DatatypeProperty ;
+    rdfs:domain batperf:TemperatureExposure ;
+    rdfs:range xsd:string ;
+    rdfs:label "temperature range idle state, reference test"@en ;
+    rdfs:comment "The reference test for the temperature range the battery can withstand when not in use, whose boundaries are temperatureRangeIdleStateLowerBoundary and temperatureRangeIdleStateUpperBoundary."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 1(l); Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field notInUseTemperatureRangeTest"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-performance> .
 
 batperf:timeSpentInExtremeTemperaturesAboveBoundary

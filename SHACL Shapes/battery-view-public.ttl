@@ -12,6 +12,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix schema: <https://schema.org/> .
 
 #################################################
 # Ontology
@@ -28,10 +29,15 @@
 #
 # SHACL enforces nothing. The passport service decides who receives what;
 # this file is the specification it implements and the test that it did.
+#
+# 0.4.0 (16 November 2026): follows battery-shapes.ttl 0.4.0, aligned on the
+# Commission semantic model for batteries 1.0.0 (30 October 2026). What the
+# profile now requires is required here when this audience sees it, and
+# not disclosed otherwise; the messages name the field of the model.
 
 <https://w3id.org/eudpp/battery-view-public>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-view-public/0.3.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-view-public/0.4.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
                  <https://w3id.org/eudpp/battery-access-tiers> ,
                  <https://github.com/CIRPASS-2/ontologies-battery/issues/5> ;
@@ -43,9 +49,9 @@
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-11-03"^^xsd:date ;
-    dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'"@en ;
-    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
+    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 77; BatteryPass-Ready Data Attribute Long List v1.3, column 'Access rights according to Battery Regulation'; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
+    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-view-public#" ;
     vann:preferredNamespacePrefix "batv" .
 
@@ -58,7 +64,7 @@ batv:PublicBatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     batacc:accessTier batacc:Public ;
-    rdfs:comment "The 47 data points visible to this audience that battery-shapes.ttl requires for every battery category; 1 more is required for some categories only, below."@en ;
+    rdfs:comment "The 48 data points visible to this audience that battery-shapes.ttl requires for every battery category, and the reference test of the idle-state temperature range; 1 more is required for some categories only, below."@en ;
     # Visible here but never required, as in section 4 of battery-shapes.ttl: 22, 36, 37, 62, 73.
     # 1. DPP Schema version
     sh:property [ sh:path ( dpp:hasDPP dpp:dppSchemaVersion ) ; sh:minCount 1 ] ;
@@ -80,8 +86,16 @@ batv:PublicBatteryShape
     sh:property [ sh:path dpp:hasEconomicOperator ; sh:minCount 1 ] ;
     # 13. Manufacturer information
     sh:property [ sh:path dpp:hasManufacturer ; sh:minCount 1 ] ;
+    #     the postal address, since 16 November 2026
+    sh:property [ sh:path ( dpp:hasManufacturer schema:address ) ; sh:minCount 1 ;
+                  sh:message "Postal address of the manufacturer — attribute 13; Commission semantic model, manufacturerPostalAddress." ] ;
     # 14. Manufacturing place
     sh:property [ sh:path dpp:usesFacility ; sh:minCount 1 ] ;
+    #     the country, and the town or the region, since 16 November 2026
+    sh:property [ sh:path ( dpp:usesFacility schema:address schema:addressCountry ) ; sh:minCount 1 ;
+                  sh:message "Country of manufacture — attribute 14; Commission semantic model, manufacturingCountry." ] ;
+    sh:property [ sh:path ( dpp:usesFacility schema:address [ sh:alternativePath ( schema:addressLocality schema:addressRegion ) ] ) ; sh:minCount 1 ;
+                  sh:message "Town or region of manufacture — attribute 14; Commission semantic model, manufacturingPlace." ] ;
     # 15. Manufacturing date
     sh:property [ sh:path dpp:manufacturingDate ; sh:minCount 1 ] ;
     # 17. Warranty period of the battery
@@ -94,6 +108,9 @@ batv:PublicBatteryShape
     sh:property [ sh:path ( batlab:hasBatteryLabel batlab:separateCollectionSymbol ) ; sh:minCount 1 ] ;
     # 24. Extinguishing agent
     sh:property [ sh:path ( batlab:hasBatteryLabel batlab:extinguishingAgent ) ; sh:minCount 1 ] ;
+    # 25. Meaning of labels and symbols
+    sh:property [ sh:path ( batlab:hasBatteryLabel batlab:labelingSymbol ) ; sh:minCount 1 ;
+                  sh:message "Meaning of labels and symbols — attribute 25; Commission semantic model, batteryLabelSymbolMeaning." ] ;
     # 26. EU declaration of conformity
     sh:property [ sh:path dpp:hasEUDeclarationOfConformity ; sh:minCount 1 ] ;
     # 39. Battery chemistry
@@ -102,9 +119,14 @@ batv:PublicBatteryShape
     sh:property [ sh:path ( dpp:hasMaterial dpp:isCriticalRawMaterial ) ; sh:minCount 1 ] ;
     # 42. Hazardous substances
     sh:property [ sh:path dpp:containsSubstanceOfConcern ; sh:minCount 1 ] ;
+    #     the name of the substance, since 16 November 2026
+    sh:property [ sh:path ( dpp:containsSubstanceOfConcern [ sh:alternativePath ( dpp:usualName dpp:casName dpp:iupacName ) ] ) ; sh:minCount 1 ;
+                  sh:message "Name of the hazardous substance — attribute 42; Commission semantic model, hazardousSubstances." ] ;
     # 43. Impact of substances on environment, human health, safety, persons
-    #     deactivated: SOC 2.2.0 removed hasImpactOnEnvironment (pending a CORE issue)
-    sh:property [ sh:path ( dpp:containsSubstanceOfConcern dpp:hasImpactOnEnvironment ) ; sh:minCount 1 ; sh:deactivated true ] ;
+    #     active again since 16 November 2026 with bat:SubstancesImpactInformation, until SOC has a term for it
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:SubstancesImpactInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Impact of substances — attribute 43; Commission semantic model, batterySubstancesImpact." ] ;
     # 48. Pre-consumer recycled nickel share
     sh:property [ sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ; sh:minCount 1 ] ;
     # 49. Pre-consumer recycled cobalt share
@@ -120,14 +142,37 @@ batv:PublicBatteryShape
     # 54. Recycled lead share
     sh:property [ sh:path ( dpp:hasMaterial dpp:materialRecycledContent ) ; sh:minCount 1 ] ;
     # 55. Renewable content share
-    #     deactivated: P_DPP removed SustainableRenewableMaterialsUse (pending a CORE issue)
-    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ; sh:deactivated true ] ;
+    #     active again since 16 November 2026 with batmat:renewableContentShare
+    sh:property [ sh:path batmat:renewableContentShare ; sh:minCount 1 ;
+                  sh:message "Renewable content share — attribute 55; Commission semantic model, renewableContentShare." ] ;
     # 56. Information on the role of end-users in contributing to waste prevention
-    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:WastePreventionInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Role of end-users in waste prevention — attribute 56; Commission semantic model, endUserRoleInWastePrevention." ] ;
     # 57. Information on the role of end-users in contributing to the separate colle
-    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:SeparateCollectionInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Role of end-users in separate collection — attribute 57; Commission semantic model, endUserRoleInSeparateCollection." ] ;
     # 58. Information on battery collection, preparation for second life and on trea
-    sh:property [ sh:path dpp:hasProperty ; sh:minCount 1 ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:SeparateCollectionPointsInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Separate collection points — attribute 58; Commission semantic model, separateCollectionPoints." ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:TakeBackPointsInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Take-back and collection points — attribute 58; Commission semantic model, takeBackCollectionPoints." ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:PreparationForReuseInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Preparation for re-use facilities — attribute 58; Commission semantic model, preparationForReuseFacilities." ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:PreparationForRepurposingInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Preparation for repurposing facilities — attribute 58; Commission semantic model, preparationForRepurposingFacilities." ] ;
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:WasteTreatmentInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Treatment facilities for waste batteries — attribute 58; Commission semantic model, wasteBatteryTreatmentFacilities." ] ;
+    # Safety instructions for handling waste batteries: no v1.3 attribute
+    sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMinCount 1 ;
+                  sh:qualifiedValueShape [ sh:class bat:WasteBatterySafetyInformation ; sh:property [ sh:path dpp:value ; sh:minCount 1 ] ] ;
+                  sh:message "Safety instructions for handling waste batteries — Commission semantic model, wasteBatterySafetyInstructions." ] ;
     # 59. Rated capacity
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:ratedCapacity ) ; sh:minCount 1 ] ;
     # 66. Minimum voltage
@@ -145,7 +190,11 @@ batv:PublicBatteryShape
     # 75. Round trip energy efficiency at 50% of cycle life
     sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:roundTripEnergyEfficiencyAt50PercentCycleLife ) ; sh:minCount 1 ] ;
     # 81. Initial internal resistance of battery cell and pack (module recommended)
-    sh:property [ sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:initialInternalResistance batperf:initialCellInternalResistance batperf:initialPackInternalResistance ) ] ) ; sh:minCount 1 ] ;
+    #     both the cell and the pack value since 16 November 2026
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialCellInternalResistance ) ; sh:minCount 1 ;
+                  sh:message "Initial internal resistance of the cell — attribute 81; Commission semantic model, internalCellResistance." ] ;
+    sh:property [ sh:path ( batperf:hasBatteryPerformance batperf:initialPackInternalResistance ) ; sh:minCount 1 ;
+                  sh:message "Initial internal resistance of the pack — attribute 81; Commission semantic model, internalPackResistance." ] ;
     # 84. Expected lifetime: Number of charge-discharge cycles
     sh:property [ sh:path ( batperf:hasBatteryDurability batperf:expectedLifetimeCycles ) ; sh:minCount 1 ] ;
     # 86. Cycle-life reference test
@@ -155,7 +204,10 @@ batv:PublicBatteryShape
     # 92. Temperature range idle state, lower boundary
     sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateLowerBoundary ) ; sh:minCount 1 ] ;
     # 93. Temperature range idle state, upper boundary
-    sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateUpperBoundary ) ; sh:minCount 1 ]  .
+    sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateUpperBoundary ) ; sh:minCount 1 ] ;
+    # Temperature range idle state, reference test: no v1.3 attribute
+    sh:property [ sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateReferenceTest ) ; sh:minCount 1 ;
+                  sh:message "Reference test of the idle-state temperature range — Commission semantic model, notInUseTemperatureRangeTest." ]  .
 
 #################################################
 # Must be there for some categories only
@@ -184,7 +236,7 @@ batv:Public90Shape
 batv:PublicBatteryShapeExclusions
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
-    rdfs:comment "The 33 data points this view must not disclose."@en ;
+    rdfs:comment "The 34 data points this view must not disclose, and 2 data points of the Commission semantic model."@en ;
     # 20. Battery status
     sh:property [ sh:path bat:hasBatteryStatus ; sh:maxCount 0 ;
                   sh:message "Attribute 20 is not disclosed in this view." ] ;
@@ -260,6 +312,11 @@ batv:PublicBatteryShapeExclusions
     # 99. Number of overcharge events
     sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:numberOfOverchargeEvents ) ; sh:maxCount 0 ;
                   sh:message "Attribute 99 is not disclosed in this view." ] ;
+    # Current internal resistance and ohmic resistance: no v1.3 attribute; restricted in the Commission semantic model
+    sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:currentInternalResistance ) ; sh:maxCount 0 ;
+                  sh:message "The current internal resistance is not disclosed in this view." ] ;
+    sh:property [ sh:path ( batperf:hasBatteryStateRecord batperf:ohmicResistance ) ; sh:maxCount 0 ;
+                  sh:message "The ohmic resistance is not disclosed in this view." ] ;
     # 41. Materials used in cathode, anode and electrolyte
     sh:property [ sh:path ( batmat:hasBatteryChemistry batmat:hasBatteryLocation ) ; sh:maxCount 0 ;
                   sh:message "Attribute 41 is not disclosed in this view." ] ;
@@ -269,6 +326,9 @@ batv:PublicBatteryShapeExclusions
     # 45. Part numbers for components
     sh:property [ sh:path bat:partNumber ; sh:maxCount 0 ;
                   sh:message "Attribute 45 is not disclosed in this view." ] ;
+    # 46. Information on sources of spare parts
+    sh:property [ sh:path bat:sparePartsInformation ; sh:maxCount 0 ;
+                  sh:message "Attribute 46 is not disclosed in this view." ] ;
     # 47. Safety measures
     sh:property [ sh:path dpp:hasProperty ; sh:qualifiedMaxCount 0 ;
                   sh:qualifiedValueShape [ sh:class bat:SafetyInstruction ] ;

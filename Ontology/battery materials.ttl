@@ -12,17 +12,21 @@
 #################################################
 # Ontology
 #################################################
-# 2 classes, 2 object properties. Chemistry values come from the
+# 2 classes, 2 object properties, 1 datatype property. Chemistry values come from the
 # battery-chemistries vocabulary: BatteryChemistry is a subclass of
 # dpp:MaterialOfComposition, so it inherits dpp:hasMaterialType.
 # Location values come from the battery-locations vocabulary, new in
 # v0.3.0: BatteryLocation was declared but had no value set.
 # MAT keeps a flat model with no part level (ontologies-core#24, closed):
 # the locations stay in the battery-locations vocabulary.
+# v0.4.0 (Commission semantic model for batteries 1.0.0, 30 October
+# 2026): batmat:renewableContentShare, the share of renewable content
+# of Annex XIII 1(f), which the model requires and the CORE no longer
+# carries.
 
 <https://w3id.org/eudpp/battery-materials>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-materials/0.3.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-materials/0.4.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery-chemistries> ,
                  <https://w3id.org/eudpp/battery-locations> ;
     rdfs:label "EU DPP Battery Materials Ontology"@en ;
@@ -31,15 +35,15 @@
     rdfs:comment "Developed against the CIRPASS-2 CORE ontology of October 2026 (P_DPP v2.1.0, MAT v1.1.0). External references are pinned to these versions."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:license "This ontology is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, this ontology is to be considered licensed under the Apache License, Version 2.0."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Materials Ontology. Draft version 0.3.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Materials Ontology. Draft version 0.4.0."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-07-07"^^xsd:date ;
     dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:modified "2026-11-03"^^xsd:date ;
-    dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1"@en ;
+    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII; BatteryPass-Ready Data Attribute Long List v1.3; Spherity Battery Pass ontology v0.1; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-materials#" ;
     vann:preferredNamespacePrefix "batmat" .
 
@@ -84,6 +88,19 @@ batmat:hasBatteryLocation
     rdfs:label "has battery location"@en ;
     rdfs:comment "Links a battery material of composition to its internal location within the battery. The domain is restricted to BatteryChemistry rather than the cross-sectoral MaterialOfComposition, so that this battery-specific property is not asserted on materials of other sectors."@en ;
     dcterms:references "Spherity Battery Pass ontology v0.1, batteryMaterialLocation"@en ;
+    rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
+
+#################################################
+# Datatype Properties
+#################################################
+
+batmat:renewableContentShare
+    a owl:DatatypeProperty ;
+    rdfs:domain bat:Battery ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "renewable content share"@en ;
+    rdfs:comment "The share of renewable content in the battery. Unit: percent (%). Declared here because the CORE removed dpp:SustainableRenewableMaterialsUse from P_DPP on 16 October 2026 and has no term for this share; to move to the CORE if it gets one again."@en ;
+    dcterms:references "Regulation (EU) 2023/1542, Annex XIII 1(f); BatteryPass-Ready Data Attribute Long List v1.3, attribute 55; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026), field renewableContentShare"@en ;
     rdfs:isDefinedBy <https://w3id.org/eudpp/battery-materials> .
 
 #################################################

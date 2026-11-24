@@ -43,7 +43,7 @@ ex:nameplate-12345
     batperf:certifiedUsableBatteryEnergy     "77.4"^^xsd:decimal ;
     batperf:originalPowerCapability          "150000.0"^^xsd:decimal ;
     batperf:initialInternalResistance        "0.045"^^xsd:decimal ;
-    batperf:initialSelfDischargeRate         "1.5"^^xsd:decimal ;
+    batperf:initialSelfDischargeRate         "18.0"^^xsd:decimal ;
     batperf:initialRoundTripEnergyEfficiency "95.0"^^xsd:decimal ;
     batperf:temperatureRangeIdleStateLowerBoundary "-20.0"^^xsd:decimal ;
     batperf:temperatureRangeIdleStateUpperBoundary  "45.0"^^xsd:decimal .

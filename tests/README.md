@@ -15,3 +15,5 @@ Contributed by Edmondo Grigolato (OrigoVero) in [#14](https://github.com/CIRPASS
 - `demo-lfp-200_public_no-due-diligence.jsonld` — the same without the two due-diligence properties, 85 triples. Submitted as failing the public view; conforms since the #14 changes.
 
 `dpp:dppSchemaVersion` was added to both on 6 October 2026: the profile and the views require it since P_DPP v2.1.0 restored it ([ontologies-core#62](https://github.com/CIRPASS-2/ontologies-core/issues/62)).
+
+Since 16 November 2026 neither conforms to the public view any more: they predate the alignment on the Commission semantic model, which adds data points the public sees. The checks expect the missing data points to be those additions only, so the #14 workarounds stay unnecessary.

@@ -11,11 +11,11 @@ See [DISCLAIMER.md](DISCLAIMER.md) for the full disclaimer.
 
 ## Overview
 
-This repository contains the **EU DPP Battery Ontology** (umbrella version 0.4.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus nine thematic modules:
+This repository contains the **EU DPP Battery Ontology** (umbrella version 0.5.0 DRAFT): a sectoral ontology for battery Digital Product Passports under Regulation (EU) 2023/1542. It extends the CIRPASS-2 cross-sectoral CORE ontology (EU DPP CO) by direct reference and is organised as an umbrella module plus nine thematic modules:
 
 | File | Module | Prefix | Namespace |
 |------|--------|--------|-----------|
-| `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product`, and `bat:SafetyInstruction` as a subclass of `dpp:DigitalInstruction` | `bat` | `https://w3id.org/eudpp/battery#` |
+| `battery ontology.ttl` | **Umbrella** — declares `bat:Battery` as a subclass of the cross-sectoral `dpp:Product`, and `bat:SafetyInstruction` and the nine waste battery information classes as subclasses of `dpp:DigitalInstruction` | `bat` | `https://w3id.org/eudpp/battery#` |
 | `battery performance.ttl` | **Performance** — electrochemical performance, durability and in-use state (BatteryPass-Ready category "Performance and durability", attributes 59–100) | `batperf` | `https://w3id.org/eudpp/battery-performance#` |
 | `battery materials.ttl` | **Materials** — battery chemistry and internal material location, extending the CORE MAT module | `batmat` | `https://w3id.org/eudpp/battery-materials#` |
 | `battery-locations.ttl` | **Locations** — the three internal locations named by Annex XIII 2(a) — cathode, anode, electrolyte — as individuals of `batmat:BatteryLocation`, value set of `batmat:hasBatteryLocation` | `batloc` | `https://w3id.org/eudpp/battery-locations#` |
@@ -135,20 +135,35 @@ Sources, in order of authority:
 
 The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only. Two exceptions, attributes 22 and 36, are declared but not required: see the changelog of 28 September 2026.
 
-86 of the 100 attributes carry a path — 64 required in all four columns, 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but never required. The 14 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+88 of the 100 attributes carry a path — 66 required for every category (the 64 that v1.3 requires in all four columns, and 25 and 46, which the Commission semantic model requires), 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but not required by v1.3. The 12 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+
+Since 16 November 2026 the profile also follows the **Commission semantic model for batteries 1.0.0** (DPP Registry – Semantic Data Artifacts, 30 October 2026). The data points it requires and v1.3 does not are required, for the same categories; those it marks *Not to be filled/displayed* for a category are forbidden for that category. Their messages name the field of the model. One requirement of the model is not met yet: a temperature range for each of the three voltages (`minimalVoltage`, `nominalVoltage`, `maximumVoltage`), which no battery term carries.
 
 A view never requires more than the profile: it requires the data points it shows that the profile requires, under the same category conditions.
 
-⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance (version 3.2 of 19 October 2026) does defer some data points; reconciling the two is an open point. Its data points 38 to 40 split two v1.3 attributes: for attribute 81 the profile and the views also accept the cell and pack resistances, for attribute 87 the charge C-rate; the discharge C-rate is typed, never required.
+⚠️ v1.3 carries no *Mandatory from February 2027* column, unlike v2.0. The profile therefore validates the full v1.3 requirement set and defers nothing. The Commission guidance (version 3.2 of 19 October 2026) does defer some data points; reconciling the two is an open point. Its data points 38 to 40 split two v1.3 attributes: for attribute 81 the profile and the views require the cell and the pack resistance since 16 November 2026, for attribute 87 they also accept the charge C-rate; the discharge C-rate is typed, never required.
 
 ## Waiting on CORE
 
 What to change in the battery modules when these CORE issues land:
 
 * **[ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) — product status.** When the CORE publishes `ProductStatus` and `hasProductStatus`: attach the five `battery-statuses` concepts to `ProductStatus`; deprecate `bat:hasBatteryStatus` in favour of `hasProductStatus`; in the profile and the views, move attribute 20 to the new path, with the same `sh:in`.
-* **[ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) — units and value pattern.** When decided: apply the chosen unit mechanism to `batperf` (today SI Digital Framework IRIs on `batperf:measurementUnit`, the 22 units without one in `rdfs:comment`); switch shares from percentages to fractions only if the CORE decides so.
+* **[ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) — units and value pattern.** When decided: apply the chosen unit mechanism to `batperf` (today SI Digital Framework IRIs on `batperf:measurementUnit`, the 24 units without one in `rdfs:comment`, as for `batmat:renewableContentShare`); switch shares from percentages to fractions only if the CORE decides so.
+* **SOC — impact of substances.** When the CORE has a term again for the impact of a substance of concern, which SOC 2.2.0 removed on 15 October 2026: move attribute 43 from `bat:SubstancesImpactInformation` to that term in the profile, the views and the examples, then deprecate the class.
 
 ## Changelog
+
+### Umbrella 0.5.0, battery-performance 0.5.0, battery-materials 0.4.0, SHACL profile, views and examples — 16 November 2026
+
+Alignment on the Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026).
+
+* **`battery ontology` 0.5.0** — nine subclasses of `dpp:DigitalInstruction` for the waste battery information of Art. 74(1): attributes 43 and 56 to 58, and the safety instructions for waste batteries; the text goes on `dpp:value`, a link on `dpp:webLink`. `bat:SubstancesImpactInformation` carries attribute 43 until SOC has a term again. New `bat:sparePartsInformation` (`xsd:anyURI`) for attribute 46.
+* **`battery performance` 0.5.0** — new `batperf:currentInternalResistance` and `batperf:ohmicResistance` on the state record, and `batperf:temperatureRangeIdleStateReferenceTest` on the temperature exposure. The self-discharge rates are in percent per year, the unit of the model, instead of percent per month: a monthly figure is multiplied by 12. The header now counts 5 classes, 4 object properties and 50 datatype properties.
+* **`battery materials` 0.4.0** — new `batmat:renewableContentShare` (%) for attribute 55.
+* **`battery-shapes.ttl` 0.4.0** — attributes 25, 43, 46 and 55 carry a path again. Attribute 13 also requires the postal address of the manufacturer, 14 the country and the town or region of the facility, 42 the name of the substance; 81 requires both the cell and the pack resistance; the reference test of the idle-state temperature range is required. For some categories: the current internal resistance for electric vehicle and LMT batteries, the ohmic resistance and the current self-discharge rate for LMT batteries. Forbidden, as the model marks them *Not to be filled/displayed*: for electric vehicle batteries the remaining capacity, the remaining round trip energy efficiency, the current self-discharge rate and its evolution, the ohmic resistance; for LMT and industrial batteries the capacity threshold for exhaustion and the state of certified energy. The remaining power capability stays allowed for electric vehicle batteries: the model requires the same figure as `powerCapability`.
+* **The three views 0.4.0** — the same requirements, in the views whose audience sees the data point. The public view does not disclose attribute 46, the current internal resistance or the ohmic resistance.
+* **`Examples/`** — each worked example gains a section 13 with the data points added, placeholder values, drops what its category forbids, and gives its self-discharge rates in percent per year, as does `battery-state-record-example.ttl`. `example-lmt-battery_version_STH.ttl` is generated and is not regenerated here.
+* **`tests/`** — seven checks added for the new requirements and prohibitions; the fixtures of #14 predate the alignment and are expected to miss its additions only: 35 checks in all.
 
 ### Licence of all modules, SHACL profiles and views — 3 November 2026
 

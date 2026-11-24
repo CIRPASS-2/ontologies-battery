@@ -148,8 +148,8 @@ ex:nameplate-1
     batperf:maximumVoltage                            "430.0"^^xsd:decimal ;
     batperf:originalPowerCapability                   "150000.0"^^xsd:decimal ;
     batperf:maximumPermittedBatteryPower              "160000.0"^^xsd:decimal ;
-    batperf:initialInternalResistance                 "0.045"^^xsd:decimal ;
-    batperf:initialSelfDischargeRate                  "1.5"^^xsd:decimal ;
+    batperf:initialPackInternalResistance             "0.045"^^xsd:decimal ;
+    batperf:initialSelfDischargeRate                  "18.0"^^xsd:decimal ;
     batperf:initialRoundTripEnergyEfficiency          "95.0"^^xsd:decimal ;
     batperf:roundTripEnergyEfficiencyAt50PercentCycleLife "92.0"^^xsd:decimal ;
     batperf:cycleLifeReferenceTest                    "IEC 62660-1:2018, 1C/1C at 25 degrees Celsius, 100 percent depth of discharge" ;
@@ -190,13 +190,9 @@ ex:state-2027-09-01
     batperf:temperatureInformation       "21.0"^^xsd:decimal ;
     batperf:numberOfFullCycles           64 ;
     batperf:roundTripEnergyEfficiencyFade "0.4"^^xsd:decimal ;
-    batperf:remainingCapacity            "230.1"^^xsd:decimal ;
     batperf:remainingPowerCapability     "149250.0"^^xsd:decimal ;
     batperf:remainingUsableBatteryEnergy "72.9"^^xsd:decimal ;
-    batperf:remainingRoundTripEnergyEfficiency "94.6"^^xsd:decimal ;
     batperf:stateOfCertifiedEnergy       "99.1"^^xsd:decimal ;
-    batperf:currentSelfDischargeRate     "1.5"^^xsd:decimal ;
-    batperf:selfDischargeRateEvolution   "0.0"^^xsd:decimal ;
     batperf:numberOfDeepDischargeEvents  0 ;
     batperf:numberOfOverchargeEvents     0 .
 ex:state-2029-06-01
@@ -209,13 +205,9 @@ ex:state-2029-06-01
     batperf:temperatureInformation       "24.0"^^xsd:decimal ;
     batperf:numberOfFullCycles           412 ;
     batperf:roundTripEnergyEfficiencyFade "2.2"^^xsd:decimal ;
-    batperf:remainingCapacity            "219.7"^^xsd:decimal ;
     batperf:remainingPowerCapability     "143850.0"^^xsd:decimal ;
     batperf:remainingUsableBatteryEnergy "69.6"^^xsd:decimal ;
-    batperf:remainingRoundTripEnergyEfficiency "92.9"^^xsd:decimal ;
     batperf:stateOfCertifiedEnergy       "94.6"^^xsd:decimal ;
-    batperf:currentSelfDischargeRate     "1.8"^^xsd:decimal ;
-    batperf:selfDischargeRateEvolution   "20.0"^^xsd:decimal ;
     batperf:numberOfDeepDischargeEvents  1 ;
     batperf:numberOfOverchargeEvents     0 .
 
@@ -380,13 +372,14 @@ ex:material-lead
     eudpp:materialRecycledContent "85.0"^^xsd:decimal ;
     eudpp:isCriticalRawMaterial   false .
 
-# Data point 55, the share of renewable content, is left out: P_DPP removed
-# eudpp:SustainableRenewableMaterialsUse on 16 October 2026, and the CORE has
-# no term for this share yet.
+# Data point 55, the share of renewable content, is in section 13: P_DPP
+# removed eudpp:SustainableRenewableMaterialsUse on 16 October 2026, and
+# battery-materials 0.4.0 adds batmat:renewableContentShare.
 
-# Data point 42. The substance of concern. Data point 43, its impacts, is left
-# out: SOC 2.2.0 removed hasImpactOnEnvironment and hasImpactOnHumanHealth on
-# 15 October 2026, and the CORE has no term for them yet.
+# Data point 42. The substance of concern, named in section 13. Data point 43,
+# its impacts, is in section 13 too: SOC 2.2.0 removed hasImpactOnEnvironment
+# and hasImpactOnHumanHealth on 15 October 2026, and battery 0.5.0 carries the
+# text in a bat:SubstancesImpactInformation until the CORE has a term again.
 ex:battery-1  eudpp:containsSubstanceOfConcern  ex:soc-1 .
 
 ex:soc-1
@@ -398,3 +391,113 @@ ex:soc-1
 ex:safety-instruction-1
     a              bat:SafetyInstruction ;
     eudpp:webLink  "https://example.org/doc/ev/safety.pdf"^^xsd:anyURI .
+
+##############################################################################
+# 13. Completion of 16 November 2026 — the data points the Commission
+# semantic model for batteries 1.0.0 (30 October 2026) requires and this
+# example did not carry. Placeholder values; the structure is what matters.
+##############################################################################
+
+# Data point 13. The manufacturer's postal address, from schema.org as ACTOR does.
+ex:manufacturer  schema:address  ex:manufacturer-address .
+
+ex:manufacturer-address
+    a                      schema:PostalAddress ;
+    schema:streetAddress   "Example Street 1" ;
+    schema:postalCode      "00000" ;
+    schema:addressLocality "Example City" ;
+    schema:addressCountry  "FR" .
+
+# Data point 14. The place of manufacture: the address of the facility.
+ex:plant-1  schema:address  ex:plant-address .
+
+ex:plant-address
+    a                      schema:PostalAddress ;
+    schema:addressLocality "Example City" ;
+    schema:addressRegion   "Example Region" ;
+    schema:addressCountry  "FR" .
+
+# Data point 25, the meaning of the labels and symbols, needs nothing new: the
+# label legend is already linked by batlab:labelingSymbol in section 9.
+
+# Data point 42. The name of the substance of concern.
+ex:soc-1  eudpp:usualName  "Example electrolyte salt" .
+
+# Data point 46. Where to find the part numbers and the contacts of the spare
+# part sources (bat:sparePartsInformation, battery 0.5.0).
+ex:battery-1  bat:sparePartsInformation  "https://example.org/doc/ev/spare-parts.pdf"^^xsd:anyURI .
+
+# Data point 55. The share of renewable content (battery-materials 0.4.0).
+ex:battery-1  batmat:renewableContentShare  "5.0"^^xsd:decimal .
+
+# Data point 81. The cell value; the pack value is in section 5.
+ex:nameplate-1  batperf:initialCellInternalResistance  "0.0008"^^xsd:decimal .
+
+# The reference test of the idle-state temperature range, which has no v1.3
+# attribute (battery-performance 0.5.0).
+ex:idle-temperature-range-1
+    batperf:temperatureRangeIdleStateReferenceTest  "Example storage test at the two boundaries of the range" .
+
+# Data points 43 and 56 to 58. The waste battery information of Art. 74(1):
+# one digital instruction per text (battery 0.5.0).
+ex:battery-1  eudpp:hasProperty  ex:waste-prevention-1 ,
+                                 ex:separate-collection-1 ,
+                                 ex:collection-points-1 ,
+                                 ex:take-back-points-1 ,
+                                 ex:reuse-1 ,
+                                 ex:repurposing-1 ,
+                                 ex:treatment-1 ,
+                                 ex:waste-safety-1 ,
+                                 ex:substances-impact-1 .
+
+ex:waste-prevention-1
+    a            bat:WastePreventionInformation ;
+    eudpp:value  "Use the battery for as long as possible and follow the charging instructions to extend its life." .
+
+ex:separate-collection-1
+    a            bat:SeparateCollectionInformation ;
+    eudpp:value  "Do not dispose of the battery with household waste: hand it in at a separate collection point." .
+
+ex:collection-points-1
+    a            bat:SeparateCollectionPointsInformation ;
+    eudpp:value  "The separate collection points are listed at https://example.org/collection-points." .
+
+ex:take-back-points-1
+    a            bat:TakeBackPointsInformation ;
+    eudpp:value  "Retailers and the producer take the battery back free of charge: https://example.org/take-back." .
+
+ex:reuse-1
+    a            bat:PreparationForReuseInformation ;
+    eudpp:value  "The facilities preparing waste batteries for re-use are listed at https://example.org/reuse." .
+
+ex:repurposing-1
+    a            bat:PreparationForRepurposingInformation ;
+    eudpp:value  "The facilities preparing waste batteries for repurposing are listed at https://example.org/repurposing." .
+
+ex:treatment-1
+    a            bat:WasteTreatmentInformation ;
+    eudpp:value  "The treatment facilities for waste batteries are listed at https://example.org/treatment." .
+
+ex:waste-safety-1
+    a            bat:WasteBatterySafetyInformation ;
+    eudpp:value  "Handle a damaged waste battery with care: insulate its terminals and do not open its casing." .
+
+ex:substances-impact-1
+    a            bat:SubstancesImpactInformation ;
+    eudpp:value  "The electrolyte and the electrode materials can harm the environment and human health if the battery is not treated properly." .
+
+# In the records of section 8, the current internal resistance
+# (battery-performance 0.5.0).
+ex:state-2027-09-01
+    batperf:currentInternalResistance "0.0452"^^xsd:decimal .
+ex:state-2029-06-01
+    batperf:currentInternalResistance "0.0464"^^xsd:decimal .
+
+# Removed from the electric vehicle battery, which the Commission semantic
+# model marks "Not to be filled/displayed": the remaining capacity, the
+# remaining round trip energy efficiency, the current self-discharge rate and
+# its evolution in the records of section 8.
+
+# The self-discharge rates of sections 5 and 8 are in percent per year since
+# battery-performance 0.5.0, as in the Commission semantic model: twelve times
+# the former monthly figures.

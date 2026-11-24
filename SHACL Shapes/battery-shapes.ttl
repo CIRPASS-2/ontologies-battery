@@ -13,6 +13,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix schema: <https://schema.org/> .
 
 #################################################
 # Ontology
@@ -55,11 +56,20 @@
 #
 # Access tiers are not here: they live in the three battery-view-*.ttl
 # files, so this profile stays about conformance (issue #5).
+#
+# 0.4.0 (16 November 2026): aligned on the Commission semantic model for
+# batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October
+# 2026). The data points the model requires and v1.3 does not are
+# required here too, and the data points it forbids for a category
+# ("Not to be filled/displayed") are forbidden for that category; their
+# messages name the field of the model. Attributes 25, 43, 46 and 55
+# carry a path again, and attribute 81 requires both the cell and the
+# pack resistance.
 
 <https://w3id.org/eudpp/battery-shapes>
     a owl:Ontology ;
     owl:imports <https://w3id.org/eudpp/battery-cf-shapes> ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.3.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.4.0> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
                  <https://github.com/CIRPASS-2/ontologies-battery/issues/10> ;
     rdfs:label "EU DPP Battery Shapes"@en ;
@@ -67,15 +77,15 @@
     dcterms:description "SHACL conformance profile for battery Digital Product Passports under Regulation (EU) 2023/1542. Carries the cardinalities, datatypes and closed vocabularies that the battery ontology deliberately leaves out of OWL. Built against BatteryPass-Ready Data Attribute Long List v1.3. Covers the three passport categories: electric vehicle, light means of transport, and industrial batteries above 2 kWh."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:license "This ontology is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, this ontology is to be considered licensed under the Apache License, Version 2.0."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.3.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.4.0."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
     dcterms:issued "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-11-03"^^xsd:date ;
-    dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1"@en ;
+    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.3.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-shapes#" ;
     vann:preferredNamespacePrefix "batsh" .
 
@@ -105,12 +115,15 @@ batsh:PassportScopeShape
 # 64 of the 66 attributes that v1.3 marks mandatory in all four
 # applicability columns. The other two, 22 and 36, are declared in
 # section 4: no validator can tell when they are due (issue #14).
+# Since 16 November 2026, also attributes 25 and 46, and the reference
+# test of the idle-state temperature range: the Commission semantic
+# model requires them for every category.
 
 batsh:BatteryShape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
     rdfs:label "Battery conformance shape"@en ;
-    rdfs:comment "Attributes mandatory for every passport category in long list v1.3."@en ;
+    rdfs:comment "Attributes mandatory for every passport category in long list v1.3, and the data points the Commission semantic model requires for every category."@en ;
 
 
     # 1. DPP Schema version
@@ -216,11 +229,34 @@ batsh:BatteryShape
         sh:message "Manufacturer information — long list v1.3 attribute 13, Battery Regulation." ;
     ] ;
 
+    # 13. Manufacturer information: the postal address
+    #     Commission semantic model: manufacturerPostalAddress (Annex VI Part A 1)
+    sh:property [
+        sh:path ( dpp:hasManufacturer schema:address ) ;
+        sh:minCount 1 ;
+        sh:message "Manufacturer postal address — long list v1.3 attribute 13, Battery Regulation; Commission semantic model, manufacturerPostalAddress." ;
+    ] ;
+
     # 14. Manufacturing place
     sh:property [
         sh:path dpp:usesFacility ;
         sh:minCount 1 ;
         sh:message "Manufacturing place — long list v1.3 attribute 14, Battery Regulation." ;
+    ] ;
+
+    # 14. Manufacturing place: the country, and the town or the region
+    #     Commission semantic model: manufacturingPlace (Annex VI Part A 3); countries in
+    #     ISO 3166-1 alpha-2, as in IDENT and EPREL
+    sh:property [
+        sh:path ( dpp:usesFacility schema:address schema:addressCountry ) ;
+        sh:minCount 1 ;
+        sh:pattern "^[A-Z]{2}$" ;
+        sh:message "Manufacturing place, country — long list v1.3 attribute 14, Battery Regulation; Commission semantic model, manufacturingPlace." ;
+    ] ;
+    sh:property [
+        sh:path ( dpp:usesFacility schema:address [ sh:alternativePath ( schema:addressLocality schema:addressRegion ) ] ) ;
+        sh:minCount 1 ;
+        sh:message "Manufacturing place, town or region — long list v1.3 attribute 14, Battery Regulation; Commission semantic model, manufacturingPlace." ;
     ] ;
 
     # 15. Manufacturing date
@@ -280,6 +316,15 @@ batsh:BatteryShape
         sh:message "Extinguishing agent — long list v1.3 attribute 24, Battery Regulation." ;
     ] ;
 
+    # 25. Meaning of labels and symbols
+    #     the legend of the label; Commission semantic model: batteryLabelSymbolMeaning
+    sh:property [
+        sh:path ( batlab:hasBatteryLabel batlab:labelingSymbol ) ;
+        sh:minCount 1 ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Meaning of labels and symbols — long list v1.3 attribute 25, Battery Regulation; Commission semantic model, batteryLabelSymbolMeaning." ;
+    ] ;
+
     # 26. EU declaration of conformity
     sh:property [
         sh:path dpp:hasEUDeclarationOfConformity ;
@@ -326,16 +371,27 @@ batsh:BatteryShape
         sh:message "Hazardous substances — long list v1.3 attribute 42, Battery Regulation." ;
     ] ;
 
-    # 43. Impact of substances on environment, human health, safety, persons
-    #     DEACTIVATED on 26 October 2026: SOC 2.2.0 (15 October) removed
-    #     hasImpactOnEnvironment and hasImpactOnHumanHealth, with no replacement.
-    #     Pending a CORE issue on SOC; the path records the former term.
+    # 42. Hazardous substances: the name of the substance
+    #     Commission semantic model: hazardousSubstances, free text
     sh:property [
-        sh:deactivated true ;
-        sh:path ( dpp:containsSubstanceOfConcern dpp:hasImpactOnEnvironment ) ;
+        sh:path ( dpp:containsSubstanceOfConcern [ sh:alternativePath ( dpp:usualName dpp:casName dpp:iupacName ) ] ) ;
         sh:minCount 1 ;
         sh:datatype xsd:string ;
-        sh:message "Impact of substances on environment, human health, safety, persons — long list v1.3 attribute 43, Battery Regulation." ;
+        sh:message "Hazardous substances, name — long list v1.3 attribute 42, Battery Regulation; Commission semantic model, hazardousSubstances." ;
+    ] ;
+
+    # 43. Impact of substances on environment, human health, safety, persons
+    #     deactivated on 26 October 2026, when SOC 2.2.0 removed hasImpactOnEnvironment
+    #     and hasImpactOnHumanHealth; active again since 16 November 2026 with
+    #     bat:SubstancesImpactInformation, until SOC has a term for it
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:SubstancesImpactInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Impact of substances on environment, human health, safety, persons — long list v1.3 attribute 43, Battery Regulation; Commission semantic model, batterySubstancesImpact." ;
     ] ;
 
     # 44. Dismantling information: Manuals for the removal and the disassembly of the battery pack
@@ -352,6 +408,16 @@ batsh:BatteryShape
         sh:minCount 1 ;
         sh:datatype xsd:string ;
         sh:message "Part numbers for components — long list v1.3 attribute 45, Battery Regulation." ;
+    ] ;
+
+    # 46. Information on sources of spare parts
+    #     a link to the part numbers and the contacts of the spare part sources;
+    #     Commission semantic model: sparePartReplacementDetails (Annex XIII 2(b))
+    sh:property [
+        sh:path bat:sparePartsInformation ;
+        sh:minCount 1 ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Information on sources of spare parts — long list v1.3 attribute 46, Battery Regulation; Commission semantic model, sparePartReplacementDetails." ;
     ] ;
 
     # 47. Safety measures
@@ -456,40 +522,96 @@ batsh:BatteryShape
     ] ;
 
     # 55. Renewable content share
-    #     DEACTIVATED on 26 October 2026: P_DPP (16 October) removed
-    #     SustainableRenewableMaterialsUse; its LCA successor measures renewable
-    #     secondary fuels, not this share. Pending a CORE issue on P_DPP; the
-    #     class below records the former term.
+    #     deactivated on 26 October 2026, when P_DPP removed SustainableRenewableMaterialsUse;
+    #     active again since 16 November 2026 with batmat:renewableContentShare
     sh:property [
-        sh:deactivated true ;
-        sh:path dpp:hasProperty ;
-        sh:qualifiedValueShape [ sh:class dpp:SustainableRenewableMaterialsUse ] ;
-        sh:qualifiedMinCount 1 ;
-        sh:message "Renewable content share — long list v1.3 attribute 55, Battery Regulation." ;
+        sh:path batmat:renewableContentShare ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:message "Renewable content share — long list v1.3 attribute 55, Battery Regulation; Commission semantic model, renewableContentShare." ;
     ] ;
 
+    # 56 to 58, and the waste safety instructions: one text per class since
+    #     16 November 2026, the texts of the Commission semantic model's
+    #     wasteBatteryPreventionManagementInfo (Art. 74(1), Annex XIII 1(s))
     # 56. Information on the role of end-users in contributing to waste prevention
-    #     DigitalInstruction, waste prevention
     sh:property [
         sh:path dpp:hasProperty ;
-        sh:minCount 1 ;
-        sh:message "Information on the role of end-users in contributing to waste preventi — long list v1.3 attribute 56, Battery Regulation." ;
+        sh:qualifiedValueShape [
+            sh:class bat:WastePreventionInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on the role of end-users in contributing to waste prevention — long list v1.3 attribute 56, Battery Regulation; Commission semantic model, endUserRoleInWastePrevention." ;
     ] ;
 
     # 57. Information on the role of end-users in contributing to the separate collection of waste
-    #     DigitalInstruction, separate collection
     sh:property [
         sh:path dpp:hasProperty ;
-        sh:minCount 1 ;
-        sh:message "Information on the role of end-users in contributing to the separate c — long list v1.3 attribute 57, Battery Regulation." ;
+        sh:qualifiedValueShape [
+            sh:class bat:SeparateCollectionInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on the role of end-users in contributing to the separate collection of waste batteries — long list v1.3 attribute 57, Battery Regulation; Commission semantic model, endUserRoleInSeparateCollection." ;
     ] ;
 
     # 58. Information on battery collection, preparation for second life and on treatment at end o
-    #     DigitalInstruction, collection and second life
     sh:property [
         sh:path dpp:hasProperty ;
-        sh:minCount 1 ;
-        sh:message "Information on battery collection, preparation for second life and on  — long list v1.3 attribute 58, Battery Regulation." ;
+        sh:qualifiedValueShape [
+            sh:class bat:SeparateCollectionPointsInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on separate collection points — long list v1.3 attribute 58, Battery Regulation; Commission semantic model, separateCollectionPoints." ;
+    ] ;
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:TakeBackPointsInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on take-back and collection points — long list v1.3 attribute 58, Battery Regulation; Commission semantic model, takeBackCollectionPoints." ;
+    ] ;
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:PreparationForReuseInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on preparation for re-use facilities — long list v1.3 attribute 58, Battery Regulation; Commission semantic model, preparationForReuseFacilities." ;
+    ] ;
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:PreparationForRepurposingInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on preparation for repurposing facilities — long list v1.3 attribute 58, Battery Regulation; Commission semantic model, preparationForRepurposingFacilities." ;
+    ] ;
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:WasteTreatmentInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Information on treatment facilities for waste batteries — long list v1.3 attribute 58, Battery Regulation; Commission semantic model, wasteBatteryTreatmentFacilities." ;
+    ] ;
+
+    # Safety instructions for handling waste batteries: no v1.3 attribute
+    sh:property [
+        sh:path dpp:hasProperty ;
+        sh:qualifiedValueShape [
+            sh:class bat:WasteBatterySafetyInformation ;
+            sh:property [ sh:path dpp:value ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:message "Safety instructions for handling waste batteries — Commission semantic model, wasteBatterySafetyInstructions." ;
     ] ;
 
     # 59. Rated capacity
@@ -589,12 +711,19 @@ batsh:BatteryShape
     ] ;
 
     # 81. Initial internal resistance of battery cell and pack (module recommended)
-    #     the cell and pack values of data point 38 of the Commission guidance v3.2 count too
+    #     both the cell and the pack value since 16 November 2026, as the Commission semantic model
+    #     requires (internalCellResistance, internalPackResistance; guidance v3.2, data point 38)
     sh:property [
-        sh:path ( batperf:hasBatteryPerformance [ sh:alternativePath ( batperf:initialInternalResistance batperf:initialCellInternalResistance batperf:initialPackInternalResistance ) ] ) ;
+        sh:path ( batperf:hasBatteryPerformance batperf:initialCellInternalResistance ) ;
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
-        sh:message "Initial internal resistance of battery cell and pack (module recommended) — long list v1.3 attribute 81, Battery Regulation." ;
+        sh:message "Initial internal resistance of battery cell — long list v1.3 attribute 81, Battery Regulation; Commission semantic model, internalCellResistance." ;
+    ] ;
+    sh:property [
+        sh:path ( batperf:hasBatteryPerformance batperf:initialPackInternalResistance ) ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:message "Initial internal resistance of battery pack — long list v1.3 attribute 81, Battery Regulation; Commission semantic model, internalPackResistance." ;
     ] ;
 
     # 82. Internal resistance increase of pack (cell and module recommended)
@@ -668,6 +797,15 @@ batsh:BatteryShape
         sh:minCount 1 ;
         sh:datatype xsd:decimal ;
         sh:message "Temperature range idle state, upper boundary — long list v1.3 attribute 93, Battery Regulation." ;
+    ] ;
+
+    # Temperature range idle state, reference test: no v1.3 attribute
+    #     Commission semantic model: notInUseTemperatureRangeTest (Annex XIII 1(l))
+    sh:property [
+        sh:path ( batperf:hasTemperatureExposure batperf:temperatureRangeIdleStateReferenceTest ) ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Temperature range idle state, reference test — Commission semantic model, notInUseTemperatureRangeTest." ;
     ]  .
 
 #################################################
@@ -740,6 +878,7 @@ batsh:LMT76Shape
     ) .
 
 # 80. Evolution of self-discharge rates
+#     forbidden for electric vehicle batteries in batsh:EVForbiddenShape since 16 November 2026
 batsh:LMT80Shape
     a sh:NodeShape ;
     sh:targetClass bat:Battery ;
@@ -940,6 +1079,127 @@ batsh:EV90Shape
         ]
     ) .
 
+# Data points of the Commission semantic model with no v1.3 attribute, or
+# that the model requires or forbids for some categories only.
+
+batsh:CurrentInternalResistanceShape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    rdfs:comment "Required for electric vehicle and LMT batteries by the Commission semantic model (internalResistance, Annex XIII 4(a))."@en ;
+    sh:message "Current internal resistance — Commission semantic model, internalResistance." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:ElectricVehicleBattery batcat:LMTBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:currentInternalResistance ) ;
+                sh:minCount 1 ;
+                sh:datatype xsd:decimal ;
+                sh:message "Current internal resistance — Commission semantic model, internalResistance." ;
+            ]
+        ]
+    ) .
+
+batsh:LMTOhmicResistanceShape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    rdfs:comment "Required for LMT batteries by the Commission semantic model (ohmicResistance, Annex XIII 4(b))."@en ;
+    sh:message "Ohmic resistance — Commission semantic model, ohmicResistance." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:LMTBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:ohmicResistance ) ;
+                sh:minCount 1 ;
+                sh:datatype xsd:decimal ;
+                sh:message "Ohmic resistance — Commission semantic model, ohmicResistance." ;
+            ]
+        ]
+    ) .
+
+batsh:LMTSelfDischargeShape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    rdfs:comment "Required for LMT batteries by the Commission semantic model (selfDischargingRateSet, Annex XIII 4(b))."@en ;
+    sh:message "Current self-discharge rate — long list v1.3 attribute 79; Commission semantic model, selfDischargingRateSet." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:LMTBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:currentSelfDischargeRate ) ;
+                sh:minCount 1 ;
+                sh:datatype xsd:decimal ;
+                sh:message "Current self-discharge rate — long list v1.3 attribute 79; Commission semantic model, selfDischargingRateSet." ;
+            ]
+        ]
+    ) .
+
+batsh:EVForbiddenShape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    rdfs:comment "Data points the Commission semantic model marks 'Not to be filled/displayed' for electric vehicle batteries (Annex XIII 4(b))."@en ;
+    sh:message "Data point not to be filled for electric vehicle batteries — Commission semantic model." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:ElectricVehicleBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:remainingCapacity ) ;
+                sh:maxCount 0 ;
+                sh:message "Remaining capacity, not for electric vehicle batteries — Commission semantic model, remainingCapacity." ;
+            ] ;
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:remainingRoundTripEnergyEfficiency ) ;
+                sh:maxCount 0 ;
+                sh:message "Remaining round trip energy efficiency, not for electric vehicle batteries — Commission semantic model, remainingRoundTripEfficiency." ;
+            ] ;
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:currentSelfDischargeRate ) ;
+                sh:maxCount 0 ;
+                sh:message "Current self-discharge rate, not for electric vehicle batteries — Commission semantic model, selfDischargingRateSet." ;
+            ] ;
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:selfDischargeRateEvolution ) ;
+                sh:maxCount 0 ;
+                sh:message "Evolution of self-discharge rates, not for electric vehicle batteries — long list v1.3 attribute 80; Commission semantic model, selfDischargingRateSet." ;
+            ] ;
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:ohmicResistance ) ;
+                sh:maxCount 0 ;
+                sh:message "Ohmic resistance, not for electric vehicle batteries — Commission semantic model, ohmicResistance." ;
+            ]
+        ]
+    ) .
+
+batsh:LMTIndustrialForbiddenShape
+    a sh:NodeShape ;
+    sh:targetClass bat:Battery ;
+    rdfs:comment "Data points the Commission semantic model marks 'Not to be filled/displayed' for LMT and industrial batteries."@en ;
+    sh:message "Data point not to be filled for LMT and industrial batteries — Commission semantic model." ;
+    sh:or (
+        [ sh:not [ sh:property [ sh:path dpp:hasProductGroup ;
+                                 sh:in ( batcat:LMTBattery batcat:IndustrialBattery ) ;
+                                 sh:minCount 1 ] ] ]
+        [
+            sh:property [
+                sh:path ( batperf:hasBatteryDurability batperf:capacityThresholdForExhaustion ) ;
+                sh:maxCount 0 ;
+                sh:message "Capacity threshold for exhaustion, not for LMT and industrial batteries — Commission semantic model, capacityExhaustionThreshold." ;
+            ] ;
+            sh:property [
+                sh:path ( batperf:hasBatteryStateRecord batperf:stateOfCertifiedEnergy ) ;
+                sh:maxCount 0 ;
+                sh:message "State of certified energy, not for LMT and industrial batteries — Commission semantic model, stateOfCertifiedEnergy." ;
+            ]
+        ]
+    ) .
+
 #################################################
 # 4. Declared, never required
 #################################################
@@ -1021,6 +1281,8 @@ batsh:BatteryVoluntaryShape
     ] ;
 
     # 79. Current self-discharge rate
+    #     required for LMT and forbidden for electric vehicle batteries in section 3 since
+    #     16 November 2026; percent per year since battery-performance 0.5.0
     sh:property [
         sh:path ( batperf:hasBatteryStateRecord batperf:currentSelfDischargeRate ) ;
         sh:datatype xsd:decimal ;
@@ -1044,14 +1306,12 @@ batsh:BatteryVoluntaryShape
 #################################################
 # 5. Deliberately not constrained
 #################################################
-# 14 of the 100 v1.3 attributes have no path here. Each line says why.
+# 12 of the 100 v1.3 attributes have no path here. Each line says why.
 #
 #    16. Date of putting the battery into service
 #        no CORE date property; event vs property still open (battery#26 line of the Broader table)
 #    23. Carbon footprint label
 #        carbon footprint label; core#36 closed without a term, the URL goes through hasExternalDocumentation -> Source (LCA)
-#    25. Meaning of labels and symbols
-#        meaning of labels and symbols; long list v2.0 subsumes it in data point 43 of the Commission guidance (Art. 74(1)), not a separate data point (ontologies-core#37)
 #    28. Battery carbon footprint per Functional Unit
 #        carbon footprint: battery-cf-shapes.ttl, deferred to the LCA module (core#41)
 #    29. Contribution of raw material acquisition and pre-processing 
@@ -1070,7 +1330,5 @@ batsh:BatteryVoluntaryShape
 #        absolute carbon footprint: battery-cf-shapes.ttl
 #    38. Supply chain indices
 #        supply chain indices: no term, in the CORE or in the battery modules
-#    46. Information on sources of spare parts
-#        spare-part sources are actor data in ACTOR, not a battery term
 #   100. Information on accidents
 #        no object property links bat:Battery to batperf:AccidentEvent; same gap as the putting-into-service event
