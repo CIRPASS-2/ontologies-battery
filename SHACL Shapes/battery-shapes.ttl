@@ -65,11 +65,16 @@
 # messages name the field of the model. Attributes 25, 43, 46 and 55
 # carry a path again, and attribute 81 requires both the cell and the
 # pack resistance.
+#
+# 0.4.1 (24 November 2026): attributes 48 to 54 apply only to the metals
+# the battery declares, as Art. 8(1) asks for the metals present; before,
+# every battery had to declare all four. Feedback from Mindworks
+# (CIRPASS-2 WP3).
 
 <https://w3id.org/eudpp/battery-shapes>
     a owl:Ontology ;
     owl:imports <https://w3id.org/eudpp/battery-cf-shapes> ;
-    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.4.0> ;
+    owl:versionIRI <https://w3id.org/eudpp/battery-shapes/0.4.1> ;
     rdfs:seeAlso <https://w3id.org/eudpp/battery> ,
                  <https://github.com/CIRPASS-2/ontologies-battery/issues/10> ;
     rdfs:label "EU DPP Battery Shapes"@en ;
@@ -77,15 +82,15 @@
     dcterms:description "SHACL conformance profile for battery Digital Product Passports under Regulation (EU) 2023/1542. Carries the cardinalities, datatypes and closed vocabularies that the battery ontology deliberately leaves out of OWL. Built against BatteryPass-Ready Data Attribute Long List v1.3. Covers the three passport categories: electric vehicle, light means of transport, and industrial batteries above 2 kWh."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:license "This ontology is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). In case of dispute over CC BY 4.0 applicability, or in case considering the ontology as a software or part of it, this ontology is to be considered licensed under the Apache License, Version 2.0."@en ;
-    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.4.0."@en ;
+    dcterms:bibliographicCitation "EU DPP Battery Shapes. Draft version 0.4.1."@en ;
     dcterms:creator "Nader Jelassi"@en , "Marc-Andree Wolf"@en ;
     dcterms:contributor "Arnab Sinha"@en ;
     dcterms:created "2026-08-28"^^xsd:date ;
     dcterms:issued "2026-08-28"^^xsd:date ;
-    dcterms:modified "2026-11-16"^^xsd:date ;
+    dcterms:modified "2026-11-24"^^xsd:date ;
     dcterms:references "Regulation (EU) 2023/1542, Art. 77, Art. 3(1), Annexes VI, VII and XIII; BatteryPass-Ready Data Attribute Long List v1.3, March 2026; prEN 18223 Table 1; Commission semantic model for batteries 1.0.0 (DPP Registry – Semantic Data Artifacts, 30 October 2026)"@en ;
     dcterms:source <https://eur-lex.europa.eu/eli/reg/2023/1542/oj> ;
-    owl:versionInfo "Version 0.4.0 DRAFT"@en ;
+    owl:versionInfo "Version 0.4.1 DRAFT"@en ;
     vann:preferredNamespaceUri "https://w3id.org/eudpp/battery-shapes#" ;
     vann:preferredNamespacePrefix "batsh" .
 
@@ -433,6 +438,10 @@ batsh:BatteryShape
         sh:message "Safety measures — long list v1.3 attribute 47, Battery Regulation." ;
     ] ;
 
+    # 48 to 54. Since 0.4.1, only for the metals the battery declares: Art. 8(1)
+    #     concerns the cobalt, lead, lithium and nickel present in the battery. A
+    #     declared metal must carry its recycled share; an absent metal is not
+    #     declared, so an LFP battery declares no nickel, cobalt or lead.
     # 48 to 53. One total share per metal. MAT v1.1.0 can split pre- from
     #     post-consumer content (dpp:materialRecycledContentType,
     #     ontologies-core#25), but long list v2.0 and the Commission guidance
@@ -443,9 +452,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Nickel ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Pre-consumer recycled nickel share — long list v1.3 attribute 48, Battery Regulation." ;
     ] ;
 
@@ -455,9 +464,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Cobalt ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Pre-consumer recycled cobalt share — long list v1.3 attribute 49, Battery Regulation." ;
     ] ;
 
@@ -467,9 +476,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lithium ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Pre-consumer recycled lithium share — long list v1.3 attribute 50, Battery Regulation." ;
     ] ;
 
@@ -479,9 +488,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Nickel ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Post-consumer recycled nickel share — long list v1.3 attribute 51, Battery Regulation." ;
     ] ;
 
@@ -491,9 +500,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Cobalt ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Post-consumer recycled cobalt share — long list v1.3 attribute 52, Battery Regulation." ;
     ] ;
 
@@ -503,9 +512,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lithium ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Post-consumer recycled lithium share — long list v1.3 attribute 53, Battery Regulation." ;
     ] ;
 
@@ -515,9 +524,9 @@ batsh:BatteryShape
         sh:path dpp:hasMaterial ;
         sh:qualifiedValueShape [
             sh:property [ sh:path dpp:hasMaterialType ; sh:hasValue batmet:Lead ] ;
-            sh:property [ sh:path dpp:materialRecycledContent ; sh:minCount 1 ] ;
+            sh:property [ sh:path dpp:materialRecycledContent ; sh:maxCount 0 ] ;
         ] ;
-        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 0 ;
         sh:message "Recycled lead share — long list v1.3 attribute 54, Battery Regulation." ;
     ] ;
 

@@ -135,7 +135,7 @@ Sources, in order of authority:
 
 The rule: v1.3 marks an attribute `x` when the Battery Regulation makes it mandatory and `(x)` when the ESPR or JTC-24 does. Both are legal obligations, so both produce `sh:minCount 1`, and the message names which text applies. `o` and a blank column produce a datatype only. Two exceptions, attributes 22 and 36, are declared but not required: see the changelog of 28 September 2026.
 
-88 of the 100 attributes carry a path — 66 required for every category (the 64 that v1.3 requires in all four columns, and 25 and 46, which the Commission semantic model requires), 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but not required by v1.3. The 12 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
+88 of the 100 attributes carry a path — 59 required for every category (the 57 that v1.3 requires in all four columns, and 25 and 46, which the Commission semantic model requires), 7 for each metal the battery declares (48 to 54), 11 for LMT and stationary batteries, 2 for electric vehicle batteries, 9 typed but not required by v1.3. The 12 without a path are listed at the end of `battery-shapes.ttl`, each with its reason.
 
 Since 16 November 2026 the profile also follows the **Commission semantic model for batteries 1.0.0** (DPP Registry – Semantic Data Artifacts, 30 October 2026). The data points it requires and v1.3 does not are required, for the same categories; those it marks *Not to be filled/displayed* for a category are forbidden for that category. Their messages name the field of the model. One requirement of the model is not met yet: a temperature range for each of the three voltages (`minimalVoltage`, `nominalVoltage`, `maximumVoltage`), which no battery term carries.
 
@@ -150,8 +150,17 @@ What to change in the battery modules when these CORE issues land:
 * **[ontologies-core#35](https://github.com/CIRPASS-2/ontologies-core/issues/35) — product status.** When the CORE publishes `ProductStatus` and `hasProductStatus`: attach the five `battery-statuses` concepts to `ProductStatus`; deprecate `bat:hasBatteryStatus` in favour of `hasProductStatus`; in the profile and the views, move attribute 20 to the new path, with the same `sh:in`.
 * **[ontologies-core#58](https://github.com/CIRPASS-2/ontologies-core/issues/58) — units and value pattern.** When decided: apply the chosen unit mechanism to `batperf` (today SI Digital Framework IRIs on `batperf:measurementUnit`, the 24 units without one in `rdfs:comment`, as for `batmat:renewableContentShare`); switch shares from percentages to fractions only if the CORE decides so.
 * **SOC — impact of substances.** When the CORE has a term again for the impact of a substance of concern, which SOC 2.2.0 removed on 15 October 2026: move attribute 43 from `bat:SubstancesImpactInformation` to that term in the profile, the views and the examples, then deprecate the class.
+* **[ontologies-core#53](https://github.com/CIRPASS-2/ontologies-core/issues/53) — functional unit of the carbon footprint.** When LCA has a term for it: give the carbon footprint of the examples its functional unit, the kWh of total energy over the service life; their values are per kWh while their unit says kilogram.
 
 ## Changelog
+
+### SHACL profile 0.4.1 and examples — 24 November 2026
+
+Following the review of Mindworks (CIRPASS-2 WP3).
+
+* **`battery-shapes.ttl` 0.4.1** — attributes 48 to 54, the recycled shares of nickel, cobalt, lithium and lead, apply only to the metals the battery declares: Art. 8(1) asks for the metals present. Before, every battery had to declare all four.
+* **`Examples/`** — the LFP batteries, LMT and industrial, declare lithium only, and the NMC battery no longer declares lead. The lithium shares follow the ICCT battery material outlook of December 2024: 0.08 kg per kWh for LFP, 0.09 to 0.10 kg for NMC. Extinguishing agent: class A instead of class D, which is meant for metal fires. A note on the unit of the carbon footprint, which waits for ontologies-core#53.
+* **`tests/`** — one check added, a declared nickel without its recycled share: 36 checks in all.
 
 ### Examples — 24 November 2026
 

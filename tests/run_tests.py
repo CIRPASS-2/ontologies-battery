@@ -36,6 +36,7 @@ BAT = Namespace("https://w3id.org/eudpp/battery#")
 BATPERF = Namespace("https://w3id.org/eudpp/battery-performance#")
 BATLAB = Namespace("https://w3id.org/eudpp/battery-labeling#")
 BATMAT = Namespace("https://w3id.org/eudpp/battery-materials#")
+BATMET = Namespace("https://w3id.org/eudpp/battery-metals#")
 
 
 def graph(*files):
@@ -88,6 +89,16 @@ def on_records(file, prop, value):
 def on_performance(file, prop, value):
     g = graph(file)
     g.add((next(g.subjects(BATPERF.cRateOfCycleLifeTest, None)), prop, value))
+    return g
+
+
+def with_material(file, metal):
+    """Declare one more material of the given metal, without its recycled share."""
+    g = graph(file)
+    m = BNode()
+    g.add((next(g.subjects(RDF.type, BAT.Battery)), DPP.hasMaterial, m))
+    g.add((m, RDF.type, DPP.MaterialOfComposition))
+    g.add((m, DPP.hasMaterialType, metal))
     return g
 
 
@@ -179,7 +190,9 @@ if examples["lmt"].exists():
                 without(examples["lmt"], BATPERF.temperatureRangeIdleStateReferenceTest), PROFILE, "notInUseTemperatureRangeTest"),
                ("lmt example with a state of certified energy, profile",
                 on_records(examples["lmt"], BATPERF.stateOfCertifiedEnergy, Literal("95.0", datatype=XSD.decimal)), PROFILE,
-                "not to be filled for LMT and industrial batteries")]
+                "not to be filled for LMT and industrial batteries"),
+               ("lmt example with a nickel without its recycled share, profile",
+                with_material(examples["lmt"], BATMET.Nickel), PROFILE, "attribute 48")]
 if examples["ev"].exists():
     checks += [("ev example without capacity threshold for exhaustion, public view",
                 without(examples["ev"], BATPERF.capacityThresholdForExhaustion), VIEWS["public"], "attribute 90"),
