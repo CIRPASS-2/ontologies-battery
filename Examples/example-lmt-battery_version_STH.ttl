@@ -6,10 +6,11 @@
 #
 # Purpose: Semantic Treehouse accepts only simple SHACL property paths.
 # Every sequence path ( p1 p2 ) has been rewritten as a link on p1 carrying
-# sh:class and sh:node, plus a nested shape holding p2. Constraints, messages
-# and severities are carried over unchanged. An alternative path
-# ( p1 [ sh:alternativePath ( a1 a2 ) ] ) keeps its constraints on the first
-# alternative; the others are typed, never required.
+# sh:class and sh:node, plus a nested shape holding p2; a longer path gets
+# one link and one nested shape per step. Constraints, messages and
+# severities are carried over unchanged. An alternative path at the end of
+# a sequence keeps its constraints on the first alternative; the others are
+# typed, never required.
 #
 # The nested shapes carry no sh:targetClass on purpose: hasEconomicOperator
 # and hasManufacturer share the range eudpp:Actor, and a shape targeting that
@@ -54,13 +55,19 @@ ex:battery-1 a bat:Battery ;
     eudpp:hasLCAStudy ex:lca-study-1 ;
     eudpp:hasManufacturer ex:manufacturer ;
     eudpp:hasMaterial ex:chemistry-1,
-        ex:material-cobalt,
-        ex:material-lead,
-        ex:material-lithium,
-        ex:material-nickel ;
+        ex:material-lithium ;
     eudpp:hasProductGroup batcat:LMTBattery ;
-    eudpp:hasProperty ex:mass-1,
-        ex:safety-instruction-1 ;
+    eudpp:hasProperty ex:collection-points-1,
+        ex:mass-1,
+        ex:repurposing-1,
+        ex:reuse-1,
+        ex:safety-instruction-1,
+        ex:separate-collection-1,
+        ex:substances-impact-1,
+        ex:take-back-points-1,
+        ex:treatment-1,
+        ex:waste-prevention-1,
+        ex:waste-safety-1 ;
     eudpp:hasUniqueProductIdentifier ex:pid-1 ;
     eudpp:isEnergyRelated true ;
     eudpp:manufacturingDate "2027-05"^^xsd:gYearMonth ;
@@ -72,10 +79,12 @@ ex:battery-1 a bat:Battery ;
     bat:hasBatteryStatus batstat:Original ;
     bat:partNumber "CELL-21700-14S",
         "LMT-630-A" ;
+    bat:sparePartsInformation "https://example.org/doc/lmt/spare-parts.pdf"^^xsd:anyURI ;
     bat:testReportResults "https://example.org/doc/lmt/test-reports.pdf"^^xsd:anyURI ;
     bat:warrantyPeriod "P2Y"^^xsd:duration ;
     batlab:hasBatteryLabel ex:label-1 ;
     batmat:hasBatteryChemistry ex:chemistry-1 ;
+    batmat:renewableContentShare 5.0 ;
     batperf:hasBatteryDurability ex:design-life-1 ;
     batperf:hasBatteryPerformance ex:nameplate-1 ;
     batperf:hasBatteryStateRecord ex:state-2028-04-15,
@@ -93,13 +102,18 @@ ex:cf-review-1 a eudpp:Review ;
     eudpp:referenceToCompleteReviewReport <https://example.org/doc/lmt/carbon-footprint-verification.pdf> ;
     eudpp:reviewDate "2026-11-30"^^xsd:date .
 
+ex:collection-points-1 a bat:SeparateCollectionPointsInformation ;
+    eudpp:value "The separate collection points are listed at https://example.org/collection-points." .
+
 ex:design-life-1 a batperf:BatteryDurability ;
-    batperf:capacityThresholdForExhaustion 70.0 ;
     batperf:expectedLifetimeCalendarYears 5.0 ;
     batperf:expectedLifetimeCycles 800 .
 
 ex:dpp-1 a eudpp:DPP ;
     eudpp:appliesToProduct ex:battery-1 ;
+    eudpp:contentSpecificationIds "https://repository.product-passport.ec.europa.eu/core/1.0.0",
+        "https://repository.product-passport.ec.europa.eu/product/batteries/1.0.0",
+        "https://repository.product-passport.ec.europa.eu/product/batteries/subgroup/lmt/1.0.0" ;
     eudpp:dppSchemaVersion "prEN18223:v1.0" ;
     eudpp:dppStatus "Active" ;
     eudpp:granularity "item" ;
@@ -131,11 +145,12 @@ ex:facility-id-1 a eudpp:FacilityIdentifier ;
 
 ex:idle-temperature-range-1 a batperf:TemperatureExposure ;
     batperf:temperatureRangeIdleStateLowerBoundary -10.0 ;
+    batperf:temperatureRangeIdleStateReferenceTest "Example storage test at the two boundaries of the range" ;
     batperf:temperatureRangeIdleStateUpperBoundary 45.0 .
 
 ex:label-1 a batlab:BatteryLabel ;
     batlab:cadmiumSymbol "https://example.org/img/cadmium.svg"^^xsd:anyURI ;
-    batlab:extinguishingAgent batext:ClassD ;
+    batlab:extinguishingAgent batext:ClassA ;
     batlab:labelingSymbol "https://example.org/doc/lmt/label-legend.pdf"^^xsd:anyURI ;
     batlab:leadSymbol "https://example.org/img/lead.svg"^^xsd:anyURI ;
     batlab:separateCollectionSymbol "https://example.org/img/separate-collection.svg"^^xsd:anyURI .
@@ -147,6 +162,12 @@ ex:lca-study-1 a eudpp:LCAStudy ;
     eudpp:hasReferenceToBackgroundDatabase ex:background-database-1 ;
     eudpp:hasReview ex:cf-review-1 .
 
+ex:manufacturer-address a schema:PostalAddress ;
+    schema:addressCountry "DE" ;
+    schema:addressLocality "Example City" ;
+    schema:postalCode "00000" ;
+    schema:streetAddress "Example Street 1" .
+
 ex:manufacturer-record-1 a eudpp:ManufacturerRecord ;
     eudpp:hasManufacturingSite ex:plant-1 ;
     eudpp:identifiesManufacturer ex:manufacturer .
@@ -155,41 +176,21 @@ ex:mass-1 a eudpp:Weight ;
     eudpp:hasMeasurementUnit siunit:kilogram ;
     eudpp:numericalValue 3.4 .
 
-ex:material-cobalt a eudpp:MaterialOfComposition ;
-    rdfs:comment "Attributes 49 and 52, pre- and post-consumer, stated as a total."@en ;
-    eudpp:hasMaterialType batmet:Cobalt ;
-    eudpp:isCriticalRawMaterial true ;
-    eudpp:materialPercentage 4.0 ;
-    eudpp:materialRecycledContent 22.0 .
-
-ex:material-lead a eudpp:MaterialOfComposition ;
-    rdfs:comment "Attribute 54. Art. 8(1) measures lead on the whole battery, not on active materials, and has no pre- / post-consumer split."@en ;
-    eudpp:hasMaterialType batmet:Lead ;
-    eudpp:isCriticalRawMaterial false ;
-    eudpp:materialPercentage 0.4 ;
-    eudpp:materialRecycledContent 85.0 .
-
 ex:material-lithium a eudpp:MaterialOfComposition ;
     rdfs:comment "Attributes 50 and 53, pre- and post-consumer, stated as a total."@en ;
     eudpp:hasMaterialType batmet:Lithium ;
     eudpp:isCriticalRawMaterial true ;
-    eudpp:materialPercentage 6.5 ;
+    eudpp:materialPercentage 1.5 ;
     eudpp:materialRecycledContent 9.0 .
-
-ex:material-nickel a eudpp:MaterialOfComposition ;
-    rdfs:comment "Attributes 48 and 51, pre- and post-consumer, stated as a total."@en ;
-    eudpp:hasMaterialType batmet:Nickel ;
-    eudpp:isCriticalRawMaterial true ;
-    eudpp:materialPercentage 12.0 ;
-    eudpp:materialRecycledContent 16.0 .
 
 ex:nameplate-1 a batperf:BatteryPerformance ;
     batperf:cRateOfCycleLifeTest 0.5 ;
     batperf:certifiedUsableBatteryEnergy 0.63 ;
     batperf:cycleLifeReferenceTest "IEC 61960-3:2017, 0.5C/1C at 20 degrees Celsius, 80 percent depth of discharge" ;
-    batperf:initialInternalResistance 0.12 ;
+    batperf:initialCellInternalResistance 0.022 ;
+    batperf:initialPackInternalResistance 0.12 ;
     batperf:initialRoundTripEnergyEfficiency 93.0 ;
-    batperf:initialSelfDischargeRate 2.5 ;
+    batperf:initialSelfDischargeRate 30.0 ;
     batperf:maximumPermittedBatteryPower 750.0 ;
     batperf:maximumVoltage 42.0 ;
     batperf:minimumVoltage 30.0 ;
@@ -204,24 +205,41 @@ ex:operator-id-1 a eudpp:ActorIdentifier ;
 ex:pid-1 a eudpp:ProductIdentifier ;
     eudpp:identifierValue "04012345678905" .
 
+ex:plant-address a schema:PostalAddress ;
+    schema:addressCountry "DE" ;
+    schema:addressLocality "Example City" ;
+    schema:addressRegion "Example Region" .
+
 ex:reg-2023-1542 a eudpp:UnionHarmonisationLegislation ;
     eudpp:assignedELI "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"^^xsd:anyURI .
+
+ex:repurposing-1 a bat:PreparationForRepurposingInformation ;
+    eudpp:value "The facilities preparing waste batteries for repurposing are listed at https://example.org/repurposing." .
+
+ex:reuse-1 a bat:PreparationForReuseInformation ;
+    eudpp:value "The facilities preparing waste batteries for re-use are listed at https://example.org/reuse." .
 
 ex:safety-instruction-1 a bat:SafetyInstruction ;
     eudpp:webLink "https://example.org/doc/lmt/safety.pdf"^^xsd:anyURI .
 
-ex:soc-1 a eudpp:SubstanceOfConcern .
+ex:separate-collection-1 a bat:SeparateCollectionInformation ;
+    eudpp:value "Do not dispose of the battery with household waste: hand it in at a separate collection point." .
+
+ex:soc-1 a eudpp:SubstanceOfConcern ;
+    eudpp:usualName "Example electrolyte salt" .
 
 ex:state-2028-04-15 a batperf:BatteryStateRecord ;
     batperf:asOfDate "2028-04-15T18:20:00+02:00"^^xsd:dateTimeStamp ;
     batperf:capacityFade 2.1 ;
     batperf:capacityThroughput 3150.0 ;
-    batperf:currentSelfDischargeRate 2.6 ;
+    batperf:currentInternalResistance 0.1223 ;
+    batperf:currentSelfDischargeRate 31.2 ;
     batperf:energyThroughput 62.0 ;
     batperf:internalResistanceIncrease 1.9 ;
     batperf:numberOfDeepDischargeEvents 0 ;
     batperf:numberOfFullCycles 180 ;
     batperf:numberOfOverchargeEvents 0 ;
+    batperf:ohmicResistance 0.081 ;
     batperf:powerFade 1.6 ;
     batperf:remainingCapacity 17.1 ;
     batperf:remainingPowerCapability 492.0 ;
@@ -229,7 +247,6 @@ ex:state-2028-04-15 a batperf:BatteryStateRecord ;
     batperf:remainingUsableBatteryEnergy 0.62 ;
     batperf:roundTripEnergyEfficiencyFade 1.1 ;
     batperf:selfDischargeRateEvolution 4.0 ;
-    batperf:stateOfCertifiedEnergy 97.9 ;
     batperf:stateOfCharge 55.0 ;
     batperf:temperatureInformation 18.0 ;
     batperf:timeSpentChargingInExtremeTemperaturesAboveBoundary 45.0 ;
@@ -241,12 +258,14 @@ ex:state-2029-04-10 a batperf:BatteryStateRecord ;
     batperf:asOfDate "2029-04-10T17:45:00+02:00"^^xsd:dateTimeStamp ;
     batperf:capacityFade 6.4 ;
     batperf:capacityThroughput 6860.0 ;
-    batperf:currentSelfDischargeRate 3.0 ;
+    batperf:currentInternalResistance 0.1266 ;
+    batperf:currentSelfDischargeRate 36.0 ;
     batperf:energyThroughput 134.0 ;
     batperf:internalResistanceIncrease 5.5 ;
     batperf:numberOfDeepDischargeEvents 1 ;
     batperf:numberOfFullCycles 392 ;
     batperf:numberOfOverchargeEvents 0 ;
+    batperf:ohmicResistance 0.084 ;
     batperf:powerFade 5.2 ;
     batperf:remainingCapacity 16.4 ;
     batperf:remainingPowerCapability 474.0 ;
@@ -254,13 +273,27 @@ ex:state-2029-04-10 a batperf:BatteryStateRecord ;
     batperf:remainingUsableBatteryEnergy 0.59 ;
     batperf:roundTripEnergyEfficiencyFade 2.8 ;
     batperf:selfDischargeRateEvolution 20.0 ;
-    batperf:stateOfCertifiedEnergy 93.6 ;
     batperf:stateOfCharge 38.0 ;
     batperf:temperatureInformation 19.0 ;
     batperf:timeSpentChargingInExtremeTemperaturesAboveBoundary 95.0 ;
     batperf:timeSpentChargingInExtremeTemperaturesBelowBoundary 372.0 ;
     batperf:timeSpentInExtremeTemperaturesAboveBoundary 690.0 ;
     batperf:timeSpentInExtremeTemperaturesBelowBoundary 2510.0 .
+
+ex:substances-impact-1 a bat:SubstancesImpactInformation ;
+    eudpp:value "The electrolyte and the electrode materials can harm the environment and human health if the battery is not treated properly." .
+
+ex:take-back-points-1 a bat:TakeBackPointsInformation ;
+    eudpp:value "Retailers and the producer take the battery back free of charge: https://example.org/take-back." .
+
+ex:treatment-1 a bat:WasteTreatmentInformation ;
+    eudpp:value "The treatment facilities for waste batteries are listed at https://example.org/treatment." .
+
+ex:waste-prevention-1 a bat:WastePreventionInformation ;
+    eudpp:value "Use the battery for as long as possible and follow the charging instructions to extend its life." .
+
+ex:waste-safety-1 a bat:WasteBatterySafetyInformation ;
+    eudpp:value "Handle a damaged waste battery with care: insulate its terminals and do not open its casing." .
 
 ex:chemistry-1 a batmat:BatteryChemistry ;
     eudpp:hasMaterialType batchem:LiIonLFP ;
@@ -274,9 +307,11 @@ ex:notified-body-1 a eudpp:Actor ;
     eudpp:actorName "Example Notified Body" .
 
 ex:plant-1 a eudpp:Facility ;
+    schema:address ex:plant-address ;
     eudpp:hasUniqueFacilityIdentifier ex:facility-id-1 .
 
 ex:manufacturer a eudpp:Actor ;
+    schema:address ex:manufacturer-address ;
     schema:email "dpp@example.org" ;
     schema:url "https://example.org/lmt" ;
     eudpp:actorName "Example Light Mobility Cells GmbH" ;

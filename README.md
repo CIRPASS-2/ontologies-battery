@@ -159,7 +159,7 @@ What to change in the battery modules when these CORE issues land:
 Following the review of Mindworks (CIRPASS-2 WP3).
 
 * **`battery-shapes.ttl` 0.4.1** — attributes 48 to 54, the recycled shares of nickel, cobalt, lithium and lead, apply only to the metals the battery declares: Art. 8(1) asks for the metals present. Before, every battery had to declare all four.
-* **`Examples/`** — the LFP batteries, LMT and industrial, declare lithium only, and the NMC battery no longer declares lead. The lithium shares follow the ICCT battery material outlook of December 2024: 0.08 kg per kWh for LFP, 0.09 to 0.10 kg for NMC. Extinguishing agent: class A instead of class D, which is meant for metal fires. A note on the unit of the carbon footprint, which waits for ontologies-core#53.
+* **`Examples/`** — the LFP batteries, LMT and industrial, declare lithium only, and the NMC battery no longer declares lead. The lithium shares follow the ICCT battery material outlook of December 2024: 0.08 kg per kWh for LFP, 0.09 to 0.10 kg for NMC. Extinguishing agent: class A instead of class D, which is meant for metal fires. A note on the unit of the carbon footprint, which waits for ontologies-core#53. `example-lmt-battery_version_STH.ttl` is regenerated from the corrected LMT example.
 * **`tests/`** — one check added, a declared nickel without its recycled share: 36 checks in all.
 
 ### Examples — 24 November 2026
