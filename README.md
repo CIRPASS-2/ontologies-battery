@@ -164,7 +164,7 @@ Following the review of Mindworks (CIRPASS-2 WP3).
 
 ### Examples — 24 November 2026
 
-* The three worked examples carry `dpp:contentSpecificationIds`: the Commission specifications they follow, the core, batteries and their subgroup. The term is proposed for P_DPP 2.4.0 in a pull request on ontologies-core.
+* The three worked examples carry `dpp:contentSpecificationIds`: the Commission specifications they follow, the core, batteries and their subgroup. The term was added to P_DPP 2.4.0 on ontologies-core.
 
 ### Umbrella 0.5.0, battery-performance 0.5.0, battery-materials 0.4.0, SHACL profile, views and examples — 16 November 2026
 
